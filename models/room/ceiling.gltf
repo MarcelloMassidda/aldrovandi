@@ -1,0 +1,370 @@
+{
+    "asset" : {
+        "copyright" : "Laura Travaglini - UniBo",
+        "generator" : "Khronos glTF Blender I/O v3.2.43",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "SoffittoAldrovandi_bigmesh",
+            "rotation" : [
+                0.03458293154835701,
+                -0.004871193319559097,
+                0.038510456681251526,
+                0.9986477494239807
+            ],
+            "scale" : [
+                0.10672536492347717,
+                0.10672537982463837,
+                0.10672536492347717
+            ],
+            "translation" : [
+                84.2996597290039,
+                0.7625496983528137,
+                -124.5843505859375
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "SoffittoAldrovandi_tex0",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 0
+                },
+                "metallicFactor" : 0
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "SoffittoAldrovandi_tex1",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicFactor" : 0
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "SoffittoAldrovandi_tex2",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 2
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "SoffittoAldrovandi_tex3",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 3
+                },
+                "metallicFactor" : 0
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "SoffittoAldrovandi",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 3,
+                    "material" : 0,
+                    "mode" : 4
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 1,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 7,
+                    "material" : 1,
+                    "mode" : 4
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 8,
+                        "NORMAL" : 9,
+                        "TEXCOORD_0" : 10
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 2,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 11,
+                    "material" : 2,
+                    "mode" : 4
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 12,
+                        "NORMAL" : 13,
+                        "TEXCOORD_0" : 14
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 3,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 15,
+                    "material" : 3,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 2
+        },
+        {
+            "sampler" : 0,
+            "source" : 3
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "SoffittoAldrovandi_tex0",
+            "uri" : "tex_stanza/SoffittoAldrovandi_tex0.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "SoffittoAldrovandi_tex1",
+            "uri" : "tex_stanza/SoffittoAldrovandi_tex1.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "SoffittoAldrovandi_tex2",
+            "uri" : "tex_stanza/SoffittoAldrovandi_tex2.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "SoffittoAldrovandi_tex3",
+            "uri" : "tex_stanza/SoffittoAldrovandi_tex3.jpg"
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 404922,
+            "max" : [
+                48.67742919921875,
+                66.76478576660156,
+                36.48895263671875
+            ],
+            "min" : [
+                -49.56709671020508,
+                26.561019897460938,
+                -35.69584274291992
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 404922,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 404922,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5125,
+            "count" : 404922,
+            "type" : "SCALAR"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 458916,
+            "max" : [
+                48.427127838134766,
+                67.37269592285156,
+                36.466766357421875
+            ],
+            "min" : [
+                -49.47738265991211,
+                26.228267669677734,
+                -35.78504180908203
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 458916,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 458916,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5125,
+            "count" : 458916,
+            "type" : "SCALAR"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 416160,
+            "max" : [
+                47.96575164794922,
+                67.36351776123047,
+                36.48895263671875
+            ],
+            "min" : [
+                -49.47005081176758,
+                27.34865951538086,
+                -35.65828323364258
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 416160,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 416160,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5125,
+            "count" : 416160,
+            "type" : "SCALAR"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 234456,
+            "max" : [
+                48.63457107543945,
+                67.0136947631836,
+                36.48895263671875
+            ],
+            "min" : [
+                -49.58421325683594,
+                26.639772415161133,
+                -35.0829963684082
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 234456,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 234456,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5125,
+            "count" : 234456,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 3106830,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3474656,
+            "byteOffset" : 3106832
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3200629,
+            "byteOffset" : 6581488
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1798741,
+            "byteOffset" : 9782120
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 11580864,
+            "uri" : "ceiling.bin"
+        }
+    ]
+}
