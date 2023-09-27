@@ -9,7 +9,7 @@ let APP = ATON.App.realize();
 APP.setup = ()=>{
 
      
-
+	APP.loadConfig("./config.json");
 
     ATON.PATH_COLLECTION = "models/";
     ATON.FE.realize(); // Realize the base front-end
@@ -48,6 +48,17 @@ APP.update = ()=>{
 
 };
 */
+
+APP.loadConfig = (path)=>{
+    return $.getJSON( path, ( data )=>{
+        //console.log(data);
+        console.log("Loaded config: "+path);
+
+        APP.conf = data;
+		ATON.fireEvent("APP_ConfigLoaded");
+	});
+};
+
 
 // Run the App
 window.addEventListener('load', ()=>{

@@ -1,0 +1,31 @@
+{
+    "data":
+    {
+        "21":
+        {
+            "ita":
+            {
+                "titolo":"Ritratto di Ulisse Aldrovandi",
+                "attribuz":"",
+                "mat_tec":"",
+                "luogo_conservazione":"",
+                "indirizzo":""
+            },
+            
+            "eng":
+            {
+                    "titolo":"",
+                    "attribuz":"",
+                    "mat_tec":"",
+                    "luogo_conservazione":"",
+                    "indirizzo":""
+            },
+
+            "esternalLinks":
+            [
+                {"a":"Catalogo", "link":"https://site.unibo.it/aldrovandi500/it/mostra-altro-rinascimento-ulisse-aldrovandi"},
+                {"a":"Dettagli del quadro ecc","link":"https://site.unibo.it/aldrovandi500/it/le-celebrazioni"}
+            ]
+        }
+    }
+}
