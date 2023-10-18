@@ -1,0 +1,16 @@
+#InfoContainer
+{
+    position: absolute;
+    left: 25px;
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 30%;
+    padding: 10px;
+    border-radius: 3px;
+    backdrop-filter: blur(2px); 
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+
+}
