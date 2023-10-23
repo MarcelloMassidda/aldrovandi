@@ -22,14 +22,25 @@ APP.setup = ()=>{
 
 	APP.loadConfig("./config.json");
 
+    ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
+
+
+  
+
 
     // config is loaded
 ATON.on("APP_ConfigLoaded", ()=>
 {
     console.log("config loaded");
+  
     //Create ambient
-    let ambientModel = APP.config.ambientModel;
-    APP.ambient =  ATON.createSceneNode(ambientModel.id).load(ambientModel.path);
+    APP.ambient = ATON.createSceneNode("ambient");
+
+    APP.ceiling =  ATON.createSceneNode(APP.config.ceiling.id).load(APP.config.ceiling.path);
+    APP.ceiling.attachTo(APP.ambient);
+    APP.room =  ATON.createSceneNode(APP.config.room.id).load(APP.config.room.path).attachTo(APP.ambient);
+    APP.room.attachTo(APP.ambient);
+
     APP.ambient.attachToRoot();
     
     //Create objects
@@ -56,6 +67,18 @@ ATON.on("APP_ConfigLoaded", ()=>
         .setRotation(obj.rot.x,obj.rot.y,obj.rot.z)
         .attachToRoot();
     });
+
+
+    let homepov = APP.config.HomePov;
+    ATON.Nav.setHomePOV(
+        new ATON.POV()
+            .setPosition(homepov.pos.x,homepov.pos.y,homepov.pos.z)
+            .setTarget(homepov.target.x,homepov.target.y,homepov.target.z)
+           // .setFOV(H.fov)
+    );
+
+  //  ATON.Nav.setFirstPersonControl()
+   // ATON.Nav.requestHome(0.5);
     
 });
 
@@ -194,7 +217,7 @@ APP.onTapSemNodes = (idSem)=>
     var SemNode = ATON.getSemanticNode(_id+"_sem");
     SemNode.hide();
 
-    ATON.getSceneNode("ceiling").hide();
+    ATON.getSceneNode("ambient").hide();
     ATON.Nav.requestPOV(_pov, 0.6);
     ATON._mainRoot.background = new THREE.Color("rgb(17,17,17)");
     document.getElementById("InfoContainer").style.display="block";
@@ -226,7 +249,7 @@ APP.CloseObject = ()=>
     ATON.Nav.requestPOV(_pov, 0.6);
     
     
-    ATON.getSceneNode("ceiling").show();
+    ATON.getSceneNode("ambient").show();
 
     //Show Semantic and Scene Nodes of objects
     APP.config.objects.map((o)=>
@@ -286,7 +309,6 @@ APP.openIIIFview=(path)=>
           });
           document.mirador = mirador;
     }
-
 };
 
 
@@ -313,7 +335,13 @@ APP.loadConfig = (path)=>{
     
     
 
-
+APP.onAllNodeRequestsCompleted=()=>
+{
+    APP.ambient.children[1].traverse((o)=>
+    {
+        console.log(o.name)
+    })
+}
 
 
 // Run the App
@@ -322,9 +350,8 @@ window.addEventListener('load', ()=>{
 
 
     //Active Gizmos:
-    /*
+    
     ATON.useGizmo(true);
-    ATON._gizmo.setMode("rotate");      
+    ATON._gizmo.setMode("translate");      
     ATON.FE.attachGizmoToNode("quadro");
-   */
 });
