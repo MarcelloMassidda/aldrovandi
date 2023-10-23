@@ -1,4 +1,29 @@
-#InfoContainer
+/*
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('content/UI/fonts/GothamBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Gotham-BoldItalic';
+    src: url('content/UI/fonts/GothamBoldItalic.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Gotham-Book';
+    src: url('content/UI/fonts/GothamBook.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Gotham-BookItalic';
+    src: url('content/UI/fonts/GothamBookItalic.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: "ArnoPro-Italic";
+    src: url('content/UI/fonts/ArnoPro-Italic.ttf') format('truetype');
+  }
+  */
+
+
+  #InfoContainer
 {
     position: absolute;
     left: 25px;
@@ -12,5 +37,18 @@
     top: 50%;
     transform: translateY(-50%);
     display: none;
+}
 
+#miradorViewer
+{
+  position: absolute;
+  left: 25px;
+  min-height: 80vh;
+  min-width: 80vw;
+  padding: 10px;
+  border-radius: 3px;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
 }

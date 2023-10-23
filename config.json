@@ -1,31 +1,25 @@
 {
-    "data":
-    {
-        "21":
-        {
-            "ita":
+        "ambientModel":
             {
-                "titolo":"Ritratto di Ulisse Aldrovandi",
-                "attribuz":"",
-                "mat_tec":"",
-                "luogo_conservazione":"",
-                "indirizzo":""
+                "id":"ceiling",
+                "path": "models/room/ceiling.gltf"
             },
-            
-            "eng":
-            {
-                    "titolo":"",
-                    "attribuz":"",
-                    "mat_tec":"",
-                    "luogo_conservazione":"",
-                    "indirizzo":""
-            },
-
-            "esternalLinks":
+            "objects":
             [
-                {"a":"Catalogo", "link":"https://site.unibo.it/aldrovandi500/it/mostra-altro-rinascimento-ulisse-aldrovandi"},
-                {"a":"Dettagli del quadro ecc","link":"https://site.unibo.it/aldrovandi500/it/le-celebrazioni"}
+                {
+                    "id":"quadro",
+                    "hoverLable":"Ritratto di Ulisse Aldrovandi",
+                    "type":"object",
+                    "path":"models/objects/S1-21-CNR-FICLIT_RitrattoAldrovandi/aldrovandi_quadro.gltf",
+                    "pos": {"x":79.16108011600797, "y": 2.489892709585605, "z":-123.5091089272303},
+                    "rot": {"x":0.062146966021101695,"y":0.4615939933738616,"z":-0.14140775301020403},
+                    "povIn":{"pos":{"x":80.57858627353247,"y":2.5283589807655114,"z":-123.33100102497511},"target":{"x":79.00093707565502,"y":2.492843324896314,"z":-123.2777427967964}},
+                    "povOut":{"pos":{"x":82,"y":3,"z":-124},"target":{"x":78,"y":2,"z":-123}},
+                    "content":"",
+                    "sem":
+                    {
+                        "path":"models/quadro_sem.glb"
+                    }
+                }
             ]
-        }
-    }
 }
