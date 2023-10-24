@@ -4,6 +4,10 @@
 ===============================================*/
 let APP = ATON.App.realize();
 
+APP.closeWelcome=()=>
+{
+    document.getElementById("welcomeContainer").style.display="none";
+}
 
 
 // APP.setup() is required for web-app initialization
@@ -309,6 +313,19 @@ APP.openIIIFview=(path)=>
           });
           document.mirador = mirador;
     }
+
+
+
+    ATON.on("KeyPress", (k)=>{
+        /*
+                if (k==='0') APP.setState(APP.STATE_IDLE);
+                if (k==='1') APP.setState(APP.STATE_PILLS);
+                if (k==='2') APP.setState(APP.STATE_LENS);
+        */
+                if (k==='1'){
+                    APP.ceiling.toggle();
+                }});
+
 };
 
 
@@ -337,10 +354,35 @@ APP.loadConfig = (path)=>{
 
 APP.onAllNodeRequestsCompleted=()=>
 {
+    APP.TraspMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 });
+   
     APP.ambient.children[1].traverse((o)=>
     {
         console.log(o.name)
+        if(o.name.includes("vetro"))
+        {
+            o.material = APP.TraspMaterial;
+        }
     })
+}
+
+
+APP.useGizmo=(id, mode="translate")=> //translate rotate
+{
+  //Active Gizmos:
+  ATON.useGizmo(true);
+  ATON._gizmo.setMode(mode);      
+  ATON.FE.attachGizmoToNode(id);
+}
+
+APP.getPosOfNode=(id)=>
+{
+    var _p = {};
+   const pos = ATON.getSceneNode(id).position;
+   _p.x = pos.x;
+   _p.y = pos.y;
+   _p.z = pos.z;
+   return _p;
 }
 
 
@@ -349,9 +391,5 @@ window.addEventListener('load', ()=>{
 	APP.run();
 
 
-    //Active Gizmos:
-    
-    ATON.useGizmo(true);
-    ATON._gizmo.setMode("translate");      
-    ATON.FE.attachGizmoToNode("quadro");
+  
 });
