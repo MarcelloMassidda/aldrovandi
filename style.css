@@ -20,13 +20,19 @@
     font-family: "ArnoPro-Italic";
     src: url('content/UI/fonts/ArnoPro-Italic.ttf') format('truetype');
   }
-  */
 
 
+  @font-face {
+    font-family: "Montserrat";
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap') format('truetype');
+  }
+
+   */
   #InfoContainer
 {
     position: absolute;
     left: 25px;
+    font-family: 'Montserrat', sans-serif;
     min-height: 100px;
     min-width: 100px;
     max-width: 30%;
@@ -73,5 +79,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'Montserrat', sans-serif;
   
 }
