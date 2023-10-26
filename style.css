@@ -21,28 +21,238 @@
     src: url('content/UI/fonts/ArnoPro-Italic.ttf') format('truetype');
   }
 
+   */
 
   @font-face {
-    font-family: "Montserrat";
-    src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap') format('truetype');
+    font-family: "Montserrat-Regular";
+    src: url('content/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: "Montserrat-Bold";
+    src: url('content/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: "Montserrat-italic";
+    src: url('content/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
   }
 
-   */
-  #InfoContainer
-{
+  body
+  {
+    font-family: 'Montserrat-Regular';
+  }
+
+
+
+   
+   #SideBAR
+   {
     position: absolute;
     left: 25px;
-    font-family: 'Montserrat', sans-serif;
     min-height: 100px;
     min-width: 100px;
     max-width: 30%;
-    padding: 10px;
-    border-radius: 3px;
-    backdrop-filter: blur(2px); 
     color: white;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 100%;
+    padding: 10px;
     display: none;
+
+   }
+   #backBtnHeader
+   {
+    padding: 10px;
+    height: 50px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 10px;
+    cursor: pointer;
+   }
+
+   #backBtn
+   {
+    background-image: url("content/icons/backBtn.svg");
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+   }
+
+   .moreBtn
+   {
+    background-image: url("content/icons/moreBtn.svg");
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+   }
+
+   .rightAlign
+   {
+    text-align:right;
+    text-align: -webkit-right;
+   }
+
+   #InfoScrollContainer
+   {
+    overflow-y: scroll;
+    overflow-x:hidden;
+    height: calc( 100% - 50px - 10px - 50px ); /*To fix*/
+    background-color: #1e1e1e21;
+    border: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border-radius: 30px; 
+   }
+
+   .Block
+   {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1e1e1ecc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+   }
+
+   span.b
+   {
+    font-family: "Montserrat-Bold"!important;
+   }
+
+   span.i
+   {
+    font-family: "Montserrat-Italic"!important;
+   }
+
+   .flexContainer
+   {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+   }
+   
+   .myCircle
+   {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background-color: white;
+   }
+
+   .thumb
+   {
+    height: 45px;
+    width: 45px;
+    border-radius: 25px;
+    background-color: white;
+    background-image:url("content/icons/catalogo.jpeg");
+    background-position:center;
+    background-size: cover;
+   }
+
+   .line
+   {
+    width: 80%;
+    height: 1px;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+   }
+
+   .CarouselContainer
+   {
+
+   }
+   .carouselItem
+   {
+    width: 33%;
+    height: 250px;
+    background-color: grey;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   }
+
+   .carouselItem.quadro1
+   {
+    background-image: url("content/image/ritratto/ritratto1.jpg");
+   }
+   .carouselItem.quadro2
+   {
+    background-image: url("content/image/ritratto/ritratto2.jpg");
+   }
+   .carouselItem.quadro3
+   {
+    background-image: url("content/image/ritratto/ritratto3.jpg");
+   }
+
+   .carouselItem.cospi1
+   {
+    background-image: url("content/image/codicecospi/codicecospi1.jpeg");
+   }
+
+   .carouselItem.cospi2
+   {
+    background-image: url("content/image/codicecospi/codicecospi2.jpg");
+   }
+
+   .carouselItem.cospi3
+   {
+    background-image: url("content/image/codicecospi/codicecospi3.jpeg");
+   }
+
+   .carouselItem.cospi4
+   {
+    background-image: url("content/image/codicecospi/codicecospi4.jpeg");
+   }
+
+
+.IIFBtn
+{
+  height: 65px;
+  width: auto;
+  cursor: pointer;
+}
+
+.IIIFContainer
+{
+  justify-content: space-between!important;
+}
+
+.InfoContainer h1
+{
+  font-family: 'Montserrat-Bold';
+  font-size: 40px;
+}
+
+.InfoContainer h1
+{
+  font-family: 'Montserrat-Bold';
+  font-size: 25px;
+}
+
+.WhiteBlock
+{
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+}
+
+.underline
+{
+  text-decoration:underline;
+}
+.VideoOperaItem
+{
+  background-color: white;
+  background-image: url("content/image/videoImage.jpg");
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #miradorViewer
@@ -57,6 +267,7 @@
   top: 50%;
   transform: translateY(-50%);
   display: none;
+  z-index: 1;
 }
 
 #welcomeContainer
@@ -81,4 +292,15 @@
   transform: translate(-50%, -50%);
   font-family: 'Montserrat', sans-serif;
   
+}
+
+#VideoPlayer
+{
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: calc( 30% + 50px);
+  transform: translateY(-50%);
+  display: none;
+
 }

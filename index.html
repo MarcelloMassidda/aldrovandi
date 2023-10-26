@@ -55,10 +55,16 @@
 <body oncontextmenu="return false;">
 
 
+    <video id="VideoPlayer" width="1000" height="800" controls>
+        <source src="content/videos/SanGirolamo.mp4" type="video/mp4">
+      </video>
+
+    <div></div>
+
     <div id="welcomeContainer">
         <div id="welcomePopup">
             <h2>Welcome</h2>
-            <p>bla bla bla</p>
+            <p>Ulisse Aldrovandi - Un'altro rinascimento</p>
             <div onclick="APP.closeWelcome()" class="WelcomeBtn">Start</div>
         </div>
     </div>
@@ -67,7 +73,21 @@
     
     <!--MIRADOR CONTAINER-->
     <div id="miradorViewer"></div> 
-    <!--METADATI BOX RITRATTO-->
+  
+    <div id="SideBAR">
+        <div id="backBtnHeader">            
+           <p> TORNA ALLA MOSTRA</p>
+           <div onclick="APP.CloseObject()" id="backBtn"></div>
+        </div>
+        <div id="InfoScrollContainer">
+            <div id="InfoContainer">
+
+   
+
+        </div>
+    </div>
+   
+          <!--METADATI BOX RITRATTO
     <div id="InfoContainer">
         <a id="myLink" href="#" onclick="document.APP.CloseObject();">Torna alla Mostra</a>
 
@@ -105,12 +125,13 @@ Portando a termine la pubblicazione delle opere di Aldrovandi le autorità bolog
         </div>
         <div>
            <p>CAROUSEL PHOTOS</p> 
-            <!--image/ritratto-->
-        </div>
+          </div>
         
     </div>
+</div>
+  -->
 
-    <!--METADATI BOX CODEX COSPI-->
+    <!--METADATI BOX CODEX COSPI
     <div id="InfoContainer">
         <a id="myLink" href="#" onclick="document.APP.CloseObject();">Torna alla Mostra</a>
 
@@ -140,12 +161,12 @@ Portando a termine la pubblicazione delle opere di Aldrovandi le autorità bolog
         <div>
            <p>CAROUSEL PHOTOS</p>
            <p>Le fotografie presenti in questa pagina sono di Luca Sgamellotti - © Dipartimento di Storia Culture Civiltà (DISCI) - Università di Bologna</p> 
-          <!--image/codicecospi-->
+         
         </div>
         
     </div>
-
-        <!--METADATI BOX SAN GIROLAMO-->
+-->
+        <!--METADATI BOX SAN GIROLAMO
         <div id="InfoContainer">
             <a id="myLink" href="#" onclick="document.APP.CloseObject();">Torna alla Mostra</a>
     
@@ -163,7 +184,7 @@ Portando a termine la pubblicazione delle opere di Aldrovandi le autorità bolog
                 Secondo la leggenda, nel deserto fuori Betlemme Girolamo incontrò un leone con una spina nella zampa e gliela tolse. Da quel momento l’animale, riconoscente e ammansito, lo seguirà ovunque. Per questo la presenza di un leone aiuta a riconoscere con sicurezza San Girolamo nei quadri del passato. Se però prendiamo questo quadro e gli togliamo il leone, poi il cappello cardinalizio poggiato sul ripiano a sinistra e infine l’aureola del santo, ecco che ci troviamo di fronte al ritratto di un umanista nella tranquillità del suo studiolo, circondato dai libri degli autori classici sopravvissuti al Medioevo, che sono stati da poco riscoperti, tradotti e pubblicati. Per lo studioso del tempo, il leone e gli altri animali o piante di cui legge nei libri sono poco più che parole, e li studia solo attraverso le parole di questi libri.</p>
             </div>
         </div>
-
+-->
     <!-- Top Toolbar -->
     <div id="idTopToolbar" class="atonToolbar atonToolbar-top-left"></div>
 
