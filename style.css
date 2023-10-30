@@ -268,7 +268,7 @@
   z-index: 1;
 }
 
-#welcomeContainer
+#welcomePopupContainer
 {
   position: absolute;
   top: 0;
@@ -282,16 +282,24 @@
 
 #welcomePopup
 {
-  background-color: white;
+  background-color:#a42473;
   border-radius: 20px;
   text-align: center;
-  color: black;
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   padding: 30px;
   transform: translate(-50%, -50%);
   
+}
+
+/* Style for popup close button (optional) */ 
+#closePopupBtn { 
+  cursor: pointer;
+  padding: 10px 20px; 
+  background-color: white !important;
+  color: #ba6a7b !important;
 }
 
 #VideoPlayer

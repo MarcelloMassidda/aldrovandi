@@ -4,11 +4,15 @@
 ===============================================*/
 let APP = ATON.App.realize();
 
-APP.closeWelcome=()=>
+/* APP.closeWelcome=()=>
 {
-    document.getElementById("welcomeContainer").style.display="none";
+    document.getElementById("welcomePopupContainer").style.display="none";
 }
-
+*/ 
+APP.closePopup=()=> 
+{ 
+    document.getElementById("welcomePopupContainer").style.display="none"; 
+}
 
 // APP.setup() is required for web-app initialization
 // You can place here UI setup (HTML), events handling, etc.
