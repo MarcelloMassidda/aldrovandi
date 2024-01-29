@@ -55,10 +55,6 @@
                                         "path": "content/image/ritratto/ritratto3.jpg"
                                       }
                                     ]
-                            },
-                            {
-                                "type":"info",
-                                "copy":"<b>ALTRA INFORMAZIONE</b>: dipinto<br><br><b>MATERIA E TECNICA</b>:  tela/ pittura a olio<br><br><b>DIMENSIONI</b>: 79 cm x 62 cm<br><br><b>DATA</b>: 1584/1586<br><br><b>ATTRIBUZIONI</b>: Agostino Carracci<br/><br><b>ALTRE ATTRIBUZIONI</b>: Ludovico Carracci, Carracci Agostino, Attribuito: Bartolomeo Passarotti<br><br><b>LUOGO DI CONSERVAZIONE</b>: Accademia Carrara - Museo, Bergamo<br>"
                             }
                         ]
                     },
@@ -69,6 +65,55 @@
                     },
                     "close":{"pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":2.244286044057213},"rot":{"x":-2.6649608152718667,"y":-1.3470327919123386,"z":-2.6547325291366355}},
                     "title": {"pos":{"x":8.869875565831732,"y":2.0473597018148735,"z":4.22051443497088},"rot":{"x":2.2070650909536793,"y":-1.55688133725152,"z":2.230399656989503}}
+                },
+                {
+                    "id":"atlantenautico",
+                    "hoverLable":"Atlante Nautico",
+                    "path":"models/room1/hqObjects/atlantenautico/atlantenauticoHQ.gltf",
+                    "pos": {"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"object",
+                    "povIn":{"pos":{"x":5.112038682987238,"y":1.5447914007901327,"z":2.496368193049315},"target":{"x":5.069969892047509,"y":0.82324892924799,"z":2.1879959207668724}},
+                    "povOut":{"pos":{"x":5.112038682987238,"y":1.5447914007901327,"z":2.496368193049315},"target":{"x":5.069969892047509,"y":0.82324892924799,"z":2.1879959207668724}},
+                    "content":  {
+                        "mainTitle":"Profilo incompleto delle coste del continente americano",
+                        "blocks":
+                        [
+                            {
+                                "type":"info",
+                                "copy":"<b>OGGETTO</b>: ?<br><br><b>MATERIA E TECNICA</b>: Pergamena<br><br><b>DIMENSIONI</b>: 128 cm x 70,5 cm<br><br><b>DATA</b>: sec. XVI<br><br><b>ATTRIBUZIONI</b>:Battista Agnese<br><br><b>LUOGO DI CONSERVAZIONE</b>: BUB"
+                            },
+                            {
+                                "type":"catalogo",
+                                "title":"Il mondo conosciuto",
+                                "subtitle": "",
+                                "pages":"p. 39",
+                                "copy":"Questa carta nautica illustra il mondo conosciuto a ovest dell'Europa e dell'Africa quasi un secolo dopo il viaggio di Cristoforo Colombo. Il mondo conosciuto comprende ora anche l'America, ma come possiamo vedere sul lato sinistro, gran parte della costa del Pacifico è ancora inesplorata. (...)"
+                            },
+                            {
+                                "type":"carousel",
+                                "title":"Galleria dell'Atlante nautico",
+                                    "images": [
+                                      {
+                                        "path": "content/image/ritratto/ritratto1.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto2.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto3.jpg"
+                                      }
+                                    ]
+                            }
+                        ]
+                    },
+                    "sem":
+                    {
+                        "path":"models/room1/semObjects/atlantenautico_sem.glb",
+                        "pos":{"x": 0, "y": 0, "z": 0}
+                    },
+                    "close":{"pos":{"x":4.750613388917118,"y":0.42189876611086774,"z":1.995472045415911},"rot":{"x":-1.093196058071006,"y":-0.03353019624179381,"z":0.010874834286920312}},
+                    "title":{"pos":{"x":6.228278330297245,"y":0.411175158396262,"z":1.9719524703344486},"rot":{"x":-1.3499484451579795,"y":-0.1650312991256327,"z":0.011530027570073431}}
                 },
                 {
                     "id":"cospi",
@@ -113,37 +158,102 @@
                 },
                 {
                     "id":"cartanautica",
-                    "hoverLable":"Carta nautica",
-                    "path":"models/room1/hqObjects/leooni/quadroHQ.gltf",
-                    "pos": {"x": 84.62764197314785, "y": 1.13412351512, "z": -124.18231023914264},
-                    "rot": {"x":3.0896359635968604, "y": -0.014171264012503309, "z": -3.1348246141349323},
+                    "hoverLable":"Carta Nautica",
+                    "path":"models/room1/hqObjects/cartanautica/cartanauticaHQ.gltf",
+                    "pos": {"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
                     "type":"object",
-                    "povIn":{"pos":{"x": 87.0573195406386, "y": 1.7026949324428076, "z": -125.16797131587848}, "target":{"x":87.17475984711523, "y": 1.7020270581531793, "z": -126.16105103491346}},
-                    "povOut":{"pos":{"x": 84.83692079757931, "y": 1.7026949324428073, "z": -124.86584335999528},"target":{"x": 85.7842531650305, "y": 1.676317468872195, "z": -125.18500729122012}},
-                    "content":"",
+                    "povIn":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+                    "povOut":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+                    "content":  {
+                        "mainTitle":"Carta nautica",
+                        "blocks":
+                        [
+                            {
+                                "type":"info",
+                                "copy":"<b>OGGETTO</b>: Carta singola in forma di rotolo, miniata<br><br><b>MATERIA E TECNICA</b>: Pergamena<br><br><b>DIMENSIONI</b>: 128 cm x 70,5 cm<br><br><b>DATA</b>: sec. XV<br><br><b>ATTRIBUZIONI</b>: Grazioso Benincasa<br><br><b>LUOGO DI CONSERVAZIONE</b>: BUB"
+                            },
+                            {
+                                "type":"catalogo",
+                                "title":"Il mondo conosciuto",
+                                "subtitle": "",
+                                "pages":"p. 35",
+                                "copy":"Questa carta nautica miniata su pergamena da Grazioso Benincasa su commissione del cardinale Raffaello Sansoni Riario è del 1482, quindi dieci anni prima del viaggio di Colombo e una ventina prima di quello di Vespucci. Nella carta c'è tutto il mondo conosciuto già dall'antichità: Europa, Africa, Asia. (...)"
+                            },
+                            {
+                                "type":"carousel",
+                                "title":"Galleria della Carta nautica",
+                                    "images": [
+                                      {
+                                        "path": "content/image/ritratto/ritratto1.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto2.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto3.jpg"
+                                      }
+                                    ]
+                            }
+                        ]
+                    },
                     "sem":
                     {
-                        "path":"models/room1/semObjects/cospi_sem.glb",
-                        "pos":{"x": 84.62764197314785, "y": 1.13412351512, "z": -124.18231023914264}
-                    }
+                        "path":"models/room1/semObjects/cartanautica_sem.glb",
+                        "pos":{"x": 0, "y": 0, "z": 0}
+                    },
+                    "close": {"pos":{"x":2.6508757775613616,"y":1.128877684875454,"z":-0.24032616728880707},"rot":{"x":-0.10292624245520614,"y":-0.008171151300062393,"z":-0.05795674116377535}},
+                    "title":{"pos":{"x":3.208930486001634,"y":1.1707269215974434,"z":-0.321144475005619},"rot":{"x":-0.5344669994673299,"y":-0.053068644487357146,"z":-0.03747493880984817}}
                 },
+
                 {
                     "id":"leoni",
-                    "hoverLable":"Leoni",
+                    "hoverLable":"Diorama con tre leoni",
                     "path":"models/room1/hqObjects/leoni/leoniHQ.gltf",
                     "pos": {"x": 0, "y": 0, "z": 0},
                     "rot":  {"x": 0, "y": 0, "z": 0},
                     "type":"object",
                     "povIn":{"pos":{"x":5.540058583316508,"y":1.6405200147619212,"z":1.7676115511024335},"target":{"x":5.282514226295763,"y":1.3178212913195053,"z":0.8568226413898665}},
                     "povOut":{"pos":{"x":5.540058583316508,"y":1.6405200147619212,"z":1.7676115511024335},"target":{"x":5.282514226295763,"y":1.3178212913195053,"z":0.8568226413898665}},
-                    "content":"",
+                    "content": {
+                        "mainTitle":"Diorama con tre leoni tassidermizzati - <i>Panthera leo</i> (Linneaus, 1758)",
+                        "blocks":
+                        [
+                            {
+                                "type":"info",
+                                "copy":"<b>OGGETTO</b>: ?<br><br><b>DATA</b>: inizio sec. XX<br><br><b>ATTRIBUZIONI</b>: Manifattura Rowland Ward - Londra<br><br><b>LUOGO DI CONSERVAZIONE</b>: Bologna, Collezione di Zoologia, Sistema Museale di Ateneo<br>"
+                            },
+                            {
+                                "type":"catalogo",
+                                "title":"Gli animali conosciuti",
+                                "subtitle": "",
+                                "pages":"p. 36",
+                                "copy":"Fino all'età classica i leoni vivevano su tutte e tre le sponde del Mediterraneo, quindi in Africa, Asia ed Europa, dove sono documentati ad esempio in Grecia. Per questo la cultura del Vecchio Mondo è piena di riferimenti ai leoni, che troviamo come simboli di forza, fierezza, nobiltà, coraggio nei miti e nelle fiabe, nei quadri e negli stemmi araldici, (...)"
+                            },
+                            {
+                                "type":"carousel",
+                                "title":"Galleria del Diorama",
+                                    "images": [
+                                      {
+                                        "path": "content/image/ritratto/ritratto1.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto2.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto3.jpg"
+                                      }
+                                    ]
+                            }
+                        ]
+                    },
                     "sem":
                     {
                         "path":"models/room1/semObjects/leoni_sem.glb",
                         "pos":{"x": 0, "y": 0, "z": 0}
                     },
-                    "close":{"pos":{"x":6.520667496318926,"y":1.622689172880168,"z":0.7235301493439066},"rot":{"x":-0.10260079365480863,"y":0.051097181681205764,"z":0.03508006277670974}},
-                    "title": {"pos":{"x":6.986670306109858,"y":1.4467715783381967,"z":0.5996574531372234},"rot":{"x":0.011202347311499711,"y":0.04307606540411974,"z":0.02280587035860132}}
+                    "close":{"pos":{"x":6.7180052020845515,"y":1.8594912855271692,"z":0.7181377419185062},"rot":{"x":-0.10199558763794508,"y":-0.01606670609952086,"z":0.018800327016262046}},
+                    "title": {"pos":{"x":7.174563970902141,"y":1.60331937860217,"z":0.6757482800002248},"rot":{"x":0.011195934705343594,"y":0.026662503010805774,"z":0.02298980558860221}}
                 }
             ]
 }
