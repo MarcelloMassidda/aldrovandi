@@ -1,18 +1,20 @@
+
 {
     "HomePov":
-    {
-        "pos":{"x": 85.01997023304355, "y": 2.221768923959768, "z": -126.03631634240045},
-        "target":{"x": 87.63661199048495, "y": 1.6290809509832438, "z": -123.58930898586895}
-    },
+    {"pos":{"x":9.047312286512827,"y":1.7136521035939924,"z":4.513824044820378},"target":{"x":8.04925985787584,"y":1.6529219969925761,"z":4.499569086244701}},
         "ceiling":
             {
                 "id":"ceiling",
-                "path": "models/ceiling/ceiling.gltf"
+                "path": "models/room1/ceiling/ceiling.gltf"
             },
             "room":
             {
                 "id":"room",
-                "path": "models/room/Room_noRoof.gltf"
+                "path": "models/room1/room/Room26.gltf"
+            },
+            "objectCollections":
+            {
+                "1":"models/room1/lowObjects/objectsCollection.gltf"
             },
             "objects":
             [
@@ -20,33 +22,82 @@
                     "id":"quadro",
                     "hoverLable":"Ritratto di Ulisse Aldrovandi",
                     "type":"object",
-                    "path":"models/objects/S1-21-CNR-FICLIT_RitrattoAldrovandi/aldrovandi_quadro.gltf",
-                    "pos": {"x": 88.452, "y": 2.1222, "z": -123.91},
-                    "rot": {"x":3.079266305321932,"y":-0.4673392847465903,"z":2.9997844471735307},
-                    "povIn":{"pos":{"x": 86.85215438123303, "y": 2.1034579211712616, "z":  -124.18600495385816},"target":{"x": 88.42287193238981, "y": 2.107388446729607, "z": -124.25418960211124}},
-                    "povOut":{"pos":{"x": 85.5234, "y": 2.14125, "z": -125.37},"target":{"x": 88.594, "y": 1.64884, "z":-123.9892}},
-                    "content":"",
+                    "path":"models/room1/hqObjects/quadro/quadroHQ.gltf",
+                    "povIn":{"pos":{"x":7.337224505444645,"y":2.1787658116319446,"z":2.6120251884262964},"target":{"x":8.439934364262058,"y":2.109140980876489,"z":2.5288325603633313}},
+                    "povOut":{"pos":{"x":7.114974826976174,"y":1.673283336113113,"z":2.766514250774974},"target":{"x":8.1025255947033,"y":1.8227721397310983,"z":2.8154691152363016}},
+                    "content":
+                    {
+                        "mainTitle":"Ritratto di Ulisse Aldrovandi",
+                        "blocks":
+                        [
+                            {
+                                "type":"info",
+                                "copy":"<b>OGGETTO</b>: dipinto<br><br><b>MATERIA E TECNICA</b>:  tela/ pittura a olio<br><br><b>DIMENSIONI</b>: 79 cm x 62 cm<br><br><b>DATA</b>: 1584/1586<br><br><b>ATTRIBUZIONI</b>: Agostino Carracci<br/><br><b>ALTRE ATTRIBUZIONI</b>: Ludovico Carracci, Carracci Agostino, Attribuito: Bartolomeo Passarotti<br><br><b>LUOGO DI CONSERVAZIONE</b>: Accademia Carrara - Museo, Bergamo<br>"
+                            },
+                            {
+                                "type":"catalogo",
+                                "title":"Chi era Ulisse Aldrovandi?",
+                                "subtitle":"di Giuseppe Olmi",
+                                "pages":"pp. 23-27",
+                                "copy":"L. Fuchs, K. Gesner, P. Belon, P.A. Mattioli, etc., uno dei grandi rinnovatori dello studio della natura nel Rinascimento. Manifestando precocemente una forte sete di conoscenza («Essendo io spinto dal dessiderio insin dalla mia prima età di sapere», scriverà più tardi) ebbe una infanzia e una giovinezza piuttosto irrequiete: all'età di soli dodici (...)"
+                            },
+                            {
+                                "type":"carousel",
+                                "title":"Galleria di Aldrovandi",
+                                    "images": [
+                                      {
+                                        "path": "content/image/ritratto/ritratto1.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto2.jpg"
+                                      },
+                                      {
+                                        "path": "content/image/ritratto/ritratto3.jpg"
+                                      }
+                                    ]
+                            },
+                            {
+                                "type":"info",
+                                "copy":"<b>ALTRA INFORMAZIONE</b>: dipinto<br><br><b>MATERIA E TECNICA</b>:  tela/ pittura a olio<br><br><b>DIMENSIONI</b>: 79 cm x 62 cm<br><br><b>DATA</b>: 1584/1586<br><br><b>ATTRIBUZIONI</b>: Agostino Carracci<br/><br><b>ALTRE ATTRIBUZIONI</b>: Ludovico Carracci, Carracci Agostino, Attribuito: Bartolomeo Passarotti<br><br><b>LUOGO DI CONSERVAZIONE</b>: Accademia Carrara - Museo, Bergamo<br>"
+                            }
+                        ]
+                    },
                     "sem":
                     {
-                        "path":"models/quadro_sem.glb",
-                        "pos": {"x": 88.4336 , "y": 2.12557, "z": -123.918}
-                    }
+                        "path":"models/room1/semObjects/quadro_sem.glb",
+                        "pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":3.027225838849325}
+                    },
+                    "close":{"pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":2.244286044057213},"rot":{"x":-2.6649608152718667,"y":-1.3470327919123386,"z":-2.6547325291366355}},
+                    "title": {"pos":{"x":8.869875565831732,"y":2.0473597018148735,"z":4.22051443497088},"rot":{"x":2.2070650909536793,"y":-1.55688133725152,"z":2.230399656989503}}
                 },
                 {
                     "id":"cospi",
                     "hoverLable":"Codice Cospi",
                     "type":"object",
-                    "path":"models/objects/S1-20-FICLIT_CodiceCospi/codicecospi.gltf",
-                    "pos": {"x":86.40165914267925, "y": 0.5131775323939884, "z": -121.28875059580237},
-                    "rot": {"x":3.0896359635968604, "y": -0.014171264012503309, "z": -3.1348246141349323},
-                    "povIn":{"pos":{ "x":86.33088251387895, "y": 0.7108681801143562, "z": -121.49628067159598},"target":{"x": 86.41912597475083, "y": 0.4587009977265707, "z": -121.2440387647479}},
-                    "povOut":{"pos":{"x": 84.96227904361834, "y": 2.268060712519347, "z": -123.39818039442616},"target":{"x": 86.6, "y": 0.98, "z": -120.95}},
-                    "content":"",
+                    "path":"models/room1/hqObjects/codicecospi/codicecospiHQ.gltf",
+                    "povIn":{"pos":{"x":6.829345181271868,"y":1.2204929443463906,"z":5.053704876993095},"target":{"x":6.864388592213143,"y":0.6934439101748434,"z":5.3975152802485225}},
+                    "povOut":{"pos":{"x":6.829345181271868,"y":1.2204929443463906,"z":5.053704876993095},"target":{"x":6.864388592213143,"y":0.6934439101748434,"z":5.3975152802485225}},
+                    "content":
+                    {
+                        "mainTitle":"Codice Cospi",
+                        "blocks":
+                        [
+                            {
+                                "type":"iiif",
+                                "manifestPath":"./cospiIIIFManifest.json",
+                                "title":"COSPI ad AD ALTA RISOLUZIONE",
+                                "subtitle":" © M. Caroli e S. Tebaldi <br>Alma Mater Studiorum <br>Biblioteca Universitaria di Bologna (BUB)<br>",
+                                "description":"Manoscritto mantico. Sul recto i tonalpohualli (ciclo divinatorio di 260 giorni) (1-8), un Almanacco di Venere (9-11) e la sezione dei Quattro Templi (12-13). Sul verso un’unica sezione con disposizione e numero di offerte rituali (21-31)."
+                            }
+                        ]
+                    },
                     "sem":
                     {
-                        "path":"models/cospi.glb",
-                        "pos":{"x":86.7336,"y":0.7344,"z":-121.279}
-                    }
+                        "path":"models/room1/semObjects/cospi_sem.glb",
+                        "pos":{"x":7.211893103189664,"y":0.5683697214529058,"z":5.5261339716846285}                        
+                    },
+                    "close":{"pos":{"x":7.287022135443757,"y":0.5787470938495113,"z":6.078961050997673},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
+                    "title": {"pos":{"x":6.497050949185159,"y":0.5624316848772801,"z":6.086499771628267},"rot":{"x":3.1303797102945055,"y":0.06119274844922103,"z":-3.1176186079523296}}
                 },
                 {
                     "id":"video",
@@ -57,8 +108,42 @@
                     "content":"",
                     "sem":
                     {
-                        "path":"models/videosem.glb"
+                        "path":"models/room1/semObjects/video_sem.glb"
                     }
+                },
+                {
+                    "id":"cartanautica",
+                    "hoverLable":"Carta nautica",
+                    "path":"models/room1/hqObjects/leooni/quadroHQ.gltf",
+                    "pos": {"x": 84.62764197314785, "y": 1.13412351512, "z": -124.18231023914264},
+                    "rot": {"x":3.0896359635968604, "y": -0.014171264012503309, "z": -3.1348246141349323},
+                    "type":"object",
+                    "povIn":{"pos":{"x": 87.0573195406386, "y": 1.7026949324428076, "z": -125.16797131587848}, "target":{"x":87.17475984711523, "y": 1.7020270581531793, "z": -126.16105103491346}},
+                    "povOut":{"pos":{"x": 84.83692079757931, "y": 1.7026949324428073, "z": -124.86584335999528},"target":{"x": 85.7842531650305, "y": 1.676317468872195, "z": -125.18500729122012}},
+                    "content":"",
+                    "sem":
+                    {
+                        "path":"models/room1/semObjects/cospi_sem.glb",
+                        "pos":{"x": 84.62764197314785, "y": 1.13412351512, "z": -124.18231023914264}
+                    }
+                },
+                {
+                    "id":"leoni",
+                    "hoverLable":"Leoni",
+                    "path":"models/room1/hqObjects/leoni/leoniHQ.gltf",
+                    "pos": {"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"object",
+                    "povIn":{"pos":{"x":5.540058583316508,"y":1.6405200147619212,"z":1.7676115511024335},"target":{"x":5.282514226295763,"y":1.3178212913195053,"z":0.8568226413898665}},
+                    "povOut":{"pos":{"x":5.540058583316508,"y":1.6405200147619212,"z":1.7676115511024335},"target":{"x":5.282514226295763,"y":1.3178212913195053,"z":0.8568226413898665}},
+                    "content":"",
+                    "sem":
+                    {
+                        "path":"models/room1/semObjects/leoni_sem.glb",
+                        "pos":{"x": 0, "y": 0, "z": 0}
+                    },
+                    "close":{"pos":{"x":6.520667496318926,"y":1.622689172880168,"z":0.7235301493439066},"rot":{"x":-0.10260079365480863,"y":0.051097181681205764,"z":0.03508006277670974}},
+                    "title": {"pos":{"x":6.986670306109858,"y":1.4467715783381967,"z":0.5996574531372234},"rot":{"x":0.011202347311499711,"y":0.04307606540411974,"z":0.02280587035860132}}
                 }
             ]
 }

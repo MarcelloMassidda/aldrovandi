@@ -112,10 +112,13 @@
     margin-bottom: 20px;
    }
 
+
    span.b
    {
     font-family: "Montserrat-Bold"!important;
    }
+
+   b { font-family: "Montserrat-Bold"!important;}
 
    span.i
    {
@@ -311,4 +314,14 @@
   transform: translateY(-50%);
   display: none;
 
+}
+
+
+
+
+#helpertoolbox
+{
+  background-color: red;
+  padding: 5px;
+  display:flex;
 }

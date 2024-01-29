@@ -42,35 +42,43 @@
     <script type="text/javascript" src="/vendors/vendors.min.js"></script>
     <script type="text/javascript" src="/dist/THREE.bundle.js"></script>
     <script type="text/javascript" src="/dist/ATON.min.js"></script>
+    
+    <!-- Main js entry -->
+    <!-- Jquery-csv<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 	-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/suiBuilder.js"></script>
+    <script type="text/javascript" src="js/helper.js"></script>
 
-	<!-- Main js entry -->
-	<script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <!--MIRADOR-->
     <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+    
 
 </head>
 
-<body oncontextmenu="return false;">
+<body onload="APP.getVRBtn()" oncontextmenu="return false;">
 
+    <div id="idTopToolbar" class="atonToolbar atonToolbar-top"></div>
 
+        <!-- Loader -->
+        <div id="idLoader" class="atonCenterLoader" style="display:none;"></div>
+        
     <video id="VideoPlayer" width="1000" height="800" controls>
-        <source src="content/videos/SanGirolamo.mp4" type="video/mp4">
+    <!--    <source src="content/videos/SanGirolamo.mp4" type="video/mp4">-->
       </video>
 
     <div></div>
+
 
     <div id="welcomePopupContainer">
         <div id="welcomePopup">
             <h2><span class="b">L'ALTRO RINASCIMENTO</span> <br> <span class="i">Ulisse Aldrovandi e le meraviglie del mondo</span></h2>
             <p>Premi "Inizia" e rivivi la mostra di Palazzo Poggi</p>
-          <!--  <div onclick="APP.closeWelcome()" class="WelcomeBtn"><span class="b">Inizia</span></div> -->
-            <div id="closePopupBtn" class="atonBTN" title="closePopupBtn" onclick="APP.closePopup()"><span class="b">Inizia</span>  </div>
+          <div id="closePopupBtn" class="atonBTN" title="closePopupBtn" onclick="APP.closePopup()"><span class="b">Inizia</span>  </div>
         </div>
     </div>
-
-
     
     <!--MIRADOR CONTAINER-->
     <div id="miradorViewer"></div> 
@@ -195,8 +203,7 @@ Portando a termine la pubblicazione delle opere di Aldrovandi le autorità bolog
     <!-- Main Popup -->
     <div id="idPopup" class="atonPopupContainer" style="display:none;"></div>
 
-    <!-- Loader -->
-    <div id="idLoader" class="atonCenterLoader" style="display:none;"></div>
+
 
     <!-- Powered by -->
     <div id='idPoweredBy' class="atonToolbar atonToolbar-bottom poweredBy" >
