@@ -1,0 +1,34 @@
+{
+    "id":"vespucci",
+    "hoverLable":"Vespucci",
+    "path":"models/room1/hqObjects/cartanautica/cartanauticaHQ.gltf",
+    "pos": {"x": 0, "y": 0, "z": 0},
+    "rot":  {"x": 0, "y": 0, "z": 0},
+    "type":"object",
+    "povIn":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+    "povOut":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+    "content":  {
+        "mainTitle":"Amerigo Vespucci sveglia l'America",
+        "blocks":
+        [
+            {
+                "type":"info",
+                "copy":"<b>OGGETTO</b>: Stampa<br><br><b>DATA</b>: c. 1589 - c. 1593<br><br><b>ATTRIBUZIONI</b>: Jan van der Straet (Stradano), in <i>Nova Reperta</i><br><br><b>LUOGO DI CONSERVAZIONE</b>: Anversa, Amsterdam, Rijksmuseum"
+            },
+            {
+                "type":"catalogo",
+                "title":"L'America sveglia l'Europa",
+                "subtitle": "",
+                "pages":"p. 34",
+                "copy":"Questa stampa fa parte di una raccolta di venti incisioni chiamata <i>Nova reperta</i>, cioè 'nuove scoperte', commissionata tra il 1587 e il 1589 dal nobile fiorentino Guido Alamanni a Jan van der Straet, detto 'Stradano', e raffigura in forma allegorica la scoperta del Nuovo Mondo. (...)  "
+            }
+        ]
+    },
+    "sem":
+    {
+        "path":"models/room1/semObjects/vespucci_sem.glb",
+        "pos":{"x": 0, "y": 0, "z": 0}
+    },
+    "close": {"pos":{"x":2.6508757775613616,"y":1.128877684875454,"z":-0.24032616728880707},"rot":{"x":-0.10292624245520614,"y":-0.008171151300062393,"z":-0.05795674116377535}},
+    "title":{"pos":{"x":3.208930486001634,"y":1.1707269215974434,"z":-0.321144475005619},"rot":{"x":-0.5344669994673299,"y":-0.053068644487357146,"z":-0.03747493880984817}}
+}
