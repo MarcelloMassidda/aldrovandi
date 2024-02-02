@@ -171,16 +171,9 @@ APP.composeAmbient = (_stage)=>
     {
         APP.objects[obj.id]=obj;
      
-        //SceneNode
-        /*if(obj.path)
-        {
-            ATON.createSceneNode(obj.id).load(obj.path)
-            .setPosition(obj.pos.x,obj.pos.y,obj.pos.z)
-            .setRotation(obj.rot.x,obj.rot.y,obj.rot.z)
-            .attachToRoot();
-        }*/
-        
-        
+        if(APP.isVR_Device()) return;
+     
+     
         //SemanticNode
         let sem = obj.sem;
         var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
@@ -317,10 +310,15 @@ APP.TryToTapHoveredSemoNode = ()=>
 
 APP.onTapSemNodes = (idSem)=>
 {
+
+    if(APP.isVR_Device()) return;
+
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
     let _id = idSem.substring(0, idSem.length-(4));
-    
+
+    if(APP.isVR_Running() && APP.objects[_id].type=="video") return; //prevent video to fix
+
     //Load object // TODO: async?? MOVED TO ON ENDED POV REQUEST
 
     //get POV in 
@@ -388,7 +386,6 @@ APP.onTapSemNodes = (idSem)=>
 
         if(obj.type=="object")
         {
-
                 console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
                 $('canvas').css({ cursor: 'wait'});
                 
@@ -427,7 +424,6 @@ APP.onTapSemNodes = (idSem)=>
         }
         APP.currentObjIsFocused=true;
     })
-
 
 
 APP.CloseObject = ()=>

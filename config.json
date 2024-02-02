@@ -5,7 +5,7 @@
         "ceiling":
             {
                 "id":"ceiling",
-                "path": "models/room1/ceiling/Soffitto retopo.gltf"
+                "path": "models/room1/ceiling/retopologizeRoof.gltf"
             },
             "room":
             {
