@@ -11,12 +11,22 @@ helper.init=()=>
         if (k === 'r') { helper.toggleNAV(); }
         if (k === 't') { helper.getCurrentPov(); }
         if (k === "y") { helper.toogleLoader(); }
+        if (k==' ') {helper.toggleAudio();}
     });
     
 }
 
 
+
 APP.isloading = false;
+
+helper.toggleAudio=()=>
+{
+    if(!APP._audio.paused){APP._audio.pause()}
+    else{APP._audio.play()}
+}
+
+
 helper.toogleLoader=()=>
 {
    if(APP.isloading)

@@ -19,7 +19,15 @@ let APP = ATON.App.realize();
 APP.closePopup=()=> 
 { 
     document.getElementById("welcomePopupContainer").style.display="none"; 
+    //AUDIO PLAY
+
+    APP._audio = document.getElementById("introAudio"); 
+    APP._audio.play();
 }
+
+
+
+
 
 APP.isVR_Device=()=>
 {
@@ -148,7 +156,7 @@ APP.composeAmbient = (_stage)=>
     //room
     //(TODO: To replace with parametric room ambient)
     APP.ambient = ATON.createSceneNode("ambient");
-    APP.ceiling =  ATON.createSceneNode(APP.config.ceiling.id).load(APP.config.ceiling.path).setPosition(0,0.6,0)
+    APP.ceiling =  ATON.createSceneNode(APP.config.ceiling.id).load(APP.config.ceiling.path).setPosition(0,0.941,0)
     APP.ceiling.attachTo(APP.ambient);
     APP.room =  ATON.createSceneNode(APP.config.room.id).load(APP.config.room.path).attachTo(APP.ambient);
     APP.ambient.attachToRoot();
@@ -328,25 +336,21 @@ APP.onTapSemNodes = (idSem)=>
     var SemNode = ATON.getSemanticNode(_id+"_sem");
     SemNode.hide();
 
-    //Detect object type
-    if(APP.objects[_id].type=="object")
-    {
+    
+    //type=="object"
         ATON.getSceneNode("ambient").hide();
         ATON.Nav.setOrbitControl();
         ATON.getSceneNode("blackSphere").show();
-    }
-    else
+    
+    if(APP.objects[_id].type=="video")
     {
-        APP.showVideo();
+       // APP.showVideo();
+        document.getElementById("InfoScrollContainer").style.display="none";
     }
 
     ATON.Nav.requestPOV(_pov, 0.6);
     ATON._mainRoot.background = new THREE.Color("rgb(17,17,17)");
 
-    //Hide other Scene and Semantic Nodes of objects
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////TODO replace with a parent node
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////Toggle full model and manage loader 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////Capire come gestire audio per stanze? per teche?
 
     APP.config.objects.map((o)=>
     {
@@ -358,15 +362,15 @@ APP.onTapSemNodes = (idSem)=>
     //OPEN SIDEBAR
     const _info = APP.returnFormattedInfo(APP.objects[APP._currentObjectActive].content);
 
-   document.getElementById("InfoContainer").innerHTML =  _info;
-   document.getElementById("SideBAR").style.display="block";
+    document.getElementById("InfoContainer").innerHTML =  _info;
+    document.getElementById("SideBAR").style.display="block";
     
         var copy = document.getElementById(_id); //??
         if(copy)
         {
             copy.style.dislay="block";
         }
-    }
+}
 
 
 
@@ -377,54 +381,63 @@ APP.onTapSemNodes = (idSem)=>
         var obj =  APP.objects[ APP._currentObjectActive];
         ATON.SUI.setSelectorRadius(0);
         
-        //if(obj.type == "video") return;
-
-        console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
-        $('canvas').css({ cursor: 'wait'});
-        
-        var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
-            /*On Complete: */ ()=>{
-                APP.lowObjCollection.hide();
-                $('canvas').css({ cursor: 'grab'});
-            });
-
-        if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
-        if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
-        hqObj.attachToRoot();
-
-        //SUI
-       if(APP.isVR_Running())// if(APP.isVR_Device())
+        if(obj.type == "video")
         {
-        //Btn back
-        if(obj.close)
-        {
-            APP.CloseObject_SUIBtn.setPosition(obj.close.pos.x,obj.close.pos.y,obj.close.pos.z)
-            APP.CloseObject_SUIBtn.setRotation(obj.close.rot.x,obj.close.rot.y,obj.close.rot.z);
-            APP.CloseObject_SUIBtn.visible= true;
+            APP.showVideo();
         }
-        //Info Layout
-        if(obj.title)
+
+        if(obj.type=="object")
         {
-        //APP.Title_SUI.setText(obj.hoverLable);
-        APP.Title_SUI.uiText.set({ content: obj.hoverLable });
-        APP.Title_SUI.setPosition(obj.title.pos.x,obj.title.pos.y,obj.title.pos.z)
-        APP.Title_SUI.setRotation(obj.title.rot.x,obj.title.rot.y,obj.title.rot.z);
-        APP.Title_SUI.visible = true;
-        ThreeMeshUI.update()
-        }
+
+                console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
+                $('canvas').css({ cursor: 'wait'});
+                
+                var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
+                    /*On Complete: */ ()=>{
+                        APP.lowObjCollection.hide();
+                        $('canvas').css({ cursor: 'grab'});
+                    });
+
+                if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
+                if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
+                hqObj.attachToRoot();
+
+                //SUI
+            if(APP.isVR_Running())// if(APP.isVR_Device())
+            {
+                //Btn back
+                if(obj.close)
+                {
+                    APP.CloseObject_SUIBtn.setPosition(obj.close.pos.x,obj.close.pos.y,obj.close.pos.z)
+                    APP.CloseObject_SUIBtn.setRotation(obj.close.rot.x,obj.close.rot.y,obj.close.rot.z);
+                    APP.CloseObject_SUIBtn.visible= true;
+                }
+                //Info Layout
+                if(obj.title)
+                {
+                //APP.Title_SUI.setText(obj.hoverLable);
+                APP.Title_SUI.uiText.set({ content: obj.hoverLable });
+                APP.Title_SUI.setPosition(obj.title.pos.x,obj.title.pos.y,obj.title.pos.z)
+                APP.Title_SUI.setRotation(obj.title.rot.x,obj.title.rot.y,obj.title.rot.z);
+                APP.Title_SUI.visible = true;
+                ThreeMeshUI.update()
+                }
         
+            }
+        }
         APP.currentObjIsFocused=true;
-
-        }
     })
 
 
 
 APP.CloseObject = ()=>
 {
+
     //Get and delete current object
     const currentObj = APP.objects[APP._currentObjectActive];
-    ATON.getSceneNode(currentObj.id).delete();
+    const t = currentObj.type;
+
+    if(t=="object") ATON.getSceneNode(currentObj.id).delete();
     APP._currentObjectActive = null;
     APP.currentObjIsFocused= false;
 
@@ -446,6 +459,8 @@ APP.CloseObject = ()=>
 
   //  ATON.getSemanticNode(APP._currentObjectActive+"_sem").show();
     document.getElementById("SideBAR").style.display="none";
+    document.getElementById("InfoScrollContainer").style.display="block";
+    
     ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");
     APP._currentObjectActive = null;
     ATON.Nav.setFirstPersonControl();
