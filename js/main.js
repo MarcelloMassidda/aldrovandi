@@ -23,6 +23,7 @@ APP.closePopup=()=>
 
     APP._audio = document.getElementById("introAudio"); 
     APP._audio.play();
+    ATON.Utils.requestFullscreen();
 }
 
 
@@ -171,7 +172,7 @@ APP.composeAmbient = (_stage)=>
     {
         APP.objects[obj.id]=obj;
      
-        if(APP.isVR_Device()) return;
+       // if(APP.isVR_Device()) return;
      
      
         //SemanticNode
@@ -311,7 +312,7 @@ APP.TryToTapHoveredSemoNode = ()=>
 APP.onTapSemNodes = (idSem)=>
 {
 
-    if(APP.isVR_Device()) return;
+    if(APP.isVR_Running()) return;
 
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
