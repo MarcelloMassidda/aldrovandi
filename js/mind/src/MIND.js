@@ -1,0 +1,262 @@
+/*
+//a/webapp
+?experiment=true
+?controller=true
+?session = idSession | generated
+*/
+
+
+
+let MIND = {}; //Psychologist Experiment multiuser session controller
+let state = {};
+let currentRecord ={};
+
+MIND.init = (minder=null)=>
+{
+    //è un esperimento?
+    var isExperiment = ATON.FE.urlParams.get('experiment') ? true : false;
+    console.log("Is an experiment: " + isExperiment);
+    if(!isExperiment) return null;
+
+    MIND.minder = minder;
+
+    //è inserito un id univoco per la sessione?
+    state.session = MIND.getSessionID();
+   
+
+    //sono lo sperimentatore (true)? o l'utente (false)?
+    var isController = ATON.FE.urlParams.get('controller') ? true : false;
+    
+    //MIND SETUP:
+    ATON.VRoadcast.bSendState = !isController // Il controllore non manda il proprio stato
+    ATON.VRoadcast.setAvatarsVisibility(isController) //L'utente ha la visibilità degli avatar false
+    ATON.VRoadcast.connect(state.session); //Entrambi si connettono alla stessa sessione
+    console.log(`%cMIND IS CONNECTED: ${state.session}`, 'background: #222; color: #bada55');
+
+    state.role = isController ? "controller" : "user";
+
+    //APP SPECIFIC Minder setup
+    MIND.minder.setup(state.role);
+
+    // Initial status message (our HTML stuff)
+    //setStatus(false);
+
+    // We handle connect/disconnect to change status message
+    ATON.on("VRC_Connected", ()=>{
+      console.log("CONNECTED")
+      setStatus(true);
+    });
+    ATON.on("VRC_Disconnected", ()=>{
+      console.log("Disconnected")
+      setStatus(false);
+    });
+    return MIND;
+}
+
+// Broadcast request for specific viewpoint by ID.
+// We define our custom event called "POV", with ID of the viewpoint
+let reqPOV = (id)=>{
+  ATON.VRoadcast.fireEvent("POV", id);
+};
+
+// Helper function to set status message
+let setStatus = (b)=>{
+  if (b){
+      let numUsers = ATON.VRoadcast.getNumUsers(); // Retrieve current number of connected users
+
+      if (numUsers <= 1) $("#idStatus").html("Connected (just you!)");
+      else $("#idStatus").html("Connected ("+numUsers+" users)");
+      
+      $("#idStatus").css("background-color","rgba(0,150,0, 0.3)");
+  }
+  else {
+      $("#idStatus").html("Disconnected<br>is VRoadcast service up and running?");
+      $("#idStatus").css("background-color","rgba(150,0,0, 0.3)");
+  }
+};
+
+//TASK/TIME MANAGEMENT
+MIND.getSessionID = ()=>
+{
+  var sessionID = MIND.getQueryParam("session");
+  console.log("SESSION ID IS: " + sessionID);
+  if(!sessionID) {sessionID = "null"}
+  if(sessionID=="generated") {sessionID = Date.now().toString() + "Test";} 
+  return sessionID;
+}
+
+MIND.returnNow = ()=>{return Date.now();}
+
+//DB
+MIND.getIfExist=(id)=>
+{
+  const item = localStorage.getItem(id);
+  const result = item ? JSON.parse(item) : null;
+  return result;
+}
+MIND.get=(id)=>{return MIND.getIfExist(id)}
+MIND.create=(id,data)=>{ localStorage.setItem(id,JSON.stringify(data));}
+
+MIND.update=(id,data)=>
+{
+  var obj = MIND.getIfExist(id);
+  if(!obj) return;
+  obj[data.key]=data.value;
+  MIND.create(id,obj); 
+}
+
+
+MIND.updateDB=(state)=>
+{ 
+  var DB;
+  var local_DB = localStorage.getItem("Aldrovandi_DB");
+  DB = local_DB ? JSON.parse(local_DB) : {rows:[]};
+  DB.rows.push(state);
+  localStorage.setItem("Aldrovandi_DB",JSON.stringify(DB));
+  return DB;
+}
+
+MIND.getAllItemsFromLocalStorage=()=>{
+  // Initialize an empty array to store items
+  var allItems = [];
+
+  // Loop through all keys in local storage
+  for (var i = 0; i < localStorage.length; i++) {
+      // Get the key at index i
+      var key = localStorage.key(i);
+      // Get the value associated with the key
+      var value = JSON.parse(localStorage.getItem(key));
+      // Create an object with the key-value pair and add it to the array
+      allItems.push( value );
+  }
+  // Return the array containing all key-value pairs from local storage
+  return allItems;
+}
+
+MIND.deleteAllItemsFromLocalStorage=()=>
+{
+   // Loop through all keys in local storage
+        for (var i = 0; i < localStorage.length; i++) {
+            // Get the key at index i
+            var key = localStorage.key(i);
+            // Remove the item associated with the key from local storage
+            localStorage.removeItem(key);
+}}
+
+
+
+//----------UTILITIES
+MIND.getQueryParam=(param)=>
+{
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+}
+
+//Inject UITOOLKIT:
+MIND.injectUI=(uitoolkit_path,UIcss_path,callback=null)=>
+{
+  var jsIsLoaded = false;
+  var cssIsLoaded = false;
+
+  let jss = document.createElement("script");
+  jss.type = "module";
+  jss.src = uitoolkit_path;
+
+  let link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = UIcss_path;
+
+  if(!callback) return;
+
+  const tryCallback=()=>{if(jsIsLoaded && cssIsLoaded)callback(window.UI)}
+  jss.onload = ()=> {jsIsLoaded=true;tryCallback(window.UI)}
+  link.onload = ()=>{cssIsLoaded=true;tryCallback(window.UI)}
+  
+  document.documentElement.firstChild.appendChild(jss);
+  document.documentElement.firstChild.appendChild(link);
+}
+
+
+MIND.downloadAllRecordsCSV=()=>
+{
+  const _json = MIND.getAllItemsFromLocalStorage();
+  const _csv = MIND.convertJsonToCsv(_json);
+  MIND.downloadCsv(_csv);
+}
+
+/*
+  downloadCsvFromJson =(jsonData)=> {
+    // Convert JSON to CSV
+    const csv = MIND.convertJsonToCsv(jsonData);
+    // Download CSV file
+    MIND.downloadCsv(csv);
+}
+*/
+MIND.convertJsonToCsv=(jsonData)=> {
+    // Extract headers from JSON keys
+    //const headers = Object.keys(jsonData[0]);
+    const headers = MIND.minder.config().dataFormat.props;
+
+    // Extract data rows from JSON values
+    const rows = jsonData.map(obj =>
+      headers.map(header => obj[header]).join(',')
+    );
+
+    // Combine headers and rows
+    return [headers.join(','), ...rows].join('\n');
+  }
+
+MIND.downloadCsv=(csvData)=> {
+    // Create a Blob object
+    const blob = new Blob([csvData], { type: 'text/csv' });
+
+    // Create a temporary URL for the Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Create a link element
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.csv';
+
+    // Trigger a click event on the link to start the download
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up by revoking the temporary URL and removing the link element
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  }
+
+  /*
+  // Example JSON data
+  const _jsonData = [
+    { name: 'John', age: 30, city: 'New York' },
+    { name: 'Alice', age: 25, city: 'Los Angeles' },
+    { name: 'Bob', age: 35, city: 'Chicago' }
+  ];
+
+  // Example usage
+  downloadCsvFromJson(_jsonData);
+  */
+//END CSV
+
+
+
+
+
+//POV
+MIND.requestPOV=(infoPOV)=>
+{
+  const p = MIND.returnPOVfromInfo(infoPOV);
+  ATON.Nav.requestPOV(p,0.6);
+}
+
+MIND.returnPOVfromInfo=(infoPOV)=>
+{
+  const p = infoPOV;
+  var _pov = new ATON.POV("pov_"+p.id)
+  .setPosition(p.pos.x,p.pos.y,p.pos.z)
+  .setTarget( p.target.x,p.target.y,p.target.z);
+  return _pov;
+}

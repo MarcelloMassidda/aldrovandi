@@ -4,6 +4,12 @@ helper.init=()=>
 {
     ATON.on("KeyPress", (k)=>{
         
+        if (k === '1') { if(APP.ceiling) APP.ceiling.toggle(); }
+        if (k === '2') { if(APP.lowObjCollection) APP.lowObjCollection.toggle(); }
+        if (k === '3') { APP.useGizmo("quadro")}
+        if (k === '4') { console.log(ATON.getSceneNode("quadro").rotation)}
+        
+
         if (k === '0') { helper.alertGizmo(); }
         if (k === 'q') { helper.setGizmoMode("translate"); }
         if (k === 'w') { helper.setGizmoMode("rotate"); }
@@ -123,7 +129,9 @@ helper.getCurrentPov=()=>
         pos:{x:p.pos.x, y:p.pos.y,z:p.pos.z},
         target:{x:p.target.x, y:p.target.y,z:p.target.z}
     }
-    alert(JSON.stringify(infoPOV));
+    const _infopov = JSON.stringify(infoPOV)
+    console.log(_infopov);
+    alert(_infopov);
 }
 
 APP.currentMode = "first"

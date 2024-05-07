@@ -9,8 +9,11 @@ window.addEventListener( 'load', ()=>
   ATON.FE.realize();
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
-
   document.APP = APP; 
+
+  //For experiment setup
+  APP.MIND = MIND.init(AldrovandiMind);
+
 })
 
 
@@ -18,12 +21,16 @@ let APP = ATON.App.realize();
 
 APP.closePopup=()=> 
 { 
-    document.getElementById("welcomePopupContainer").style.display="none"; 
-    //AUDIO PLAY
-
+     //AUDIO PLAY\
+    APP.closeWelcomePopup();
     APP._audio = document.getElementById("introAudio"); 
     APP._audio.play();
     ATON.Utils.requestFullscreen();
+}
+
+APP.closeWelcomePopup=()=>
+{
+    document.getElementById("welcomePopupContainer").style.display="none"; 
 }
 
 
@@ -74,6 +81,8 @@ APP.setup = ()=>{
 
     ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");	
 
+
+
     //Forced hide loader
     /*
     if (!APP.isVR_Device())
@@ -89,6 +98,10 @@ APP.setup = ()=>{
     // config is loaded
 ATON.on("APP_ConfigLoaded", ()=>
 {
+
+    //debug:
+    //return;
+
     console.log("config loaded");
 
     //INITIALIZE ROOM 1
@@ -109,12 +122,16 @@ ATON.on("APP_ConfigLoaded", ()=>
     APP.setupCustomSemanticHovers();
     
     //Create SUI
-    if(APP.isVR_Device()){APP.setupSUI();}
+    if(APP.isVR_Device())
+    {
+        console.log("SETUPPING SUI")
+        APP.setupSUI();
+    }
 
     helper.init();
 
 
-    let homepov = APP.config.HomePov;
+    let homepov = APP.config.rooms["1"].HomePov;
     ATON.Nav.setHomePOV(
         new ATON.POV()
             .setPosition(homepov.pos.x,homepov.pos.y,homepov.pos.z)
@@ -145,36 +162,88 @@ APP.setupSUI=()=>
     APP.Title_SUI.uiText.set({fontSize: 0.1, textAlign:"left", justifyContent:"left", content:"..."});
     ThreeMeshUI.update();
     APP.Title_SUI.attachToRoot();
-
-
-
-  // suiBuilder.container("prova").attachToRoot();
 }
 
-//TO DO
+
 APP.composeAmbient = (_stage)=>
 {
-    //room
-    //(TODO: To replace with parametric room ambient)
+    APP.STAGE = _stage;
+    
+    //Remove Actual room if exist
+    if(APP.cRoom)
+    {
+        let ambient = ATON.getSceneNode("ambient");
+        let lowObjCollection =  ATON.getSceneNode("objCollection");
+        let semObjects = ATON.getSceneNode("semObjects");
+
+        if(ambient) ambient.delete();
+        if(lowObjCollection) lowObjCollection.delete();
+        if(semObjects) semObjects.delete();
+        ATON.getRootSemantics().removeChildren();
+    }
+    
+    //Remove actual state
+    if(APP._currentObjectActive){APP._currentObjectActive = null}
+    APP.currentObjIsFocused = false;
+
+    //Get from config the new Room to set
+    APP.cRoom = APP.config.rooms[_stage];
+    if(!APP.cRoom) return;
+
+
+    //Create Ambient (ceiling + room)
     APP.ambient = ATON.createSceneNode("ambient");
-    APP.ceiling =  ATON.createSceneNode(APP.config.ceiling.id).load(APP.config.ceiling.path).setPosition(0,0.941,0)
-    APP.ceiling.attachTo(APP.ambient);
-    APP.room =  ATON.createSceneNode(APP.config.room.id).load(APP.config.room.path).attachTo(APP.ambient);
+    if(APP.cRoom.ceiling)
+    {
+        APP.ceiling =  ATON.createSceneNode(APP.cRoom.ceiling.id).load(APP.cRoom.ceiling.path);
+        const p = APP.cRoom.ceiling.pos; if(p) {APP.ceiling.setPosition(p.x,p.y,p.z)}
+        const r = APP.cRoom.ceiling.rot; if(r) {APP.ceiling.setRotation(r.x,r.y,r.z)}
+        APP.ceiling.attachTo(APP.ambient);
+    }
+
+    if(APP.cRoom.room)
+    {
+        APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path);
+        const p = APP.cRoom.room.pos; if(p) {APP.room.setPosition(p.x,p.y,p.z)}
+        const r = APP.cRoom.room.rot; if(r) {APP.room.setRotation(r.x,r.y,r.z)}
+        APP.room.attachTo(APP.ambient);  
+    }
+
     APP.ambient.attachToRoot();
 
-    //objCollection
-    APP.lowObjCollection = ATON.createSceneNode("objCollection").load(APP.config.objectCollections[_stage]);
-    APP.lowObjCollection.attachToRoot();
-
-    //SemanticNodes
-    APP.objects = {};
-    APP.config.objects.map((obj)=>
+    //Create low resolution collection of objects
+    let collection_p;
+    let collection_r;
+    if(APP.cRoom.objectCollection)
     {
-        APP.objects[obj.id]=obj;
-     
-       // if(APP.isVR_Device()) return;
-     
-     
+        APP.lowObjCollection = ATON.createSceneNode("objCollection").load(APP.cRoom.objectCollection.path);
+        const p = APP.cRoom.objectCollection.pos;
+        if(p){
+            APP.lowObjCollection.setPosition(p.x,p.y,p.z);
+            collection_p = p;
+        }
+
+        const r = APP.cRoom.objectCollection.rot;
+        if(r)
+        {
+            APP.lowObjCollection.setRotation(r.x,r.y,r.z);
+            collection_r = r;
+        }
+        APP.lowObjCollection.attachToRoot();
+    }
+
+    //Create semanticObjects 
+    if(!APP.cRoom.objects){console.log("no objects"); return;}
+
+    APP.objects = {};
+    APP.semObjects = ATON.createSceneNode("semObjects");
+
+    APP.cRoom.objects.map((obj)=>
+    {
+        console.log(obj)
+        APP.objects[obj.id] = obj;
+        // if(APP.isVR_Device()) return;     
+ 
         //SemanticNode
         let sem = obj.sem;
         var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
@@ -184,8 +253,26 @@ APP.composeAmbient = (_stage)=>
         .setOnSelect(function(){console.log("SELECTED")});
         if(sem.pos){semNode.setPosition(sem.pos.x,sem.pos.y,sem.pos.z)}
         if(sem.rot){semNode.setRotation(sem.rot.x,sem.rot.y,sem.rot.z)}
-        semNode.attachToRoot();
+        //semNode.attachToRoot();
+        semNode.attachTo(APP.semObjects);
     });
+    APP.semObjects.attachToRoot();
+    if(collection_p)
+    {
+        const p = collection_p;
+        APP.semObjects.setPosition(p.x,p.y,p.z);
+    }
+    if(collection_r)
+    {
+        const r = collection_r;
+        APP.semObjects.setRotation(r.x,r.y,r.z);
+    }
+    
+    //LINK ROOMS WORKAROUND:
+    //var l1 = ATON.getSemanticNode("room1link_sem");
+    //var l2 = ATON.getSemanticNode("room2link_sem");
+    //if(l1){l1.show()}
+    //if(l2){l2.show()}
 }
 
 
@@ -197,7 +284,7 @@ APP.composeAmbient = (_stage)=>
         // Semantic
         ATON.on("SemanticNodeHover", (semid)=>{
             var FE = ATON.FE;
-
+            console.log(semid)
             let S = ATON.getSemanticNode(semid);
             if (S === undefined) return;
     
@@ -292,16 +379,16 @@ APP.setupCustomSemanticMats=()=>
 //DESKTOP/MOBILE DoubleTAP
 ATON.on("DoubleTap", (e)=>
 {
-    APP.TryToTapHoveredSemoNode();
+    APP.TryToTapHoveredSemNode();
 });
 
 //OCULUS SELECT
 ATON.on("XRselectEnd", (c)=>{
     console.log("Sel end "+c);
-    APP.TryToTapHoveredSemoNode();
+    APP.TryToTapHoveredSemNode();
 });
 
-APP.TryToTapHoveredSemoNode = ()=>
+APP.TryToTapHoveredSemNode = ()=>
 {
     if(!ATON._hoveredSemNode) return;
     APP.onTapSemNodes(ATON._hoveredSemNode);
@@ -311,78 +398,117 @@ APP.TryToTapHoveredSemoNode = ()=>
 
 APP.onTapSemNodes = (idSem)=>
 {
-
     if(APP.isVR_Running()) return;
 
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
     let _id = idSem.substring(0, idSem.length-(4));
-
-    if(APP.isVR_Running() && APP.objects[_id].type=="video") return; //prevent video to fix
+    let _object = APP.objects[_id]; 
+    let _type = APP.objects[_id].type;
+    
+    if(APP.isVR_Running() && _type=="video") return; //prevent video to fix
 
     //Load object // TODO: async?? MOVED TO ON ENDED POV REQUEST
-
-    //get POV in 
-    let povIn = APP.objects[_id].povIn;
-    if(!povIn) return;
-
     APP._currentObjectActive = _id;
 
-    var _pov = new ATON.POV("povIn_"+_id)
-    .setPosition(povIn.pos.x,povIn.pos.y,povIn.pos.z)
-    .setTarget( povIn.target.x,povIn.target.y,povIn.target.z);
 
-    var SemNode = ATON.getSemanticNode(_id+"_sem");
-    SemNode.hide();
 
+    if(_type=="roomLink")
+    {
+        console.log("IS A ROOM LINK");
+      //  APP.onPOVTransitionCompleted();
+       // return;
+    }
+
+
+    let povIn = APP.objects[_id].povIn;    
+    if(povIn)
+    {
+        var _pov = new ATON.POV("povIn_"+_id)
+        .setPosition(povIn.pos.x,povIn.pos.y,povIn.pos.z)
+        .setTarget( povIn.target.x,povIn.target.y,povIn.target.z);
+    }
     
-    //type=="object"
-        ATON.getSceneNode("ambient").hide();
-        ATON.Nav.setOrbitControl();
-        ATON.getSceneNode("blackSphere").show();
     
-    if(APP.objects[_id].type=="video")
+    if(_type=="video")
     {
        // APP.showVideo();
         document.getElementById("InfoScrollContainer").style.display="none";
     }
 
-    ATON.Nav.requestPOV(_pov, 0.6);
-    ATON._mainRoot.background = new THREE.Color("rgb(17,17,17)");
+    if(_pov) ATON.Nav.requestPOV(_pov, 0.6);
 
-
-    APP.config.objects.map((o)=>
+    if(_type=="object" || _type=="video")
     {
-        if(o.id == APP._currentObjectActive) return;
-        if(ATON.getSceneNode(o.id)) ATON.getSceneNode(o.id).hide();
-        if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").hide();
-    })
+        if(!_object.path) return;
+        
+        var SemNode = ATON.getSemanticNode(_id+"_sem");
+        SemNode.hide();
 
-    //OPEN SIDEBAR
-    const _info = APP.returnFormattedInfo(APP.objects[APP._currentObjectActive].content);
+        ATON.getSceneNode("ambient").hide();
+        ATON.Nav.setOrbitControl();
+        ATON.getSceneNode("blackSphere").show();
 
-    document.getElementById("InfoContainer").innerHTML =  _info;
-    document.getElementById("SideBAR").style.display="block";
+        ATON._mainRoot.background = new THREE.Color("rgb(17,17,17)");
+
+
+        APP.cRoom.objects.map((o)=>
+        {
+            if(o.id == APP._currentObjectActive) {return;}
+            if(ATON.getSceneNode(o.id)) ATON.getSceneNode(o.id).hide();
+            if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").hide();
+        })
     
+        //Content SIDEBAR
+        var _content = APP.objects[APP._currentObjectActive].content;
+        var _info = null;
+
+        if(_content)
+        {
+            _info = APP.returnFormattedInfo(_content);
+        }
+    
+        document.getElementById("InfoContainer").innerHTML =  _info;
+        document.getElementById("SideBAR").style.display="block";
+        
         var copy = document.getElementById(_id); //??
         if(copy)
         {
             copy.style.dislay="block";
         }
+    }
 }
 
-
-
-    ATON.on("POVTransitionCompleted", (x)=>{
-        if(!APP._currentObjectActive) return;
-        if(APP.currentObjIsFocused) return;
+    ATON.on("POVTransitionCompleted", (x)=>{APP.onPOVTransitionCompleted(x);})
+    
+    APP.onPOVTransitionCompleted=(x)=>
+    {
+        if(!APP._currentObjectActive)
+        {
+            console.log("no current Object Active")
+            return;
+        } 
+        if(APP.currentObjIsFocused)
+        {
+            console.log("currentObj Is Focused")
+            return;
+        }
 
         var obj =  APP.objects[ APP._currentObjectActive];
         ATON.SUI.setSelectorRadius(0);
         
+        if(obj.type == "roomLink")
+        {   
+            console.log(obj.roomTo)
+            APP.composeAmbient(obj.roomTo);
+            APP.currentObjIsFocused=false;
+            APP._currentObjectActive=null;
+        }
+
         if(obj.type == "video")
         {
             APP.showVideo();
+            APP.currentObjIsFocused=true;
         }
 
         if(obj.type=="object")
@@ -413,18 +539,19 @@ APP.onTapSemNodes = (idSem)=>
                 //Info Layout
                 if(obj.title)
                 {
-                //APP.Title_SUI.setText(obj.hoverLable);
-                APP.Title_SUI.uiText.set({ content: obj.hoverLable });
-                APP.Title_SUI.setPosition(obj.title.pos.x,obj.title.pos.y,obj.title.pos.z)
-                APP.Title_SUI.setRotation(obj.title.rot.x,obj.title.rot.y,obj.title.rot.z);
-                APP.Title_SUI.visible = true;
-                ThreeMeshUI.update()
+                    //APP.Title_SUI.setText(obj.hoverLable);
+                    APP.Title_SUI.uiText.set({ content: obj.hoverLable });
+                    APP.Title_SUI.setPosition(obj.title.pos.x,obj.title.pos.y,obj.title.pos.z)
+                    APP.Title_SUI.setRotation(obj.title.rot.x,obj.title.rot.y,obj.title.rot.z);
+                    APP.Title_SUI.visible = true;
+                    ThreeMeshUI.update()
                 }
         
             }
+            APP.currentObjIsFocused=true;
         }
-        APP.currentObjIsFocused=true;
-    })
+
+    }
 
 
 APP.CloseObject = ()=>
@@ -448,11 +575,12 @@ APP.CloseObject = ()=>
     APP.lowObjCollection.show();
 
     //Show Semantic and Scene Nodes of objects
-    APP.config.objects.map((o)=>
+    APP.cRoom.objects.map((o)=>
     {
-       if( ATON.getSceneNode(o.id)) ATON.getSceneNode(o.id).show();
+       console.log(o.id);
+       if( ATON.getSceneNode(o.id)){console.log("REACTIVATING: " + o.id); ATON.getSceneNode(o.id).show();}
        if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").show();
-    })
+    });
 
   //  ATON.getSemanticNode(APP._currentObjectActive+"_sem").show();
     document.getElementById("SideBAR").style.display="none";
@@ -541,15 +669,6 @@ APP.openIIIFview=(target)=>
         videoPlayer.style.display="none";
         videoPlayer.currentTime = 1;
     }
-
-
-    ATON.on("KeyPress", (k)=>{
-        
-                if (k === '1') { APP.ceiling.toggle(); }
-                if (k === '2') { APP.lowObjCollection.toggle(); }
-                if (k === '3') { APP.useGizmo("quadro")}
-                if (k === '4') { console.log(ATON.getSceneNode("quadro").rotation)}
-            });
 };
 
 
@@ -716,7 +835,7 @@ APP.returnFormattedInfo=(objectInfo)=>
     return _info;
 }
 
-
+/*
 
 APP.quadroInfo =    `
 <h1>Ritratto di Ulisse Aldrovandi</h1>
@@ -872,7 +991,7 @@ APP.videoInfo = `
 <div class="moreBtn" onclick=""></div>
 </div>
 </div>`
-
+*/
 
 
 // Run the App

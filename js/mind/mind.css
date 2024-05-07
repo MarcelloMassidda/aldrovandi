@@ -1,0 +1,27 @@
+.controllerSideBar
+{
+    background-color: rgba(0, 0, 0, 0.60)!important;
+    padding: 10px;
+    display: flex!important;
+    flex-direction: column;
+    align-content: stretch;
+    gap:10px;
+}
+
+.controllerSideBar *
+{
+
+    width: auto!important;
+    margin: 0px!important;
+}
+
+.controllerSideBarGroup
+{
+    display: flex;
+    gap:5px;
+}
+
+.controllerSideBarGroup .atonBTN
+{
+    flex-grow: 1;
+}
