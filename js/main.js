@@ -10,18 +10,15 @@ window.addEventListener( 'load', ()=>
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
   document.APP = APP; 
-
+  
   //For experiment setup
   APP.MIND = MIND.init(AldrovandiMind);
-
 })
-
 
 let APP = ATON.App.realize();
 
 APP.closePopup=()=> 
 { 
-     //AUDIO PLAY\
     APP.closeWelcomePopup();
     APP._audio = document.getElementById("introAudio"); 
     APP._audio.play();
@@ -101,7 +98,6 @@ ATON.on("APP_ConfigLoaded", ()=>
 
     //debug:
     //return;
-
     console.log("config loaded");
 
     //INITIALIZE ROOM 1
@@ -117,10 +113,12 @@ ATON.on("APP_ConfigLoaded", ()=>
     ATON.SUI.gLPIcons.hide();
     */
    
-    //Setup Semantics
+    //Setup Custom semantics
     APP.setupCustomSemanticMats();
     APP.setupCustomSemanticHovers();
-    
+    //Setup Custom locomotion Validation
+    APP.setupCustomLocomotionValidation();
+
     //Create SUI
     if(APP.isVR_Device())
     {
@@ -149,6 +147,49 @@ ATON.on("APP_ConfigLoaded", ()=>
     
 });
 
+APP.limitY = 0.2;
+APP.setupCustomLocomotionValidation=()=>
+{
+    var Nav = ATON.Nav;
+    Nav.locomotionValidator = ()=>{
+        if (ATON._queryDataScene === undefined){
+            Nav._bValidLocomotion = false;
+            return;
+        }
+    
+        let qs = ATON._queryDataScene;
+    
+        let P = qs.p;
+        let N = qs.n;
+        let d = qs.d;
+    
+        //ADDED Y check: L'user non può andare sopra le teche
+      
+        if(P.y > APP.limitY)
+        {
+            Nav._bValidLocomotion = false;
+            return;
+        }
+
+        if (d <= Nav.MIN_LOC_VALID_DIST){ // too close
+            Nav._bValidLocomotion = false;
+            return;     
+        }
+    
+        if (!N){ // invalid normal
+            Nav._bValidLocomotion = false;
+            return;  
+        }
+    
+        if (N.y <= 0.7){ // slope
+            Nav._bValidLocomotion = false;
+            return;
+        }
+    
+        Nav._bValidLocomotion = true;
+    }
+}
+
 
 APP.setupSUI=()=>
 {
@@ -174,12 +215,11 @@ APP.composeAmbient = (_stage)=>
     {
         let ambient = ATON.getSceneNode("ambient");
         let lowObjCollection =  ATON.getSceneNode("objCollection");
-        let semObjects = ATON.getSceneNode("semObjects");
+        let semObjects = ATON.getSemanticNode("semObjects");
 
         if(ambient) ambient.delete();
         if(lowObjCollection) lowObjCollection.delete();
         if(semObjects) semObjects.delete();
-        ATON.getRootSemantics().removeChildren();
     }
     
     //Remove actual state
@@ -214,8 +254,10 @@ APP.composeAmbient = (_stage)=>
     //Create low resolution collection of objects
     let collection_p;
     let collection_r;
+    
     if(APP.cRoom.objectCollection)
     {
+        //Check if collection / room / and hqObjects needs new pivotPOSROT
         APP.lowObjCollection = ATON.createSceneNode("objCollection").load(APP.cRoom.objectCollection.path);
         const p = APP.cRoom.objectCollection.pos;
         if(p){
@@ -232,11 +274,17 @@ APP.composeAmbient = (_stage)=>
         APP.lowObjCollection.attachToRoot();
     }
 
+    //Create generalNode for HQ objects (Set ROT + POS translation)
+    APP.hqObjects = ATON.createSceneNode("hqCollection");
+    if(collection_p){const p = collection_p; APP.hqObjects.setPosition(p.x,p.y,p.z);}
+    if(collection_r){const r = collection_r; APP.hqObjects.setRotation(r.x,r.y,r.z);}
+    APP.hqObjects.attachToRoot();
+
     //Create semanticObjects 
     if(!APP.cRoom.objects){console.log("no objects"); return;}
 
     APP.objects = {};
-    APP.semObjects = ATON.createSceneNode("semObjects");
+    APP.semObjects = ATON.createSemanticNode("semObjects");
 
     APP.cRoom.objects.map((obj)=>
     {
@@ -248,14 +296,15 @@ APP.composeAmbient = (_stage)=>
         let sem = obj.sem;
         var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
         .setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL)
-        .setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
-        .setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
+    //    .setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
+     //   .setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
         .setOnSelect(function(){console.log("SELECTED")});
         if(sem.pos){semNode.setPosition(sem.pos.x,sem.pos.y,sem.pos.z)}
         if(sem.rot){semNode.setRotation(sem.rot.x,sem.rot.y,sem.rot.z)}
         //semNode.attachToRoot();
         semNode.attachTo(APP.semObjects);
     });
+
     APP.semObjects.attachToRoot();
     if(collection_p)
     {
@@ -268,12 +317,73 @@ APP.composeAmbient = (_stage)=>
         APP.semObjects.setRotation(r.x,r.y,r.z);
     }
     
+    if(MIND.isExperiment)
+    {
+
+        if(state.role=="user")
+        {
+            MIND.minder.photon_userComposeAmbient(APP.STAGE);
+        }
+        if(state.role=="controller")
+        {
+            MIND.requestPOV(APP.config.mind.homePOVController[APP.STAGE]);
+        }
+    }
+
+
     //LINK ROOMS WORKAROUND:
     //var l1 = ATON.getSemanticNode("room1link_sem");
     //var l2 = ATON.getSemanticNode("room2link_sem");
     //if(l1){l1.show()}
     //if(l2){l2.show()}
+
+
 }
+
+//TO CREATE BOUNDING BOX SEM NODE ---- TO IMPLEMENT
+APP.createBoxFromBoundings=(objTarget)=>
+{
+    // Get the object's bounding box
+    var objectBox = new THREE.Box3().setFromObject(objTarget);
+
+    // Calculate the dimensions of the bounding box
+    var size = new THREE.Vector3();
+    objectBox.getSize(size);
+
+    // Create a cube geometry using the dimensions of the bounding box
+    var geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
+
+    // Create a material
+    var material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Adjust color as needed
+
+    // Create a cube mesh using the geometry and material
+    var cube = new THREE.Mesh(geometry, material);
+
+    // Set the position of the cube to the center of the bounding box
+    var center = new THREE.Vector3();
+    objectBox.getCenter(center);
+    cube.position.copy(center);
+    return cube;
+}
+
+APP.createSemFromMesh=(semId,mesh)=>
+{
+    let S = ATON.getOrCreateSemanticNode(semId);
+    S.add(mesh);
+    S.setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL);
+    S.setOnSelect(function(){console.log("SELECTED")});
+    return S;
+}
+
+
+APP.testSem=(object)=>
+{
+    const cube = APP.createBoxFromBoundings(object);
+    const sem = APP.createSemFromMesh("ciao",cube);
+    sem.attachToRoot();
+}
+//END SEM BOUNDING BOX
+
 
 
 
@@ -398,7 +508,7 @@ APP.TryToTapHoveredSemNode = ()=>
 
 APP.onTapSemNodes = (idSem)=>
 {
-    if(APP.isVR_Running()) return;
+   
 
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
@@ -406,7 +516,17 @@ APP.onTapSemNodes = (idSem)=>
     let _object = APP.objects[_id]; 
     let _type = APP.objects[_id].type;
     
-    if(APP.isVR_Running() && _type=="video") return; //prevent video to fix
+
+    
+    if(MIND.isExperiment){ //on experiment: prevent all click except for room link 
+        if(_type!="roomLink"){return}
+    } 
+
+    if(APP.isVR_Running())
+    {
+        if(_type=="video"){return;} //prevent video to fix
+    } 
+
 
     //Load object // TODO: async?? MOVED TO ON ENDED POV REQUEST
     APP._currentObjectActive = _id;
@@ -463,11 +583,13 @@ APP.onTapSemNodes = (idSem)=>
         var _content = APP.objects[APP._currentObjectActive].content;
         var _info = null;
 
-        if(_content)
-        {
-            _info = APP.returnFormattedInfo(_content);
-        }
+        //if no content no scroll
+        var infoScrollContainer = document.getElementById("InfoScrollContainer");
+        var scrollVisibility = _content==undefined ? "none" : "block";
+        infoScrollContainer.style.display= scrollVisibility;
     
+        if(_content){ _info = APP.returnFormattedInfo(_content);}
+        
         document.getElementById("InfoContainer").innerHTML =  _info;
         document.getElementById("SideBAR").style.display="block";
         
@@ -524,7 +646,8 @@ APP.onTapSemNodes = (idSem)=>
 
                 if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
                 if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
-                hqObj.attachToRoot();
+                //hqObj.attachToRoot();
+                hqObj.attachTo(APP.hqObjects);
 
                 //SUI
             if(APP.isVR_Running())// if(APP.isVR_Device())
@@ -674,11 +797,21 @@ APP.openIIIFview=(target)=>
 
 
 
-/* APP.update() if you plan to use an update routine (executed continuously)
+
+
+
 APP.update = ()=>{
 
+    if(APP.MIND)
+    {
+        if(APP.MIND.needsUpdate)
+        {
+            APP.MIND.update();
+        }
+    }
 };
-*/
+
+APP.update()
 
 
 

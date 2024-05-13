@@ -1,37 +1,69 @@
 var helper = {};
 
+
 helper.init=()=>
 {
-    ATON.on("KeyPress", (k)=>{
-        
-        if (k === '1') { if(APP.ceiling) APP.ceiling.toggle(); }
-        if (k === '2') { if(APP.lowObjCollection) APP.lowObjCollection.toggle(); }
-        if (k === '3') { APP.useGizmo("quadro")}
-        if (k === '4') { console.log(ATON.getSceneNode("quadro").rotation)}
-        
+    helper.isActive=false;
 
-        if (k === '0') { helper.alertGizmo(); }
-        if (k === 'q') { helper.setGizmoMode("translate"); }
-        if (k === 'w') { helper.setGizmoMode("rotate"); }
-        if (k === 'e') { helper.getPosandRotofCurrentGizmedNode(); }
-        if (k === 'r') { helper.toggleNAV(); }
-        if (k === 't') { helper.getCurrentPov(); }
-        if (k === "y") { helper.toogleLoader(); }
+    ATON.on("KeyPress", (k)=>{
+        if(k==="+"){helper.setActive(true)}
+        
+        if (k === '1' && helper.isActive) { if(APP.ceiling) APP.ceiling.toggle(); }
+        if (k === '2' && helper.isActive) { if(APP.lowObjCollection) APP.lowObjCollection.toggle(); }
+        if (k === '3' && helper.isActive) { APP.useGizmo("quadro")}
+        if (k === '4' && helper.isActive) { console.log(ATON.getSceneNode("quadro").rotation)}
+
+        if (k === '0' && helper.isActive) { helper.alertGizmo(); }
+        if (k === 'q' && helper.isActive) { helper.setGizmoMode("translate"); }
+        if (k === 'w' && helper.isActive) { helper.setGizmoMode("rotate"); }
+        if (k === 'e' && helper.isActive) { helper.getPosandRotofCurrentGizmedNode(); }
+        if (k === 'r' && helper.isActive) { helper.toggleNAV(); }
+        if (k === 't' && helper.isActive) { helper.getCurrentPov(); }
+        if (k === "y" && helper.isActive) { helper.toogleLoader(); }
+        if (k === "u" && helper.isActive) { helper.getQueryDataScene(); }
         if (k==' ') {helper.toggleAudio();}
     });
     
 }
 
 
-
 APP.isloading = false;
-
 helper.toggleAudio=()=>
 {
+    if(!APP._audio) return;
     if(!APP._audio.paused){APP._audio.pause()}
     else{APP._audio.play()}
 }
 
+helper.toggleHelper=()=>
+{
+    var _active = !helper.setActive;
+    helper.setActive(_active)
+    if(_active){window.alert("Helper è attivo")}
+}
+
+helper.setActive=(b)=>
+{
+    helper.isActive = b
+}
+
+// Function to copy text to clipboard
+helper.copyToClipboard=(text)=> {
+    // Create a textarea element to hold the text temporarily
+    var textarea = $("<textarea>").val(text).appendTo("body").select();
+    // Execute the copy command
+    document.execCommand("copy");
+    // Remove the textarea from the DOM
+    textarea.remove();
+}
+  
+
+
+
+helper.getQueryDataScene=()=>
+{
+    console.log(ATON._queryDataScene.p);
+}
 
 helper.toogleLoader=()=>
 {
@@ -131,7 +163,8 @@ helper.getCurrentPov=()=>
     }
     const _infopov = JSON.stringify(infoPOV)
     console.log(_infopov);
-    alert(_infopov);
+    helper.copyToClipboard(_infopov);
+    alert("COPIED IN CLIPBOARD: " + _infopov);
 }
 
 APP.currentMode = "first"

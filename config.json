@@ -5,7 +5,7 @@
         {
             "HomePov":
             {"pos": {"x" :-0.22108174086545052,"y":1.5200246181018253,"z":3.144529406858276},"target":{"x":0.7721218424237389,"y":1.5799041042486999,"z":3.2443346636351621}},
-                "ceiling":
+                "old_ceiling":
                     {
                         "id":"ceiling",
                         "path": "models/room1/ceiling/retopologizeRoof.gltf",
@@ -14,9 +14,10 @@
                     "room":
                     {
                         "id":"room",
-                        "path": "models/room1/room/Room26.gltf"
+                        "oldpath": "models/room1/room/old/Room26.gltf",
+                        "path": "models/room1/room/sala1.gltf"
                     },
-                    "objectCollection": {"path":"models/room1/lowObjects/objectsCollection.gltf"},
+                    "objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf"},
                     "objects":
                     [   
                         {
@@ -28,8 +29,7 @@
                             "roomTo":2,
                             "sem":
                             {
-                                "path":"models/room1/semObjects/linkRoom2_sem.glb",
-                                "pos":{"x":9.865026097963565,"y":1.1022136437033674,"z":4.853089970892325}
+                                "path":"models/room1/semObjects/linkRoom2_sem.glb"
 
                             },
                             "povIn": {"pos":{"x":10.098345655927258,"y":1.6999999999999988,"z":4.565379272482929},"target":{"x":10.980127040973764,"y":1.7359428027407513,"z":4.09509244094647}},
@@ -277,8 +277,7 @@
                             },
                             "sem":
                             {
-                                "path":"models/room1/semObjects/quadro_sem.glb",
-                                "pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":3.027225838849325}
+                                "path":"models/room1/semObjects/quadro_sem.glb"
                             },
                             "close":{"pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":2.244286044057213},"rot":{"x":-2.6649608152718667,"y":-1.3470327919123386,"z":-2.6547325291366355}},
                             "title": {"pos":{"x":8.869875565831732,"y":2.0473597018148735,"z":4.22051443497088},"rot":{"x":2.2070650909536793,"y":-1.55688133725152,"z":2.230399656989503}}
@@ -577,8 +576,7 @@
                             },
                             "sem":
                             {
-                                "path":"models/room1/semObjects/cospi_sem.glb",
-                                "pos":{"x":7.211893103189664,"y":0.5683697214529058,"z":5.5261339716846285}                        
+                                "path":"models/room1/semObjects/cospi_sem.glb"                     
                             },
                             "close":{"pos":{"x":7.287022135443757,"y":0.5787470938495113,"z":6.078961050997673},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
                             "title": {"pos":{"x":6.497050949185159,"y":0.5624316848772801,"z":6.086499771628267},"rot":{"x":3.1303797102945055,"y":0.06119274844922103,"z":-3.1176186079523296}}
@@ -694,7 +692,7 @@
                             },
                             "sem":
                             {
-                                "path":"models/room1/semObjects/altrabestia_sem.glb",
+                                "path":"models/room1/semObjects/limulo.glb",
                                 "pos":{"x": 0, "y": 0, "z": 0}                      
                             },
                             "close":{"pos":{"x":4.890780722092016,"y":1.1185660528568557,"z":6.271846748923588},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
@@ -1000,7 +998,7 @@
                 {
                     "id":"ortobotanicopadova",
                     "path":"models/room1/hqObjects/aristotele/aristoteleHQ.gltf",
-                            "hoverLable":"Mappa dell'orto botanico di Padova in Giacomo Antonio Cortusi. L'horto de i semplici di Padua",
+                            "hoverLable":"Mappa dell'orto botanico di Padova",
                             "type":"object",
                     "sem":
                     {
@@ -1009,7 +1007,8 @@
                 },
                 {
                     "id":"mappaortobolo",
-                    "hoverLable":"Mappa dell'orto botanico di Bologna in Giuseppe Monti, Indicees botanici et Materiaee Medicae",
+                    "hoverLable":"Mappa dell'orto botanico di Bologna",
+                    
                     "type":"object",
                     "sem":
                     {
@@ -1018,7 +1017,7 @@
                 },
                 {
                     "id":"girasole",
-                    "hoverLable":"Girasole (Chrysanthemi)",
+                    "hoverLable":"Girasole",
                     "type":"object",
                     "sem":
                     {
@@ -1027,7 +1026,7 @@
                 },
                 {
                     "id":"solanyum",
-                    "hoverLable":"Pomodoro - Solanum lycopersicum L.",
+                    "hoverLable":"Pomodoro",
                     "type":"object",
                     "sem":
                     {
@@ -1036,7 +1035,7 @@
                 },
                 {
                     "id":"erbarioantennaria",
-                    "hoverLable":"Antennaria - Antennaria dioica (L.)",
+                    "hoverLable":"Antennaria",
                     "type":"object",
                     "sem":
                     {
@@ -1045,7 +1044,7 @@
                 },
                 {
                     "id":"erbario",
-                    "hoverLable":"Adonide gialla - Adonis vernalis L.",
+                    "hoverLable":"Adonide gialla",
                     "type":"object",
                     "sem":
                     {
@@ -1054,7 +1053,7 @@
                 },
                 {
                     "id":"tulypa",
-                    "hoverLable":"Tulipano dei campi - Tulipa sylvestris L.",
+                    "hoverLable":"Tulipano dei campi",
                     "type":"object",
                     "sem":
                     {
@@ -1063,7 +1062,7 @@
                 },
                 {
                     "id":"delphinium",
-                    "hoverLable":"Speronella - Delphinium staphisagria L.",
+                    "hoverLable":"Speronella",
                     "type":"object",
                     "sem":
                     {
@@ -1072,7 +1071,7 @@
                 },
                 {
                     "id":"dyras",
-                    "hoverLable":"Camedrio alpino - Dryas octopetala L.",
+                    "hoverLable":"Camedrio alpino",
                     "type":"object",
                     "sem":
                     {
@@ -1081,7 +1080,7 @@
                 },
                 {
                     "id":"anatomiapollo",
-                    "hoverLable":"Anatomia del pollo in Ulisse Aldrovandi, Ornithologiae hoc est de avibus historiae libri XII, vol. 2",
+                    "hoverLable":"Anatomia del pollo in Ulisse Aldrovandi",
                     "type":"object",
                     "sem":
                     {
@@ -1108,7 +1107,7 @@
                 },
                 {
                     "id":"cignosezionato",
-                    "hoverLable":"Cigno sezionato in Ulisse Aldrovandi, Ornithologiae hoc est de avibus historiae libri XII, vol. 3",
+                    "hoverLable":"Cigno sezionato in Ulisse Aldrovandi",
                     "type":"object",
                     "sem":
                     {
@@ -1117,7 +1116,7 @@
                 },
                 {
                     "id":"ermafrodita",
-                    "hoverLable":"Cigno sezionato in Ulisse Aldrovandi, Ornithologiae hoc est de avibus historiae libri XII, vol. 3",
+                    "hoverLable":"Ermafrodita - tavole dei mostri",
                     "type":"object",
                     "sem":
                     {
@@ -1126,7 +1125,7 @@
                 },
                 {
                     "id":"semedecoco",
-                    "hoverLable":"Seme di coco de mer - Lodoicea maldivica",
+                    "hoverLable":"Seme di coco de mer",
                     "type":"object",
                     "sem":
                     {
@@ -1144,7 +1143,7 @@
                 },
                 {
                     "id":"ciclope",
-                    "hoverLable":"Ciclope in Ulisse Aldrovandi, Monstruorum Historia",
+                    "hoverLable":"Ciclope",
                     "type":"object",
                     "sem":
                     {
@@ -1162,7 +1161,7 @@
                 },
                 {
                     "id":"vitellotesto",
-                    "hoverLable":"Doppia testa di Vitello (Caput geminum vituli)",
+                    "hoverLable":"Doppia testa di Vitello",
                     "type":"object",
                     "sem":
                     {
@@ -1171,7 +1170,7 @@
                 },
                 {
                     "id":"vitello",
-                    "hoverLable":"Preparato di giovane bovino con malformazione teratologica",
+                    "hoverLable":"Bovino a due teste",
                     "type":"object",
                     "sem":
                     {
@@ -1180,16 +1179,20 @@
                 },
                 {
                     "id":"narvalo",
-                    "hoverLable":"Dente di narvalo - Monodon monoceros (Linnaeus, 1758)",
+                    "hoverLable":"Dente di narvalo",
                     "type":"object",
                     "sem":
                     {
                         "path":"models/room2/semObjs/narvalo_sem.glb"
-                    }
+                    },
+                    "path":"models/room2/hqObjects/narvalo/narvalo.gltf",
+                    "povIn":{"pos":{"x":13.039629334371709,"y":1.877855901011057,"z":5.916668757093715},"target":{"x":12.785576460881796,"y":1.6179168521531466,"z":2.6834881877831167}},
+                    "povOut":{"pos":{"x":13.039629334371709,"y":1.877855901011057,"z":5.916668757093715},"target":{"x":12.785576460881796,"y":1.6179168521531466,"z":2.6834881877831167}}
+                   
                 },
                 {
                     "id":"serpente",
-                    "hoverLable":"Vipera cornuta (Cerastes serpens) e Vipera dal corno (Ammodites)",
+                    "hoverLable":"Vipera cornuta",
                     "type":"object",
                     "sem":
                     {
@@ -1201,7 +1204,12 @@
     },
             "mind":
             {
-                "homePOVController":{"pos":{"x":6.510395246881961,"y":12.539173682846629,"z":2.5440621230615137},"target":{"x":6.510879547353504,"y":-0.09133000225026798,"z":2.5971624742451}},
+                "homePOVController":
+                {
+                    "1":{"pos":{"x":6.510395246881961,"y":12.539173682846629,"z":2.5440621230615137},"target":{"x":6.510879547353504,"y":-0.09133000225026798,"z":2.5971624742451}},
+                    "2":{"pos":{"x":15.197586804659231,"y":14.950486418612488,"z":1.9451158798876722},"target":{"x":15.196282881731236,"y":11.530428255894947,"z":2.125008687762171}}
+
+                },
                 "homePOVUser": {"pos": {"x" :-0.22108174086545052,"y":1.5200246181018253,"z":3.144529406858276},"target":{"x":0.7721218424237389,"y":1.5799041042486999,"z":3.2443346636351621}},
                 "dataFormat":
                 {
@@ -1210,6 +1218,7 @@
                         "id",
                         "userNameSurname",
                         "date",
+                        "language",
                         "audioVersion",
                         "1_AmbientExplorationStartTime",
                         "1_AmbientExplorationEndTime",
@@ -1219,7 +1228,7 @@
                         "2_Object_A_ResearchStartTime",
                         "2_Object_A_ResearchEndTime",
                         "2_Object_A_ResearchDelta",
-                        "2_Object_A_Finded",
+                        "2_Object_A_Founded",
                         
                         "2_AmbientExplorationStartTime",
                         "2_AmbientExplorationEndTime",
@@ -1229,7 +1238,7 @@
                         "3_Object_B_ResearchStartTime",
                         "3_Object_B_ResearchEndTime",
                         "3_Object_B_ResearchDelta",
-                        "3_Object_B_Finded"
+                        "3_Object_B_Founded"
                     ]
                 },
                 "popupObjectsThumb":
@@ -1262,18 +1271,18 @@
                         "startText":"START SEARCH OJBECT A",
                         "pauseText":"STOP SEARCH OJBECT A",
                         "endText":"finished",
-                      "start":  "2_Object_A_ResearchStartTime",
-                      "end": "2_Object_A_ResearchEndTime",
-                      "delta": "2_Object_A_ResearchDelta"
+                        "start":  "2_Object_A_ResearchStartTime",
+                        "end": "2_Object_A_ResearchEndTime",
+                        "delta": "2_Object_A_ResearchDelta"
                     },
                     "searchObjectB":
                     {
                         "startText":"START SEARCH OJBECT B",
                         "pauseText":"STOP SEARCH OJBECT B",
                         "endText":"finished",
-                      "start":  "3_Object_B_ResearchStartTime",
-                      "end": "3_Object_B_ResearchEndTime",
-                      "delta": "3_Object_B_ResearchDelta"
+                        "start":  "3_Object_B_ResearchStartTime",
+                        "end": "3_Object_B_ResearchEndTime",
+                        "delta": "3_Object_B_ResearchDelta"
                     }
                 }
             

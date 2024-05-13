@@ -2,10 +2,8 @@
 //a/webapp
 ?experiment=true
 ?controller=true
-?session = idSession | generated
+?session = idSession | generated | null (default=1)
 */
-
-
 
 let MIND = {}; //Psychologist Experiment multiuser session controller
 let state = {};
@@ -16,20 +14,20 @@ MIND.init = (minder=null)=>
     //è un esperimento?
     var isExperiment = ATON.FE.urlParams.get('experiment') ? true : false;
     console.log("Is an experiment: " + isExperiment);
+    MIND.isExperiment = isExperiment;
     if(!isExperiment) return null;
 
     MIND.minder = minder;
 
     //è inserito un id univoco per la sessione?
     state.session = MIND.getSessionID();
-   
 
     //sono lo sperimentatore (true)? o l'utente (false)?
     var isController = ATON.FE.urlParams.get('controller') ? true : false;
     
     //MIND SETUP:
     ATON.VRoadcast.bSendState = !isController // Il controllore non manda il proprio stato
-    ATON.VRoadcast.setAvatarsVisibility(isController) //L'utente ha la visibilità degli avatar false
+    ATON.VRoadcast.setAvatarsVisibility(isController) //L'utente ha la visibilità degli avatar = false
     ATON.VRoadcast.connect(state.session); //Entrambi si connettono alla stessa sessione
     console.log(`%cMIND IS CONNECTED: ${state.session}`, 'background: #222; color: #bada55');
 
@@ -44,21 +42,16 @@ MIND.init = (minder=null)=>
     // We handle connect/disconnect to change status message
     ATON.on("VRC_Connected", ()=>{
       console.log("CONNECTED")
-      setStatus(true);
+   //   setStatus(true);
     });
     ATON.on("VRC_Disconnected", ()=>{
       console.log("Disconnected")
-      setStatus(false);
+    //  setStatus(false);
     });
     return MIND;
 }
 
-// Broadcast request for specific viewpoint by ID.
-// We define our custom event called "POV", with ID of the viewpoint
-let reqPOV = (id)=>{
-  ATON.VRoadcast.fireEvent("POV", id);
-};
-
+/*
 // Helper function to set status message
 let setStatus = (b)=>{
   if (b){
@@ -74,13 +67,61 @@ let setStatus = (b)=>{
       $("#idStatus").css("background-color","rgba(150,0,0, 0.3)");
   }
 };
+*/
+
+//CONTROLLER USER INPUTS:
+MIND.promptUserInput=(options)=>
+{
+  /*
+    o.idPopup?
+    o.idInput?
+    o.type? default: "text", "radio"
+    o.radios=[{id,value,text}]
+    o.valuator(callback)? TO ADD
+  */
+
+  const o = options;
+  if(!o.type) o.type = "text";
+  if(!o.idPopup) o.idPopup = "promptPopup";
+  if(!o.idInput) o.idInput = "promptInput";
+
+
+  return new Promise((resolve , reject)=>{
+
+    const onClickConfermBtn = ()=>
+    {
+        const userInput = UI.DataEntry.getValue({type:o.type,id:o.idInput});
+        UI.removePopup(o.idPopup);
+        resolve(userInput);
+    }
+    const onClickResumeBtn = ()=>
+    {
+      UI.removePopup(o.idPopup);
+      resolve(null);
+    }
+
+    console.log("in promt:")
+    console.log(o);
+    
+    o.id=o.idInput;
+    const _input = UI.DataEntry.create(o);
+    const _conferm = UI.button({id:"confermBtn",text:"Conferma",onpress:onClickConfermBtn});
+    const _resume = UI.button({id:"resumeBtn",text:"Annulla",onpress:onClickResumeBtn});
+    var btnGroup = UI.buttonGroup({id:"promptBtnGroup", classList:"controllerSideBarGroup", buttons:[_conferm,_resume]});
+
+
+    const _popup = UI.popup({id:o.idPopup,content:[_input,btnGroup]});
+    $("body").append(_popup);
+    $("#"+o.idInput).focus();
+  })
+}
 
 //TASK/TIME MANAGEMENT
 MIND.getSessionID = ()=>
 {
   var sessionID = MIND.getQueryParam("session");
   console.log("SESSION ID IS: " + sessionID);
-  if(!sessionID) {sessionID = "null"}
+  if(!sessionID) {sessionID = "1"}
   if(sessionID=="generated") {sessionID = Date.now().toString() + "Test";} 
   return sessionID;
 }
@@ -185,14 +226,6 @@ MIND.downloadAllRecordsCSV=()=>
   MIND.downloadCsv(_csv);
 }
 
-/*
-  downloadCsvFromJson =(jsonData)=> {
-    // Convert JSON to CSV
-    const csv = MIND.convertJsonToCsv(jsonData);
-    // Download CSV file
-    MIND.downloadCsv(csv);
-}
-*/
 MIND.convertJsonToCsv=(jsonData)=> {
     // Extract headers from JSON keys
     //const headers = Object.keys(jsonData[0]);
@@ -226,23 +259,7 @@ MIND.downloadCsv=(csvData)=> {
     // Clean up by revoking the temporary URL and removing the link element
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-  }
-
-  /*
-  // Example JSON data
-  const _jsonData = [
-    { name: 'John', age: 30, city: 'New York' },
-    { name: 'Alice', age: 25, city: 'Los Angeles' },
-    { name: 'Bob', age: 35, city: 'Chicago' }
-  ];
-
-  // Example usage
-  downloadCsvFromJson(_jsonData);
-  */
-//END CSV
-
-
-
+}
 
 
 //POV
@@ -260,3 +277,92 @@ MIND.returnPOVfromInfo=(infoPOV)=>
   .setTarget( p.target.x,p.target.y,p.target.z);
   return _pov;
 }
+
+
+
+//COLLIDERS:
+
+
+
+/*    
+    //Test colliders
+    const colliderA = MIND.createBox("colliderA");
+    const colliderB = MIND.createBox("colliderB", {x:6,y:0,z:3.72});
+//     colliderA.attachToRoot();
+//    colliderB.attachToRoot();
+    const _cA = new THREE.BoxHelper( colliderA, 0xffff00 );
+    const _cB = new THREE.BoxHelper( colliderB, 0xffff00 );
+
+    AldrovandiMind.colliders=[_cA,_cB];
+
+*/
+
+MIND.setColliders=(colliders)=>
+{
+  if(!colliders) return;
+  if(colliders.length==0) return;
+
+  MIND.colliders=colliders;
+ // MIND.needsUpdate=true;
+}
+
+
+MIND.createBox=(id,pos=null)=>
+{
+  const testPosition={x:3.4,y:0,z:3.72}  
+  if(!pos) pos = testPosition;
+
+  // Create a box geometry
+var geometry = new THREE.BoxGeometry(1, 1, 1); // Width, height, and depth of the box
+// Create a material
+var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green color
+// Create a mesh using the geometry and material
+var cube = new THREE.Mesh(geometry, material);
+
+let _cube = new THREE.Object3D();
+_cube.add(cube);
+let atonCube = ATON.createSceneNode(id).add(_cube);
+atonCube.setPosition(pos.x,pos.y,pos.z);
+
+return atonCube;
+}
+
+MIND.createColliderBox=(id,pos=null)=>
+{
+  const trigger = new THREE.Box3();
+  trigger.setFromCenterAndSize(pos, new THREE.Vector3(1,1,1));
+  
+  
+}
+
+
+/*
+MIND.update=()=>
+{
+
+  let P  = ATON.Nav._currPOV.pos;
+  MIND.colliders.forEach(c => {
+    
+    if(c.containsPoint(P))
+    {
+      console.log("DAJE DE CAZZO ");
+      console.log(c);
+    }
+  });
+}
+*/
+
+
+/*
+
+  const colliderA = MIND.createBox("colliderA");
+  const _cA = new THREE.BoxHelper( colliderA, 0xffff00 );
+  var scene = ATON.getSceneRoot();
+  scene.add(_cA);
+
+var objectBox = new THREE.Box3()
+objectBox.setFromCenterAndSize( new THREE.Vector3(0,0,0), new THREE.Vector3(4,4,4))
+objectBox.containsPoint(ATON.Nav._currPOV.pos)
+
+
+*/
