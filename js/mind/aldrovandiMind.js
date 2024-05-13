@@ -23,9 +23,16 @@ AldrovandiMind.setup=(role)=>
     AldrovandiMind.role = role;
 
     //inject uiToolkit with callback on loaded:
-    const UItoolkit_path = window.origin+"/a/uitoolkit/js/uitoolkit.js";
-    const UIcss_path = window.origin+"/a/uitoolkit/styles/style.css";
-    MIND.injectUI(UItoolkit_path,UIcss_path,AldrovandiMind.InitExperimentOnLoadUI);
+   // const UItoolkit_path = window.origin+"/a/uitoolkit/js/uitoolkit.js";
+   // const UIcss_path = window.origin+"/a/uitoolkit/styles/style.css";
+   const basePath =  window.origin+"/a/aldrovandi/content/";
+   const UItoolkit_path = basePath + "uitoolkit.js";
+   const UIcss_path = basePath+"style.css";
+
+
+   MIND.injectUI(UItoolkit_path,UIcss_path,AldrovandiMind.InitExperimentOnLoadUI);
+
+   
 
     AldrovandiMind.setupPhotonEvents();
 
@@ -371,7 +378,7 @@ AldrovandiMind.createNewSession= async ()=>
         {id:"desktop",value:"desktop",text:"Desktop", checked:true},
         {id:"oculus",value:"oculus",text:"Oculus"},
     ]
-    const _device = await MIND.promptUserInput({text:deviceText,type:"radio",devicesRadios});
+    const _device = await MIND.promptUserInput({text:deviceText,type:"radio",radios:devicesRadios});
 
     const recordID = newUserID+"_"+MIND.returnNow();
     console.log("recordID :" + recordID);
