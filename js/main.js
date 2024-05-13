@@ -522,8 +522,7 @@ APP.onTapSemNodes = (idSem)=>
 
     if(APP.isVR_Running())
     {
-        return;
-       //  if(_type=="video"){return;} //prevent video to fix
+        if(_type!="roomLink"){return} //For now all interaction are blocked
     } 
 
 
