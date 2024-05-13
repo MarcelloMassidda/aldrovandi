@@ -508,8 +508,6 @@ APP.TryToTapHoveredSemNode = ()=>
 
 APP.onTapSemNodes = (idSem)=>
 {
-   
-
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
     let _id = idSem.substring(0, idSem.length-(4));
@@ -524,7 +522,8 @@ APP.onTapSemNodes = (idSem)=>
 
     if(APP.isVR_Running())
     {
-        if(_type=="video"){return;} //prevent video to fix
+        return;
+       //  if(_type=="video"){return;} //prevent video to fix
     } 
 
 
@@ -554,11 +553,12 @@ APP.onTapSemNodes = (idSem)=>
     {
        // APP.showVideo();
         document.getElementById("InfoScrollContainer").style.display="none";
+        document.getElementById("SideBAR").style.display="block";
     }
 
     if(_pov) ATON.Nav.requestPOV(_pov, 0.6);
 
-    if(_type=="object" || _type=="video")
+    if(_type=="object")
     {
         if(!_object.path) return;
         
@@ -633,6 +633,10 @@ APP.onTapSemNodes = (idSem)=>
             APP.currentObjIsFocused=true;
         }
 
+
+        /*
+         
+        */
         if(obj.type=="object")
         {
                 console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
@@ -833,7 +837,11 @@ APP.onAllNodeRequestsCompleted=()=>
         });
 
     
-        const geometry = new THREE.SphereGeometry();
+        const radius = 3;
+        const widthSegments = 10;
+        const heightSegments = 10;
+
+        const geometry = new THREE.SphereGeometry(radius,widthSegments,heightSegments);
         const _sphere = new THREE.Mesh(geometry, myMat);
         
         let m = new THREE.Object3D();

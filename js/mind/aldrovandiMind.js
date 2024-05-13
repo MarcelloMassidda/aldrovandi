@@ -364,12 +364,21 @@ AldrovandiMind.createNewSession= async ()=>
     .then((audiov)=>{return audiov});
     if(!_audioVersion) return;
 
+    //device // Desktop / VR
+    const deviceText = "Seleziona il device utilizzato";
+    const devicesRadios=
+    [
+        {id:"desktop",value:"desktop",text:"Desktop", checked:true},
+        {id:"oculus",value:"oculus",text:"Oculus"},
+    ]
+    const _device = await MIND.promptUserInput({text:deviceText,type:"radio",devicesRadios});
+
     const recordID = newUserID+"_"+MIND.returnNow();
     console.log("recordID :" + recordID);
     
     if(record.exist(recordID)) {console.log("exist arealdy"); alert(recordID + " esiste già"); return;}
 
-    const r = {id:recordID, userNameSurname: newUserID, audioVersion:_audioVersion, language:_audioLanguage};
+    const r = {id:recordID, userNameSurname: newUserID, audioVersion:_audioVersion, language:_audioLanguage, device:_device};
     record.create(recordID, r );
     console.log("record :" + r);
     state.currentRecordID = recordID;
