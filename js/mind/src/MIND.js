@@ -172,7 +172,19 @@ MIND.getAllItemsFromLocalStorage=()=>{
       allItems.push( value );
   }
   // Return the array containing all key-value pairs from local storage
-  return allItems;
+  return MIND.orderByDate(allItems);
+}
+
+MIND.orderByDate=(data)=>{
+ return data.sort((a, b) => {
+  // Check if 'date' property is missing in 'a' or 'b'
+  if (a.date === undefined && b.date === undefined) return 0;
+  if (a.date === undefined) return -1;
+  if (b.date === undefined) return 1;
+  
+  // Compare 'date' properties if both exist
+  return a.date - b.date;
+});
 }
 
 MIND.deleteAllItemsFromLocalStorage=()=>

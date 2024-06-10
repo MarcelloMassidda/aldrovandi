@@ -384,8 +384,8 @@ AldrovandiMind.createNewSession= async ()=>
     console.log("recordID :" + recordID);
     
     if(record.exist(recordID)) {console.log("exist arealdy"); alert(recordID + " esiste già"); return;}
-
-    const r = {id:recordID, userNameSurname: newUserID, audioVersion:_audioVersion, language:_audioLanguage, device:_device};
+    const _now = MIND.returnNow();
+    const r = {id:recordID, userNameSurname: newUserID, audioVersion:_audioVersion, language:_audioLanguage, device:_device, date: _now};
     record.create(recordID, r );
     console.log("record :" + r);
     state.currentRecordID = recordID;
@@ -500,7 +500,7 @@ AldrovandiMind.onTimerBtnClick = (idTimer)=>
     else //timer END and DELTA
     {
         record.update(state.currentRecordID, {key: t.end,value:_now}); 
-        data.key = t.delta; data.value = (_now - currentRecord[t.start]) /1000;
+        data.key = t.delta; data.value = _now - currentRecord[t.start];
         btnTextValue = t["endText"];
         AldrovandiMind.onTimerEnded(idTimer);
         ATON.Photon.fireEvent("1_user_stopExploration");
