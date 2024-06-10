@@ -159,8 +159,8 @@ Aldro_MindUI.setUpControllerPanel=()=>
         var userStartStopExploration_Btn = AldrovandiMind.returnTimerBtn("exploration1");
       
         //SHOW OBJECTS
-        var userShowObjectA_Btn = UI.button({id:"userShowObjectA_Btn",text:"Mostra OGGETTO A", onpress: function(){AldrovandiMind.photon_SetupToShowObject("A")}});
-        var userShowObjectB_Btn = UI.button({id:"userShowObjectB_Btn",text:"Mostra OGGETTO B", onpress:function(){AldrovandiMind.photon_SetupToShowObject("B")}});
+        var userShowObjectA_Btn = UI.button({id:"userShowObjectA_Btn",text:"Mostra OGGETTO A (vitello)", onpress: function(){AldrovandiMind.photon_SetupToShowObject("A")}});
+        var userShowObjectB_Btn = UI.button({id:"userShowObjectB_Btn",text:"Mostra OGGETTO B (tacchino)", onpress:function(){AldrovandiMind.photon_SetupToShowObject("B")}});
         var userShowObjectsBtnGroup = UI.buttonGroup({id:"userObjectsBtnGroup", classList:"controllerSideBarGroup", buttons:[userShowObjectA_Btn,userShowObjectB_Btn]});
         
         //Set Correct Answer for Object
@@ -361,8 +361,8 @@ AldrovandiMind.createNewSession= async ()=>
     //Audio version
     const radios = 
     [
-        {id:"A",value:"A",text:"Audio A", checked:true},
-        {id:"B",value:"B",text:"Audio B"},
+        {id:"A",value:"A",text:"Audio A (connotativa)", checked:true},
+        {id:"B",value:"B",text:"Audio B (denotativa)"},
         {id:"NO",value:"NO",text:"No audio"},
     ]
 

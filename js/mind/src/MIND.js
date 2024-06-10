@@ -8,6 +8,7 @@
 let MIND = {}; //Psychologist Experiment multiuser session controller
 let state = {};
 let currentRecord ={};
+const timePOV = 0;
 
 MIND.init = (minder=null)=>
 {
@@ -265,8 +266,9 @@ MIND.downloadCsv=(csvData)=> {
 //POV
 MIND.requestPOV=(infoPOV)=>
 {
+
   const p = MIND.returnPOVfromInfo(infoPOV);
-  ATON.Nav.requestPOV(p,0.6);
+  ATON.Nav.requestPOV(p,timePOV);
 }
 
 MIND.returnPOVfromInfo=(infoPOV)=>
