@@ -731,7 +731,6 @@ APP.CloseObject = ()=>
     
 }
 
-
 APP.openIIIFview=(target)=>
 {
     console.log(target);

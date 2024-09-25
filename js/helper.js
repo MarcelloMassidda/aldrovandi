@@ -3,7 +3,7 @@ var helper = {};
 
 helper.init=()=>
 {
-    helper.isActive=false;
+    helper.isActive=true;
 
     ATON.on("KeyPress", (k)=>{
         if(k==="+"){helper.setActive(true)}
