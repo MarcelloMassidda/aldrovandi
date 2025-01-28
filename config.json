@@ -15,10 +15,11 @@
                     "room":
                     {
                         "id":"room",
-                        "oldpath": "models/room1/room/old/Room26.gltf",
+                        "oldpath": "models/room1/room/sala1.gltf",
                         "path": "models/room1/room/sala1.gltf"
                     },
-                    "objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf"},
+                    "old_objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf"},
+                    "objectCollection": {"path":"models/room1/lowObjects/assets_sala1_updated.gltf"}, 
                     "objects":
                     [   
                         {
@@ -278,7 +279,8 @@
                             },
                             "sem":
                             {
-                                "path":"models/room1/semObjects/quadro_sem.glb"
+                                "path":"models/room1/semObjects/quadro_sem.glb",
+                                "pos":{"x": -0.25, "y": 0, "z": 0}
                             },
                             "close":{"pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":2.244286044057213},"rot":{"x":-2.6649608152718667,"y":-1.3470327919123386,"z":-2.6547325291366355}},
                             "title": {"pos":{"x":8.869875565831732,"y":2.0473597018148735,"z":4.22051443497088},"rot":{"x":2.2070650909536793,"y":-1.55688133725152,"z":2.230399656989503}}
@@ -388,7 +390,7 @@
                             "pos": {"x": 0, "y": 0, "z": 0},
                             "rot":  {"x": 0, "y": 0, "z": 0},
                             "type":"object",
-                            "povIn":{"pos":{"x":3.317538961327425,"y":0.984116614203869,"z":2.6867136719977878},"target":{"x":3.318572291533706,"y":0.7725292125963193,"z":2.645158018007204}},
+                            "povIn":{"pos":{"x":3.73,"y":1.19853109614,"z":2.69506384103605},"target":{"x":3.73640839666916,"y":0.780660351495637,"z":2.6254343024200707}},
                             "povOut": {"pos":{"x":3.8682022978436845,"y":1.605454497705517,"z":2.61452302096676},"target":{"x":3.773630118130214,"y":0.6929694722739141,"z":2.2164938999374932}},
                             "content":  {
                                 "mainTitle":"Historia Naturale e Morale delle Indie",
@@ -976,7 +978,7 @@
             },
             "objectCollection": 
             {
-                "path": "models/room2/lowObjects/gltf/BakeSingoloOggetti.gltf",
+                "path": "models/room2/lowObjects/v2_28-01-2025/sala2_assets.gltf",
                 "old_path": "models/room2/lowObjects/old/metodobake/metodobake.gltf",
                 "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
                 "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793}
@@ -1161,7 +1163,7 @@
                     "hoverLable":"Cigno sezionato in Ulisse Aldrovandi",
                     "type":"object",
                     "path":"models/room2/hqObjects/cignosezionato/cignosezionato.gltf",
-                    "povIn":{"pos":{"x":16.46892264569472,"y":0.9389126922997766,"z":2.74923175452497},"target":{"x":17.642176179183288,"y":0.553765037909288,"z":1.5027080494465992}},
+                    "povIn":{"pos":{"x": 17.81359746553749, "y": 1.617744318249457, "z": 0.39798695279200624},"target":{"x": 17.813598185306454, "y": 0.8978573142590982, "z": 0.39798693975593447}},
                     "povOut":{"pos":{"x":16.46892264569472,"y":0.9389126922997766,"z":2.74923175452497},"target":{"x":17.642176179183288,"y":0.553765037909288,"z":1.5027080494465992}},
                     "sem":
                     {
@@ -1197,11 +1199,25 @@
                     "hoverLable":"Basilisco",
                     "type":"object",
                     "path":"models/room2/hqObjects/basilisco/basilisco.gltf",
+                    "povIn":{"pos":{"x": 14.238918320653507, "y": 0.9655154787833571, "z": -0.41106669299425064},"target":{"x": 14.256527039901378, "y": 0.8852258059442728, "z": -0.722369706383978}},
+                    "povOut": {"pos":{"x":14.280798365829613,"y":14.280798365829613,"z":14.280798365829613},"target":{"x":14.074060355401752,"y":1.1171907472212395,"z":-0.636751680425931}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/basilisco_sem.glb"
+                    }
+                },
+                {
+                    "id":"centrina",
+                    "hoverLable":"Chimaera monstrosa (Linnaeus, 1758)",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/S2-34-DBC_ChimaeraMonstrosa/Chimaera.gltf",
+                    "pos":{"x": -4.267517054365985, "y":0.8592496990984045 , "z": -0.4787142421498927 },
+                    "scale_wrong":{"x":2.8724,"y":2.8724,"z":2.8724},
                     "povIn":{"pos":{"x":14.141183302305096,"y":1.00720103868322,"z":-0.471837280732861},"target":{"x":14.082900018028527,"y":0.8895047543800949,"z":-0.7151730898013254}},
                     "povOut": {"pos":{"x":14.1792368405528,"y":1.6999999999999993,"z":0.1690220358534813},"target":{"x":14.074060355401752,"y":1.1171907472212395,"z":-0.636751680425931}},
                     "sem":
                     {
-                        "path":"models/room2/semObjs/basilisco_sem.glb"
+                        "path":"models/room2/semObjs/centrina_sem.glb"
                     }
                 },
                 {

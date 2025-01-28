@@ -104,8 +104,46 @@ helper.spawnEmptyWithGizmos=()=>
     }
 
     ATON.useGizmo(true);
+    helper.ATON_setupGizmo();
     ATON._gizmo.setMode(mode);      
     ATON.FE.attachGizmoToNode(id);
+}
+
+
+helper.ATON_setupGizmo=()=>{
+
+    
+        if (!ATON._bGizmo){
+            if (ATON._gizmo) ATON._gizmo.detach();
+            return;
+        }
+    
+        if (ATON.Nav._camera === undefined) return;
+        if (ATON._renderer === undefined) return;
+    
+        if (ATON._gizmo === undefined){
+            ATON._gizmo = new THREE.TransformControls( ATON.Nav._camera, ATON._renderer.domElement );
+            ATON._rootUI.add(ATON._gizmo.getHelper())
+    
+            ATON._gizmo.setMode("rotate");
+    
+            ATON._gizmo.addEventListener('dragging-changed', function( event ){
+                let bDrag = event.value;
+    
+                ATON.Nav.setUserControl(!bDrag);
+                ATON._bPauseQuery = bDrag;
+    
+                if (!bDrag){
+                    ATON.recomputeSceneBounds();
+                    ATON.updateLightProbes();
+                    console.log(ATON._gizmo.object)
+                }
+            });
+        }
+        else {
+            ATON._gizmo.camera = ATON.Nav._camera;
+            ATON._gizmo.detach();
+        }
 }
 
 helper.setGizmoMode=(mode)=>
@@ -117,13 +155,14 @@ helper.setGizmoMode=(mode)=>
 helper.alertGizmo=()=>
 {
 
-    if(APP.currentGizmedNode){  ATON.useGizmo(true); APP.currentGizmedNode=null}
+    if(APP.currentGizmedNode){  ATON.useGizmo(true);  APP.currentGizmedNode=null}
     var idnode = prompt("inserisci nome del nodo");
     var n = helper.returnNode(idnode);
     if(!n) {alert("Non trovato"); return;}
     
     APP.currentGizmedNode = idnode;
     ATON.useGizmo(true);
+    helper.ATON_setupGizmo();
     ATON._gizmo.attach( n );
 }
 

@@ -60,18 +60,111 @@ APP.isVR_Running=()=>{return ATON.XR._bPresenting}
 // You can place here UI setup (HTML), events handling, etc.
 
 
-APP.setup = ()=>{
+//TO TEST
+APP.setuplightsProbe=()=>{
+
+         // TEST LIGHT PROBES:
+
+         ATON.createSceneNode("item")
+         .load("samples/models/atoncube.glb")
+         .setPosition(7,1,0)
+         .setScale(4,4,4)
+         .attachToRoot();
+         //ATON.FE.realize();
+        /* 
+         */
+       
+         /*
+         ATON.mylight = new THREE.PointLight();
+         ATON.mylight.intensity = 1.0;
+         ATON.mylight.decay     = 0.2;
+         ATON._rootVisibleGlobal.add(ATON.mylight);
+         
+         const helper = new THREE.PointLight(  ATON.mylight, 2 );
+         ATON.getRootScene().add(helper);
+       
+   
+         ATON.setMainPanorama( "samples/pano/defsky-grass.jpg");
+         */
+        
+         //adjust light aton:
+      
+      /* ATON.plight.position.x = 5;
+         ATON.plight.position.y = 2;
+         ATON.plight.position.z = 4;
+         ATON.plight.intensity = 5;
+         ATON.enablePointLight();
+        */
+   
+         // show LP icons in 3D space
+         
+         ATON.SUI.enableLPIcons();
+         ATON.SUI.gLPIcons.show();
+         //ATON.SUI.gLPIcons.toggle();
+         APP.mylightprobe = new ATON.LightProbe(126, 1).setPosition(7, 1.5 ,0)
+         ATON.addLightProbe( APP.mylightprobe );
+   
+   
+           //Hemi light
+           const hemiLight = new THREE.HemisphereLight( /*0xffffbb, 0x080820, 1*/ );
+           hemiLight.position.set(4,4,3);
+           hemiLight.intensity = 1;
+           APP.myhemiLight = hemiLight;
+           ATON.getRootScene().add(APP.myhemiLight);
+           
+           const hemiHelper = new THREE.HemisphereLightHelper( hemiLight, 5 );
+           ATON.getRootScene().add( hemiHelper );
+   
+   
+         //STUFF TO WATCH:
+         //var ambient = ATON.getSceneNode("ambient").children[0].children[0].children[1].children
+         //var objMAt =ATON.getSceneNode("objCollection").children[0].children[0].material
     
-  
+         //END TEST
+
+         //----------SET PATH COLLECTION LOCAL, and after:
+
+           // ATON.setMainPanorama( 'models/room1/room/EnvLight_2k.exr');
+
+
+    /*
+        // TEST CHANGE HDR
+
+     // Load the HDR texture
+     const rgbeLoader = new THREE.RGBELoader();
+     rgbeLoader.load(APP.pathContent+'models/room1/room/EnvLight_2k.hdr', function (texture) {
+     texture.mapping = THREE.EquirectangularReflectionMapping;
+
+     // Set the environment map for the scene
+     ATON.getRootScene().environment = texture;
+
+     // Use the HDR environment for the LightProbe
+     const lightProbe = new THREE.LightProbe();
+    // lightProbe.setPosition(7,1.5,0)
+     lightProbe.copy(THREE.LightProbeGenerator.fromCubeTexture(texture)); // Generate light probe data;
+     APP.mylightProbe = lightProbe;
+     ATON.getRootScene().add(APP.mylightProbe);
+
+     const helper = new LightProbeHelper( lightProbe, 1 );
+     ATON.getRootScene().add( helper );
+
+     });
+     */
+}
+
+APP.setup = ()=>{
+
+    //---->LIGHTS PROBE TEST TO DO HERE
 
     const configPath = "./config.json";
-
 
     ATON.PATH_COLLECTION = "content/";
     APP.pathContent = window.location.href.split('?')[0];
     APP.pathContent += "content/";
     
-
+ 
+    //---->AND LIGHTS PROBE TEST TO DO HERE
+    
 
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
     APP.loadConfig(configPath);
@@ -95,9 +188,6 @@ APP.setup = ()=>{
     // config is loaded
 ATON.on("APP_ConfigLoaded", ()=>
 {
-
-    //debug:
-    //return;
     console.log("config loaded");
 
     //INITIALIZE ROOM 1
@@ -232,6 +322,7 @@ APP.composeAmbient = (_stage)=>
 
 
     //Create Ambient (ceiling + room)
+    
     APP.ambient = ATON.createSceneNode("ambient");
     if(APP.cRoom.ceiling)
     {
@@ -284,7 +375,26 @@ APP.composeAmbient = (_stage)=>
     if(!APP.cRoom.objects){console.log("no objects"); return;}
 
     APP.objects = {};
+    
+    //ATON.SemFactory.setMaterial(APP.matSemDef);
+
     APP.semObjects = ATON.createSemanticNode("semObjects");
+    /*
+    const semanticMat_idle = new THREE.MeshBasicMaterial({
+        color: 0x00ff00, // Green color
+        side: THREE.DoubleSide, // Render both sides of the material
+        transparent: true,
+        opacity: 0.0
+    });
+    const semanticMat_focus = new THREE.MeshBasicMaterial({
+        color:0x0000ff, // Green color
+        side: THREE.DoubleSide, // Render both sides of the material
+        transparent: true,
+        opacity: 0.5
+    });
+    */
+
+
 
     APP.cRoom.objects.map((obj)=>
     {
@@ -296,13 +406,16 @@ APP.composeAmbient = (_stage)=>
         let sem = obj.sem;
         var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
         .setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL)
-    //    .setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
-     //   .setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
+        //.setDefaultAndHighlightMaterials(semanticMat_idle,semanticMat_focus)
+        
+        //.setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
+        //.setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
         .setOnSelect(function(){console.log("SELECTED")});
         if(sem.pos){semNode.setPosition(sem.pos.x,sem.pos.y,sem.pos.z)}
         if(sem.rot){semNode.setRotation(sem.rot.x,sem.rot.y,sem.rot.z)}
         //semNode.attachToRoot();
         semNode.attachTo(APP.semObjects);
+        //semNode.restoreDefaultMaterial();
     });
 
     APP.semObjects.attachToRoot();
@@ -443,7 +556,7 @@ APP.setupCustomSemanticMats=()=>
     //  let matSemDef = ATON.MatHub.materials.semanticShape;
     APP.matSemDef =  new THREE.ShaderMaterial({
         uniforms: ATON.MatHub._uSem,
-    
+
         vertexShader: ATON.MatHub.getDefVertexShader(),
         fragmentShader:`
             varying vec3 vPositionW;
@@ -481,7 +594,6 @@ APP.setupCustomSemanticMats=()=>
         opacity: 0.2
         //flatShading: true
     });
-   
 }
 
 //Setup actions:
@@ -514,7 +626,8 @@ APP.onTapSemNodes = (idSem)=>
     let _object = APP.objects[_id]; 
     let _type = APP.objects[_id].type;
     
-
+    //Get Current POV of User:
+    APP.POVbeforeTransition = ATON.Nav.copyCurrentPOV(); 
     
     if(MIND.isExperiment){ //on experiment: prevent all click except for room link 
         if(_type!="roomLink"){return}
@@ -649,6 +762,7 @@ APP.onTapSemNodes = (idSem)=>
 
                 if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
                 if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
+                if(obj.scale){hqObj.setScale(obj.scale.x,obj.scale.y,obj.scale.z)}
                 //hqObj.attachToRoot();
                 hqObj.attachTo(APP.hqObjects);
 
@@ -690,11 +804,14 @@ APP.CloseObject = ()=>
     if(t=="object") ATON.getSceneNode(currentObj.id).delete();
     APP._currentObjectActive = null;
     APP.currentObjIsFocused= false;
-
+    
+    /*
     let povOut = currentObj.povOut;
     var _pov = new ATON.POV("povOut_"+ APP._currentObjectActive)
     .setPosition(povOut.pos.x,povOut.pos.y,povOut.pos.z)
     .setTarget( povOut.target.x,povOut.target.y,povOut.target.z);
+    */
+    var _pov = APP.POVbeforeTransition;
     ATON.Nav.requestPOV(_pov, 0.6);
     
     ATON.getSceneNode("ambient").show();
