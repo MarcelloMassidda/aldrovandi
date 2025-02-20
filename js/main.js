@@ -59,17 +59,57 @@ APP.isVR_Running=()=>{return ATON.XR._bPresenting}
 // APP.setup() is required for web-app initialization
 // You can place here UI setup (HTML), events handling, etc.
 
+//DEBUG:
+APP.changeRoomProps=()=>{
+    let _roughness = 0.2;
+    let _metalness = 1;
+    let r = APP.room.children[0].children[1]; 
+    r.children[0].material.roughness = _roughness;
+    r.children[1].material.roughness = _roughness;
+    r.children[2].material.roughness = _roughness;
+    r.children[3].material.roughness = _roughness;
+
+    r.children[0].material.metalness = _metalness;
+    r.children[1].material.metalness = _metalness;
+    r.children[2].material.metalness = _metalness;
+    r.children[3].material.metalness = _metalness;
+
+    
+}
+
+//DEBUG:
+APP.loadAllRooms=()=>{
+    
+    const rooms = APP.config.rooms;
+    for (const id in rooms) {
+
+            const room = rooms[id].room;
+            console.log(`ID: ${id}, Object:`, room);
+            ATON.createSceneNode(id+"room").load(room.path).attachToRoot();
+            if(room.pos){ATON.getSceneNode(id+"room").setPosition(room.pos.x,room.pos.y,room.pos.z)}
+            if(room.rot){ATON.getSceneNode(id+"room").setRotation(room.rot.x,room.rot.y,room.rot.z)}
+    }
+}
+
 
 //TO TEST
 APP.setuplightsProbe=()=>{
 
-         // TEST LIGHT PROBES:
+        //MANIPULATION OF PROPERTIES:
 
+    
+    
+        // TEST LIGHT PROBES:
+
+         //ATON CUBE TEST:
+         /*
          ATON.createSceneNode("item")
          .load("samples/models/atoncube.glb")
          .setPosition(7,1,0)
          .setScale(4,4,4)
          .attachToRoot();
+        */
+
          //ATON.FE.realize();
         /* 
          */
@@ -101,14 +141,14 @@ APP.setuplightsProbe=()=>{
          ATON.SUI.enableLPIcons();
          ATON.SUI.gLPIcons.show();
          //ATON.SUI.gLPIcons.toggle();
-         APP.mylightprobe = new ATON.LightProbe(126, 1).setPosition(7, 1.5 ,0)
+         APP.mylightprobe = new ATON.LightProbe(126, 2).setPosition(7, 1.5 ,0)
          ATON.addLightProbe( APP.mylightprobe );
    
    
            //Hemi light
            const hemiLight = new THREE.HemisphereLight( /*0xffffbb, 0x080820, 1*/ );
            hemiLight.position.set(4,4,3);
-           hemiLight.intensity = 1;
+           hemiLight.intensity = 2;
            APP.myhemiLight = hemiLight;
            ATON.getRootScene().add(APP.myhemiLight);
            
@@ -155,6 +195,7 @@ APP.setuplightsProbe=()=>{
 APP.setup = ()=>{
 
     //---->LIGHTS PROBE TEST TO DO HERE
+    //APP.setuplightsProbe();
 
     const configPath = "./config.json";
 
@@ -213,7 +254,7 @@ ATON.on("APP_ConfigLoaded", ()=>
     if(APP.isVR_Device())
     {
         console.log("SETUPPING SUI")
-        APP.setupSUI();
+       // APP.setupSUI();
     }
 
     helper.init();
@@ -296,8 +337,37 @@ APP.setupSUI=()=>
 }
 
 
+const deleteAndDispose=(node)=>{
+    let p = node.parent;
+
+    if (p !== undefined && p.nid !== undefined) removeChildandDispose(node);
+}
+
+const removeChildandDispose=(node)=>{
+    if (node === undefined) return;
+    let p = node.parent;
+    let nid = node.nid;
+    if (node.nid !== undefined) p._nodes[nid] = undefined;
+
+    node.parent = undefined;
+
+    node.traverse((o) => {
+        if (o.geometry) o.geometry.dispose();
+        if (o.material){
+            o.material.dispose();
+            if (o.material.map) o.material.map.dispose();
+        } 
+    });
+
+    p.remove(node);
+
+    return p;
+}
+
+
 APP.composeAmbient = (_stage)=>
 {
+    APP.s =  new Date().getTime();
     APP.STAGE = _stage;
     
     //Remove Actual room if exist
@@ -307,9 +377,14 @@ APP.composeAmbient = (_stage)=>
         let lowObjCollection =  ATON.getSceneNode("objCollection");
         let semObjects = ATON.getSemanticNode("semObjects");
 
-        if(ambient) ambient.delete();
-        if(lowObjCollection) lowObjCollection.delete();
-        if(semObjects) semObjects.delete();
+        //if(ambient) ambient.delete();
+        //if(lowObjCollection) lowObjCollection.delete();
+        //if(semObjects) semObjects.delete();
+        if(ambient) deleteAndDispose(ambient);
+        if(lowObjCollection) deleteAndDispose(lowObjCollection);
+        if(semObjects) deleteAndDispose(semObjects);
+
+        //keep siblings alive until new ambient is loaded.
     }
     
     //Remove actual state
@@ -334,7 +409,8 @@ APP.composeAmbient = (_stage)=>
 
     if(APP.cRoom.room)
     {
-        APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path);
+       APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path,()=>{APP.updateSiblings();});
+
         const p = APP.cRoom.room.pos; if(p) {APP.room.setPosition(p.x,p.y,p.z)}
         const r = APP.cRoom.room.rot; if(r) {APP.room.setRotation(r.x,r.y,r.z)}
         APP.room.attachTo(APP.ambient);  
@@ -398,10 +474,10 @@ APP.composeAmbient = (_stage)=>
 
     APP.cRoom.objects.map((obj)=>
     {
-        console.log(obj)
+       
         APP.objects[obj.id] = obj;
-        // if(APP.isVR_Device()) return;     
  
+        if(!obj.sem) {console.log("no sem"); return;}
         //SemanticNode
         let sem = obj.sem;
         var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
@@ -449,8 +525,26 @@ APP.composeAmbient = (_stage)=>
     //var l2 = ATON.getSemanticNode("room2link_sem");
     //if(l1){l1.show()}
     //if(l2){l2.show()}
+}
 
+APP.updateSiblings=()=>{
+    
+    //Reset
+    if(APP.siblings) deleteAndDispose(APP.siblings);
+    APP.siblings = ATON.createSceneNode("siblings");
+  
 
+    //Add new siblings
+    if(APP.cRoom.siblings){
+        APP.cRoom.siblings.forEach(s => {
+           let sibNode = ATON.createSceneNode(s.id).load(s.path);
+            const p = s.pos; if(p) {sibNode.setPosition(p.x,p.y,p.z)}
+            const r = s.rot; if(r) {sibNode.setRotation(r.x,r.y,r.z)}
+            sibNode.attachTo(APP.siblings)
+        });
+    }
+    APP.siblings.attachToRoot();
+    console.log("Siblings updated!")
 }
 
 //TO CREATE BOUNDING BOX SEM NODE ---- TO IMPLEMENT
@@ -484,9 +578,10 @@ APP.createSemFromMesh=(semId,mesh)=>
     let S = ATON.getOrCreateSemanticNode(semId);
     S.add(mesh);
     S.setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL);
-    S.setOnSelect(function(){console.log("SELECTED")});
+   // S.setOnSelect(function(){console.log("SELECTED")});
     return S;
 }
+
 
 
 APP.testSem=(object)=>
@@ -495,6 +590,7 @@ APP.testSem=(object)=>
     const sem = APP.createSemFromMesh("ciao",cube);
     sem.attachToRoot();
 }
+
 //END SEM BOUNDING BOX
 
 
@@ -507,7 +603,7 @@ APP.testSem=(object)=>
         // Semantic
         ATON.on("SemanticNodeHover", (semid)=>{
             var FE = ATON.FE;
-            console.log(semid)
+           // console.log(semid)
             let S = ATON.getSemanticNode(semid);
             if (S === undefined) return;
     
@@ -620,6 +716,9 @@ APP.TryToTapHoveredSemNode = ()=>
 
 APP.onTapSemNodes = (idSem)=>
 {
+
+    let POVTimeTransition = 0.6;
+
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
     let _id = idSem.substring(0, idSem.length-(4));
@@ -647,17 +746,32 @@ APP.onTapSemNodes = (idSem)=>
     if(_type=="roomLink")
     {
         console.log("IS A ROOM LINK");
-      //  APP.onPOVTransitionCompleted();
-       // return;
+        POVTimeTransition= 0.2;
     }
-
-
+    
+    /*--------------------------
+    Compose POV
+    -------------------------*/
     let povIn = APP.objects[_id].povIn;    
+
     if(povIn)
     {
         var _pov = new ATON.POV("povIn_"+_id)
         .setPosition(povIn.pos.x,povIn.pos.y,povIn.pos.z)
         .setTarget( povIn.target.x,povIn.target.y,povIn.target.z);
+    }
+    else //SET BY SEMANTICNODE BOUNDS
+    {
+        let n = ATON.getSemanticNode(idSem);
+        let bs = n.getBound();
+        //let T = new THREE.Vector3();
+        let E = new THREE.Vector3();        
+        let r = bs.radius * 3.0;
+        E.x = bs.center.x - (r * ATON.Nav._vDir.x);
+        E.y = bs.center.y - (r * ATON.Nav._vDir.y);
+        E.z = bs.center.z - (r * ATON.Nav._vDir.z);
+
+        var _pov = new ATON.POV().setPosition(E).setTarget(bs.center);  
     }
     
     
@@ -668,7 +782,7 @@ APP.onTapSemNodes = (idSem)=>
         document.getElementById("SideBAR").style.display="block";
     }
 
-    if(_pov) ATON.Nav.requestPOV(_pov, 0.6);
+    if(_pov) ATON.Nav.requestPOV(_pov, POVTimeTransition);
 
     if(_type=="object")
     {
@@ -678,6 +792,7 @@ APP.onTapSemNodes = (idSem)=>
         SemNode.hide();
 
         ATON.getSceneNode("ambient").hide();
+        if(APP.siblings)APP.siblings.hide();
         ATON.Nav.setOrbitControl();
         ATON.getSceneNode("blackSphere").show();
 
@@ -734,21 +849,17 @@ APP.onTapSemNodes = (idSem)=>
         if(obj.type == "roomLink")
         {   
             console.log(obj.roomTo)
-            APP.composeAmbient(obj.roomTo);
+             APP.composeAmbient(obj.roomTo);
             APP.currentObjIsFocused=false;
             APP._currentObjectActive=null;
         }
 
         if(obj.type == "video")
         {
-            APP.showVideo();
+            APP.showVideo(obj.path);
             APP.currentObjIsFocused=true;
         }
 
-
-        /*
-         
-        */
         if(obj.type=="object")
         {
                 console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
@@ -801,7 +912,12 @@ APP.CloseObject = ()=>
     const currentObj = APP.objects[APP._currentObjectActive];
     const t = currentObj.type;
 
-    if(t=="object") ATON.getSceneNode(currentObj.id).delete();
+    if(t=="object") {
+        let _o = ATON.getSceneNode(currentObj.id)
+       // if(_o) _o.delete();
+       if(_o)deleteAndDispose(_o);
+       
+    }
     APP._currentObjectActive = null;
     APP.currentObjIsFocused= false;
     
@@ -815,6 +931,7 @@ APP.CloseObject = ()=>
     ATON.Nav.requestPOV(_pov, 0.6);
     
     ATON.getSceneNode("ambient").show();
+    if(APP.siblings)APP.siblings.show();
     APP.lowObjCollection.show();
 
     //Show Semantic and Scene Nodes of objects
@@ -897,11 +1014,13 @@ APP.openIIIFview=(target)=>
     }
 
 
-    APP.showVideo=()=>
+    APP.showVideo=(src)=>
     {
         var videoPlayer = document.getElementById("VideoPlayer");
+        videoPlayer.src = src;
         videoPlayer.currentTime = 1;
         videoPlayer.style.display="block";
+        videoPlayer.play();
     }
 
     APP.closeVideo=()=>
@@ -912,8 +1031,6 @@ APP.openIIIFview=(target)=>
         videoPlayer.currentTime = 1;
     }
 };
-
-
 
 
 
@@ -938,6 +1055,14 @@ APP.update()
 APP.sceneInitialized = false;
 APP.onAllNodeRequestsCompleted=()=>
 {
+    //Calculate times
+    console.log("composed");
+    const now =  new Date().getTime();
+    const deltaLoad = Math.abs( now -  APP.s); 
+    APP.delta = deltaLoad / 1000; 
+    console.log("loaded in: " + APP.delta);
+
+
    $("#idLoader").hide();
    if(APP.sceneInitialized) return;
 
@@ -1248,6 +1373,20 @@ APP.videoInfo = `
 </div>
 </div>`
 */
+
+
+
+
+
+ APP.loadModelAsync = async(path)=> {
+    const loader = new THREE.GLTFLoader();
+    try {
+        const gltf = await loader.loadAsync("content/"+path);
+       return gltf;
+    } catch (error) {
+        console.error('An error occurred while loading the model:', error);
+    }
+}
 
 
 // Run the App

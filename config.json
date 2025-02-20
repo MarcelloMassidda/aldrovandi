@@ -15,11 +15,21 @@
                     "room":
                     {
                         "id":"room",
-                        "oldpath": "models/room1/room/sala1.gltf",
-                        "path": "models/room1/room/sala1.gltf"
+                        "path": "models/room1/room/Stanza_v3_GLTF.gltf",
+                        "ktx_path": "models/room1/room/v3_KTX/Stanza_v3_GLTF.gltf",
+                        "pos":{"x":-0.76,"y":0,"z":0}
+                        
                     },
-                    "old_objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf"},
-                    "objectCollection": {"path":"models/room1/lowObjects/assets_sala1_updated.gltf"}, 
+                    "old_objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf",  "pos":{"x":-0.76,"y":0,"z":0}},
+                    "objectCollection": {"path":"models/room1/lowObjects/assets_sala1_updated.gltf", "pos":{"x":-0.76,"y":0,"z":0}}, 
+                    "siblings":[
+                      {
+                        "id":"sibling_room2",
+                        "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                        "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793},
+                        "path":"models/siblings/room2/Sala2_v2.gltf"
+                    }
+                    ],
                     "objects":
                     [   
                         {
@@ -34,7 +44,7 @@
                                 "path":"models/room1/semObjects/linkRoom2_sem.glb"
 
                             },
-                            "povIn": {"pos":{"x":10.098345655927258,"y":1.6999999999999988,"z":4.565379272482929},"target":{"x":10.980127040973764,"y":1.7359428027407513,"z":4.09509244094647}},
+                            "povIn": {"pos":{"x": 10.34224987553938, "y": 1.6999999999999993, "z": 4.627753464883254},"target":{"x": 11.246129609373934, "y": 1.593232172601125, "z": 4.2135046775637255}},
                             "povOut": {"pos":{"x":10.098345655927258,"y":1.6999999999999988,"z":4.565379272482929},"target":{"x":10.980127040973764,"y":1.7359428027407513,"z":4.09509244094647}}
                         },
                         {
@@ -869,6 +879,7 @@
                         {
                             "id":"video",
                             "hoverLable":"Video 'San Girolamo nel suo studio'",
+                            "path":"content/videos/San Girolamo.mp4",
                             "type":"video",
                             "povIn":{"pos":{"x":7.522087337116654,"y":1.681788387950362,"z":1.1224536203358624},"target":{"x":7.478790050408277,"y":1.5852167119463747,"z":0.12806976268456605}},
                             "povOut":{"pos":{"x":7.522087337116654,"y":1.681788387950362,"z":1.1224536203358624},"target":{"x":7.478790050408277,"y":1.5852167119463747,"z":0.12806976268456605}},
@@ -972,10 +983,23 @@
            "room":
             {
                 "id":"room",
-                "path": "models/room2/room/sala2.gltf",
+                "old_path": "models/room2/room/sala2.gltf",
+                "path":"models/room2/room/Sala2_v2.gltf",
                 "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
                 "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793}
             },
+            "siblings":[
+              {
+                "id":"sibling_room1",
+                "path":"models/siblings/room1/Stanza_v3_GLTF.gltf",
+                "pos":{"x":-0.76,"y":0,"z":0}
+             },
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
             "objectCollection": 
             {
                 "path": "models/room2/lowObjects/v2_28-01-2025/sala2_assets.gltf",
@@ -998,7 +1022,22 @@
                         "path":"models/room2/semObjs/linkRoom1_sem.glb",
                         "pos":{"x":0.09972418320157951,"y":0.9889487238285537,"z":-5.835686517253044}
                     },
-                    "povIn": {"pos":{"x":9.00854707307622,"y":1.712842253389078,"z":4.599684824536138},"target":{"x":8.062764902453585,"y":1.5835296327187431,"z":4.301734607439883}}
+                    "povIn": {"pos":{"x": 8.294162652668362, "y": 1.7210880003869535, "z": 4.640374845955607},"target":{"x": 7.317414113398533, "y": 1.6845771608239568, "z": 4.429118485983512}}
+                },
+                {
+                    "id":"room2alink",
+                    "hoverLable":"Anticamera",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"roomLink",
+                    "roomTo":"2a",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/linkRoom2a_sem.glb",
+                        "pos":{"x": -2.6476334859920567, "y": 0.9889487238285535, "z": 0.0673457712090954},
+                        "rot":{"x":-7,"y":-1.5,"z":-7}
+                    },
+                    "povIn": {"pos":{"x":12.66,"y":1.68,"z":-2.11},"target":{"x":12.62,"y":1.71765,"z":-3.106}}
                 },
                 {
                     "id":"teriaca",
@@ -1294,6 +1333,563 @@
                     }
                 }
             ]
+        },
+        "2a":{
+          "room":
+          {
+              "id":"room",
+              "path":"models/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+          },
+          "siblings":[
+                      {
+                        "id":"sibling_room2",
+                    "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                        "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793},
+                       "path":"models/siblings/room2/Sala2_v2.gltf"
+                    },
+                    {
+                      "id":"sibling_room3",
+                      "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152},
+                      "path":"models/siblings/room3/Sala3.gltf"
+                  },
+                  {
+                    "id":"sibling_room4",
+                    "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226},
+                    "path":"models/siblings/room4/Sala4.gltf"
+                }
+                    ],
+          "objects":[
+            {
+              "id":"room3link",
+              "hoverLable":"Sala 3",
+              "type":"roomLink",
+              "roomTo":"3",
+              "sem":
+              {
+                  "path":"models/room2a/semObjs/linkRoom3.glb",
+                  "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+              },
+              "povIn": {"pos":{"x":15.885856612276987,"y":1.685468299074086,"z":-3.194268267879456},
+              "target":{"x":16.874810887661077,"y":1.5696470862562992,"z":-3.1017756310863414}}
+          },
+          {
+            "id":"room4link",
+            "hoverLable":"Sala 4",
+            "type":"roomLink",
+            "roomTo":"4",
+            "sem":
+            {
+                "path":"models/room2a/semObjs/linkRoom4.glb",
+                "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+            },
+            "povIn": {"pos":{"x":
+            12.313677909480248,"y":1.5362023513406755,"z":-6.748628650091582},
+            "target":{"x":12.43948501716215,"y":1.4460260337646604,"z":-7.736576423713824}}
+        },
+        {
+          "id":"room2link",
+          "hoverLable":"Sala 2",
+          "type":"roomLink",
+          "roomTo":"2",
+          "sem":
+          {
+              "path":"models/room2a/semObjs/linkRoom2.glb",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+          },
+          "povIn": {"pos":{"x":12.308311770354916,"y":1.6999999999999995,"z":-0.8601299220226475},
+          "target":{"x":12.199161384886612,"y":1.4952308309605338,"z":0.11257547056187356}}
+      }
+          ]
+        },
+        "3":{
+            "HomePov":{"pos":{"x":12.66,"y":1.68,"z":-2.11},"target":{"x":12.62,"y":1.71765,"z":-3.106}},
+            "room":
+             {
+                 "id":"room",
+                 "path": "models/room3/room/sala3.gltf",
+                 "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152}
+             },
+             "siblings":[
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
+             "objectCollection": 
+             {
+                 "path": "models/room3/lowObjects/assets_sala3.gltf",
+                 "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152}
+             },
+             "objects":[
+                {
+                    "id":"room2alink",
+                    "hoverLable":"Anticamera",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"roomLink",
+                    "roomTo":"2a",
+                    "sem":
+                    {
+                        "path":"models/room3/semObjs/linkRoom2a.glb"
+                    },
+                    "povIn": {"pos":{"x":14.315642626723136,"y":1.582739911656823,"z":
+                    -3.299336612550926},
+                    "target":{"x":13.326978108646754,"y":1.4327925552328928,"z":-3.291703723302982}}
+                },
+                {
+                  "id":"video_a",
+                  "hoverLable":"Tavole acquerellate - video",
+                  "type":"video",
+                  "path":"content/videos/s3/Tavole_acquarellate.mp4",
+                  "povIn":{"pos":{"x": 20.045053453451775, "y": 1.6868624421511345, "z": -4.845026971059161},"target":{"x": 21.018092228331994, "y": 1.5663294862810335, "z": -5.041667122424078}},
+                  "content":"",
+                  "sem":
+                  {
+                      "path":"models/room3/semObjs/videobig_sem.glb"
+                  }
+              },
+              {
+                "id":"video_b",
+                "hoverLable":"Filiera delle immagini -  video",
+                "type":"video",
+                "path":"content/videos/s3/Filiera_immagini.mp4",
+                "povIn":{"pos":{"x": 17.095655050876445, "y": 1.6839490739883674, "z": -7.22960843623841},"target":{"x": 17.18150263022748, "y": 1.5644108031605695, "z": -8.218719549777767}},
+                "content":"",
+                "sem":
+                {
+                    "path":"models/room3/semObjs/videosmall_sem.glb"
+                }
+            },
+                {
+                  "id": "erbariomedievale",
+                  "hoverLable": "Hortus sanitatis",
+                  "pos": {
+                    "x": -2.50285,
+                    "y": 0.885833,
+                    "z": -5.94668
+                  },
+                  "rot": {
+                    "x": -1.565440188,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-43-CNR_HortusSanitaris/HortusSanitaris.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/erbariomedievale.glb"
+                  },
+                  "povIn":{"pos": {"x": 19.372352454805153, "y": 1.3681417069253472, "z": -7.887964938839685},
+                "target":{"x": 19.372352435085467, "y": 0.8921619616929095, "z": -7.887965414410765}}
+                },
+                {
+                  "id": "tavolealdrovandinarciso",
+                  "hoverLable": "Narcissus",
+                  "pos": {
+                    "x": -1.82204,
+                    "y": 0.901512,
+                    "z": -5.95236
+                  },
+                  "rot": {
+                    "x": -0.6528246678,
+                    "y": 0.06755527004,
+                    "z": 0.04911660846
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-44-CNR_Narcissus/Volume_Narcisus.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/tavolealdrovandinarciso.glb"
+                  },
+                  "povIn":{"pos":{"x": 20.08703335965081, "y": 1.4939851513858655, "z": -7.772612162973445}, "target":{"x": 20.086247479167398, "y": 0.9078151616747671, "z": -7.869575656747239}}
+                },
+                {
+                  "id": "volumeapertocorpoumano",
+                  "hoverLable": "Muscolatura umana e scheletro pensante",
+                  "pos": {
+                    "x": -2.96337,
+                    "y": 0.972167,
+                    "z": -0.299532
+                  },
+                  "rot": {
+                    "x": 3.119296921,
+                    "y": 0.9554089988,
+                    "z": -3.109303151
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-45-FICLIT_VolumeCorpoUmano/VolumeCorpoUmano.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertocorpoumano.glb"
+                  },
+                  "povIn": {
+                    "pos": {"x": 19.014193518152467, "y": 1.9253017101148808, "z": -2.427529852153452},
+                    "target": {"x": 19.01100352971903, "y": 0.9996342604825492, "z": -2.227604629828459}
+                  }
+                },
+                {
+                  "id": "volumeapertoruoteidrauliche",
+                  "hoverLable": "Ruote idrauliche",
+                  "pos": {
+                    "x": -3.77423,
+                    "y": 0.880333,
+                    "z": -0.355619
+                  },
+                  "rot": {
+                    "x": 0.09116312872,
+                    "y": -0.5726783945,
+                    "z": 0.1682573707
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-46-FICLIT_RuoteIdrauliche/VolumeRuoteIdrauliche.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoruoteidrauliche.glb"                   
+                  },
+                  "povIn": {
+                    "pos": {"x": 18.17708875320516, "y": 1.3280339143691768, "z": -2.3318839263185613},
+                    "target":{"x": 18.1793936750952, "y": 0.898669766243709, "z": -2.2688969606914986}
+                  }
+                },
+                {
+                  "id": "volumeapertoluna",
+                  "hoverLable": "Illustrazioni della luna",
+                  "pos": {
+                    "x": -4.41736,
+                    "y": 0.925564,
+                    "z": -0.384338
+                  },
+                  "rot": {
+                    "x": -2.672175136,
+                    "y": -0.6993112861,
+                    "z": -2.686724057
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-47-FICLIT_Luna/volume_luna.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoluna.glb"
+                   },
+                  "povIn": {
+                    "pos": {"x": 17.560970976761844, "y": 1.4093820068349001, "z": -2.3259432212424653},
+                    "target": {"x": 17.560827173702858, "y": 0.9299061025498983, "z": -2.291031852656955}
+                  }
+                },
+                {
+                  "id": "volumeapertoanatomiaape",
+                  "hoverLable": "Descrizione dell'anatomia microscopica dell'ape",
+                  "pos": {
+                    "x": -4.98664,
+                    "y": 0.893696,
+                    "z": -0.413222
+                  },
+                  "rot": {
+                    "x": 2.984516165,
+                    "y": -0.01849936972,
+                    "z": -3.069099909
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-48-FICLIT_AnatomiaApe/volume_anatomiaApe.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoanatomiaape.glb"
+                  },
+                  "povIn": {
+                    "pos": {"x": 16.948609278202426, "y": 1.1987186095343532, "z": -2.4214762897154927},
+                    "target": {"x": 16.953163753965896, "y": 0.8908856300781162, "z": -2.3213071051921417}
+                  }
+                },
+                {
+                  "id": "vetrinaconmatricixilografiche",
+                  "hoverLable": "Parete con matrici xilografiche (111 matrici tot)",
+                  "pos": null,
+                  "rot": null,
+                  "type": "object",
+                  "path": "models/room3/assets/S3-PT-DICAM_VetrinaMatriciXilografiche/PareteTavolette.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/cube.glb",
+                    "pos": null,
+                    "rot": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "old_povIn": {
+                    "pos": {
+                      "x": 11.347517128458128,
+                      "y": 1.678427654970953,
+                      "z": -5.076513622994603
+                    },
+                    "target": {
+                      "x": 12.297036742652212,
+                      "y": 1.484880973895508,
+                      "z": -4.829628660906189
+                    }
+                  }
+                },
+                {
+                  "id": "matricexilograficafiore",
+                  "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+                  "pos": {
+                    "x": -6.43926,
+                    "y": 0.457722,
+                    "z": -3.17721
+                  },
+                  "rot": {
+                    "x": -0.3993315005,
+                    "y": -0.02854185244,
+                    "z": -0.3404624969
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-PT-DICAM_MatriceXilograficaFiore/MatriceFiore_optimised.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/cube.glb",
+                    "pos": {
+                      "x": -6.43926,
+                      "y": 0.457722,
+                      "z": -3.17721
+                    },
+                    "rot": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "old_povIn": {
+                    "pos": {
+                      "x": 11.347517128458128,
+                      "y": 1.678427654970953,
+                      "z": -5.076513622994603
+                    },
+                    "target": {
+                      "x": 12.297036742652212,
+                      "y": 1.484880973895508,
+                      "z": -4.829628660906189
+                    }
+                  }
+                },
+                {
+                  "id": "matricexilograficapianta",
+                  "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+                  "pos": {
+                    "x": -6.47122,
+                    "y": 0.739723,
+                    "z": -4.56637
+                  },
+                  "rot": {
+                    "x": -1.840484201,
+                    "y": 0.3521138239,
+                    "z": -0.01948731913
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-PT-DICAM_MatriceXilograficaPianta/matrice_pianta_scalato.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/cube.glb",
+                    "pos": {
+                      "x": -6.47122,
+                      "y":0.739723,
+                      "z": -4.56637
+                    },
+                    "rot": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "old_povIn": {
+                    "pos": {
+                      "x": 11.347517128458128,
+                      "y": 1.678427654970953,
+                      "z": -5.076513622994603
+                    },
+                    "target": {
+                      "x": 12.297036742652212,
+                      "y": 1.484880973895508,
+                      "z": -4.829628660906189
+                    }
+                  }
+                },
+                {
+                  "id": "matricexilograficaserpente",
+                  "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+                  "pos": {
+                    "x": -6.42079,
+                    "y": 1.30301,
+                    "z": -2.98028
+                  },
+                  "rot": {
+                    "x": -1.732417792,
+                    "y": 0.6504349035,
+                    "z": 0.3766860701
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-PT-DICAM_MatriceXilograficaSerpente/matrice_serpente_scalato.gltf",
+
+                  "sem": {
+                    "path": "models/room3/semObjs/cube.glb",
+                    "pos": {
+                      "x": -6.42079,
+                      "y": 1.30301,
+                      "z": -2.98028
+                    },
+                    "rot": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0
+                    }
+                  },
+                  "old_povIn": {
+                    "pos": {
+                      "x": 11.347517128458128,
+                      "y": 1.678427654970953,
+                      "z": -5.076513622994603
+                    },
+                    "target": {
+                      "x": 12.297036742652212,
+                      "y": 1.484880973895508,
+                      "z": -4.829628660906189
+                    }
+                  }
+                }            ]
+        },
+        "4":{
+            "HomePov":{"pos":{"x":12.66,"y":1.68,"z":-2.11},"target":{"x":12.62,"y":1.71765,"z":-3.106}},
+            "room":
+            {
+                "id":"room",
+                "path": "models/room4/sala/sala4.gltf",
+                "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226}
+            },
+            "siblings":[
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
+            "objectCollection": 
+            {
+                "path": "models/room4/lowObjects/oggetti_sala4.gltf",
+                "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226}
+            },
+            "objects":[
+              {
+                "id":"room2alink",
+                "hoverLable":"Anticamera",
+                "type":"roomLink",
+                "roomTo":"2a",
+                "sem":
+                {
+                    "path":"models/room4/semObjs/linkRoom2a.glb"                    
+                },
+                "povIn": {"pos":{"x":12.254772019678754,"y":1.5793164900361292,"z":-4.616332352111351},
+                "target":{"x":12.255424559129317,"y":1.5001895574847395,"z":-3.619468016939672}}
+            },
+            {
+              "id": "mascheraatzeca",
+              "hoverLable": "Maschera raffigurante Yacatecuhtli, patrono dei mercanti, cultura nahua, ca. 1350-1521 d.C.",
+              "pos": {"x": 2.2008183963902725, "y": 1.9710275425618784, "z": -3.7891947801885255},
+              "rot": {
+                "x": 0,
+                "y": -1.474000616,
+                "z": 0
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-49-ISTI_MascheraAzteca/MascheraAzteca.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/mascheraatzeca_sem.glb"
+              },
+              "povIn":{"pos":{"x": 13.842580029006966, "y": 1.835520291460615, "z": -7.5788431751084895},"target":{"x": 14.141716716009842, "y": 1.8302143693825148, "z": -7.635910355942863}}
+            },
+            {
+              "id": "manicodicoltellozoomorfo",
+              "hoverLable": "Manico di coltello sacrificale in forma di rettile fantastico cultura nahua, ca. 1350-1521 d.C.",
+              "pos":{"x": 2.1814099563392384, "y": 1.4585237022243136, "z": -3.48716009570566},
+              "rot": {
+                "x": 
+                2.946280920617936,
+                "y": 1.3746526317059562,
+                "z": 
+                -2.9708299620549177
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-ManicoColtelloZoomorfo/pugnale_modello2.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/manicodicoltellozoomorfo_sem.glb" 
+              },
+              "povIn":{"pos":{"x": 13.929379680995904, "y": 1.3441685136827028, "z": -7.23500843397403},"target":{"x": 14.155812560019685, "y": 1.340504319739625, "z": -7.246021310160559}}
+            },
+            {
+              "id": "manicodicoltelloantropomorfo",
+              "hoverLable": "Manico di coltello sacrificale in forma di figura umana",
+              "pos": {"x": 2.1605899059908436, "y": 1.4260137323269586, "z": -4.173660165515897},
+              "rot": {
+                "x": 0,
+                "y": -1.364940313,
+                "z": 0
+              },
+              "type": "object",
+             "path": "models/room4/assets/S4-51-ISTI_ManicoColtelloAntropomorfo/ManicoColtelloAntropomorfo.gltf",
+              "sem": {
+                    "path": "models/room4/semObjs/manicodicoltelloantropomorfo_sem.glb"
+              },
+              "povIn":{"pos":{"x": 13.949724249449089, "y": 1.2902639337502253, "z": -7.943132609615279},"target":{"x": 14.155908068286857, "y": 1.3013582864043052, "z": -8.02152552290701}}
+            },
+            {
+              "id": "tavolaaldrovandimascheraatzeca",
+              "hoverLable": "Maschera",
+              "pos":{"x": -1.4809340725031601, "y": 0.8254693945224663, "z": -3.1464462790250916},
+              "rot": {
+                "x": 0.016742197496336365,
+                "y": -0.07051414003526553,
+                "z":-0.018293609233447344
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-52-FICLIT_TavolaAldrovandiMaschera/VolumeMascheraAzteca.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/tavolaaldrovandimascheraatzeca_sem.glb"
+              },
+              "povIn":{
+                "pos":{"x": 10.539551261598339, "y": 1.3249766089324364, "z": -6.928878104280271},
+                "target": {"x": 10.480529765239117, "y": 0.6871687530023358, "z": -6.932456119143285}
+              }
+            },
+            {
+              "id": "testina",
+              "hoverLable": "Pendente con testa di idolo in serpentino cultura nahua o mixteca, ca. 1350-1521 d.C.",
+              "pos": {
+                "x":-1.602130500858391, "y": 1.3632901155287214, "z": -4.807452153541249
+              },
+              "rot": {
+                "x":3.103920832273237,"y":  -4.369999999999999e-8,"z": 3.141592653589793
+              },
+               "type": "object",
+              "path": "models/room4/assets/S4-53-DBC_Testina/pendente_testina.gltf",
+              "sem": {
+                "path":"models/room4/semObjs/testina_sem.glb"
+              }
+            },
+            {
+              "id": "tavolaaldrovanditestina",
+              "hoverLable": "Idoli",
+              "pos": {
+                "x": -1.5278996623586232,
+                "y": 0.8342898286774708,
+                "z": -2.467418062828787
+              },
+              "rot": {
+                "x": 0,
+                "y": -0.1489451826,
+                "z": 0
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-54-FICLIT_TavolaAldrovandiTestina/TavolaAldrovandiTestinaIdoli.gltf",
+              "sem": {
+               "path":"models/room4/semObjs/tavolaaldrovanditestina_Sem.glb"
+              },
+              "povIn": {
+                "pos": {"x": 10.530516581956649, "y": 1.3047855155254995, "z": -6.262418021687557},
+                "target": {"x": 10.438312545504264, "y": 0.678377246757905, "z": -6.275108409434893}                
+              }
+            }
+          ]
         }
     },
             "mind":

@@ -237,3 +237,253 @@ APP.loadConfig = (path)=>{
     });
     };
     
+
+
+APP.getBoundingBox = (nodeId = APP._currentObjectActive )=>{
+   console.log("NODE ID IS:"  + nodeId)
+    var object = ATON.getSceneNode(nodeId);
+    if(!object){ console.log("NO OBJECT"); return;}
+    
+    // Compute bounding box
+    const box = new THREE.Box3().setFromObject(object);
+    const boxSize = new THREE.Vector3();
+    box.getSize(boxSize);
+
+    // Create a bounding box mesh
+    const boxGeometry = new THREE.BoxGeometry(boxSize.x, boxSize.y, boxSize.z);
+    const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
+    const boundingBoxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+    boundingBoxMesh.position.copy(box.getCenter(new THREE.Vector3()));
+    ATON.getRootScene().add(boundingBoxMesh);
+    return boundingBoxMesh;
+}
+
+// Function to export as GLB
+APP.exportGLB=(scene,filename) =>{
+    console.log("exporting");
+    console.log(scene);
+
+    const exporter = new THREE.GLTFExporter();
+    exporter.parse(scene, (gltf) => {
+
+        const blob = new Blob([gltf], { type: 'application/octet-stream' });
+        
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        console.log("dajee")
+    }, { binary: true });
+}
+
+
+
+APP.computeBoundingBox = async(nodeId = APP._currentObjectActive)=>{
+    const bb = await APP.getBoundingBox(nodeId);
+    console.log("BBBBB");
+    console.log(bb);
+    //exportGLTF(bb, nodeId);
+//    APP.exportGLB(bb, nodeId+".glb");
+}   
+
+
+APP.testRot=()=>{
+
+    var object = ATON.getSceneNode(APP._currentObjectActive);
+    var dataObject = ()=>APP.config.rooms[3].objects.filter(obj => obj.id === APP._currentObjectActive)[0];
+    var obj = dataObject();
+  
+   
+    function degToRad(deg) {
+        return deg * Math.PI / 180;
+    }
+    
+    // Blender Euler angles in degrees
+    const blenderX = obj.rot.x;
+    const blenderY = obj.rot.y;
+    const blenderZ = obj.rot.z;
+
+    // Convert degrees to radians
+    const eulerBlender = new THREE.Euler(
+       - degToRad(blenderX),
+        degToRad(blenderZ),
+        -degToRad(blenderY),
+        'ZYX' // Set to 'ZYX' for correct conversion order
+    );
+    
+    // Convert Blender Euler to Quaternion
+    const blenderQuat = new THREE.Quaternion().setFromEuler(eulerBlender);
+    
+    // Transformation Quaternion (Z-up → Y-up: Rotate -90° around X)
+    const conversionQuat = new THREE.Quaternion().setFromEuler(
+        new THREE.Euler(-Math.PI / 2, 0, 0, 'ZYX') // Also using 'ZYX'
+    );
+    
+    // Apply coordinate system transformation
+    blenderQuat.premultiply(conversionQuat);
+    
+    // Assign to the Three.js object
+    object.quaternion.copy(blenderQuat);
+    
+    // Debugging - Convert back to Euler to check values
+    const debugEuler = new THREE.Euler().setFromQuaternion(blenderQuat, 'ZYX');
+    console.log("Converted Euler (ZYX order):", debugEuler);
+    console.log("Converted Quaternion:", blenderQuat);
+}
+
+APP.QuaternionTest=()=>{
+
+    var object = ATON.getSceneNode(APP._currentObjectActive);
+    const w = 0.006372; // W component
+    const x =-0.03685;   // X component
+    const y = -0.078737;   // Y component
+    const z = -0.996194;   // Z component
+    const blenderQuat = new THREE.Quaternion(x, y, z, w); // Note: Three.js takes (X, Y, Z, W)
+
+    // Convert from Blender's Z-up to Three.js' Y-up
+    const conversionQuat = new THREE.Quaternion().setFromEuler(
+        new THREE.Euler(-Math.PI / 2, 0, 0, 'XYZ') // Rotation to fix the coordinate system
+    );
+    
+    // Apply transformation
+    blenderQuat.premultiply(conversionQuat);
+    
+    // Assign to Three.js object
+    object.quaternion.copy(blenderQuat);
+
+
+}
+
+APP.testRot2=()=>{
+
+
+    var object = ATON.getSceneNode(APP._currentObjectActive);
+    var dataObject = ()=>APP.config.rooms[3].objects.filter(obj => obj.id === APP._currentObjectActive)[0];
+    var obj = dataObject();
+
+   
+    function degToRad(deg) {
+        return deg * Math.PI / 180;
+    }
+    
+    // Blender Euler angles in degrees
+    const _x = obj.rot.x;
+    const _y = obj.rot.y;
+    const _z = obj.rot.z;
+
+    
+    // Blender Euler Angles (Z-up)
+    const blenderEuler = new THREE.Euler(
+        degToRad(_x),   // X
+        degToRad(_y),  // Y
+        degToRad(_z),   // Z
+        'XYZ' // Blender’s Euler order
+    );
+    
+    // Convert to Quaternion
+    const blenderQuat = new THREE.Quaternion().setFromEuler(blenderEuler);
+    
+    // Apply Z-up to Y-up transformation (Rotate -90° around X)
+    const conversionQuat = new THREE.Quaternion().setFromEuler(
+        new THREE.Euler(-Math.PI / 2, 0, Math.PI, 'ZYX') // Add 180° Z correction if needed
+    );
+    
+    // Adjust quaternion to match Three.js
+    blenderQuat.premultiply(conversionQuat);
+    
+    // Convert back to Three.js Euler
+    const threeEuler = new THREE.Euler().setFromQuaternion(blenderQuat, 'XYZ');
+    
+    console.log("Converted Three.js Euler:", threeEuler);
+    object.quaternion.copy(blenderQuat);
+    
+}
+
+
+const getnewRots =()=>{
+    var rots =ATON.getSceneNode("rots4");
+    var childs = rots.children[0].children;
+    childs.forEach(r => {
+        console.log(r.name);
+        console.log("x");
+        console.log( r.rotation.x);
+        console.log("y")
+        console.log(r.rotation.y)
+        console.log("z")
+        console.log(r.rotation.z)
+        console.log("-----------------")
+    });
+}
+
+
+
+//GLTF EXPORTER:
+
+function exportGLTF( input, filename) {
+
+    const gltfExporter = new THREE.GLTFExporter().setTextureUtils( THREE.TextureUtils );
+
+    const options = {
+        trs:false,
+        onlyVisible: true,
+        binary: false,
+        maxTextureSize: 4096
+    };
+    gltfExporter.parse(
+        input,
+        function ( result ) {
+
+            if ( result instanceof ArrayBuffer ) {
+
+                saveArrayBuffer( result, filename+'.glb' );
+
+            } else {
+
+                const output = JSON.stringify( result, null, 2 );
+                console.log( output );
+                saveString( output, filename+'.gltf' );
+
+            }
+
+        },
+        function ( error ) {
+
+            console.log( 'An error happened during parsing', error );
+
+        },
+        options
+    );
+
+}
+
+
+/*
+const link = document.createElement( 'a' );
+link.style.display = 'none';
+document.body.appendChild( link ); // Firefox workaround, see #6594
+
+function save( blob, filename ) {
+
+    link.href = URL.createObjectURL( blob );
+    link.download = filename;
+    link.click();
+
+    // URL.revokeObjectURL( url ); breaks Firefox...
+
+}
+
+function saveString( text, filename ) {
+
+    save( new Blob( [ text ], { type: 'text/plain' } ), filename );
+
+}
+
+
+function saveArrayBuffer( buffer, filename ) {
+
+    save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
+}
+    */
