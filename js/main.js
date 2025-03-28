@@ -7,6 +7,8 @@ window.addEventListener( 'load', ()=>
 {
   // Realize the base front-end
   ATON.FE.realize();
+
+  
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
   document.APP = APP; 
@@ -29,8 +31,6 @@ APP.closeWelcomePopup=()=>
 {
     document.getElementById("welcomePopupContainer").style.display="none"; 
 }
-
-
 
 
 
@@ -90,7 +90,6 @@ APP.loadAllRooms=()=>{
             if(room.rot){ATON.getSceneNode(id+"room").setRotation(room.rot.x,room.rot.y,room.rot.z)}
     }
 }
-
 
 //TO TEST
 APP.setuplightsProbe=()=>{
@@ -191,6 +190,18 @@ APP.setuplightsProbe=()=>{
      });
      */
 }
+
+//DEBUG/NOT USED
+APP.loadModelAsync = async(path)=> {
+    const loader = new THREE.GLTFLoader();
+    try {
+        const gltf = await loader.loadAsync("content/"+path);
+       return gltf;
+    } catch (error) {
+        console.error('An error occurred while loading the model:', error);
+    }
+}
+
 
 APP.setup = ()=>{
 
@@ -322,7 +333,46 @@ APP.setupCustomLocomotionValidation=()=>
 }
 
 
-APP.setupSUI=()=>
+APP.SUInodes=[];
+
+APP.updateRoomSUI=()=>{
+    APP.cleanAllTemporarySUI();
+    if(!APP.cRoom.SUI)return;
+    APP.createRoomSUINodes(APP.cRoom.SUI);
+}
+
+APP.createRoomSUINodes=(nodes)=>{
+
+    APP.cleanAllTemporarySUI();
+
+    nodes.forEach(n => {
+        let _n = APP.createSUILabel(n);
+        APP.SUInodes.push(_n);
+    });
+}
+
+APP.cleanAllTemporarySUI=()=>{
+    if(APP.SUInodes.length==0) return;
+    APP.SUInodes.forEach(n => { n.delete() });
+    APP.SUInodes = [];
+}
+
+
+APP.createSUILabel=(options)=>{
+    let w = 1;
+    let h = 0.5;
+    let pos = options.pos || {x:0,y:0,z:0}
+    let rot = options.rot || {x:0,y:0,z:0}
+    let id =  ATON.Utils.generateID(options.id+"_suiLabel_");
+    let content = options.content;
+    let SUIlabel = suiBuilder.createLabel({ id, w, h, content, pos, rot });
+    SUIlabel.attachTo(APP.room);
+    return SUIlabel;
+}
+
+
+
+APP.setupSUI=()=>//NOT USED
 {
     APP.CloseObject_SUIBtn = new ATON.SUI.Button("sui-back");
     APP.CloseObject_SUIBtn.setIcon(APP.pathContent + 'icons/backBtn.png', true)
@@ -409,7 +459,10 @@ APP.composeAmbient = (_stage)=>
 
     if(APP.cRoom.room)
     {
-       APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path,()=>{APP.updateSiblings();});
+       APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path,()=>{
+        APP.updateSiblings();
+        APP.updateRoomSUI();
+    });
 
         const p = APP.cRoom.room.pos; if(p) {APP.room.setPosition(p.x,p.y,p.z)}
         const r = APP.cRoom.room.rot; if(r) {APP.room.setRotation(r.x,r.y,r.z)}
@@ -455,22 +508,29 @@ APP.composeAmbient = (_stage)=>
     //ATON.SemFactory.setMaterial(APP.matSemDef);
 
     APP.semObjects = ATON.createSemanticNode("semObjects");
-    /*
+   
+    
+    
+    //Test materials
     const semanticMat_idle = new THREE.MeshBasicMaterial({
         color: 0x00ff00, // Green color
         side: THREE.DoubleSide, // Render both sides of the material
         transparent: true,
-        opacity: 0.0
+        opacity: 0.0,
+        depthWrite: false, 
+        depthTest: false,
     });
+
     const semanticMat_focus = new THREE.MeshBasicMaterial({
         color:0x0000ff, // Green color
         side: THREE.DoubleSide, // Render both sides of the material
         transparent: true,
         opacity: 0.5
     });
-    */
 
 
+      //ATON.MatHub.materials.wireframe
+  //
 
     APP.cRoom.objects.map((obj)=>
     {
@@ -480,13 +540,15 @@ APP.composeAmbient = (_stage)=>
         if(!obj.sem) {console.log("no sem"); return;}
         //SemanticNode
         let sem = obj.sem;
-        var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path)
-        .setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL)
+        var semNode = ATON.createSemanticNode(obj.id+"_sem").load(sem.path);
+        semNode.setDefaultAndHighlightMaterials(APP.matSemDef,APP.matSemHL );
+        semNode.restoreDefaultMaterial();
+
         //.setDefaultAndHighlightMaterials(semanticMat_idle,semanticMat_focus)
         
         //.setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
         //.setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
-        .setOnSelect(function(){console.log("SELECTED")});
+        semNode.setOnSelect(function(){console.log("SELECTED")});
         if(sem.pos){semNode.setPosition(sem.pos.x,sem.pos.y,sem.pos.z)}
         if(sem.rot){semNode.setRotation(sem.rot.x,sem.rot.y,sem.rot.z)}
         //semNode.attachToRoot();
@@ -545,7 +607,11 @@ APP.updateSiblings=()=>{
     }
     APP.siblings.attachToRoot();
     console.log("Siblings updated!")
+    APP.hideBlurredFullscreen()
 }
+
+
+
 
 //TO CREATE BOUNDING BOX SEM NODE ---- TO IMPLEMENT
 APP.createBoxFromBoundings=(objTarget)=>
@@ -616,6 +682,7 @@ APP.testSem=(object)=>
             if (ATON.SUI.gSemIcons) ATON.SUI.gSemIcons.hide();
             
         });
+
         ATON.on("SemanticNodeLeave", (semid)=>{
             /*
             let S = ATON.getSemanticNode(semid);
@@ -647,47 +714,56 @@ APP.testSem=(object)=>
         };
   }
 
+
 APP.setupCustomSemanticMats=()=>
 {
+    ATON.MatHub._uSem.tint = { type:'vec4', value: new THREE.Vector4( 0.49, 0.54, 0.73, 0.6) };
+
     //  let matSemDef = ATON.MatHub.materials.semanticShape;
     APP.matSemDef =  new THREE.ShaderMaterial({
         uniforms: ATON.MatHub._uSem,
+        /*{
+            time: { type:'float', value: 0.0 },
+            tint: { type:'vec4', value: new THREE.Vector4( 0.49, 0.54, 0.73, 0.8) },
+            sel: { type:'vec4', value: new THREE.Vector4(0.0, 0.0, 0.0, 0.1) }
+        },*/
 
         vertexShader: ATON.MatHub.getDefVertexShader(),
         fragmentShader:`
             varying vec3 vPositionW;
-            varying vec3 vNormalW;
+		    varying vec3 vNormalW;
             varying vec3 vNormalV;
-    
+
             uniform float time;
             uniform vec4 tint;
-    
-            void main(){
-                //vec3 viewDirectionW = normalize(cameraPosition - vPositionW);
-    
+
+		    void main(){
+		        //vec3 viewDirectionW = normalize(cameraPosition - vPositionW);
+
                 //float ff = dot(vNormalV, vec3(0,0,1));
-                //ff = clamp(1.0-ff, 0.0, 1.0);
-    
+		        //ff = clamp(1.0-ff, 0.0, 1.0);
+
                 float f = (1.0 * cos(time*2.0)); // - 0.5;
                 //f = cos(time + (vPositionW.y*10.0));
                 f = clamp(f, 0.0,1.0);
-    
-                gl_FragColor = vec4(tint.rgb, tint.a * f);
+
+		        gl_FragColor = vec4(tint.rgb, tint.a * f);
                 //gl_FragColor = vec4(tint.rgb, ff);
-            }
+		    }
         `,
         transparent: true,
         depthWrite: false,
         //flatShading: false
         //opacity: 0.0,
     });
-
+    //APP.matSemDef.uniforms.tint.value = ATON.MatHub.colors.white;
+   
     //let matSemHL  = ATON.MatHub.materials.semanticShapeHL;
     APP.matSemHL  = new THREE.MeshBasicMaterial({ 
-        color: ATON.MatHub.colors.sem, 
+        color: new THREE.Color("rgb(99, 127, 220)"),// ATON.MatHub.colors.sem, 
         transparent: true,
         depthWrite: false, 
-        opacity: 0.2
+        opacity: 0.4
         //flatShading: true
     });
 }
@@ -747,6 +823,7 @@ APP.onTapSemNodes = (idSem)=>
     {
         console.log("IS A ROOM LINK");
         POVTimeTransition= 0.2;
+        APP.showBlurredFullscreen();
     }
     
     /*--------------------------
@@ -848,8 +925,8 @@ APP.onTapSemNodes = (idSem)=>
         
         if(obj.type == "roomLink")
         {   
-            console.log(obj.roomTo)
-             APP.composeAmbient(obj.roomTo);
+            console.log(obj.roomTo);
+            APP.composeAmbient(obj.roomTo);
             APP.currentObjIsFocused=false;
             APP._currentObjectActive=null;
         }
@@ -967,6 +1044,10 @@ APP.CloseObject = ()=>
 
 APP.openIIIFview=(target)=>
 {
+    if(!navigator.onLine) {window.alert("error on mirador loading: offline"); return;}
+    
+    const idFullscreenContainer ="miradorFullscreenContainer";
+
     console.log(target);
 
     const _path = target.dataset.path;
@@ -990,13 +1071,14 @@ APP.openIIIFview=(target)=>
                 closeBtn.onclick = function()
                 {
                     console.log("forced Closed")
-                    document.getElementById("miradorViewer").style.display="none"
+                    document.getElementById(idFullscreenContainer).style.display="none";
+
                 };
                 initialized = true;
             }
         }
     }
-        document.getElementById("miradorViewer").style.display="block";
+        document.getElementById(idFullscreenContainer).style.display="block";
 
         var mirador = Mirador.viewer({
             "id": "miradorViewer",
@@ -1033,7 +1115,17 @@ APP.openIIIFview=(target)=>
 };
 
 
+APP.showBlurredFullscreen = () => {
+    let element = document.getElementById("blurredFullscreen");
+    element.classList.add("show-blur");
+    $("#idLoader").show();
+};
 
+APP.hideBlurredFullscreen = () => {
+    let element = document.getElementById("blurredFullscreen");
+    element.classList.remove("show-blur");
+    $("#idLoader").hide();
+};
 
 
 APP.update = ()=>{
@@ -1062,8 +1154,8 @@ APP.onAllNodeRequestsCompleted=()=>
     APP.delta = deltaLoad / 1000; 
     console.log("loaded in: " + APP.delta);
 
-
-   $("#idLoader").hide();
+    //$("#idLoader").hide();
+    APP.hideBlurredFullscreen()
    if(APP.sceneInitialized) return;
 
    //Initialize BlackSphere:
@@ -1216,7 +1308,7 @@ APP.returnFormattedInfo=(objectInfo)=>
     return _info;
 }
 
-/*
+/* OLD LAYOUT:
 
 APP.quadroInfo =    `
 <h1>Ritratto di Ulisse Aldrovandi</h1>
@@ -1378,15 +1470,7 @@ APP.videoInfo = `
 
 
 
- APP.loadModelAsync = async(path)=> {
-    const loader = new THREE.GLTFLoader();
-    try {
-        const gltf = await loader.loadAsync("content/"+path);
-       return gltf;
-    } catch (error) {
-        console.error('An error occurred while loading the model:', error);
-    }
-}
+
 
 
 // Run the App

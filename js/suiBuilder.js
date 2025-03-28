@@ -1,8 +1,9 @@
 let suiBuilder = {};
 
-suiBuilder.customLabel = (uuid,w,h)=>
+suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
 {
-    var n = new ATON.Node(uuid, ATON.NTYPES.UI);
+
+    var n = new ATON.Node(id, ATON.NTYPES.UI);
     //const  baseColor = ATON.MatHub.colors.black;
     const  baseColor = new THREE.Color(0.1,0.1,0.1)
 
@@ -18,24 +19,30 @@ suiBuilder.customLabel = (uuid,w,h)=>
         fontTexture: ATON.SUI.PATH_FONT_TEX,
 
         justifyContent: 'center', // could be 'center' or 'left'
-        textAlign: 'left',
+        textAlign: 'center' //left,
     });
     
     container.position.z = 0.03;
     
 
     var uiText = new ThreeMeshUI.Text({ 
-        content: "Label",
-        fontSize: 0.03,
+        content: content,
+        fontSize: (fSize)? fSize : 0.2, // 0.03,
         fontColor: ATON.MatHub.colors.white
     });
     n.uiText = uiText;
     container.add(uiText);
     n.add(container);
 
-
     ThreeMeshUI.update();
 
+    n.position.x = pos.x;
+    n.position.y = pos.y;
+    n.position.z = pos.z;
+    
+    n.rotation.x = rot.x;
+    n.rotation.y = rot.y;
+    n.rotation.z = rot.z;
     return n;
 }
 

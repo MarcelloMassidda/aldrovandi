@@ -13,7 +13,9 @@ const timePOV = 0;
 MIND.init = (minder=null)=>
 {
     //è un esperimento?
-    var isExperiment = ATON.FE.urlParams.get('experiment') ? true : false;
+    var isExperiment = false;
+    
+    if(ATON.FE.urlParams) isExperiment = ATON.FE.urlParams.get('experiment') ? true : false;
     console.log("Is an experiment: " + isExperiment);
     MIND.isExperiment = isExperiment;
     if(!isExperiment) return null;
