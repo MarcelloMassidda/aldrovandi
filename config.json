@@ -1494,6 +1494,18 @@
               "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
            }
           ],
+          "videoAssets":[
+            {
+              "id":"video_a",
+              "videoPath":"content/videos/s3/Tavole_acquarellate.mp4",
+              "shapePath":"models/room3/video/plane_video_a.gltf"
+            },
+            {
+              "id":"video_b",
+              "videoPath":"content/videos/s3/Filiera_immagini.mp4",
+              "shapePath":"models/room3/video/plane_video_b.gltf"
+            }
+          ],
              "objectCollection": 
              {
                  "path": "models/room3/lowObjects/assets_sala3.gltf",
@@ -1513,30 +1525,6 @@
                     },
                     "povIn": {"pos":{"x":14.315642626723136,"y":1.582739911656823,"z":-3.299336612550926},"target":{"x":13.519619718331079,"y":1.5329202467794627,"z":-3.9025492867435}}
                 },
-                {
-                  "id":"video_a",
-                  "hoverLable":"Tavole acquerellate - video",
-                  "type":"video",
-                  "path":"content/videos/s3/Tavole_acquarellate.mp4",
-                  "povIn":{"pos":{"x": 20.045053453451775, "y": 1.6868624421511345, "z": -4.845026971059161},"target":{"x": 21.018092228331994, "y": 1.5663294862810335, "z": -5.041667122424078}},
-                  "content":"",
-                  "sem":
-                  {
-                      "path":"models/room3/semObjs/videobig_sem.glb"
-                  }
-              },
-              {
-                "id":"video_b",
-                "hoverLable":"Filiera delle immagini -  video",
-                "type":"video",
-                "path":"content/videos/s3/Filiera_immagini.mp4",
-                "povIn":{"pos":{"x": 17.095655050876445, "y": 1.6839490739883674, "z": -7.22960843623841},"target":{"x": 17.18150263022748, "y": 1.5644108031605695, "z": -8.218719549777767}},
-                "content":"",
-                "sem":
-                {
-                    "path":"models/room3/semObjs/videosmall_sem.glb"
-                }
-            },
                 {
                   "id": "erbariomedievale",
                   "hoverLable": "Hortus sanitatis",

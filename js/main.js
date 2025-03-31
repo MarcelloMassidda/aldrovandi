@@ -11,7 +11,7 @@ window.addEventListener( 'load', ()=>
   
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
-  document.APP = APP; 
+  document.APP = APP;
   
   //For experiment setup
   APP.MIND = MIND.init(AldrovandiMind);
@@ -214,6 +214,7 @@ APP.setup = ()=>{
     APP.pathContent = window.location.href.split('?')[0];
     APP.pathContent += "content/";
     
+    ATON.Nav.setFOV(65);
  
     //---->AND LIGHTS PROBE TEST TO DO HERE
     
@@ -265,7 +266,7 @@ ATON.on("APP_ConfigLoaded", ()=>
     if(APP.isVR_Device())
     {
         console.log("SETUPPING SUI")
-       // APP.setupSUI();
+        APP.setupSUI();
     }
 
     helper.init();
@@ -372,26 +373,47 @@ APP.createSUILabel=(options)=>{
 
 
 
-APP.setupSUI=()=>//NOT USED
+APP.setupSUI=()=>
 {
+    //Create CloseObject SUI
     APP.CloseObject_SUIBtn = new ATON.SUI.Button("sui-back");
     APP.CloseObject_SUIBtn.setIcon(APP.pathContent + 'icons/backBtn.png', true)
     APP.CloseObject_SUIBtn.setOnSelect(APP.CloseObject)
     APP.CloseObject_SUIBtn.attachToRoot();
 
-    APP.Title_SUI = suiBuilder.customLabel("sui-title",1,0.5);// new ATON.SUI.Label("sui-title", 1 , 0.5);
+    //Create Titole SUI
+    APP.Title_SUI = suiBuilder.createLabel({ id:"sui-title", w:1, h:0.5, content:"", pos:{x:0,y:0,z:0}, rot:{x:0,y:0,z:0} });
    // APP.Title_SUI.setBaseColor( new THREE.Color(0.1,0.1,0.1));
     APP.Title_SUI.uiText.set({fontSize: 0.1, textAlign:"left", justifyContent:"left", content:"..."});
     ThreeMeshUI.update();
     APP.Title_SUI.attachToRoot();
+
+    //Create Temporary floor:
+    const floorGeometry = new THREE.PlaneGeometry(30, 30); // A large plane to act as the floor
+    const floorMaterial = new THREE.MeshBasicMaterial({ color:0x743826, side: THREE.DoubleSide }); // Grey double-sided material
+    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    floor.rotation.x = -Math.PI / 2; // Rotate the floor to be horizontal
+    floor.position.set(0, 0, 0); // Position the floor below the user (assuming height of user is roughly 1.5 meters)
+
+    let _floorNid = "VR_floor";
+    let floorNode = ATON.createSceneNode(_floorNid);
+    floorNode.attachToRoot();
+    floorNode.attach(floor);
+    APP.Floor_SUI = floorNode;
+    APP.Floor_SUI.visible=false;
+   // APP.FLoor_SUI.hide();
 }
 
 
 const deleteAndDispose=(node)=>{
+    console.log(node)
+    if(!node) return;
     let p = node.parent;
 
     if (p !== undefined && p.nid !== undefined) removeChildandDispose(node);
 }
+APP.deleteAndDispose = deleteAndDispose;
+
 
 const removeChildandDispose=(node)=>{
     if (node === undefined) return;
@@ -462,6 +484,7 @@ APP.composeAmbient = (_stage)=>
        APP.room =  ATON.createSceneNode(APP.cRoom.room.id).load(APP.cRoom.room.path,()=>{
         APP.updateSiblings();
         APP.updateRoomSUI();
+        APP.updateVideoAssets();
     });
 
         const p = APP.cRoom.room.pos; if(p) {APP.room.setPosition(p.x,p.y,p.z)}
@@ -505,32 +528,8 @@ APP.composeAmbient = (_stage)=>
 
     APP.objects = {};
     
-    //ATON.SemFactory.setMaterial(APP.matSemDef);
-
     APP.semObjects = ATON.createSemanticNode("semObjects");
    
-    
-    
-    //Test materials
-    const semanticMat_idle = new THREE.MeshBasicMaterial({
-        color: 0x00ff00, // Green color
-        side: THREE.DoubleSide, // Render both sides of the material
-        transparent: true,
-        opacity: 0.0,
-        depthWrite: false, 
-        depthTest: false,
-    });
-
-    const semanticMat_focus = new THREE.MeshBasicMaterial({
-        color:0x0000ff, // Green color
-        side: THREE.DoubleSide, // Render both sides of the material
-        transparent: true,
-        opacity: 0.5
-    });
-
-
-      //ATON.MatHub.materials.wireframe
-  //
 
     APP.cRoom.objects.map((obj)=>
     {
@@ -581,7 +580,6 @@ APP.composeAmbient = (_stage)=>
         }
     }
 
-
     //LINK ROOMS WORKAROUND:
     //var l1 = ATON.getSemanticNode("room1link_sem");
     //var l2 = ATON.getSemanticNode("room2link_sem");
@@ -595,7 +593,6 @@ APP.updateSiblings=()=>{
     if(APP.siblings) deleteAndDispose(APP.siblings);
     APP.siblings = ATON.createSceneNode("siblings");
   
-
     //Add new siblings
     if(APP.cRoom.siblings){
         APP.cRoom.siblings.forEach(s => {
@@ -683,7 +680,7 @@ APP.testSem=(object)=>
             
         });
 
-        ATON.on("SemanticNodeLeave", (semid)=>{
+       // ATON.on("SemanticNodeLeave", (semid)=>{
             /*
             let S = ATON.getSemanticNode(semid);
             if (S === undefined) return;
@@ -696,7 +693,7 @@ APP.testSem=(object)=>
     
             if (ATON.SUI.gSemIcons) ATON.SUI.gSemIcons.show();
             */
-        });
+       // });
 
         //OVVERIDED FROM ATON.FE 
         ATON.FE.showSemLabel = (idSem)=>{
@@ -743,8 +740,8 @@ APP.setupCustomSemanticMats=()=>
                 //float ff = dot(vNormalV, vec3(0,0,1));
 		        //ff = clamp(1.0-ff, 0.0, 1.0);
 
-                float pulse = cos(time * 1.5); // Want even more time between pulses? Change time * 1.5 to time * 1.0
-                float f = smoothstep(0.7, 1.0, pulse); //Want a shorter bright phase? Adjust smoothstep (>0.5, 1.0, pulse)
+                float pulse = cos(time * 0.9); // Want even more time between pulses? Change time * 1.5 to time * 1.0
+                float f = smoothstep(0.9, 1.0, pulse); //Want a shorter bright phase? Adjust smoothstep (>0.5, 1.0, pulse)
 
                 //f = cos(time + (vPositionW.y*10.0));
                 f = clamp(f, 0.0,1.0);
@@ -787,15 +784,15 @@ ATON.on("XRselectEnd", (c)=>{
 APP.TryToTapHoveredSemNode = ()=>
 {
     if(!ATON._hoveredSemNode) return;
-    APP.onTapSemNodes(ATON._hoveredSemNode);
+    APP.onTapSemNodes(ATON._hoveredSemNode, ATON._queryDataScene.p);
 }
 
 
 
-APP.onTapSemNodes = (idSem)=>
+APP.onTapSemNodes = (idSem, p=null)=>
 {
-
     let POVTimeTransition = 0.6;
+    let VR_MaxDistance = 1.8; //max distance to interact with object in VR;
 
     //get object ID from semantic ID
     console.log(idSem + " tapped.");
@@ -810,15 +807,8 @@ APP.onTapSemNodes = (idSem)=>
         if(_type!="roomLink"){return}
     } 
 
-    if(APP.isVR_Running())
-    {
-        if(_type!="roomLink"){return} //For now all interaction are blocked
-    } 
-
-
-    //Load object // TODO: async?? MOVED TO ON ENDED POV REQUEST
     APP._currentObjectActive = _id;
-
+    APP._currentSemActive = idSem;
 
 
     if(_type=="roomLink")
@@ -828,6 +818,19 @@ APP.onTapSemNodes = (idSem)=>
         APP.showBlurredFullscreen();
     }
     
+    
+    if(APP.isVR_Running()){
+            //Check distance: 
+            if(p)
+            {
+                let d = new THREE.Vector3(p.x, p.y, p.z).distanceTo(ATON.Nav._currPOV.pos);
+                console.log("Distance: "+d);
+                if(d > VR_MaxDistance) return;
+            }
+            // if(_type!="roomLink"){return} //For now all interaction were blocked
+    } 
+
+        
     /*--------------------------
     Compose POV
     -------------------------*/
@@ -853,15 +856,26 @@ APP.onTapSemNodes = (idSem)=>
         var _pov = new ATON.POV().setPosition(E).setTarget(bs.center);  
     }
     
+    //For VR avoid to use POV moving and call directly onTransitionCompleted
+  
     
     if(_type=="video")
     {
         // APP.showVideo();
         document.getElementById("InfoScrollContainer").style.display="none";
         document.getElementById("SideBAR").style.display="block";
+        ATON.getSemanticNode( APP._currentSemActive).hide();
     }
 
-    if(_pov) ATON.Nav.requestPOV(_pov, POVTimeTransition);
+    
+    if(_pov) {
+        if(APP.isVR_Running()){
+            APP.onPOVTransitionCompleted(null);
+        }
+        else{
+            ATON.Nav.requestPOV(_pov, POVTimeTransition);
+        }
+    }
 
     if(_type=="object")
     {
@@ -871,7 +885,9 @@ APP.onTapSemNodes = (idSem)=>
         SemNode.hide();
 
         ATON.getSceneNode("ambient").hide();
-        if(APP.siblings)APP.siblings.hide();
+        if(APP.siblings) APP.siblings.hide();
+        if(APP.videoAssets) APP.videoAssets.hide();
+
         ATON.Nav.setOrbitControl();
         ATON.getSceneNode("blackSphere").show();
 
@@ -936,6 +952,7 @@ APP.onTapSemNodes = (idSem)=>
         if(obj.type == "video")
         {
             APP.showVideo(obj.path);
+            APP.showBlurredFullscreen(false);
             APP.currentObjIsFocused=true;
         }
 
@@ -957,7 +974,7 @@ APP.onTapSemNodes = (idSem)=>
                 hqObj.attachTo(APP.hqObjects);
 
                 //SUI
-            if(APP.isVR_Running())// if(APP.isVR_Device())
+            if(APP.isVR_Running())
             {
                 //Btn back
                 if(obj.close)
@@ -976,7 +993,11 @@ APP.onTapSemNodes = (idSem)=>
                     APP.Title_SUI.visible = true;
                     ThreeMeshUI.update()
                 }
-        
+
+                ATON.Nav.setFirstPersonControl();
+                APP.Floor_SUI.setPosition(ATON.Nav._currPOV.pos.x,0,ATON.Nav._currPOV.pos.z);
+                APP.Floor_SUI.show();
+
             }
             APP.currentObjIsFocused=true;
         }
@@ -1011,6 +1032,8 @@ APP.CloseObject = ()=>
     
     ATON.getSceneNode("ambient").show();
     if(APP.siblings)APP.siblings.show();
+    if(APP.videoAssets) APP.videoAssets.show();
+    
     APP.lowObjCollection.show();
 
     //Show Semantic and Scene Nodes of objects
@@ -1030,16 +1053,20 @@ APP.CloseObject = ()=>
     ATON.Nav.setFirstPersonControl();
    // ATON.setMainPanorama( 'image/hemi-grey.jpg');
     APP.closeVideo();
+    APP.hideBlurredFullscreen();
+
     ATON.getSceneNode("blackSphere").hide();
 
     //SUI
-    if(APP.isVR_Running())// if(APP.isVR_Device())
+    if(APP.isVR_Running())
     {
         APP.CloseObject_SUIBtn.visible = false;
 
-        APP.Title_SUI.uiText.set({ content: "..." });
+        APP.Title_SUI.uiText.set({ content: "" });
         APP.Title_SUI.visible = false;
-        ThreeMeshUI.update()
+        ThreeMeshUI.update();
+
+        APP.Floor_SUI.hide();
     }
     
 }
@@ -1117,10 +1144,10 @@ APP.openIIIFview=(target)=>
 };
 
 
-APP.showBlurredFullscreen = () => {
+APP.showBlurredFullscreen = (needLoader=true) => {
     let element = document.getElementById("blurredFullscreen");
     element.classList.add("show-blur");
-    $("#idLoader").show();
+    if(needLoader) $("#idLoader").show();
 };
 
 APP.hideBlurredFullscreen = () => {
@@ -1128,6 +1155,101 @@ APP.hideBlurredFullscreen = () => {
     element.classList.remove("show-blur");
     $("#idLoader").hide();
 };
+
+
+//VIDEO TEXTURES OBJECTS:
+
+APP.testVideoObjects=()=>{
+    
+    // Create a video element and load the video
+    const videoPath = APP.pathContent + "models/room3/video/Tavole acquarellate.mp4";
+    const planePath = APP.pathContent + "models/room3/video/plane_video_a.gltf";
+    
+    
+    const video = document.createElement('video');
+    video.src = videoPath; // 🔹 Replace with your video path
+    video.loop = true; // Optional: Loop the video
+    video.muted = true; // Optional: Mute video to autoplay without interaction
+    video.play(); // Start playing the video
+    
+    // Create a VideoTexture from the video
+    const videoTexture = new THREE.VideoTexture(video);
+    videoTexture.minFilter = THREE.LinearFilter;
+    videoTexture.magFilter = THREE.LinearFilter;
+    videoTexture.format = THREE.RGBAFormat;
+    
+    
+    // 4️⃣ Create a material using the video texture
+    const material = new THREE.MeshBasicMaterial({ map: videoTexture });
+    
+    let node = ATON.createSceneNode("videoScreenA").load(planePath);
+    node.setMaterial(material);
+    node.attachTo(APP.room); return;
+
+    // 5️⃣ Create a plane and apply the material
+    const geometry = new THREE.PlaneGeometry(5, 3); // Plane size: 5x3 units
+    const plane = new THREE.Mesh(geometry, material);
+    
+    //Add as ATON Node
+    let _videoScreenId = "videoscreen";
+    let videoScreenNode = ATON.createSceneNode(_videoScreenId);
+    videoScreenNode.attachToRoot();
+    videoScreenNode.attach(plane);
+}
+
+
+APP.updateVideoAssets = () =>{
+
+    //Close Others
+    if(APP.videoAssets) {
+
+        console.log(APP.videoAssets);
+        if(APP.videoAssets.parent)  APP.deleteAndDispose(APP.videoAssets);
+        
+        APP.videoAssets.children.map((videoNode)=>{
+            console.log(videoNode);
+            let videoEl = document.getElementById(videoNode.nid);
+            if(videoEl) videoEl.delete();
+        })
+    }
+    
+    const videoAssets = APP.cRoom.videoAssets;
+    if(!videoAssets) return;
+
+    APP.videoAssets = ATON.createSceneNode("videoAssets");
+    APP.videoAssets.attachTo(APP.room);
+    
+    //Create video utility:
+    const setup3DVideo = (o) =>{
+
+        //1 Create video element
+        const video = document.createElement('video');
+        video.src = o.videoPath;
+        video.loop = true;
+        video.muted = true;
+        video.play();
+
+        // Create a VideoTexture from the video
+        const videoTexture = new THREE.VideoTexture(video);
+        videoTexture.minFilter = THREE.LinearFilter;
+        videoTexture.magFilter = THREE.LinearFilter;
+        videoTexture.format = THREE.RGBAFormat;
+
+        const material = new THREE.MeshBasicMaterial({ map: videoTexture });
+
+        //2 Load Model
+        let node = ATON.createSceneNode(o.id).load(o.shapePath);
+        node.setMaterial(material);
+        node.attachTo(APP.videoAssets);
+        //TODO implement pos and rot from json.
+    }
+
+    //Add new video assets
+    videoAssets.map((o)=>{setup3DVideo(o)});
+}
+
+
+//END VIDEO OBJECTS
 
 
 APP.update = ()=>{

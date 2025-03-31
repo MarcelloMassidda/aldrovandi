@@ -296,7 +296,7 @@
   height: 100%;
   /*background-color: rgba(186, 186, 186, 0.662);*/
   backdrop-filter: blur(30px);
-  z-index: 9;
+  z-index: 4;
 
   /* Start hidden */
   opacity: 0;
@@ -349,11 +349,17 @@
 #VideoPlayer
 {
   position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: calc( 30% + 50px);
-  transform: translateY(-50%);
+  z-index: 10;
   display: none;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /*top: 50%;
+  left: calc( 30% + 50px);
+  transform: translateY(-50%);*/
 
 }
 
