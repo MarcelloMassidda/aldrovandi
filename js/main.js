@@ -743,7 +743,9 @@ APP.setupCustomSemanticMats=()=>
                 //float ff = dot(vNormalV, vec3(0,0,1));
 		        //ff = clamp(1.0-ff, 0.0, 1.0);
 
-                float f = (1.0 * cos(time*2.0)); // - 0.5;
+                float pulse = cos(time * 1.5); // Want even more time between pulses? Change time * 1.5 to time * 1.0
+                float f = smoothstep(0.7, 1.0, pulse); //Want a shorter bright phase? Adjust smoothstep (>0.5, 1.0, pulse)
+
                 //f = cos(time + (vPositionW.y*10.0));
                 f = clamp(f, 0.0,1.0);
 
@@ -854,7 +856,7 @@ APP.onTapSemNodes = (idSem)=>
     
     if(_type=="video")
     {
-       // APP.showVideo();
+        // APP.showVideo();
         document.getElementById("InfoScrollContainer").style.display="none";
         document.getElementById("SideBAR").style.display="block";
     }
