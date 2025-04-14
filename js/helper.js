@@ -7,18 +7,23 @@ helper.init=()=>
 
     ATON.on("KeyPress", (k)=>{
         if(k==="+"){helper.setActive(true)}
-        
-        if (k === '1' && helper.isActive) { if(APP.ceiling) APP.ceiling.toggle(); }
+
+        if (k === '0' && helper.isActive) { helper.alertGizmo(); }
+        if (k === '1' && helper.isActive) { helper.attachGizmoToActiveNode(); }
+
         if (k === '2' && helper.isActive) { if(APP.lowObjCollection) APP.lowObjCollection.toggle(); }
         if (k === '3' && helper.isActive) { APP.useGizmo("quadro")}
         if (k === '4' && helper.isActive) { console.log(ATON.getSceneNode("quadro").rotation)}
+        if (k === '5' && helper.isActive) { if(APP.ceiling) APP.ceiling.toggle(); }
 
-        if (k === '0' && helper.isActive) { helper.alertGizmo(); }
+        
         if (k === 'q' && helper.isActive) { helper.setGizmoMode("translate"); }
         if (k === 'w' && helper.isActive) { helper.setGizmoMode("rotate"); }
         if (k === 'e' && helper.isActive) { helper.getPosandRotofCurrentGizmedNode(); }
         if (k === 'r' && helper.isActive) { helper.toggleNAV(); }
         if (k === 't' && helper.isActive) { helper.getCurrentPov(); }
+
+
         if (k === "y" && helper.isActive) { helper.toogleLoader(); }
         if (k === "u" && helper.isActive) { helper.getQueryDataScene(); }
         if (k==' ') {helper.toggleAudio();}
@@ -166,13 +171,29 @@ helper.alertGizmo=()=>
     ATON._gizmo.attach( n );
 }
 
+helper.attachGizmoToActiveNode=()=>{
+
+    let idNode = APP._currentObjectActive;
+    if(!idNode) return;
+
+    var n = helper.returnNode(idNode);
+    APP.currentGizmedNode = idNode;
+    ATON.useGizmo(true);
+    helper.ATON_setupGizmo();
+    ATON._gizmo.attach( n );
+}
+
+
 helper.getPosandRotofCurrentGizmedNode=()=>
 {
     var n = helper.returnNode(APP.currentGizmedNode);
     var pos = {x:n.position.x, y:n.position.y, z:n.position.z};
     var rot = {x:n.rotation.x, y:n.rotation.y, z:n.rotation.z};
-    var info = JSON.stringify({pos,rot});
-    alert(info);    
+    var info = JSON.stringify({NR:APP._currentObjectActive, pos,rot});
+    console.log(info);
+
+    helper.copyToClipboard(info);
+    alert("COPIED IN CLIPBOARD: " + info);
 }
 
 helper.getNodes=()=>
@@ -487,3 +508,68 @@ function saveArrayBuffer( buffer, filename ) {
     save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
 }
     */
+
+
+
+// Process roto-translation from single GLTF with all children to NR-roto-translation json.
+
+const room1SemsConvexHullPath  =     "models/room1/semObjects/convex/ALLSEMS_room1.glb";
+const room1SemsForRotsPath  =     "models/room1/rots.glb";
+const room2SemsForRotsPath  =     "models/room2/ALL_sems_Room2.glb";
+const room3SemsForRotsPath  =     "models/room3/ALL_sems_Room3.glb";
+const room4SemsForRotsPath  =     "models/room4/semObjs/convex/ALL_Sems.glb";
+const room5SemsForRotsPath  =     "models/room5/semObjs/ALL_Sems_5.glb";
+const room6SemsForRotsPath  =     "models/room6/semObjs/ALL_Sems_room6.gltf";
+
+
+
+APP.process_semsRoom1=()=>{ APP.process_sems("hull1",room1SemsForRotsPath) }
+APP.process_semsRoom2=()=>{ APP.process_sems("hull2",room2SemsForRotsPath) }
+APP.process_semsRoom3=()=>{ APP.process_sems("hull3",room3SemsForRotsPath) }
+APP.process_semsRoom4=()=>{ APP.process_sems("hull4",room4SemsForRotsPath) }
+APP.process_semsRoom5=()=>{ APP.process_sems("hull5",room5SemsForRotsPath) }
+APP.process_semsRoom6=()=>{ APP.process_sems("hull6",room6SemsForRotsPath) }
+
+APP.process_sems=(nodeId,path)=>{
+    const onLoad = ()=>{
+       
+       //Compose data:
+       let data = {};
+       let SemParent = ATON.getSceneNode(nodeId);
+       console.log(SemParent);
+       let sems = SemParent.children[0].children;
+       
+       sems.forEach(s => {
+           let _name =  s.name.replace(/_convex$/, "");
+           console.log(_name);
+         data[_name]= {
+            pos:{x:s.position.x,y:s.position.y,z:s.position.z},
+            rot:{x:s.rotation._x,y:s.rotation._y,z:s.rotation._z}
+        }
+        });
+
+        //Save data to file:
+        downloadJSONOnTheFly(nodeId,data);
+    }
+    APP.fastLoadModel(nodeId,path,onLoad);
+}
+
+APP.fastLoadModel =(nodeId,path,onload)=>{
+    ATON.createSceneNode(nodeId).load(path, onload).attachTo(APP.room);
+}
+
+
+const downloadJSONOnTheFly=(name , obj)=>{
+    var storageObj = obj; // {value:"ciao"};
+    document.body.innerHTML+=`<a id="downloadAnchorElem" style="display:none"></a>"`;
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+    var dlAnchorElem = document.getElementById('downloadAnchorElem');
+    dlAnchorElem.setAttribute("href",     dataStr     );
+    dlAnchorElem.setAttribute("download", name+".json");
+    dlAnchorElem.click();
+    dlAnchorElem.remove();
+}
+
+
+
+APP.compose

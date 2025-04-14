@@ -1,0 +1,112 @@
+/* Variables for colours, fonts and spacing */
+:root {
+    --color-dark-gray: #1E1E1E;
+    /* Main background colour */
+    --color-creme: #FFF8F0;
+    /* Primary colour for text */
+    --color-terracotta: #E2725B;
+    /* Emphasis colour */
+
+    /* Fonts, to be addedd */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'PT Serif', serif;
+
+    /* General spacing */
+    --section-spacing: 24px;
+    --subsection-spacing: 16px;
+}
+
+/* Main sidebar container */
+#SideBAR {
+    width: 30%;
+    background-color: var(--color-dark-gray);
+    color: var(--color-creme);
+    font-family: var(--font-primary);
+}
+
+/* Scrollable container */
+#InfoScrollContainer {
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    padding: 25px;
+}
+
+/* Style for API-generated content (identified by id ‘melody_api_response’) */
+#melody_api_response {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    color: var(--color-creme);
+    line-height: 1.4;
+}
+
+/* Main object title */
+.sidebar-title {
+    font-family: var(--font-secondary);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--color-creme);
+    padding-bottom: 12px;
+}
+
+/* Metadata style (main field) */
+.metadata-header {
+    margin: 0 0 var(--subsection-spacing) 0;
+    font-size: 16px;
+}
+
+/* BORDER ONLY ON THE LAST METADATA-HEADER */
+.metadata-header:not(:has(+ .metadata-header)) {
+    border-bottom: 1px solid var(--color-creme);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+/* Style for metadata labels */
+.metadata-caption {
+    text-transform: uppercase;
+    margin-right: 4px;
+}
+
+/* Style for metadata values */
+.metadata-content {
+    margin-left: 4px;
+}
+
+/* Style for digitisation metadata */
+.metadata-digitisation {
+    margin: 0 0 var(--subsection-spacing) 0;
+    font-size: 16px;
+}
+
+/* 6. ‘Explore’ buttons */
+.sidebar-button {
+    display: inline-block;
+    width: 147px;
+    /* Fixed width */
+    height: 45px;
+    /* Fixed height (>=44px for UX on touch) */
+    text-align: center;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+
+    /* Outline style */
+    background-color: transparent;
+    color: var(--color-creme);
+    border: 2px solid var(--color-creme);
+    border-radius: 25px;
+}
+
+.sidebar-button:hover {
+    background-color: var(--color-creme);
+    color: var(--color-dark-gray);
+}
+
+
+/* Focus per l’accessibilità */
+.sidebar-button:focus {
+    outline: 2px solid var(--color-creme);
+    outline-offset: 2px;
+}

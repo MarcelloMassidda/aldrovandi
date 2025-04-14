@@ -203,12 +203,18 @@ APP.loadModelAsync = async(path)=> {
 }
 
 
+APP.loadJSON = (path,callback)=>{
+    return $.getJSON( path, callback);
+}
+
+
 APP.setup = ()=>{
 
     //---->LIGHTS PROBE TEST TO DO HERE
     //APP.setuplightsProbe();
 
     const configPath = "./config.json";
+    const combinedConfigPath = "./combined.json";
 
     ATON.PATH_COLLECTION = "content/";
     APP.pathContent = window.location.href.split('?')[0];
@@ -220,7 +226,12 @@ APP.setup = ()=>{
     
 
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
-    APP.loadConfig(configPath);
+    APP.loadJSON(combinedConfigPath, ( data )=>{
+        APP.combinedConfig = data;
+        APP.loadConfig(configPath);
+    });
+   
+
 
     ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");	
 
@@ -290,7 +301,7 @@ ATON.on("APP_ConfigLoaded", ()=>{
     
 });
 
-APP.limitY = 0.2;
+APP.limitY = 0.3;
 APP.setupCustomLocomotionValidation=()=>
 {
     var Nav = ATON.Nav;
@@ -530,7 +541,16 @@ APP.composeAmbient = (_stage)=>{
     APP.semObjects = ATON.createSemanticNode("semObjects");
    
 
-    APP.cRoom.objects.map((obj)=>
+    /*
+        APP.objects = 
+
+    */ 
+     //REAL: 
+      let _objects = APP.cRoom.objects;
+     
+     //let _objects = APP.combinedConfig["1"];
+
+    _objects.map((obj)=>
     {
        
         APP.objects[obj.id] = obj;
@@ -817,14 +837,16 @@ APP.onTapSemNodes = (idSem, p=null)=>
     
     
     if(APP.isVR_Running()){
-            //Check distance: 
+            //TO Check distance: 
+            /*
             if(p)
             {
                 let d = new THREE.Vector3(p.x, p.y, p.z).distanceTo(ATON.Nav._currPOV.pos);
                 console.log("Distance: "+d);
                 if(d > VR_MaxDistance) return;
-            }
-            // if(_type!="roomLink"){return} //For now all interaction were blocked
+            }*/
+
+            if(_type!="roomLink"){return} //For now all interaction were blocked
     } 
 
         
@@ -866,12 +888,13 @@ APP.onTapSemNodes = (idSem, p=null)=>
 
     
     if(_pov) {
-        if(APP.isVR_Running()){
-            APP.onPOVTransitionCompleted(null);
-        }
-        else{
+
+//        if(APP.isVR_Running()){
+ //           APP.onPOVTransitionCompleted(null);
+  //      }
+ //       else{
             ATON.Nav.requestPOV(_pov, POVTimeTransition);
-        }
+  //      }
     }
 
     if(_type=="object")
@@ -897,17 +920,40 @@ APP.onTapSemNodes = (idSem, p=null)=>
             if(ATON.getSceneNode(o.id)) ATON.getSceneNode(o.id).hide();
             if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").hide();
         })
+        
+
+
+    //Content SIDEBAR
+
+    //Try to get data for Melody:
+    let _IRI = null;
     
-        //Content SIDEBAR
-        var _content = APP.objects[APP._currentObjectActive].content;
-        var _info = null;
+    if(APP.objects[APP._currentObjectActive].IRI!=undefined){
+        _IRI = APP.objects[APP._currentObjectActive].IRI;
+        console.log("IRI FROM HERE IS: " + _IRI)
+    }
+    else {
+        if(APP.combinedConfig){
+            //Current Room:
+            if(APP.combinedConfig[APP.STAGE]){
+                const o = APP.combinedConfig[APP.STAGE].find(obj => obj.NR === APP._currentObjectActive);
+
+                if(o){
+                    if(o.IRI) _IRI = o.IRI;
+                }
+            }
+        }
+    }
+
+    //Callback to compose data in sidebar, anyway
+    let composeContent=(_info)=>{
+
+        console.log(_info);
 
         //if no content no scroll
         var infoScrollContainer = document.getElementById("InfoScrollContainer");
-        var scrollVisibility = _content==undefined ? "none" : "block";
+        var scrollVisibility = _info==undefined ? "none" : "block";
         infoScrollContainer.style.display= scrollVisibility;
-    
-        if(_content){ _info = APP.returnFormattedInfo(_content);}
         
         document.getElementById("InfoContainer").innerHTML =  _info;
         document.getElementById("SideBAR").style.display="block";
@@ -917,7 +963,36 @@ APP.onTapSemNodes = (idSem, p=null)=>
         {
             copy.style.dislay="block";
         }
+    };
+
+    if(_IRI){
+        console.log(_IRI);
+
+        //TO REMOVE TO USE REALLY MELODY:
+        let backupContent = getMelodyDataByIRI(_IRI);
+        composeContent(backupContent);
+        
+        /* TO USE THIS FOR MELODY:
+        let melodyOptions = {
+            uri:_IRI,
+            onComplete:composeContent,
+            onError: (err)=>{
+                console.log(err);
+                composeContent(undefined);
+            }
+        } 
+
+        melody.getData(melodyOptions);
+        */
     }
+
+    else{ composeContent(undefined); }
+
+    }
+}
+
+APP.getInfo=(id)=>{
+    
 }
 
 ATON.on("POVTransitionCompleted", (x)=>{APP.onPOVTransitionCompleted(x);})

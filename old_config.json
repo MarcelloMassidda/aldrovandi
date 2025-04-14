@@ -1,0 +1,1908 @@
+{
+    "rooms":
+    {
+        "1":
+        {
+            "HomePov":
+            {"pos": {"x" :-0.22108174086545052,"y":1.5200246181018253,"z":3.144529406858276},"target":{"x": 0.7736133808971439, "y": 1.581635970477793, "z": 3.226904500182059}},
+            
+                "old_ceiling":
+                    {
+                        "id":"ceiling",
+                        "path": "models/room1/ceiling/retopologizeRoof.gltf",
+                        "pos":{"x":0,"y":0.941,"z":0}
+                    },
+                    "room":
+                    {
+                        "id":"room",
+                        "path": "models/room1/room/Stanza_v3_GLTF.gltf",
+                        "ktx_path": "models/room1/room/v3_KTX/Stanza_v3_GLTF.gltf",
+                        "pos":{"x":-0.76,"y":0,"z":0}
+                        
+                    },
+                    "old_objectCollection": {"path":"models/room1/lowObjects/lowObjs.gltf",  "pos":{"x":-0.76,"y":0,"z":0}},
+                    "objectCollection": {"path":"models/room1/lowObjects/assets_sala1_updated.gltf", "pos":{"x":-0.76,"y":0,"z":0}}, 
+                    "siblings":[
+                      {
+                        "id":"sibling_room2",
+                        "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                        "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793},
+                        "path":"models/siblings/room2/Sala2_v2.gltf"
+                    }
+                    ],
+                    "SUI":[
+                      {
+                        "id":"2",
+                        "content":"Sala 2",
+                        "pos":{ "x": 9.7733659, "y": 1.3508535477153758, "z": 4.673076343663993},
+                        "rot": {"x": 3.141592653589793, "y": -1.5418474015728625, "z": 3.141592653589793}
+                      }
+                    ],
+                    "objects":
+                    [   
+                        {
+                            "id":"room2link",
+                            "hoverLable":"Sala 2",
+                            "pos":{"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"roomLink",
+                            "roomTo":2,
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/linkRoom2_sem.glb"
+                            },
+                            "povIn": {"pos":{"x": 10.34224987553938, "y": 1.6999999999999993, "z": 4.627753464883254},"target":{"x": 11.246129609373934, "y": 1.593232172601125, "z": 4.2135046775637255}},
+                            "povOut": {"pos":{"x":10.098345655927258,"y":1.6999999999999988,"z":4.565379272482929},"target":{"x":10.980127040973764,"y":1.7359428027407513,"z":4.09509244094647}}
+                        },
+                        {
+                            "id":"aristotele",
+                            "hoverLable":"De Historia Animalium",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "path":"models/room1/hqObjects/aristotele/aristoteleHQ.gltf",
+                            "povIn":{"pos":{"x":8.401833179085427,"y":1.1742820262831328,"z":-0.15782926511928239},"target":{"x":8.402258747475077,"y":0.855791416920184,"z":-0.1577991951945522}},
+                            "povOut": {"pos":{"x":8.061957756247093,"y":1.6930669062609829,"z":0.5130929832913194},"target":{"x":8.423785908487048,"y":0.8500078814321806,"z":0.11518361056766813}},
+                            "content":
+                            {
+                                "mainTitle":"De Historia Animalium",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1545<br><br><b>ATTRIBUZIONI</b>: Aristoteles<br/><br><b>LUOGO DI CONSERVAZIONE</b>: Venezia, Girolamo Scoto, BUB, A.V.GG.VII.28<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"I naturalisti dell'Antichità",
+                                        "subtitle":"",
+                                        "pages":"p.38",
+                                        "copy":"Questi quattro volumi appartenenti alla biblioteca personale di Ulisse Aldrovandi sono stati per secoli la base dello studio delle scienze naturali in Europa. La Historia Animalium è il principale trattato scientifico di Aristotele, che è stato anche il primo biologo della storia e il primo scienziato di cui ci siano rimasti degli scritti. La Historia Plantarum del suo allievo (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinanord.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/aristotele_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":9.159798948059278,"y":-0.20726795842165296,"z":1.0085577209646475},"rot":{"x":-1.7841326510854854,"y":-0.3729278460702939,"z":-1.6497003698717985}},
+                            "title": {"pos":{"x":8.898188680212558,"y":-0.35877822639622475,"z":1.4722532418863894},"rot":{"x":-1.5977826468127267,"y":-0.4489888473427703,"z":-1.5923945373589101}}
+                        },
+                        {
+                          "id":"quetzal",
+                          "hoverLable":"Pharomachrus mocinno (De la Llave, 1832)",
+                          "pos": {"x": 2.76176273175587, "y": 1.8075075392466478, "z": 3.379401308922056},
+                          "rot":  {"x": -3.141592653589793, "y": 0.0038810464909743046, "z": -3.141592653589793},
+                          "type":"object",
+                          "path":"models/room1/hqObjects/quetzal/S1-13-Quetzal/quetzal_5.gltf",
+                          "povIn": {"pos":{"x":2.244689987531917,"y":1.8424561264331498,"z":4.748619007550012},"target":{"x":2.3022076154834137,"y":1.764588169333276,"z":5.743922129082304}},
+                          "sem":
+                          {
+                              "path":"models/room1/semObjects/quetzal_sem.glb",
+                              "pos":{"x": 0, "y": 0, "z": 0}
+                          },
+                          "close":{"pos":{"x":8.963942138367825,"y":0.32725935000534867,"z":1.303200827508056},"rot":{"x":-1.792110368186984,"y":-0.45510279616873256,"z":-1.669513918800266}},
+                          "title": {"pos":{"x":8.85410975834308,"y":-0.11920913704016423,"z":2.0267742071139403},"rot":{"x":-1.5796482632331017,"y":-0.36522063255367976,"z":-1.5505770791679576}}
+                      },
+                        {
+                            "id":"teofrasto",
+                            "hoverLable":"De Historia Plantarum",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "path":"models/room1/hqObjects/teofrasto/teofrastoHQ.gltf",
+                            "povIn": {"pos":{"x":8.364774053929729,"y":1.3214517207598724,"z":0.2598069504797051},"target":{"x":8.388920217006268,"y":0.9088904509311243,"z":0.2604186046244153}},
+                            "povOut": {"pos":{"x":8.191586783130449,"y":1.695775006763408,"z":0.8857286786893912},"target":{"x":8.491652119854052,"y":0.7864520301145852,"z":0.5974709505441167}},
+                            "content":
+                            {
+                                "mainTitle":"Peri phyton (De historia plantarum)",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1497<br><br><b>ATTRIBUZIONI</b>: Theophrastus<br/><br><b>LUOGO DI CONSERVAZIONE</b>: Venezia, Aldo Manuzio, ISTC ia 00959000, BUB A.V.KK.X.6<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"I naturalisti dell'Antichità",
+                                        "subtitle":"",
+                                        "pages":"p.38",
+                                        "copy":"Questi quattro volumi appartenenti alla biblioteca personale di Ulisse Aldrovandi sono stati per secoli la base dello studio delle scienze naturali in Europa. La Historia Animalium è il principale trattato scientifico di Aristotele, che è stato anche il primo biologo della storia e il primo scienziato di cui ci siano rimasti degli scritti. La Historia Plantarum del suo allievo (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinanord.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/teofrasto_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":8.963942138367825,"y":0.32725935000534867,"z":1.303200827508056},"rot":{"x":-1.792110368186984,"y":-0.45510279616873256,"z":-1.669513918800266}},
+                            "title": {"pos":{"x":8.85410975834308,"y":-0.11920913704016423,"z":2.0267742071139403},"rot":{"x":-1.5796482632331017,"y":-0.36522063255367976,"z":-1.5505770791679576}}
+                        },
+                        {
+                            "id":"materiamedica",
+                            "hoverLable":"De Medica Materia",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "path":"models/room1/hqObjects/materiamedica/materiamedicaHQ.gltf",
+                            "povIn":{"pos":{"x":8.374413363522324,"y":1.3097483845332718,"z":0.8496053248092413},"target":{"x":8.375796477530416,"y":0.8805329965566451,"z":0.8495991421835285}},
+                            "povOut":{"pos":{"x":8.108827024759977,"y":1.6940460595622122,"z":1.4942583813881762},"target":{"x":8.612283582268176,"y":0.8954072924646457,"z":1.1645500035891394}},
+                            "content":
+                            {
+                                "mainTitle":"De Medica Materia",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1523<br><br><b>ATTRIBUZIONI</b>: Dioscorides Pedanius<br/><br><b>LUOGO DI CONSERVAZIONE</b>: Firenze, Filippo Giunta eredi, BUB, A.IV.H.I.27<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"I naturalisti dell'Antichità",
+                                        "subtitle":"",
+                                        "pages":"p.38",
+                                        "copy":"Questi quattro volumi appartenenti alla biblioteca personale di Ulisse Aldrovandi sono stati per secoli la base dello studio delle scienze naturali in Europa. La Historia Animalium è il principale trattato scientifico di Aristotele, che è stato anche il primo biologo della storia e il primo scienziato di cui ci siano rimasti degli scritti. La Historia Plantarum del suo allievo (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinanord.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinanord3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/materiamedica_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":8.892704428510736,"y":0.2123380010213265,"z":1.9037634158922816},"rot":{"x":-1.7277468396689781,"y":-0.24530818356301426,"z":-1.410123429146196}},
+                            "title": {"pos":{"x":8.707901644960575,"y":0.006926432762206947,"z":2.47244403572505},"rot":{"x":-1.5790112391299687,"y":-0.21574806224611387,"z":-1.4777573774915047}}
+                        },
+                        {
+                            "id":"plinio",
+                            "hoverLable":"Naturae Historiarum",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "path":"models/room1/hqObjects/plinio/plinioHQ.gltf",
+                            "povIn":{"pos":{"x":8.403756076943015,"y":1.2315393306750595,"z":1.3283972563391677},"target":{"x":8.408147704262884,"y":0.7988961718072803,"z":1.328373360176609}},
+                            "povOut":{"pos":{"x":8.020959207461477,"y":1.6922103990940738,"z":2.245207685886787},"target":{"x":8.583733568384263,"y":0.974807048595413,"z":1.8345771324920785}},
+                            "content":
+                            {
+                                "mainTitle":"Naturae Historiarum, ",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1519<br><br><b>ATTRIBUZIONI</b>: Plinius Secundus Gaius<br/><br><b>LUOGO DI CONSERVAZIONE</b>: Venezia, Giorgio Rusconi, BUB, A.V.R.VI.9<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"I naturalisti dell'Antichità",
+                                        "subtitle":"",
+                                        "pages":"p.38",
+                                        "copy":"Questi quattro volumi appartenenti alla biblioteca personale di Ulisse Aldrovandi sono stati per secoli la base dello studio delle scienze naturali in Europa. La Historia Animalium è il principale trattato scientifico di Aristotele, che è stato anche il primo biologo della storia e il primo scienziato di cui ci siano rimasti degli scritti. La Historia Plantarum del suo allievo (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/libri/vetrinanord.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinanord2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinanord3.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/plinio_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":8.827670662185636,"y":0.5054628952089413,"z":2.2337830389461946},"rot":{"x":-1.7486465751186306,"y":-0.20274539776125433,"z":-1.5498811381952315}},
+                            "title": {"pos":{"x":8.632237015968007,"y":0.44951951335471907,"z":2.6981340885008978},"rot":{"x":-1.5790892874594058,"y":-0.07746060016871076,"z":-1.5480572405006574}}
+                        },
+                        {
+                            "id":"quadro",
+                            "hoverLable":"Ritratto di Ulisse Aldrovandi",
+                            "type":"object",
+                            "path":"models/room1/hqObjects/quadro/quadroHQ.gltf",
+                            "povIn":{"pos":{"x":7.337224505444645,"y":2.1787658116319446,"z":2.6120251884262964},"target":{"x":8.439934364262058,"y":2.109140980876489,"z":2.5288325603633313}},
+                            "povOut":{"pos":{"x":7.114974826976174,"y":1.673283336113113,"z":2.766514250774974},"target":{"x":8.1025255947033,"y":1.8227721397310983,"z":2.8154691152363016}},
+                            "content":
+                            {
+                                "mainTitle":"Ritratto di Ulisse Aldrovandi",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: dipinto<br><br><b>MATERIA E TECNICA</b>:  tela/ pittura a olio<br><br><b>DIMENSIONI</b>: 79 cm x 62 cm<br><br><b>DATA</b>: 1584/1586<br><br><b>ATTRIBUZIONI</b>: Agostino Carracci<br/><br><b>ALTRE ATTRIBUZIONI</b>: Ludovico Carracci, Carracci Agostino, Attribuito: Bartolomeo Passarotti<br><br><b>LUOGO DI CONSERVAZIONE</b>: Accademia Carrara - Museo, Bergamo<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Chi era Ulisse Aldrovandi?",
+                                        "subtitle":"di Giuseppe Olmi",
+                                        "pages":"pp. 23-27",
+                                        "copy":"L. Fuchs, K. Gesner, P. Belon, P.A. Mattioli, etc., uno dei grandi rinnovatori dello studio della natura nel Rinascimento. Manifestando precocemente una forte sete di conoscenza («Essendo io spinto dal dessiderio insin dalla mia prima età di sapere», scriverà più tardi) ebbe una infanzia e una giovinezza piuttosto irrequiete: all'età di soli dodici (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/ritratto/ritratto1.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/ritratto/ritratto2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/ritratto/ritratto3.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/quadro_sem.glb",
+                                "pos":{"x": -0.25, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":8.827670662185636,"y":2.0473597018148735,"z":2.244286044057213},"rot":{"x":-2.6649608152718667,"y":-1.3470327919123386,"z":-2.6547325291366355}},
+                            "title": {"pos":{"x":8.869875565831732,"y":2.0473597018148735,"z":4.22051443497088},"rot":{"x":2.2070650909536793,"y":-1.55688133725152,"z":2.230399656989503}}
+                        },
+                        {
+                            "id":"mappacusco",
+                            "hoverLable":"Mappa di Cusco",
+                            "path":"models/room1/hqObjects/mappacusco/mappacuscoHQ.gltf",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":2.168291298169501,"y":1.3125146452835654,"z":2.7159471246485256},"target":{"x":2.1711442091369473,"y":0.815182122068371,"z":2.6139180431557585}},
+                            "povOut": {"pos":{"x":2.9564325001547274,"y":1.586406570658748,"z":2.5478384804187115},"target":{"x":2.842003457628163,"y":0.6588022309267284,"z":2.192231698794995}},
+                            "content":  {
+                                "mainTitle":"Mappa di Cusco",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1556<br><br><b>ATTRIBUZIONI</b>: in Giovanni Battista Ramusio, <i>Delle Navigaziotioni et Viaggi</i><br><br><b>LUOGO DI CONSERVAZIONE</b>: Venezia, Giunta, BUB, A.IV.P.I.14/3"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Racconti del Nuovo Mondo",
+                                        "subtitle": "",
+                                        "pages":"p. 40",
+                                        "copy":"Le testimonianze delle prime generazioni di viaggiatori - per lo più navigatori, militari o ecclesiastici - genera uno dei primi fenomeni editoriali, di cui Aldrovandi è un seguace appassionato. Nel De Orbo Novo, Pietro Martire d'Anghiera racconta delle prime esplorazioni geografiche nelle Americhe. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinacentrale.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/vetrinacentrale1_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close": {"pos":{"x":3.4977923759389737,"y":0.42189876611086774,"z":1.9234701547976796},"rot":{"x":-1.3886541969021313,"y":-0.04369896281460386,"z":-0.04403536386065721}},
+                            "title":{"pos":{"x":3.9407338116717208,"y":0.411175158396262,"z":2.132757264442789},"rot":{"x":-1.35689046145548,"y":-0.2193577012132339,"z":-0.030832039771061647}}
+                        },
+                        {
+                            "id":"tabacco",
+                            "hoverLable":"Tabacco",
+                            "path":"models/room1/hqObjects/tabacco/tabaccoHQ.gltf",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":2.5612110620703223,"y":1.0689206628795427,"z":2.6986166056775973},"target":{"x":2.563242446554227,"y":0.770272701038856,"z":2.644352304265641}},
+                            "povOut":{"pos":{"x":3.2351937051602704,"y":1.5922302150806993,"z":2.580871929148515},"target":{"x":3.2214103440004678,"y":0.6760403461539523,"z":2.1803645721235423}},
+                            "content":  {
+                                "mainTitle":"Tabacco",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1579<br><br><b>ATTRIBUZIONI</b>: in Nicolas Monardes, <i>Simplicium medicamentorum ex Novo Orbe delatorum</i><br><br><b>LUOGO DI CONSERVAZIONE</b>: Anversa, Christopher Plantin, BUB, A.IV.G.IX.5/2"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Racconti del Nuovo Mondo",
+                                        "subtitle": "",
+                                        "pages":"p. 40",
+                                        "copy":"Le testimonianze delle prime generazioni di viaggiatori - per lo più navigatori, militari o ecclesiastici - genera uno dei primi fenomeni editoriali, di cui Aldrovandi è un seguace appassionato. Nel De Orbo Novo, Pietro Martire d'Anghiera racconta delle prime esplorazioni geografiche nelle Americhe. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinacentrale.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/vetrinacentrale2_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":3.6958462450583185,"y":0.4423001798209555,"z":1.9388384917535526},"rot":{"x":-1.093196058071006,"y":-0.03353019624179381,"z":0.010874834286920312}},
+                            "title":{"pos":{"x":4.170244240942116,"y":0.411175158396262,"z":2.1017022324526478},"rot":{"x":-1.3521610223504947,"y":-0.1679718103051536,"z":-0.001819991751438899}}
+                        },
+                        {
+                            "id":"historianaturale",
+                            "hoverLable":"Historia Naturale",
+                            "path":"models/room1/hqObjects/historianaturale/historianaturaleHQ.gltf",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":2.9966864220791543,"y":1.0592328579623014,"z":2.640657846478764},"target":{"x":2.99644738458814,"y":0.7861139955330918,"z":2.6242541269257837}},
+                            "povOut": {"pos":{"x":3.8682022978436845,"y":1.605454497705517,"z":2.61452302096676},"target":{"x":3.773630118130214,"y":0.6929694722739141,"z":2.2164938999374932}},
+                            "content":  {
+                                "mainTitle":"Historia Naturale e Morale delle Indie",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1596<br><br><b>ATTRIBUZIONI</b>: Josè de Acosta<br><br><b>LUOGO DI CONSERVAZIONE</b>: Venezia, Bernardo Basa, BUB, A.M.RR.I.33"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Racconti del Nuovo Mondo",
+                                        "subtitle": "",
+                                        "pages":"p. 40",
+                                        "copy":"Le testimonianze delle prime generazioni di viaggiatori - per lo più navigatori, militari o ecclesiastici - genera uno dei primi fenomeni editoriali, di cui Aldrovandi è un seguace appassionato. Nel De Orbo Novo, Pietro Martire d'Anghiera racconta delle prime esplorazioni geografiche nelle Americhe. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                                {
+                                                    "path": "content/image/libri/vetrinacentrale.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale2.jpg"
+                                                  },
+                                                  {
+                                                    "path": "content/image/libri/vetrinacentrale3.jpg"
+                                                  }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/vetrinacentrale3_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":4.209802886418465,"y":0.42189876611086774,"z":1.995472045415911},"rot":{"x":-1.093196058071006,"y":-0.03353019624179381,"z":0.010874834286920312}},
+                            "title":{"pos":{"x":4.69614771775282,"y":0.411175158396262,"z":2.1431922006231314},"rot":{"x":-1.34253316566879,"y":-0.15452121642737426,"z":0.05812961364129444}}
+                        },
+                        {
+                            "id":"deorbo",
+                            "hoverLable":"De Orbo",
+                            "path":"models/room1/hqObjects/deorbo/deorboHQ.gltf",
+                            "pos":{"x":0,"y" :0,"z" :0},
+                            "rot":{"x": 0,"y": 0,"z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":3.475608162809651,"y":1.149481929208993,"z":2.6051334615791273},"target":{"x":3.475608175288958,"y":0.7653820588292124,"z":2.605133077664953}},
+                            "povOut": {"pos":{"x":4.533142480644355,"y":1.6193458682296957,"z":2.545121705475933},"target":{"x":4.319629600400728,"y":0.7111467941247872,"z":2.1851401896101077}},
+                            "content":  {
+                                "mainTitle":"De Orbo Novo",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto<br><br><b>DATA</b>: 1530<br><br><b>ATTRIBUZIONI</b>: Pietro Martire d'Anghiera<br><br><b>LUOGO DI CONSERVAZIONE</b>: Alcalà de Henares, Miguel de Eguia, BUB, A.M.C.V.33"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Racconti del Nuovo Mondo",
+                                        "subtitle": "",
+                                        "pages":"p. 40",
+                                        "copy":"Le testimonianze delle prime generazioni di viaggiatori - per lo più navigatori, militari o ecclesiastici - genera uno dei primi fenomeni editoriali, di cui Aldrovandi è un seguace appassionato. Nel De Orbo Novo, Pietro Martire d'Anghiera racconta delle prime esplorazioni geografiche nelle Americhe. (...)"
+                                     },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale3.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/vetrinacentrale4_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":4.849846937129618,"y":0.42189876611086774,"z":1.995472045415911},"rot":{"x":-1.2504852061574263,"y":-0.03353019624179383,"z":0.010874834286920314}},
+                            "title":{"pos":{"x":5.312941538038341,"y":0.3957288947603884,"z":2.2058315440770966},"rot":{"x":-1.3499484451579795,"y":-0.1650312991256327,"z":0.011530027570073431}}
+                        },
+                        {
+                            "id":"atlantenautico",
+                            "hoverLable":"Atlante Nautico",
+                            "path":"models/room1/hqObjects/atlantenautico/atlantenauticoHQ.gltf",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":4.483799110886001,"y":1.2898087089676114,"z":2.6664146565663067},"target":{"x":4.484014948591308,"y":0.7892567256150156,"z":2.632994480720674}},
+                            "povOut":{"pos":{"x":5.112038682987238,"y":1.5447914007901327,"z":2.496368193049315},"target":{"x":5.069969892047509,"y":0.82324892924799,"z":2.1879959207668724}},
+                            "content":  {
+                                "mainTitle":"Profilo incompleto delle coste del continente americano",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: carta nautica<br><br><b>DIMENSIONI</b>: 128 cm x 70,5 cm<br><br><b>DATA</b>: sec. XVI<br><br><b>ATTRIBUZIONI</b>:Battista Agnese<br><br><b>LUOGO DI CONSERVAZIONE</b>: BUB"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Il mondo conosciuto",
+                                        "subtitle": "",
+                                        "pages":"p. 39",
+                                        "copy":"Questa carta nautica illustra il mondo conosciuto a ovest dell'Europa e dell'Africa quasi un secolo dopo il viaggio di Cristoforo Colombo. Il mondo conosciuto comprende ora anche l'America, ma come possiamo vedere sul lato sinistro, gran parte della costa del Pacifico è ancora inesplorata. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale3.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/atlantenautico_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":4.750613388917118,"y":0.42189876611086774,"z":1.995472045415911},"rot":{"x":-1.093196058071006,"y":-0.03353019624179381,"z":0.010874834286920312}},
+                            "title":{"pos":{"x":6.228278330297245,"y":0.411175158396262,"z":1.9719524703344486},"rot":{"x":-1.3499484451579795,"y":-0.1650312991256327,"z":0.011530027570073431}}
+                        },
+                        {
+                            "id":"cospi",
+                            "hoverLable":"Codice Cospi",
+                            "type":"object",
+                            "path":"models/room1/hqObjects/codicecospi/codicecospiHQ.gltf",
+                            "povIn":{"pos":{"x":7.024294876143599,"y":1.203805414961493,"z":6.166680974935541},"target":{"x":7.024294880372792,"y":0.8453194925531329,"z":6.166681333396515}},
+                            "povOut":{"pos":{"x":6.829345181271868,"y":1.2204929443463906,"z":5.053704876993095},"target":{"x":6.864388592213143,"y":0.6934439101748434,"z":5.3975152802485225}},
+                            "content":
+                            {
+                                "mainTitle":"Codice Cospi",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: manoscritto mesoamericano<br><br><b>MATERIA E TECNICA</b>: striscia di pelle di cervo<br><br><b>DIMENSIONI</b>: 3640 mm x ca. 174-182 mm<br><br><b>DATA</b>:  XV-inizi XVI secolo<br><br><b>LUOGO DI CONSERVAZIONE</b>: Libreria Universitaria di Bologna (BUB), Bologna"
+                                    },
+                                    {
+                                        "type":"iiif",
+                                        "manifestPath":"./cospiIIIFManifest.json",
+                                        "title":"COSPI ad AD ALTA RISOLUZIONE",
+                                        "subtitle":" © M. Caroli e S. Tebaldi <br>Alma Mater Studiorum <br>Biblioteca Universitaria di Bologna (BUB)<br>",
+                                        "description":"Manoscritto mantico. Sul recto i tonalpohualli (ciclo divinatorio di 260 giorni) (1-8), un Almanacco di Venere (9-11) e la sezione dei Quattro Templi (12-13). Sul verso un’unica sezione con disposizione e numero di offerte rituali (21-31)."
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Ulisse Aldrovandi e le cose dell’altro mondo",
+                                        "subtitle": "Davide Domenici",
+                                        "pages":"p. 29",
+                                        "copy":" La scoperta europea delle Americhe costituì un vero e proprio shock culturale per l'Europa del Rinascimento. Non solo un intero universo di animali, piante e minerali sino ad allora sconosciuti si dischiuse davanti agli occhi di naturalisti e studiosi di ogni disciplina, ma l'esistenza di uomini che non avevano mai avuto notizia della venuta di Cristo causò, come scrisse Guicciardini con un sottile eufemismo, «qualche anzietà agli interpreti della scrittura sacra».  (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale3.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/libri/vetrinacentrale.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/cospi_sem.glb"                     
+                            },
+                            "close":{"pos":{"x":7.287022135443757,"y":0.5787470938495113,"z":6.078961050997673},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
+                            "title": {"pos":{"x":6.497050949185159,"y":0.5624316848772801,"z":6.086499771628267},"rot":{"x":3.1303797102945055,"y":0.06119274844922103,"z":-3.1176186079523296}}
+                        },
+                        {
+                            "id":"ara",
+                            "hoverLable":"Ara Scarlatta",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/ara/araHQ.gltf",
+                            "povIn":{"pos":{"x":4.612812935535887,"y":2.0706146255636515,"z":4.603302869809636},"target":{"x":4.6346931311703266,"y":2.0689498437146616,"z":4.690323674211164}},
+                            "povOut":{"pos":{"x":4.619032161266726,"y":1.6211402031316768,"z":3.442266110415361},"target":{"x":4.6423152040459135,"y":1.6876064082043019,"z":4.439783099494838}},
+                            "content":
+                            {
+                                "mainTitle":"Ara scarlatta - Ara macao (Linnaeus, 1758)",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/ara_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                   
+                            },
+                            "close":{"pos":{"x":4.751533012790432,"y":2.659458377435144,"z":6.340075792541775},"rot":{"x":-3.038157810945958,"y":-0.16748738682089417,"z":-3.1038447792369688}},
+                            "title": {"pos":{"x":4.120486564754977,"y":2.80978322978196,"z":7.032454364522327},"rot":{"x":3.127841212083726,"y":-0.24166219659671012,"z":-3.138396257279586}}
+                        },
+                        {
+                            "id":"tucano",
+                            "hoverLable":"Tucano",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/tucano/tucanoHQ.gltf",
+                            "povIn":{"pos":{"x":3.9149179753824943,"y":1.8709609983558024,"z":4.843912483252236},"target":{"x":4.133115832018682,"y":1.8357809267837741,"z":5.103015318480969}},
+                            "povOut":{"pos":{"x":4.2846323102917,"y":1.6141542029571063,"z":3.8389449948476124},"target":{"x":4.287827944291342,"y":1.6398202443706476,"z":4.838610460011584}},
+                            "content":
+                            {
+                                "mainTitle":"Tucano toco - Ramphastus toco (Statius Muller, 1776)",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/tucano_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                       
+                            },
+                            "close":{"pos":{"x":16.406033908486496,"y":5.231821553461673,"z":15.021785971418076},"rot":{"x":-2.996137546413925,"y":-0.7920528720522271,"z":-3.017252544113491}},
+                            "title":{"pos":{"x":4.934633673287042,"y":2.0513589659619567,"z":6.086499771628267},"rot":{"x":3.1267731463397337,"y":-0.7147919156377568,"z":-3.1280183632251797}}
+                        },
+                        {
+                            "id":"limulo",
+                            "hoverLable":"Limulo",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/altrabestia/altrabestiaHQ.gltf",
+                            "povIn":{"pos":{"x":4.825061371651081,"y":1.1405246938142517,"z":5.159781873036128},"target":{"x":4.861312444863204,"y":0.9076315007833654,"z":5.669042145295025}},
+                            "povOut":{"pos":{"x":4.514739569278531,"y":1.6189614100977934,"z":3.911969870685562},"target":{"x":4.617860187784569,"y":1.2050093918975835,"z":4.816408848542501}},
+                            "content":
+                            {
+                                "mainTitle":"Limulo",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/animali/bestia.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/animali/bestia2.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/limulo.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                      
+                            },
+                            "close":{"pos":{"x":4.890780722092016,"y":1.1185660528568557,"z":6.271846748923588},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
+                            "title":{"pos":{"x":4.271142127117773,"y":1.1556785626733355,"z":6.3761214920702525},"rot":{"x":3.130400691417622,"y":-0.0011128908215932009,"z":-3.118316815211751}}
+                        },
+                        {
+                            "id":"armadillo",
+                            "hoverLable":"Armadillo",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/armadillo/armadilloHQ.gltf",
+                            "povIn":{"pos":{"x":4.3182681125003075,"y":1.565339052825207,"z":4.3423037126793895},"target":{"x":4.321850579687419,"y":1.5585609553624848,"z":4.37130756283138}},
+                            "povOut":{"pos":{"x":4.05231490834385,"y":1.60930082337027,"z":3.382112080827933},"target":{"x":4.171730481247521,"y":1.3833642412795308,"z":4.348907085894282}},
+                            "content":
+                            {
+                                "mainTitle":"Armadillo - Dasypus novemcinctus (Linnaeus, 1757",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/animali/armadillo.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/armadillo_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                   
+                            },
+                            "close":{"pos":{"x":4.4040318109162175,"y":1.5528698424191,"z":6.078961050997673},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
+                            "title": {"pos":{"x":3.778510043077868,"y":1.5809768130465178,"z":6.086499771628267},"rot":{"x":3.131516476275895,"y":0.06138993251592757,"z":-3.1361766210455913}}
+                        },
+                        {
+                            "id":"giaguaro",
+                            "hoverLable":"Giaguaro",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/giaguaro/giaguaroHQ.gltf",
+                            "povIn": {"pos":{"x":4.02614256952917,"y":0.8862877962507625,"z":3.9722722000586748},"target":{"x":4.427578460245285,"y":0.7230465866297019,"z":4.817672420739029}},
+                            "povOut":{"pos":{"x":4.514739569278531,"y":1.6189614100977934,"z":3.911969870685562},"target":{"x":4.518352436870382,"y":1.0232821699345138,"z":4.715184157178439}},
+                            "content":
+                            {
+                                "mainTitle":"Giaguaro - Panthera onca (Linnaeus, 1758)",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: Esemplare tassidermizzato<br><br><b>DATA</b>: sec. XXI<br><br><b>ATTRIBUZIONI</b>: preparatore Naturaliter<br><br><b>LUOGO DI CONSERVAZIONE</b>: Pisa"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/animali/giaguaro.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/animali/giaguaro2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/animali/giaguaro3.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/giaguaro_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                       
+                            },
+                            "close":{"pos":{"x":5.3619708183329005,"y":1.1095373347271387,"z":6.050007633839092},"rot":{"x":2.8465340296561377,"y":-0.4596303034944479,"z":2.9994520174380868}},
+                            "title": {"pos":{"x":4.586523564604937,"y":1.0928857549988558,"z":6.086499771628267},"rot":{"x":3.1285833524019746,"y":-0.450687241180057,"z":-3.136800423674945}}
+                        },
+                        {
+                            "id":"tacchino",
+                            "hoverLable":"Tacchino",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/tacchino/tacchinoHQ.gltf",
+                            "povIn":{"pos":{"x":3.5674957637402653,"y":1.2172388064697863,"z":4.198808676872935},"target":{"x":3.57771904112221,"y":1.2053956838505657,"z":4.2826184719795295}},
+                            "povOut":{"pos":{"x":3.3487031907993874,"y":1.594601559697565,"z":3.3574214388280597},"target":{"x":3.4687100728010973,"y":1.35132495318268,"z":4.31992590167217}},
+                            "content":
+                            {
+                                "mainTitle":"Tacchino",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: Esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    }
+                                
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/tacchino_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                      
+                            },
+                            "close":{"pos":{"x":3.234448504298144,"y":1.7601186233055237,"z":6.516139680965375},"rot":{"x":-3.03908685194667,"y":0.10092421165536086,"z":-3.1315116774847853}},
+                            "title": {"pos":{"x":2.837561624660991,"y":1.4530254501770903,"z":6.086499771628267},"rot":{"x":3.1335704970785896,"y":0.0616915898088397,"z":3.113614110803268}}
+                        },
+                        {
+                            "id":"iguana",
+                            "hoverLable":"Iguana",
+                            "type":"object",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "path":"models/room1/hqObjects/iguana/iguanaHQ.gltf",
+                            "povIn": {"pos":{"x":3.3645504867587452,"y":0.48298803836067106,"z":3.97889903778134},"target":{"x":3.430759585780482,"y":0.41985756714309924,"z":4.306943425190392}},
+                            "povOut": {"pos":{"x":3.2702433159983753,"y":1.5929624420440776,"z":3.8504650736773574},"target":{"x":3.2813740243207907,"y":0.9283713361819951,"z":4.597589406932041}},
+                            "content":
+                            {
+                                "mainTitle":"Iguana",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: Esemplare tassidermizzato<br><br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title": "Sconosciuti agli Antichi e alla Bibbia",
+                                        "subtitle": "",
+                                        "pages":"p. 44",
+                                        "copy":"Insieme ai racconti dei libri, dall'America arrivano anche disegni, pelli ed esemplari impagliati di animali mai visti nel Vecchio Mondo, quindi assenti nei libri di storia naturale degli autori classici, alcuni dei quali da poco riscoperti e considerati esempi quasi inarrivabili di conoscenza. (...)"
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/iguana_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}                       
+                            },
+                            "close":{"pos":{"x":3.0606202171118944,"y":0.55483028363753,"z":6.084942368018679},"rot":{"x":-3.0339331027858507,"y":-0.3256111300462474,"z":-3.086589064508531}},
+                            "title": {"pos":{"x":2.33038134053663,"y":0.5624316848772801,"z":6.086499771628267},"rot":{"x":-3.0057177713904633,"y":-0.056147857702402666,"z":-3.1386155662805644}}
+                        },
+                        {
+                            "id":"video",
+                            "hoverLable":"Video 'San Girolamo nel suo studio'",
+                            "path":"content/videos/San Girolamo.mp4",
+                            "type":"video",
+                            "povIn":{"pos":{"x":7.522087337116654,"y":1.681788387950362,"z":1.1224536203358624},"target":{"x":7.478790050408277,"y":1.5852167119463747,"z":0.12806976268456605}},
+                            "povOut":{"pos":{"x":7.522087337116654,"y":1.681788387950362,"z":1.1224536203358624},"target":{"x":7.478790050408277,"y":1.5852167119463747,"z":0.12806976268456605}},
+                            "content":"",
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/sangim_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            }
+                        },
+                        {
+                            "id":"cartanautica",
+                            "hoverLable":"Carta Nautica",
+                            "path":"models/room1/hqObjects/cartanautica/cartanauticaHQ.gltf",
+                            "pos": {"x": 0, "y": 0, "z": 0},
+                            "rot":  {"x": 0, "y": 0, "z": 0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+                            "povOut":{"pos":{"x":2.449173379414743,"y":2.3525667607133474,"z":1.0341716594279906},"target":{"x":2.4629569741590367,"y":0.8776581155038832,"z":0.22882898055104361}},
+                            "content":  {
+                                "mainTitle":"Carta nautica",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: Carta singola in forma di rotolo, miniata<br><br><b>MATERIA E TECNICA</b>: Pergamena<br><br><b>DIMENSIONI</b>: 128 cm x 70,5 cm<br><br><b>DATA</b>: sec. XV<br><br><b>ATTRIBUZIONI</b>: Grazioso Benincasa<br><br><b>LUOGO DI CONSERVAZIONE</b>: BUB"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Il mondo conosciuto",
+                                        "subtitle": "",
+                                        "pages":"p. 35",
+                                        "copy":"Questa carta nautica miniata su pergamena da Grazioso Benincasa su commissione del cardinale Raffaello Sansoni Riario è del 1482, quindi dieci anni prima del viaggio di Colombo e una ventina prima di quello di Vespucci. Nella carta c'è tutto il mondo conosciuto già dall'antichità: Europa, Africa, Asia. (...)"
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/cartanautica_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close": {"pos":{"x":2.50636770369962,"y":1.128877684875454,"z":-0.193243768342431},"rot":{"x":-0.5132125325433955,"y":-0.008171151300062397,"z":-0.05795674116377536}},
+                            "title":{"pos":{"x":3.208930486001634,"y":1.1707269215974434,"z":-0.1519608098483745},"rot":{"x":-1.0109983333145547,"y":-0.05306864448735715,"z":-0.037474938809848174}}
+                        },
+                        {
+                            "id":"leoni",
+                            "hoverLable":"Diorama con tre leoni",
+                            "path":"models/room1/hqObjects/leoni/LEONIIIII.gltf",
+                            "pos":{"x":5.547449526072689,"y":0.7504627270519324,"z":0.6067458131592356},
+                            "rot":{"x":0,"y":0,"z":0},
+                            "type":"object",
+                            "povIn":{"pos":{"x":5.081839744042517,"y":1.4845198263209336,"z":1.7405454031668985},"target":{"x":4.984786818641106,"y":1.2728521682591245,"z":0.9153972814174456}},
+                            "povOut":{"pos":{"x":5.540058583316508,"y":1.6405200147619212,"z":1.7676115511024335},"target":{"x":5.282514226295763,"y":1.3178212913195053,"z":0.8568226413898665}},
+                            "content": {
+                                "mainTitle":"Diorama con tre leoni tassidermizzati - <i>Panthera leo</i> (Linneaus, 1758)",
+                                "blocks":
+                                [
+                                    {
+                                        "type":"info",
+                                        "copy":"<b>OGGETTO</b>: ?<br><br><b>DATA</b>: inizio sec. XX<br><br><b>ATTRIBUZIONI</b>: Manifattura Rowland Ward - Londra<br><br><b>LUOGO DI CONSERVAZIONE</b>: Bologna, Collezione di Zoologia, Sistema Museale di Ateneo<br>"
+                                    },
+                                    {
+                                        "type":"catalogo",
+                                        "title":"Gli animali conosciuti",
+                                        "subtitle": "",
+                                        "pages":"p. 36",
+                                        "copy":"Fino all'età classica i leoni vivevano su tutte e tre le sponde del Mediterraneo, quindi in Africa, Asia ed Europa, dove sono documentati ad esempio in Grecia. Per questo la cultura del Vecchio Mondo è piena di riferimenti ai leoni, che troviamo come simboli di forza, fierezza, nobiltà, coraggio nei miti e nelle fiabe, nei quadri e negli stemmi araldici, (...)"
+                                    },
+                                    {
+                                        "type":"carousel",
+                                        "title":"Galleria",
+                                            "images": [
+                                              {
+                                                "path": "content/image/animali/leoni.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/ritratto/ritratto2.jpg"
+                                              },
+                                              {
+                                                "path": "content/image/ritratto/ritratto3.jpg"
+                                              }
+                                            ]
+                                    }
+                                ]
+                            },
+                            "sem":
+                            {
+                                "path":"models/room1/semObjects/leoni_sem.glb",
+                                "pos":{"x": 0, "y": 0, "z": 0}
+                            },
+                            "close":{"pos":{"x":6.7180052020845515,"y":1.8594912855271692,"z":0.7181377419185062},"rot":{"x":-0.10199558763794508,"y":-0.01606670609952086,"z":0.018800327016262046}},
+                            "title": {"pos":{"x":7.174563970902141,"y":1.60331937860217,"z":0.6757482800002248},"rot":{"x":0.011195934705343594,"y":0.026662503010805774,"z":0.02298980558860221}}
+                        }
+                    ]
+                  
+        },
+        "2":
+        {
+            "HomePov":
+           {"pos":{"x":-0.26060506218970936,"y":1.6999999999999997,"z":-5.860489934634157},"target":{"x":-0.9471852493455948,"y":2.1289049689260295,"z":-5.273422498784108}},
+           "room":
+            {
+                "id":"room",
+                "old_path": "models/room2/room/sala2.gltf",
+                "path":"models/room2/room/Sala2_v2.gltf",
+                "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793}
+            },
+            "SUI":[
+                    {
+                      "id":"1",
+                        "content":"Stanza 1",
+                        "pos":{ "x":0.09972418320157951, "y": 0.9889487238285537, "z": -5.835686517253044},
+                        "rot": {"x": -3.1415926535897865, "y": -1.5347478080374324, "z": -3.1415926535897865}
+                    },
+                    {
+                      "id":"3",
+                        "content":"Anticamera",
+                        "pos":{ "x": -2.6476334859920567, "y": 0.9889487238285535, "z": 0.0673457712090954},
+                        "rot": {"x": -3.0928398540617543, "y": -0.026616802148287756, "z": 3.138995590819679}
+                    }
+                  ],
+            "siblings":[
+              {
+                "id":"sibling_room1",
+                "path":"models/siblings/room1/Stanza_v3_GLTF.gltf",
+                "pos":{"x":-0.76,"y":0,"z":0}
+             },
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
+            "objectCollection": 
+            {
+                "path": "models/room2/lowObjects/v2_28-01-2025/sala2_assets.gltf",
+                "old_path": "models/room2/lowObjects/old/metodobake/metodobake.gltf",
+                "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793}
+            },
+            "objects":
+            [
+                
+                {
+                    "id":"room1link",
+                    "hoverLable":"Stanza 1",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"roomLink",
+                    "roomTo":1,
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/linkRoom1_sem.glb",
+                        "pos":{"x":0.09972418320157951,"y":0.9889487238285537,"z":-5.835686517253044}
+                    },
+                    "povIn": {"pos":{"x": 8.294162652668362, "y": 1.7210880003869535, "z": 4.640374845955607},"target":{"x": 7.317414113398533, "y": 1.6845771608239568, "z": 4.429118485983512}}
+                },
+                {
+                    "id":"room2alink", 
+                    "hoverLable":"Anticamera",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"roomLink",
+                    "roomTo":"2a",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/linkRoom2a_sem.glb",
+                        "pos":{"x": -2.6476334859920567, "y": 0.9889487238285535, "z": 0.0673457712090954},
+                        "rot":{"x":-7,"y":-1.5,"z":-7}
+                    },
+                    "povIn": {"pos":{"x":12.66,"y":1.68,"z":-2.1099999999999994},"target":{"x":13.47390191503543,"y":1.5821784472418712,"z":-2.6827081425278037}}
+                },
+                {
+                  "id":"pianteMedicinali",
+                  "hoverLable":"Dioscorides Pedanius",
+                  "pos":{"x":-2.5721100815622027, "y": 0.8768540055290165, "z": -6.67875107744202},
+                  "rot":  {"x": -0.19181578416867923, "y": 0.14631447594486097, "z": 0.08035399664419},
+                  "type":"object",
+                  "path":"models/room2/hqObjects/S2-22-CNR_VolumePianteMedicinali/libroPianteMedicinali.gltf",
+                  "povIn":{"pos":{"x":12.177887865639411,"y":1.2977169294054058,"z":5.179654068114145},"target":{"x":12.172776379505853,"y":0.4418453669217316,"z":5.696817235055934}},
+                  "sem":
+                  {
+                      "path":"models/room2/semObjs/piantemedicinali_sem.glb"
+                  }
+              },
+                {
+                    "id":"teriaca",
+                    "hoverLable":"Teriaca",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"object",
+                    "path":"models/room2/hqObjects/teriaca/teriaca_2.gltf",
+                    "povOut":{"pos":{"x":13.403304474115613,"y":0.930976101153948,"z":3.5366736141333712},"target":{"x":13.541865572067776,"y":0.8005053545485237,"z":2.673988587794293}},
+                    "old_povIn":{"pos":{"x":13.403304474115613,"y":0.930976101153948,"z":3.5366736141333712},"target":{"x":13.541865572067776,"y":0.8005053545485237,"z":2.673988587794293}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/teriaca_sem.glb"
+                    }
+                },
+                {
+                    "id":"ortobotanicopadova",
+                    "path":"models/room2/hqObjects/ortobotanicopadova/ortobotanicopadova.gltf",
+                    "povIn":{"pos":{"x":13.490722487235574,"y":1.6325773622139654,"z":5.282488206944554},"target":{"x":13.490436410647675,"y":1.0318646847508341,"z":5.413243420201803}},
+                    "povOut":{"pos":{"x":13.490722487235574,"y":1.6325773622139654,"z":5.282488206944554},"target":{"x":13.490436410647675,"y":1.0318646847508341,"z":5.413243420201803}},
+                            "hoverLable":"Mappa dell'orto botanico di Padova",
+                            "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/ortobotanicopadova_sem.glb"
+                    }
+                },
+                {
+                    "id":"mappaortobolo",
+                    "hoverLable":"Mappa dell'orto botanico di Bologna",
+                    "path":"models/room2/hqObjects/mappaortobolo/mappaortobolo.gltf",
+                    "povIn":{"pos":{"x":13.191798725748688,"y":1.481760201750857,"z":5.1951121818414245},"target":{"x":13.193631685615083,"y":1.0234844739920694,"z":5.396908018648718}},
+                    "povOut":{"pos":{"x":13.191798725748688,"y":1.481760201750857,"z":5.1951121818414245},"target":{"x":13.193631685615083,"y":1.0234844739920694,"z":5.396908018648718}},
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/mappaortobolo_sem.glb"
+                    }
+                },
+                {
+                    "id":"girasole",
+                    "hoverLable":"Girasole",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/girasole/girasole.gltf",
+                    "povIn":{"pos":{"x":14.181964456768984,"y":1.838828131231677,"z":5.346898449241483},"target":{"x":14.184433943903372,"y":1.0611651829553148,"z":5.418451477562092}},
+                    "povOut":{"pos":{"x":14.181964456768984,"y":1.838828131231677,"z":5.346898449241483},"target":{"x":14.184433943903372,"y":1.0611651829553148,"z":5.418451477562092}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/girasole_sem.glb"
+                    }
+                },
+                {
+                    "id":"solanyum",
+                    "hoverLable":"Pomodoro",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/solanyum/solanyum.gltf",
+                    "povIn":{"pos":{"x":15.484187137877775,"y":1.6415154873248232,"z":5.37987698532089},"target":{"x":15.484145169793004,"y":1.058375528692938,"z":5.398900091315446}},
+                    "povOut":{"pos":{"x":15.484187137877775,"y":1.6415154873248232,"z":5.37987698532089},"target":{"x":15.484145169793004,"y":1.058375528692938,"z":5.398900091315446}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/solanyum_sem.glb"
+                    }
+                },
+                {
+                    "id":"erbarioantennaria",
+                    "hoverLable":"Antennaria",
+                    "type":"object",
+                    "povIn":{"pos":{"x":17.94436137914031,"y":1.5605425270153344,"z":5.16094867378478},"target":{"x":17.932032032802304,"y":1.021883231086763,"z":5.380055703789457}},
+                    "povOut":{"pos":{"x":17.94436137914031,"y":1.5605425270153344,"z":5.16094867378478},"target":{"x":17.932032032802304,"y":1.021883231086763,"z":5.380055703789457}},
+                    "path":"models/room2/hqObjects/erbarioantennaria/erbarioantennaria.gltf",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/erbarioantennaria_sem.glb"
+                    }
+                },
+                {
+                    "id":"erbario",
+                    "hoverLable":"Adonide gialla",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/erbario/erbario.gltf",
+                    "povIn":{"pos":{"x":17.320338458757654,"y":1.5422455289611157,"z":5.077034475179994},"target":{"x":17.302315235478506,"y":0.9954845059079077,"z":5.355283668938723}},
+                    "povOut":{"pos":{"x":17.320338458757654,"y":1.5422455289611157,"z":5.077034475179994},"target":{"x":17.302315235478506,"y":0.9954845059079077,"z":5.355283668938723}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/erbario_sem.glb"
+                    }
+                },
+                {
+                    "id":"tulypa",
+                    "hoverLable":"Tulipano dei campi",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/tulypa/tulypa.gltf",
+                    "povIn":{"pos":{"x":16.005884142073608,"y":1.5073180735544536,"z":5.370976875921972},"target":{"x":16.006924263052248,"y":1.069913921969751,"z":5.419844153146268}},
+                    "povOut":{"pos":{"x":15.755558789469722,"y":1.6999999999999986,"z":4.353900007483766},"target":{"x":15.74106912159405,"y":1.071710377997304,"z":5.13174459376599}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/tulypa_sem.glb"
+                    }
+                },
+                {
+                    "id":"delphinium",
+                    "hoverLable":"Speronella",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/delphinium/delphinium.gltf",
+                    "povIn":{"pos":{"x":14.998240958920746,"y":1.801001692449444,"z":5.416092464859167},"target":{"x":14.998240954951513,"y":1.0634015953933789,"z":5.416093202448584}},
+                    "povOut":{"pos":{"x":14.998240958920746,"y":1.801001692449444,"z":5.416092464859167},"target":{"x":14.998240954951513,"y":1.0634015953933789,"z":5.416093202448584}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/delphinium_sem.glb"
+                    }
+                },
+                {
+                    "id":"dyras",
+                    "hoverLable":"Camedrio alpino",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/dyras/dyras.gltf",
+                    "povIn":{"pos":{"x":16.799892945364835,"y":1.839822744112525,"z":5.419686659059724},"target":{"x":16.799892941184183,"y":1.063401589316668,"z":5.4196874359350025}},
+                    "povOut":{"pos":{"x":16.799892945364835,"y":1.839822744112525,"z":5.419686659059724},"target":{"x":16.799892941184183,"y":1.063401589316668,"z":5.4196874359350025}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/dyras_sem.glb"
+                    }
+                },
+                {
+                    "id":"anatomiapollo",
+                    "hoverLable":"Anatomia del pollo in Ulisse Aldrovandi",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/anatomiapollo/anatomiapollo.gltf",
+                    "povIn":{"pos":{"x":17.81091218845034,"y":1.8058793351002085,"z":3.337561616563796},"target":{"x":17.842437786712892,"y":0.92012513656916,"z":3.3370386707692865}},
+                    "povOut":{"pos":{"x":17.81091218845034,"y":1.8058793351002085,"z":3.337561616563796},"target":{"x":17.842437786712892,"y":0.92012513656916,"z":3.3370386707692865}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/anatomiapollo_sem.glb"
+                    }
+                },
+                {
+                    "id":"tavaldrovandipulcino",
+                    "hoverLable":"Pulcino dentro il guscio",
+                    "path":"models/room2/hqObjects/tavaldrovandipulcino/tavaldrovandipulcino.gltf",
+                    "povIn":{"pos":{"x":17.774183024069696,"y":1.3290067833376185,"z":2.8518538680170376},"target":{"x":17.845811300049515,"y":1.0506108420663827,"z":2.854320853616653}},
+                    "povOut":{"pos":{"x":17.774183024069696,"y":1.3290067833376185,"z":2.8518538680170376},"target":{"x":17.845811300049515,"y":1.0506108420663827,"z":2.854320853616653}},
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/tavaldrovandipulcino_sem.glb"
+                    }
+                },
+                {
+                    "id":"cignotassidermizzato",
+                    "hoverLable":"Cigno tassidermizzato",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/cigno/cigno.gltf",
+                    "povIn":{"pos":{"x":16.365959473417,"y":0.8395000377611428,"z":1.5220478300266098},"target":{"x":17.126386198549362,"y":0.6982477358406847,"z":1.4988978376946795}},
+                    "povOut":{"pos":{"x":16.365959473417,"y":0.8395000377611428,"z":1.5220478300266098},"target":{"x":17.126386198549362,"y":0.6982477358406847,"z":1.4988978376946795}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/cignotassidermizzato_sem.glb"
+                    }
+                },
+                {
+                    "id":"cignosezionato",
+                    "hoverLable":"Cigno sezionato in Ulisse Aldrovandi",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/cignosezionato/cignosezionato.gltf",
+                    "povIn":{"pos":{"x": 17.81359746553749, "y": 1.617744318249457, "z": 0.39798695279200624},"target":{"x": 17.813598185306454, "y": 0.8978573142590982, "z": 0.39798693975593447}},
+                    "povOut":{"pos":{"x":16.46892264569472,"y":0.9389126922997766,"z":2.74923175452497},"target":{"x":17.642176179183288,"y":0.553765037909288,"z":1.5027080494465992}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/cignosezionato_sem.glb"
+                    }
+                },
+                {
+                    "id":"ermafrodita",
+                    "hoverLable":"Ermafrodita - tavole dei mostri",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/ermafrodita/ermafrodita.gltf",
+                    "old_povIn":{"pos":{"x":15.16266596993294,"y":1.6231105225776044,"z":-0.5559866191531493},"target":{"x":15.165825907517055,"y":1.0664819551018798,"z":-0.6881096244062868}},
+                    "povOut":{"pos":{"x":15.16266596993294,"y":1.6231105225776044,"z":-0.5559866191531493},"target":{"x":15.165825907517055,"y":1.0664819551018798,"z":-0.6881096244062868}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/ermafrodita_sem.glb"
+                    }
+                },
+                {
+                    "id":"semedecoco",
+                    "hoverLable":"Seme di coco de mer",
+                    "path":"models/room2/hqObjects/semedecoco/semedecoco.gltf",
+                    "povIn":{"pos":{"x":14.392541878206709,"y":0.949765929854426,"z":-0.03439175221779989},"target":{"x":14.393051769552565,"y":0.9006036881165154,"z":-0.6712037528966597}},
+                    "povOut":{"pos":{"x":14.392541878206709,"y":0.949765929854426,"z":-0.03439175221779989},"target":{"x":14.393051769552565,"y":0.9006036881165154,"z":-0.6712037528966597}},
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/semedecoco_sem.glb"
+                    }
+                },
+                {
+                    "id":"basilisco",
+                    "hoverLable":"Basilisco",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/basilisco/basilisco.gltf",
+                    "povIn":{"pos":{"x": 14.238918320653507, "y": 0.9655154787833571, "z": -0.41106669299425064},"target":{"x": 14.256527039901378, "y": 0.8852258059442728, "z": -0.722369706383978}},
+                    "povOut": {"pos":{"x":14.280798365829613,"y":14.280798365829613,"z":14.280798365829613},"target":{"x":14.074060355401752,"y":1.1171907472212395,"z":-0.636751680425931}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/basilisco_sem.glb"
+                    }
+                },
+                {
+                    "id":"centrina",
+                    "hoverLable":"Chimaera monstrosa (Linnaeus, 1758)",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/S2-34-DBC_ChimaeraMonstrosa/Chimaera.gltf",
+                    "pos":{"x": -4.267517054365985, "y":0.8592496990984045 , "z": -0.4787142421498927 },
+                    "scale_wrong":{"x":2.8724,"y":2.8724,"z":2.8724},
+                    "povIn":{"pos":{"x":14.141183302305096,"y":1.00720103868322,"z":-0.471837280732861},"target":{"x":14.082900018028527,"y":0.8895047543800949,"z":-0.7151730898013254}},
+                    "povOut": {"pos":{"x":14.1792368405528,"y":1.6999999999999993,"z":0.1690220358534813},"target":{"x":14.074060355401752,"y":1.1171907472212395,"z":-0.636751680425931}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/centrina_sem.glb"
+                    }
+                },
+                {
+                    "id":"ciclope",
+                    "hoverLable":"Ciclope",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/ciclope/ciclope.gltf",
+                    "povIn":{"pos":{"x":10.771882631197611,"y":1.5734623834585022,"z":0.6651887734021661},"target":{"x":10.740142479628945,"y":1.0616291709916503,"z":0.6626745642519438}},
+                    "povOut":{"pos":{"x":10.771882631197611,"y":1.5734623834585022,"z":0.6651887734021661},"target":{"x":10.740142479628945,"y":1.0616291709916503,"z":0.6626745642519438}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/ciclope_sem.glb"
+                    }
+                },
+                {
+                    "id":"bambinocera",
+                    "hoverLable":"Tavola con monocolo",
+                    "type":"object",
+                    "path":"models/room2/hqObjects/bambinocera/bambinocera.gltf",
+                    "povIn":{"pos":{"x":10.775644536105457,"y":1.5626212291203618,"z":0.10971085014611659},"target":{"x":10.737884537244225,"y":1.067099838739366,"z":0.10837729043382309}},
+                    "povOut": {"pos":{"x":10.775644536105457,"y":1.5626212291203618,"z":0.10971085014611659},"target":{"x":10.737884537244225,"y":1.067099838739366,"z":0.10837729043382309}},
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/bambinocera_sem.glb"
+                    }
+                },
+                {
+                    "id":"vitellotesto",
+                    "hoverLable":"Doppia testa di Vitello",
+                    "path":"models/room2/hqObjects/vitellotesto/vitellotesto.gltf",
+                    "povIn":{"pos":{"x":10.970551521273258,"y":1.4965836844496914,"z":1.6237846955774549},"target":{"x":10.595757828468425,"y":0.6365977016209736,"z":1.5701023581479512}},
+                    "povOut":{"pos":{"x":10.970551521273258,"y":1.4965836844496914,"z":1.6237846955774549},"target":{"x":10.595757828468425,"y":0.6365977016209736,"z":1.5701023581479512}},
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/vitellotesto_sem.glb"
+                    }
+                },
+                {
+                    "id":"vitello",
+                    "hoverLable":"Bovino a due teste",
+                    "povIn":{"pos":{"x":11.43155904452483,"y":0.8255917202638761,"z":3.6085431283421845},"target":{"x":10.325360927770415,"y":0.6988018756663694,"z":2.705543242024536}},
+                    "povOut":{"pos":{"x":11.43155904452483,"y":0.8255917202638761,"z":3.6085431283421845},"target":{"x":10.325360927770415,"y":0.6988018756663694,"z":2.705543242024536}},
+                    "path":"models/room2/hqObjects/vitello/vitello.gltf",
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/vitello_sem.glb"
+                    }
+                },
+                {
+                    "id":"narvalo",
+                    "hoverLable":"Dente di narvalo",
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/narvalo_sem.glb"
+                    },
+                    "path":"models/room2/hqObjects/narvalo/narvalo.gltf",
+                    "povIn":{"pos":{"x":13.039629334371709,"y":1.877855901011057,"z":5.916668757093715},"target":{"x":12.785576460881796,"y":1.6179168521531466,"z":2.6834881877831167}},
+                    "povOut":{"pos":{"x":13.039629334371709,"y":1.877855901011057,"z":5.916668757093715},"target":{"x":12.785576460881796,"y":1.6179168521531466,"z":2.6834881877831167}}
+                   
+                },
+                {
+                    "id":"serpente",
+                    "hoverLable":"Vipera cornuta",
+                    "path":"models/room2/hqObjects/serpente/serpente.gltf",
+                    "povIn":{"pos":{"x":14.399215620685132,"y":1.5817021202314907,"z":1.9806148481970043},"target":{"x":14.397132480890429,"y":0.700065145463936,"z":1.976186875504626}},
+                    "povOut":{"pos":{"x":14.399215620685132,"y":1.5817021202314907,"z":1.9806148481970043},"target":{"x":14.397132480890429,"y":0.700065145463936,"z":1.976186875504626}},
+                    "type":"object",
+                    "sem":
+                    {
+                        "path":"models/room2/semObjs/serpente_sem.glb"
+                    }
+                }
+            ]
+        },
+        "2a":{
+          "room":
+          {
+              "id":"room",
+              "path":"models/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+          },
+          "SUI":[
+            {
+              "id":"2",
+                "content":"Sala 2",
+                "pos":{ "x":-0.17799533292885605, "y": 0.82, "z": 1.8024311591578397},
+                "rot": {"x": -3.141592653589793, "y":  0.018446966090, "z": 3.141592653589793}
+            },
+            {
+              "id":"3",
+                "content":"Sala 3",
+                "pos":{ "x": 2.313250737139563, "y": 0.82, "z": 0.08686818347990916},
+                "rot": {"x": 2.834916053273143, "y": -1.5594540498168714, "z": 2.830474540490271}
+            },
+            {
+              "id":"4",
+                "content":"Sala 4",
+                "pos":{ "x": -0.1498429256380054, "y": 0.82, "z": -1.5687328094417816},
+                "rot": {"x": -0.0488455606737244, "y": 0.06711099750141084, "z": -0.0006173713921934557}
+            }
+          ],
+          "siblings":[
+                      {
+                        "id":"sibling_room2",
+                    "pos":{"x":9.66823777807921,"y":0,"z":-1.2569329178932809},
+                        "rot":{"x":-3.141592653589793,"y":0.011798478114035832,"z":-3.141592653589793},
+                       "path":"models/siblings/room2/Sala2_v2.gltf"
+                    },
+                    {
+                      "id":"sibling_room3",
+                      "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152},
+                      "path":"models/siblings/room3/Sala3.gltf"
+                  },
+                  {
+                    "id":"sibling_room4",
+                    "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226},
+                    "path":"models/siblings/room4/Sala4.gltf"
+                }
+                    ],
+          "objects":[
+            {
+              "id":"room3link",
+              "hoverLable":"Sala 3",
+              "type":"roomLink",
+              "roomTo":"3",
+              "sem":
+              {
+                  "path":"models/room2a/semObjs/linkRoom3.glb",
+                  "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+              },
+              "povIn": {"pos":{"x":15.885856612276987,"y":1.685468299074086,"z":-3.194268267879456},
+              "target":{"x":16.874810887661077,"y":1.5696470862562992,"z":-3.1017756310863414}}
+          },
+          {
+            "id":"room4link",
+            "hoverLable":"Sala 4",
+            "type":"roomLink",
+            "roomTo":"4",
+            "sem":
+            {
+                "path":"models/room2a/semObjs/linkRoom4.glb",
+                "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+            },
+            "povIn": {"pos":{"x":
+            12.313677909480248,"y":1.5362023513406755,"z":-6.748628650091582},
+            "target":{"x":12.43948501716215,"y":1.4460260337646604,"z":-7.736576423713824}}
+        },
+        {
+          "id":"room2link",
+          "hoverLable":"Sala 2",
+          "type":"roomLink",
+          "roomTo":"2",
+          "sem":
+          {
+              "path":"models/room2a/semObjs/linkRoom2.glb",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+          },
+          "povIn": {"pos":{"x":12.308311770354916,"y":1.6999999999999995,"z":-0.8601299220226475},
+          "target":{"x":12.199161384886612,"y":1.4952308309605338,"z":0.11257547056187356}}
+      }
+          ]
+        },
+        "3":{
+            "HomePov":{"pos":{"x":12.66,"y":1.68,"z":-2.11},"target":{"x":12.62,"y":1.71765,"z":-3.106}},
+            "room":
+             {
+                 "id":"room",
+                 "path": "models/room3/room/sala3.gltf",
+                 "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152}
+             },
+             "SUI":[ {
+              "id":"1",
+                "content":"Anticamera",
+                "pos":{ "x":-6.94673303349841, "y": 1.356001778952332, "z": -1.4218197227738387},
+                "rot": {"x": -3.434473851046e-15, "y":  1.5, "z":3.312084802830204e-15}
+            }],
+             "siblings":[
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
+          "videoAssets":[
+            {
+              "id":"video_a",
+              "videoPath":"content/videos/s3/Tavole_acquarellate.mp4",
+              "shapePath":"models/room3/video/plane_video_a.gltf"
+            },
+            {
+              "id":"video_b",
+              "videoPath":"content/videos/s3/Filiera_immagini.mp4",
+              "shapePath":"models/room3/video/plane_video_b.gltf"
+            }
+          ],
+             "objectCollection": 
+             {
+                 "path": "models/room3/lowObjects/ph_sala3.gltf",
+                 "pos":{"x": 21.923365995711453, "y": -0.013697615426610854, "z": -1.9131708482672152}
+             },
+             "objects":[
+                {
+                    "id":"room2alink",
+                    "hoverLable":"Anticamera",
+                    "pos":{"x": 0, "y": 0, "z": 0},
+                    "rot":  {"x": 0, "y": 0, "z": 0},
+                    "type":"roomLink",
+                    "roomTo":"2a",
+                    "sem":
+                    {
+                        "path":"models/room3/semObjs/linkRoom2a.glb"
+                    },
+                    "povIn": {"pos":{"x":14.315642626723136,"y":1.582739911656823,"z":-3.299336612550926},"target":{"x":13.519619718331079,"y":1.5329202467794627,"z":-3.9025492867435}}
+                },
+                {
+                  "id": "erbariomedievale",
+                  "hoverLable": "Hortus sanitatis",
+                  "pos": {
+                    "x": -2.50285,
+                    "y": 0.885833,
+                    "z": -5.94668
+                  },
+                  "rot": {
+                    "x": -1.565440188,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-43-CNR_HortusSanitaris/HortusSanitaris.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/erbariomedievale.glb"
+                  },
+                  "povIn":{"pos": {"x": 19.372352454805153, "y": 1.3681417069253472, "z": -7.887964938839685},
+                "target":{"x": 19.372352435085467, "y": 0.8921619616929095, "z": -7.887965414410765}}
+                },
+                {
+                  "id": "tavolealdrovandinarciso",
+                  "hoverLable": "Narcissus",
+                  "pos": {
+                    "x": -1.82204,
+                    "y": 0.901512,
+                    "z": -5.95236
+                  },
+                  "rot": {
+                    "x": -0.6528246678,
+                    "y": 0.06755527004,
+                    "z": 0.04911660846
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-44-CNR_Narcissus/Volume_Narcisus.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/tavolealdrovandinarciso.glb"
+                  },
+                  "povIn":{"pos":{"x": 20.08703335965081, "y": 1.4939851513858655, "z": -7.772612162973445}, "target":{"x": 20.086247479167398, "y": 0.9078151616747671, "z": -7.869575656747239}}
+                },
+                {
+                  "id": "volumeapertocorpoumano",
+                  "hoverLable": "Muscolatura umana e scheletro pensante",
+                  "pos": {
+                    "x": -2.96337,
+                    "y": 0.972167,
+                    "z": -0.299532
+                  },
+                  "rot": {
+                    "x": 3.119296921,
+                    "y": 0.9554089988,
+                    "z": -3.109303151
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-45-FICLIT_VolumeCorpoUmano/VolumeCorpoUmano.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertocorpoumano.glb"
+                  },
+                  "povIn": {
+                    "pos": {"x": 19.014193518152467, "y": 1.9253017101148808, "z": -2.427529852153452},
+                    "target": {"x": 19.01100352971903, "y": 0.9996342604825492, "z": -2.227604629828459}
+                  }
+                },
+                {
+                  "id": "volumeapertoruoteidrauliche",
+                  "hoverLable": "Ruote idrauliche",
+                  "pos": {
+                    "x": -3.77423,
+                    "y": 0.880333,
+                    "z": -0.355619
+                  },
+                  "rot": {
+                    "x": 0.09116312872,
+                    "y": -0.5726783945,
+                    "z": 0.1682573707
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-46-FICLIT_RuoteIdrauliche/VolumeRuoteIdrauliche.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoruoteidrauliche.glb"                   
+                  },
+                  "povIn": {
+                    "pos": {"x": 18.17708875320516, "y": 1.3280339143691768, "z": -2.3318839263185613},
+                    "target":{"x": 18.1793936750952, "y": 0.898669766243709, "z": -2.2688969606914986}
+                  }
+                },
+                {
+                  "id": "volumeapertoluna",
+                  "hoverLable": "Illustrazioni della luna",
+                  "pos": {
+                    "x": -4.41736,
+                    "y": 0.925564,
+                    "z": -0.384338
+                  },
+                  "rot": {
+                    "x": -2.672175136,
+                    "y": -0.6993112861,
+                    "z": -2.686724057
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-47-FICLIT_Luna/volume_luna.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoluna.glb"
+                   },
+                  "povIn": {
+                    "pos": {"x": 17.560970976761844, "y": 1.4093820068349001, "z": -2.3259432212424653},
+                    "target": {"x": 17.560827173702858, "y": 0.9299061025498983, "z": -2.291031852656955}
+                  }
+                },
+                {
+                  "id": "volumeapertoanatomiaape",
+                  "hoverLable": "Descrizione dell'anatomia microscopica dell'ape",
+                  "pos": {
+                    "x": -4.98664,
+                    "y": 0.893696,
+                    "z": -0.413222
+                  },
+                  "rot": {
+                    "x": 2.984516165,
+                    "y": -0.01849936972,
+                    "z": -3.069099909
+                  },
+                  "type": "object",
+                  "path": "models/room3/assets/S3-48-FICLIT_AnatomiaApe/volume_anatomiaApe.gltf",
+                  "sem": {
+                    "path": "models/room3/semObjs/volumeapertoanatomiaape.glb"
+                  },
+                  "povIn": {
+                    "pos": {"x": 16.948609278202426, "y": 1.1987186095343532, "z": -2.4214762897154927},
+                    "target": {"x": 16.953163753965896, "y": 0.8908856300781162, "z": -2.3213071051921417}
+                  }
+                },
+            {
+              "id": "vetrinaconmatricixilografiche",
+              "hoverLable": "Parete con matrici xilografiche (111 matrici tot)",
+              "type":"object",
+              "pos":{"x": -6.394683052385387, "y": 1.143748298721782, "z": -3.5431133177179777},
+              "rot":{"x": -1.3962053344250935, "y": 1.2875201822983913, "z": 1.4099641141856627},
+              "path": "models/room3/assets/S3-PT-DICAM_VetrinaMatriciXilografiche/S3-PT-DICAM_VetrinaMatriciXilografiche/parete_tavolette_final.gltf",
+              "povIn": {"pos":{"x":17.722583038702027,"y":1.3796617560598123,"z":-5.383621936219275},"target":{"x":15.141711769310165,"y":1.1421838993489661,"z":-5.380745652262829}},
+              "sem": {
+                "path": "models/room3/semObjs/pareteTavolette_sem.glb"
+                }
+            }         
+          ]
+        },
+        "4":{
+            "HomePov":{"pos":{"x":12.66,"y":1.68,"z":-2.11},"target":{"x":12.62,"y":1.71765,"z":-3.106}},
+            "room":
+            {
+                "id":"room",
+                "path": "models/room4/sala/sala_4.gltf",
+                "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226}
+            },
+            "SUI":[ {
+              "id":"1",
+                "content":"Anticamera",
+                "pos":{ "x":0.27703868966791945, "y": 1.356001778952332, "z": -1.237115887609951},
+                "rot": {"x": -3.141592653589793, "y":  0.018446966090, "z": 3.141592653589793}
+            }],
+            "siblings":[
+             {
+              "id":"sibling_room2a",
+              "path":"models/siblings/room2a/anticamera.gltf",
+              "pos":{"x": 12.448915897254281, "y": 0.5795184033548496, "z": -3.3866837251783934}
+           }
+          ],
+            "objectCollection": 
+            {
+                "path": "models/room4/lowObjects/oggetti_sala4.gltf",
+                "pos":{"x": 11.984896508496993, "y": -0.14052870815233626, "z": -3.817010174909226}
+            },
+            "objects":[
+              {
+                "id":"room2alink",
+                "hoverLable":"Anticamera",
+                "type":"roomLink",
+                "roomTo":"2a",
+                "sem":
+                {
+                    "path":"models/room4/semObjs/linkRoom2a.glb"                    
+                },
+                "povIn": {"pos":{"x":12.254772019678754,"y":1.5793164900361292,"z":-4.616332352111351},"target":{"x":12.762906887686674,"y":1.5064634730854924,"z":-3.7581415843704224}}
+            },
+            {
+              "id": "mascheraatzeca",
+              "hoverLable": "Maschera raffigurante Yacatecuhtli, patrono dei mercanti, cultura nahua, ca. 1350-1521 d.C.",
+              "pos": {"x": 2.2008183963902725, "y": 1.9710275425618784, "z": -3.7891947801885255},
+              "rot": {
+                "x": 0,
+                "y": -1.474000616,
+                "z": 0
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-49-ISTI_MascheraAzteca/MascheraAzteca.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/mascheraatzeca_sem.glb"
+              },
+              "povIn":{"pos":{"x": 13.842580029006966, "y": 1.835520291460615, "z": -7.5788431751084895},"target":{"x": 14.141716716009842, "y": 1.8302143693825148, "z": -7.635910355942863}}
+            },
+            {
+              "id": "manicodicoltellozoomorfo",
+              "hoverLable": "Manico di coltello sacrificale in forma di rettile fantastico cultura nahua, ca. 1350-1521 d.C.",
+              "pos":{"x": 2.1814099563392384, "y": 1.4585237022243136, "z": -3.48716009570566},
+              "rot": {
+                "x": 
+                2.946280920617936,
+                "y": 1.3746526317059562,
+                "z": 
+                -2.9708299620549177
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-ManicoColtelloZoomorfo/pugnale_modello2.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/manicodicoltellozoomorfo_sem.glb" 
+              },
+              "povIn":{"pos":{"x": 13.929379680995904, "y": 1.3441685136827028, "z": -7.23500843397403},"target":{"x": 14.155812560019685, "y": 1.340504319739625, "z": -7.246021310160559}}
+            },
+            {
+              "id": "manicodicoltelloantropomorfo",
+              "hoverLable": "Manico di coltello sacrificale in forma di figura umana",
+              "pos": {"x": 2.1605899059908436, "y": 1.4260137323269586, "z": -4.173660165515897},
+              "rot": {
+                "x": 0,
+                "y": -1.364940313,
+                "z": 0
+              },
+              "type": "object",
+             "path": "models/room4/assets/S4-51-ISTI_ManicoColtelloAntropomorfo/ManicoColtelloAntropomorfo.gltf",
+              "sem": {
+                    "path": "models/room4/semObjs/manicodicoltelloantropomorfo_sem.glb"
+              },
+              "povIn":{"pos":{"x": 13.949724249449089, "y": 1.2902639337502253, "z": -7.943132609615279},"target":{"x": 14.155908068286857, "y": 1.3013582864043052, "z": -8.02152552290701}}
+            },
+            {
+              "id": "tavolaaldrovandimascheraatzeca",
+              "hoverLable": "Maschera",
+              "pos":{"x": -1.4809340725031601, "y": 0.8254693945224663, "z": -3.1464462790250916},
+              "rot": {
+                "x": 0.016742197496336365,
+                "y": -0.07051414003526553,
+                "z":-0.018293609233447344
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-52-FICLIT_TavolaAldrovandiMaschera/VolumeMascheraAzteca.gltf",
+              "sem": {
+                "path": "models/room4/semObjs/tavolaaldrovandimascheraatzeca_sem.glb"
+              },
+              "povIn":{
+                "pos":{"x": 10.539551261598339, "y": 1.3249766089324364, "z": -6.928878104280271},
+                "target": {"x": 10.480529765239117, "y": 0.6871687530023358, "z": -6.932456119143285}
+              }
+            },
+            {
+              "id": "testina",
+              "hoverLable": "Pendente con testa di idolo in serpentino cultura nahua o mixteca, ca. 1350-1521 d.C.",
+              "pos": {
+                "x":-1.602130500858391, "y": 1.3632901155287214, "z": -4.807452153541249
+              },
+              "rot": {
+                "x":3.103920832273237,"y":  -4.369999999999999e-8,"z": 3.141592653589793
+              },
+               "type": "object",
+              "path": "models/room4/assets/S4-53-DBC_Testina/pendente_testina.gltf",
+              "sem": {
+                "path":"models/room4/semObjs/testina_sem.glb"
+              }
+            },
+            {
+              "id": "tavolaaldrovanditestina",
+              "hoverLable": "Idoli",
+              "pos": {
+                "x": -1.5278996623586232,
+                "y": 0.8342898286774708,
+                "z": -2.467418062828787
+              },
+              "rot": {
+                "x": 0,
+                "y": -0.1489451826,
+                "z": 0
+              },
+              "type": "object",
+              "path": "models/room4/assets/S4-54-FICLIT_TavolaAldrovandiTestina/TavolaAldrovandiTestinaIdoli.gltf",
+              "sem": {
+               "path":"models/room4/semObjs/tavolaaldrovanditestina_Sem.glb"
+              },
+              "povIn": {
+                "pos": {"x": 10.530516581956649, "y": 1.3047855155254995, "z": -6.262418021687557},
+                "target": {"x": 10.438312545504264, "y": 0.678377246757905, "z": -6.275108409434893}                
+              }
+            }
+          ]
+        }
+    },
+            "mind":
+            {
+                "homePOVController":
+                {
+                    "1":{"pos":{"x":6.510395246881961,"y":12.539173682846629,"z":2.5440621230615137},"target":{"x":6.510879547353504,"y":-0.09133000225026798,"z":2.5971624742451}},
+                    "2":{"pos":{"x":15.197586804659231,"y":14.950486418612488,"z":1.9451158798876722},"target":{"x":15.196282881731236,"y":11.530428255894947,"z":2.125008687762171}}
+
+                },
+                "homePOVUser": {"pos": {"x" :-0.22108174086545052,"y":1.5200246181018253,"z":3.144529406858276},"target":{"x":0.7721218424237389,"y":1.5799041042486999,"z":3.2443346636351621}},
+                "dataFormat":
+                {
+                    "props":
+                    [
+                        "id",
+                        "userNameSurname",
+                        "date",
+                        "device",
+                        "language",
+                        "audioVersion",
+                        "1_AmbientExplorationStartTime",
+                        "1_AmbientExplorationEndTime",
+                        "1_AmbientExplorationDelta",
+                        
+                        "2_Object_A_AnswerIsCorrect",
+                        "2_Object_A_ResearchStartTime",
+                        "2_Object_A_ResearchEndTime",
+                        "2_Object_A_ResearchDelta",
+                        "2_Object_A_Founded",
+                        
+                        "2_AmbientExplorationStartTime",
+                        "2_AmbientExplorationEndTime",
+                        "2_AmbientExplorationDelta",
+                        
+                        "3_Object_B_AnswerIsCorrect",
+                        "3_Object_B_ResearchStartTime",
+                        "3_Object_B_ResearchEndTime",
+                        "3_Object_B_ResearchDelta",
+                        "3_Object_B_Founded"
+                    ]
+                },
+                "popupObjectsThumb":
+                {
+                    "A":"mind/thumbs/thumbA.png",
+                    "B":"mind/thumbs/thumbB.png"
+                },
+                "timers":
+                {
+                    "exploration1":
+                    {
+                        "startText":"START EXPLORATION n°1",
+                        "pauseText":"STOP EXPLORATION n°1",
+                        "endText":"finished",
+                        "start": "1_AmbientExplorationStartTime",
+                        "end":"1_AmbientExplorationEndTime",
+                        "delta":"1_AmbientExplorationDelta"
+                    },
+                    "exploration2":
+                    {
+                        "startText":"START EXPLORATION n°2",
+                        "pauseText":"STOP EXPLORATION 2°",
+                        "endText":"finished",
+                        "start": "2_AmbientExplorationStartTime",
+                        "end":"2_AmbientExplorationEndTime",
+                        "delta":"2_AmbientExplorationDelta"
+                    },
+                    "searchObjectA":
+                    {
+                        "startText":"START SEARCH OJBECT A",
+                        "pauseText":"STOP SEARCH OJBECT A",
+                        "endText":"finished",
+                        "start":  "2_Object_A_ResearchStartTime",
+                        "end": "2_Object_A_ResearchEndTime",
+                        "delta": "2_Object_A_ResearchDelta"
+                    },
+                    "searchObjectB":
+                    {
+                        "startText":"START SEARCH OJBECT B",
+                        "pauseText":"STOP SEARCH OJBECT B",
+                        "endText":"finished",
+                        "start":  "3_Object_B_ResearchStartTime",
+                        "end": "3_Object_B_ResearchEndTime",
+                        "delta": "3_Object_B_ResearchDelta"
+                    }
+                }
+            
+            }
+}

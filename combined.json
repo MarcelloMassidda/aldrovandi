@@ -1,0 +1,3674 @@
+{
+  "1": [
+    {
+      "NR": "1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240111-fa5nvpg07",
+      "DIDASCALIA": "Carta nautica",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/1/ob00/1>",
+      "ROOM": 1,
+      "id": "1",
+      "type": "object",
+      "hoverLable": "Carta nautica",
+      "path": "aldrovandi/models/S1-01-CNR-FICLIT_CartaNautica/carta_nautica.gltf",
+      "pos": {
+        "x": 3.2896111011505127,
+        "y": 0.7541149854660034,
+        "z": 0.158322274684906
+      },
+      "rot": {
+        "x": -0.3459325217040664,
+        "y": -0.014548925966940806,
+        "z": -0.029861231261733415
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/1_convex.GLB"
+      }
+    },
+    {
+      "NR": "4",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-o3sk3ytsa",
+      "DIDASCALIA": "Theophrastus",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/4/ob00/1>",
+      "ROOM": 1,
+      "id": "4",
+      "type": "object",
+      "hoverLable": "Theophrastus",
+      "path": "aldrovandi/models/S1-04-CNR-FICLIT_Teofrasto/Teofrasto.gltf",
+      "pos": {
+        "x": 9.144567489624023,
+        "y": 0.8767752647399902,
+        "z": 0.35039034485816956
+      },
+      "rot": {
+        "x": 1.3166320885901581,
+        "y": -0.8230904225523065,
+        "z": 1.8167173225789575
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/4_convex.GLB"
+      }
+    },
+    {
+      "NR": "3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-9vj0k3ouy",
+      "DIDASCALIA": "Aristoteles",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/3/ob00/1>",
+      "ROOM": 1,
+      "id": "3",
+      "type": "object",
+      "hoverLable": "Aristoteles",
+      "path": "aldrovandi/models/S1-03-CNR-FICLIT_Aristotele/Aristotele.gltf",
+      "pos": {
+        "x": 9.14162540435791,
+        "y": 0.8482362627983093,
+        "z": -0.10171534866094589
+      },
+      "rot": {
+        "x": -2.08778167898075,
+        "y": -1.1766042217120771,
+        "z": -2.086076156067665
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/3_convex.GLB"
+      }
+    },
+    {
+      "NR": "2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231116-t4106pkmw",
+      "DIDASCALIA": "Panthera leo (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/2/ob00/1>",
+      "ROOM": 1,
+      "id": "2",
+      "type": "object",
+      "hoverLable": "Panthera leo (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S1-02-DA-Diorama 3 leoni/Leoni.gltf",
+      "pos": {
+        "x": 5.411676406860352,
+        "y": 1.1812443733215332,
+        "z": 0.19042611122131348
+      },
+      "rot": {
+        "x": 0,
+        "y": 0,
+        "z": 0.0178459194948152
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/2_convex.GLB"
+      }
+    },
+    {
+      "NR": "5",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-otyna5qs5",
+      "DIDASCALIA": "Dioscorides Pedanius",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/5/ob00/1>",
+      "ROOM": 1,
+      "id": "5",
+      "type": "object",
+      "hoverLable": "Dioscorides Pedanius",
+      "path": "aldrovandi/models/S1-05-CNR-FICLIT_MedicaMateria/medicaMateria.gltf",
+      "pos": {
+        "x": 9.141559600830078,
+        "y": 0.8605006337165833,
+        "z": 0.923323392868042
+      },
+      "rot": {
+        "x": -1.2679485876619756,
+        "y": -0.9375508554786527,
+        "z": -1.3179373046183178
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/5_convex.GLB"
+      }
+    },
+    {
+      "NR": "7",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-ia9cfb2eb",
+      "DIDASCALIA": "Profilo incompleto delle coste del continente americano",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/7/ob00/1>",
+      "ROOM": 1,
+      "id": "7",
+      "type": "object",
+      "hoverLable": "Profilo incompleto delle coste del continente americano",
+      "path": "aldrovandi/models/S1-07-CNR-FICLIT_CartaCosteAmerica/CartaCosteAmerica1.gltf",
+      "pos": {
+        "x": 5.302550792694092,
+        "y": 0.8287622928619385,
+        "z": 2.6397287845611572
+      },
+      "rot": {
+        "x": -2.628231489856395,
+        "y": 0.13271639299865978,
+        "z": 2.9742523677875137
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/7_convex.GLB"
+      }
+    },
+    {
+      "NR": "9",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-krza6s43x",
+      "DIDASCALIA": "Pietro Martire dAnghiera",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/9/ob00/1>",
+      "ROOM": 1,
+      "id": "9",
+      "type": "object",
+      "hoverLable": "Pietro Martire dAnghiera",
+      "path": "aldrovandi/models/S1-09-CNR-FICLIT_DeOrboNovo/DeOrboNovo.gltf",
+      "pos": {
+        "x": 4.274786949157715,
+        "y": 0.7876800894737244,
+        "z": 2.6081836223602295
+      },
+      "rot": {
+        "x": -2.802583181175422,
+        "y": 0.038540540865282386,
+        "z": 3.04971008245711
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/9_convex.GLB"
+      }
+    },
+    {
+      "NR": "8",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-1noow3l38",
+      "DIDASCALIA": "Mappa di Cusco",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/8/ob00/1>",
+      "ROOM": 1,
+      "id": "8",
+      "type": "object",
+      "hoverLable": "Mappa di Cusco",
+      "path": "aldrovandi/models/S1-08-CNR-FICLIT_MappaCusco/MappaCusco.gltf",
+      "pos": {
+        "x": 2.940657615661621,
+        "y": 0.8439985513687134,
+        "z": 2.618537664413452
+      },
+      "rot": {
+        "x": 2.735666942918872,
+        "y": 0.5265583313166284,
+        "z": -2.9995588049429163
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/8_convex.GLB"
+      }
+    },
+    {
+      "NR": "10",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-6hdd0d91i",
+      "DIDASCALIA": "Jos de Acosta",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/10/ob00/1>",
+      "ROOM": 1,
+      "id": "10",
+      "type": "object",
+      "hoverLable": "Jos de Acosta",
+      "path": "aldrovandi/models/S1-10-CNR-FICLIT_HistoriaNaturaeIndiae/HistoriaNaturaeIndiaeVol.gltf",
+      "pos": {
+        "x": 3.8023264408111572,
+        "y": 0.7768255472183228,
+        "z": 2.626448631286621
+      },
+      "rot": {
+        "x": -2.8436116985095268,
+        "y": -0.2620235034203011,
+        "z": -3.0622034763603283
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/10_convex.GLB"
+      }
+    },
+    {
+      "NR": "11",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-v287oms4a",
+      "DIDASCALIA": "Tabacco",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/11/ob00/1>",
+      "ROOM": 1,
+      "id": "11",
+      "type": "object",
+      "hoverLable": "Tabacco",
+      "path": "aldrovandi/models/S1-11-CNR-FICLIT_Tabacco/Tabacco.gltf",
+      "pos": {
+        "x": 3.3620493412017822,
+        "y": 0.7808420658111572,
+        "z": 2.6526994705200195
+      },
+      "rot": {
+        "x": 0.33021776776866724,
+        "y": 0.030038280941200732,
+        "z": 3.740573213538031e-9
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/11_convex.GLB"
+      }
+    },
+    {
+      "NR": "12",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231031-jqf4h4il9",
+      "DIDASCALIA": "Panthera onca (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/12/ob00/1>",
+      "ROOM": 1,
+      "id": "12",
+      "type": "object",
+      "hoverLable": "Panthera onca (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S1-12-DBC_Giaguaro_tassidermizzato/giaguaro_tassidermizzato1.gltf",
+      "pos": {
+        "x": 4.4170613288879395,
+        "y": 0.5090873837471008,
+        "z": 5.888082981109619
+      },
+      "rot": {
+        "x": 1.4871200234185635,
+        "y": 0.1550765340005355,
+        "z": 2.157143442371475
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/12_convex.GLB"
+      }
+    },
+    {
+      "NR": "14",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231110-0yffexl0n",
+      "DIDASCALIA": "Limulus polyphemus (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/14/ob00/1>",
+      "ROOM": 1,
+      "id": "14",
+      "type": "object",
+      "hoverLable": "Limulus polyphemus (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S1-14-DA-Limulo tassidermizzato/limulo.gltf",
+      "pos": {
+        "x": 4.745781421661377,
+        "y": 0.891409158706665,
+        "z": 6.213974952697754
+      },
+      "rot": {
+        "x": -3.141592653589793,
+        "y": 1.5165789613362939,
+        "z": -3.141592653589793
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/14_convex.GLB"
+      }
+    },
+    {
+      "NR": "13",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240201-szsapmta4",
+      "DIDASCALIA": "Pharomachrus mocinno (De la Llave, 1832)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/13/ob00/1>",
+      "ROOM": 1,
+      "id": "13",
+      "type": "object",
+      "hoverLable": "Pharomachrus mocinno (De la Llave, 1832)",
+      "path": "aldrovandi/models/S1-13-Quetzal/quetzal_5.gltf",
+      "pos": {
+        "x": 2.9434256553649902,
+        "y": 2.0844290256500244,
+        "z": 5.74663782119751
+      },
+      "rot": null,
+      "sem": {
+        "path": "models/room1/semObjs/convex/13_convex.GLB"
+      }
+    },
+    {
+      "NR": "15",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-o5oddag2l",
+      "DIDASCALIA": "Ctenosaura similis (Gray, 1831)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/15/ob00/1>",
+      "ROOM": 1,
+      "id": "15",
+      "type": "object",
+      "hoverLable": "Ctenosaura similis (Gray, 1831)",
+      "path": "aldrovandi/models/S1-15-Sketchfab_Iguana/Iguana.gltf",
+      "pos": {
+        "x": 3.391223430633545,
+        "y": 0.19048655033111572,
+        "z": 5.750232219696045
+      },
+      "rot": {
+        "x": 1.5707966996015976,
+        "y": -3.437307327658346e-8,
+        "z": 2.682330937266487
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/15_convex.GLB"
+      }
+    },
+    {
+      "NR": "17",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231024-ogj30iwnh",
+      "DIDASCALIA": "Ramphastos toco (Statius Mller, 1776)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/17/ob00/1>",
+      "ROOM": 1,
+      "id": "17",
+      "type": "object",
+      "hoverLable": "Ramphastos toco (Statius Mller, 1776)",
+      "path": "aldrovandi/models/S1-17-Sketchfab_Tucano tassidermizzato/Tucano_Tassidermizzato.gltf",
+      "pos": {
+        "x": 4.238388538360596,
+        "y": 1.9109172821044922,
+        "z": 5.837733745574951
+      },
+      "rot": {
+        "x": -2.7386762909720175,
+        "y": -1.3423611555649941,
+        "z": -2.6482079007707586
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/17_convex.GLB"
+      }
+    },
+    {
+      "NR": "16",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231031-2k7jlokwy",
+      "DIDASCALIA": "Ara macao (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/16/ob00/1>",
+      "ROOM": 1,
+      "id": "16",
+      "type": "object",
+      "hoverLable": "Ara macao (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S1-16-Sketchfab_AraTassidermizzata/Ara_Tassidermizzata.gltf",
+      "pos": {
+        "x": 4.666721820831299,
+        "y": 2.1514058113098145,
+        "z": 6.201631546020508
+      },
+      "rot": {
+        "x": 1.3918441959614778,
+        "y": 0.1746052986102942,
+        "z": -1.569311592671786
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/16_convex.GLB"
+      }
+    },
+    {
+      "NR": "18",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230915-yjvfvo0sa",
+      "DIDASCALIA": "Meleagris gallopavo (Linneaus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/18/ob00/1>",
+      "ROOM": 1,
+      "id": "18",
+      "type": "object",
+      "hoverLable": "Meleagris gallopavo (Linneaus, 1758)",
+      "path": "aldrovandi/models/S1-22-CNR-Tacchino/tacchino.gltf",
+      "pos": {
+        "x": 3.371518611907959,
+        "y": 0.9610239267349243,
+        "z": 5.773235321044922
+      },
+      "rot": {
+        "x": -3.1415926523579443,
+        "y": -0.6487698346495953,
+        "z": 3.131679819877868
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/18_convex.GLB"
+      }
+    },
+    {
+      "NR": "19",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231110-7pl4plfbr",
+      "DIDASCALIA": "Dasypus novemcinctus (Linnaeus, 1757)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/19/ob00/1>",
+      "ROOM": 1,
+      "id": "19",
+      "type": "object",
+      "hoverLable": "Dasypus novemcinctus (Linnaeus, 1757)",
+      "path": "aldrovandi/models/S1-19-DA-Armadillo tassidermizzato/armadillo.gltf",
+      "pos": {
+        "x": 4.183993816375732,
+        "y": 1.2256157398223877,
+        "z": 6.1828484535217285
+      },
+      "rot": {
+        "x": -0.7578445894473614,
+        "y": 1.5349835240475207,
+        "z": 0.7535071027419887
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/19_convex.GLB"
+      }
+    },
+    {
+      "NR": "20",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230929-78yfjyjch",
+      "DIDASCALIA": "Codice Cospi, manoscritto divinatorio mesoamericano",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/20/ob00/1>",
+      "ROOM": 1,
+      "id": "20",
+      "type": "object",
+      "hoverLable": "Codice Cospi, manoscritto divinatorio mesoamericano",
+      "path": "aldrovandi/models/S1-20-FICLIT_CodiceCospi/codicecospi.gltf",
+      "pos": {
+        "x": 7.241453170776367,
+        "y": 0.4770698547363281,
+        "z": 6.17009162902832
+      },
+      "rot": {
+        "x": -3.134485127441826,
+        "y": -0.02637397879268229,
+        "z": 3.1102785995650497
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/20_convex.GLB"
+      }
+    },
+    {
+      "NR": "6",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230818-6037tssbz",
+      "DIDASCALIA": "Plinius Secundus Gaius",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/6/ob00/1>",
+      "ROOM": 1,
+      "id": "6",
+      "type": "object",
+      "hoverLable": "Plinius Secundus Gaius",
+      "path": "aldrovandi/models/S1-06-CNR-FICLIT_NaturaeHistoriarum/Naturae_Historiarum.gltf",
+      "pos": {
+        "x": 9.151243209838867,
+        "y": 0.8421016335487366,
+        "z": 1.4310306310653687
+      },
+      "rot": {
+        "x": -1.4898263513135672,
+        "y": -0.9746660643780375,
+        "z": -1.4411094069541448
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/6_convex.GLB"
+      }
+    },
+    {
+      "NR": "21",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231024-t9m50ekpd",
+      "DIDASCALIA": "Ritratto di Ulisse Aldrovandi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/21/ob00/1>",
+      "ROOM": 1,
+      "id": "21",
+      "type": "object",
+      "hoverLable": "Ritratto di Ulisse Aldrovandi",
+      "path": "aldrovandi/models/S1-21-CNR-FICLIT_RitrattoAldrovandi/ritratto_aldrovandi.gltf",
+      "pos": {
+        "x": 9.14962387084961,
+        "y": 2.043247699737549,
+        "z": 2.773005247116089
+      },
+      "rot": {
+        "x": 3.076507001823022,
+        "y": -0.46627199007574416,
+        "z": 2.9995762225159264
+      },
+      "sem": {
+        "path": "models/room1/semObjs/convex/21_convex.GLB"
+      }
+    }
+  ],
+  "2": [
+    {
+      "NR": "34",
+      "LINK": "https://sketchfab.com/3d-models/chimaera-monstrosa-80bb1895691942bab5145ce3d7d49ac4",
+      "DIDASCALIA": "Chimaera monstrosa (Linnaeus,1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/34/ob00/1>",
+      "ROOM": 2,
+      "id": "34",
+      "type": "object",
+      "hoverLable": "Chimaera monstrosa (Linnaeus,1758)",
+      "path": "https://sketchfab.com/3d-models/chimaera-monstrosa-80bb1895691942bab5145ce3d7d49ac4",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/34_convex.GLB"
+      }
+    },
+    {
+      "NR": "25",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231009-2m3d0eokl",
+      "DIDASCALIA": "Mappa dellorto botanico di Bologna",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/25/ob00/1>",
+      "ROOM": 2,
+      "id": "25",
+      "type": "object",
+      "hoverLable": "Mappa dellorto botanico di Bologna",
+      "path": "aldrovandi/models/S2-25-CNR-FICLIT_MappaOrtoBotanicoBologna/MappaOrtoBotanicoBologna.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/25_convex.GLB"
+      }
+    },
+    {
+      "NR": "24",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231009-a3dpkuf52",
+      "DIDASCALIA": "Mappa dellorto botanico di Padova",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/24/ob00/1>",
+      "ROOM": 2,
+      "id": "24",
+      "type": "object",
+      "hoverLable": "Mappa dellorto botanico di Padova",
+      "path": "aldrovandi/models/S2-24-CNR-FICLIT_MappaOrtoBotanicoPadova/MappaOrtoBotanicoPadova.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/24_convex.GLB"
+      }
+    },
+    {
+      "NR": "22",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240221-d9wl2801b",
+      "DIDASCALIA": "Dioscorides Pedanius",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/22/ob00/1>",
+      "ROOM": 2,
+      "id": "22",
+      "type": "object",
+      "hoverLable": "Dioscorides Pedanius",
+      "path": "aldrovandi/models/S2-22-CNR_VolumePianteMedicinali/libroPianteMedicinali.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/22_convex.GLB"
+      }
+    },
+    {
+      "NR": "26",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230919-w6j1031m4",
+      "DIDASCALIA": "Chrysanthemi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/26/ob00/1>",
+      "ROOM": 2,
+      "id": "26",
+      "type": "object",
+      "hoverLable": "Chrysanthemi",
+      "path": "aldrovandi/models/S2-26-FICLIT_Girasole/girasole.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/26_convex.GLB"
+      }
+    },
+    {
+      "NR": "27b",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-r0ipvqt1d",
+      "DIDASCALIA": "Adonis vernalis L.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27b/ob00/1>",
+      "ROOM": 2,
+      "id": "27b",
+      "type": "object",
+      "hoverLable": "Adonis vernalis L.",
+      "path": "aldrovandi/models/S2-27b-CNR-FICLIT_ErbarioAdonis/ErbariAdonis.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27b_convex.GLB"
+      }
+    },
+    {
+      "NR": "27c",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-n1z2dj48e",
+      "DIDASCALIA": "Solanum lycopersicum L.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27c/ob00/1>",
+      "ROOM": 2,
+      "id": "27c",
+      "type": "object",
+      "hoverLable": "Solanum lycopersicum L.",
+      "path": "aldrovandi/models/S2-27c-FICLIT_Solanumlycopersicum/27c_Solanyum.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27c_convex.GLB"
+      }
+    },
+    {
+      "NR": "27e",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-4jc1ew0m3",
+      "DIDASCALIA": "Tulipa sylvestris L.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27e/ob00/1>",
+      "ROOM": 2,
+      "id": "27e",
+      "type": "object",
+      "hoverLable": "Tulipa sylvestris L.",
+      "path": "aldrovandi/models/S2-27e-FICLIT_TulipaSylvestris/27e_tulipa.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27e_convex.GLB"
+      }
+    },
+    {
+      "NR": "27f",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231024-0p4o4vhoe",
+      "DIDASCALIA": "Dryas octopetala L.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27f/ob00/1>",
+      "ROOM": 2,
+      "id": "27f",
+      "type": "object",
+      "hoverLable": "Dryas octopetala L.",
+      "path": "aldrovandi/models/S2-27f-CNR_ErbarioDryas/ErbarioDyras.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27f_convex.GLB"
+      }
+    },
+    {
+      "NR": "28",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230915-hczwmijd0",
+      "DIDASCALIA": "Anatomia del pollo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/28/ob00/1>",
+      "ROOM": 2,
+      "id": "28",
+      "type": "object",
+      "hoverLable": "Anatomia del pollo",
+      "path": "aldrovandi/models/S2-28-FICLIT_AnatomiaDelPollo/Anatomiadelpollo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/28_convex.GLB"
+      }
+    },
+    {
+      "NR": "27d",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231013-bvbu85t4w",
+      "DIDASCALIA": "Antennaria dioica (L.) Gaertner",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27d/ob00/1>",
+      "ROOM": 2,
+      "id": "27d",
+      "type": "object",
+      "hoverLable": "Antennaria dioica (L.) Gaertner",
+      "path": "aldrovandi/models/S2-27d-CNR-FICLIT_ErbarioAntennaria/Erbari_AntennariaDioica.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27d_convex.GLB"
+      }
+    },
+    {
+      "NR": "31",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231003-q2i8pj3b5",
+      "DIDASCALIA": "Cigno sezionato",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/31/ob00/1>",
+      "ROOM": 2,
+      "id": "31",
+      "type": "object",
+      "hoverLable": "Cigno sezionato",
+      "path": "aldrovandi/models/S2-31-FICLIT-CignoSezionato/VolumeCigno.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/31_convex.GLB"
+      }
+    },
+    {
+      "NR": "27a",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-wpwffjtfz",
+      "DIDASCALIA": "Delphinium staphisagria L.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/27a/ob00/1>",
+      "ROOM": 2,
+      "id": "27a",
+      "type": "object",
+      "hoverLable": "Delphinium staphisagria L.",
+      "path": "aldrovandi/models/S2-27a-FICLIT_DelphiniumStaphisagria/27a_delphinium.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/27a_convex.GLB"
+      }
+    },
+    {
+      "NR": "29",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231013-suelos7at",
+      "DIDASCALIA": "Pulcino dentro il guscio",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/29/ob00/1>",
+      "ROOM": 2,
+      "id": "29",
+      "type": "object",
+      "hoverLable": "Pulcino dentro il guscio",
+      "path": "aldrovandi/models/S2-29-CNR-FICLIT_TavolaAldrovandiPulcino/Pulcino_TavolaAldrovandi.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/29_convex.GLB"
+      }
+    },
+    {
+      "NR": "32",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230616-9h2cko8fk",
+      "DIDASCALIA": "Essere umano ermafrodita",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/32/ob00/1>",
+      "ROOM": 2,
+      "id": "32",
+      "type": "object",
+      "hoverLable": "Essere umano ermafrodita",
+      "path": "aldrovandi/models/S2-32-FICLIT_EssereUmanoErmafrodita/Ermafrodita.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/32_convex.GLB"
+      }
+    },
+    {
+      "NR": "30",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250128-v0c715m30",
+      "DIDASCALIA": "Cygnus olor (Gmelin, 1789)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/30/ob00/1>",
+      "ROOM": 2,
+      "id": "30",
+      "type": "object",
+      "hoverLable": "Cygnus olor (Gmelin, 1789)",
+      "path": "aldrovandi/models/S2-30-DA-Cigno tassidermizzato/30_cigno_tassidermizzato.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/30_convex.GLB"
+      }
+    },
+    {
+      "NR": "35",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240209-pvraty7hq",
+      "DIDASCALIA": "Basilisco",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/35/ob00/1>",
+      "ROOM": 2,
+      "id": "35",
+      "type": "object",
+      "hoverLable": "Basilisco",
+      "path": "aldrovandi/models/S2-35-DBC_Basilisco/basilisco__3.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/35_convex.GLB"
+      }
+    },
+    {
+      "NR": "33",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250128-91djzzhoz",
+      "DIDASCALIA": "Lodoicea maldivica (J. F. Gmel.) Pers.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/33/ob00/1>",
+      "ROOM": 2,
+      "id": "33",
+      "type": "object",
+      "hoverLable": "Lodoicea maldivica (J. F. Gmel.) Pers.",
+      "path": "aldrovandi/models/S2-33-DBC_Seme_del_Coco/33_semedelcoco.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/33_convex.GLB"
+      }
+    },
+    {
+      "NR": "37",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240213-mxgcivgtz",
+      "DIDASCALIA": "Tavola con monocolo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/37/ob00/1>",
+      "ROOM": 2,
+      "id": "37",
+      "type": "object",
+      "hoverLable": "Tavola con monocolo",
+      "path": "aldrovandi/models/S2-37-Cera, bambino ciclope/bambinoCiclope_cera.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/37_convex.GLB"
+      }
+    },
+    {
+      "NR": "36",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-evrx9spb6",
+      "DIDASCALIA": "Ciclope",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/36/ob00/1>",
+      "ROOM": 2,
+      "id": "36",
+      "type": "object",
+      "hoverLable": "Ciclope",
+      "path": "aldrovandi/models/S2-36-FICLIT_Ciclope/Ciclope_TavolaConMonocolo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/36_convex.GLB"
+      }
+    },
+    {
+      "NR": "40",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-ky25a8trl",
+      "DIDASCALIA": "Monodon monoceros (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/40/ob00/1>",
+      "ROOM": 2,
+      "id": "40",
+      "type": "object",
+      "hoverLable": "Monodon monoceros (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S2-40-DICAM_Narvalo/40_narvalo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/40_convex.GLB"
+      }
+    },
+    {
+      "NR": "39",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240403-psafpjd57",
+      "DIDASCALIA": "Bos taurus (Linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/39/ob00/1>",
+      "ROOM": 2,
+      "id": "39",
+      "type": "object",
+      "hoverLable": "Bos taurus (Linnaeus, 1758)",
+      "path": "aldrovandi/models/S2-39-CNR-VitelloTassidermizzato/vitello_tassidermizzato.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/39_convex.GLB"
+      }
+    },
+    {
+      "NR": "38",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230913-6pebjzfy0",
+      "DIDASCALIA": "Doppia testa di vitello",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/38/ob00/1>",
+      "ROOM": 2,
+      "id": "38",
+      "type": "object",
+      "hoverLable": "Doppia testa di vitello",
+      "path": "aldrovandi/models/S2-38-FICLIT_DoppiaTestaDiVitello/doppiaTestaDiVitello.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/38_convex.GLB"
+      }
+    },
+    {
+      "NR": "42",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20230822-onmcdskke",
+      "DIDASCALIA": "Cerastes serpens e ammodites",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/42/ob00/1>",
+      "ROOM": 2,
+      "id": "42",
+      "type": "object",
+      "hoverLable": "Cerastes serpens e ammodites",
+      "path": "aldrovandi/models/S2-42-FICLIT_CerastesSerpensAmmodites/CerastesSerpensAmmodites1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/42_convex.GLB"
+      }
+    },
+    {
+      "NR": "41",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250127-k3gaowzel",
+      "DIDASCALIA": "Orcio per teriaca ",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/41/ob00/1>",
+      "ROOM": 2,
+      "id": "41",
+      "type": "object",
+      "hoverLable": "Orcio per teriaca ",
+      "path": "aldrovandi/models/S2-41-DA-TERIACA/41_teriaca.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room2/semObjs/convex/41_convex.GLB"
+      }
+    }
+  ],
+  "3": [
+    {
+      "NR": "PT",
+      "LINK": "",
+      "DIDASCALIA": "matrice xilografica",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "matrice xilografica",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "",
+      "DIDASCALIA": "matrice xilografica",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "matrice xilografica",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250204-5uhm3znvn",
+      "DIDASCALIA": "matrice xilografica con incisi geroglifici",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "matrice xilografica con incisi geroglifici",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "43",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231129-rq1e5y949",
+      "DIDASCALIA": "Hortus sanitatis",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/43/ob00/1>",
+      "ROOM": 3,
+      "id": "43",
+      "type": "object",
+      "hoverLable": "Hortus sanitatis",
+      "path": "aldrovandi/models/S3-43-CNR_HortusSanitaris/HortusSanitaris.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/43_convex.GLB"
+      }
+    },
+    {
+      "NR": "44",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231215-a7vhocyrz",
+      "DIDASCALIA": "Narcissus",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/44/ob00/1>",
+      "ROOM": 3,
+      "id": "44",
+      "type": "object",
+      "hoverLable": "Narcissus",
+      "path": "aldrovandi/models/S3-44-CNR_Narcissus/Volume_Narcisus.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/44_convex.GLB"
+      }
+    },
+    {
+      "NR": "45",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231102-9r30matzr",
+      "DIDASCALIA": "Muscolatura umana e scheletro pensante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/45/ob00/1>",
+      "ROOM": 3,
+      "id": "45",
+      "type": "object",
+      "hoverLable": "Muscolatura umana e scheletro pensante",
+      "path": "aldrovandi/models/S3-45-FICLIT_VolumeCorpoUmano/VolumeCorpoUmano.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/45_convex.GLB"
+      }
+    },
+    {
+      "NR": "47",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20241206-8kwcrji9j",
+      "DIDASCALIA": "Illustrazioni della luna",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/47/ob00/1>",
+      "ROOM": 3,
+      "id": "47",
+      "type": "object",
+      "hoverLable": "Illustrazioni della luna",
+      "path": "aldrovandi/models/S3-47-FICLIT_Luna/volume_luna.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/47_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250314-c1ozttyfx",
+      "DIDASCALIA": "Parete con matrici xilografiche (111 matrici tot)",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "Parete con matrici xilografiche (111 matrici tot)",
+      "path": "aldrovandi/models/S3-PT-DICAM_VetrinaMatriciXilografiche/parete_tavolette_final.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "46",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231019-py5qm8ft9",
+      "DIDASCALIA": "Ruote idrauliche",
+      "ROOM": 3,
+      "id": "46",
+      "type": "object",
+      "hoverLable": "Ruote idrauliche",
+      "path": "aldrovandi/models/S3-46-FICLIT_RuoteIdrauliche/VolumeRuoteIdrauliche.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/46_convex.GLB"
+      }
+    },
+    {
+      "NR": "48",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231023-d9disyj75",
+      "DIDASCALIA": "Descrizione dell'anatomia microscopica dell'ape",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/48/ob00/1>",
+      "ROOM": 3,
+      "id": "48",
+      "type": "object",
+      "hoverLable": "Descrizione dell'anatomia microscopica dell'ape",
+      "path": "aldrovandi/models/S3-48-FICLIT_AnatomiaApe/volume_anatomiaApe.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/48_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240919-4uv9adjua",
+      "DIDASCALIA": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "path": "aldrovandi/models/S3-PT-DICAM_Matrice Xilografica Fiore/MatriceFiore_optimised.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250115-0a0pmjibl",
+      "DIDASCALIA": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "path": "aldrovandi/models/S3-PT-DICAM_Matrice Xilografica Pianta/matrice_pianta_scalato.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    },
+    {
+      "NR": "PT",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250115-2fqdrhszj",
+      "DIDASCALIA": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "ROOM": 3,
+      "id": "PT",
+      "type": "object",
+      "hoverLable": "Dalla collezione di matrici nella parete acquisizione. 50",
+      "path": "aldrovandi/models/S3-PT-DICAM_Matrice Xilografica Serpente/matrice_serpente_scalato.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room3/semObjs/convex/PT_convex.GLB"
+      }
+    }
+  ],
+  "4": [
+    {
+      "NR": "51",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240321-1jlmhbtj8",
+      "DIDASCALIA": "Manico di coltello sacrificale in forma di figura umana",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/51/ob00/1>",
+      "ROOM": 4,
+      "id": "51",
+      "type": "object",
+      "hoverLable": "Manico di coltello sacrificale in forma di figura umana",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/51_convex.GLB"
+      }
+    },
+    {
+      "NR": "49",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240321-kfhnvfaof",
+      "DIDASCALIA": "Maschera raffigurante Yacatecuhtli, patrono dei mercanti, cultura nahua, ca. 1350-1521 d.C.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/49/ob00/1>",
+      "ROOM": 4,
+      "id": "49",
+      "type": "object",
+      "hoverLable": "Maschera raffigurante Yacatecuhtli, patrono dei mercanti, cultura nahua, ca. 1350-1521 d.C.",
+      "path": "aldrovandi/models/S4-49-ISTI_MascheraAzteca/MascheraAzteca.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/49_convex.GLB"
+      }
+    },
+    {
+      "NR": "53",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231031-4nnm7epwx",
+      "DIDASCALIA": "Pendente con testa di idolo in serpentino cultura nahua o mixteca, ca. 1350-1521 d.C.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/53/ob00/1>",
+      "ROOM": 4,
+      "id": "53",
+      "type": "object",
+      "hoverLable": "Pendente con testa di idolo in serpentino cultura nahua o mixteca, ca. 1350-1521 d.C.",
+      "path": "aldrovandi/models/S4-53-DBC_Testina/pendente_testina.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/53_convex.GLB"
+      }
+    },
+    {
+      "NR": "52",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231016-zs58hnbi0",
+      "DIDASCALIA": "Maschera",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/52/ob00/1>",
+      "ROOM": 4,
+      "id": "52",
+      "type": "object",
+      "hoverLable": "Maschera",
+      "path": "aldrovandi/models/S4-52-FICLIT_TavolaAldrovandiMaschera/VolumeMascheraAzteca.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/52_convex.GLB"
+      }
+    },
+    {
+      "NR": "50",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240326-pbyrv6abr",
+      "DIDASCALIA": "Manico di coltello sacrificale in forma di rettile fantastico cultura nahua, ca. 1350-1521 d.C.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/50/ob00/1>",
+      "ROOM": 4,
+      "id": "50",
+      "type": "object",
+      "hoverLable": "Manico di coltello sacrificale in forma di rettile fantastico cultura nahua, ca. 1350-1521 d.C.",
+      "path": "aldrovandi/models/S4-ManicoColtelloZoomorfo/pugnale_modello2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/50_convex.GLB"
+      }
+    },
+    {
+      "NR": "54",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231017-8gglnqzq2",
+      "DIDASCALIA": "Idoli",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/54/ob00/1>",
+      "ROOM": 4,
+      "id": "54",
+      "type": "object",
+      "hoverLable": "Idoli",
+      "path": "aldrovandi/models/S4-54-FICLIT_TavolaAldrovandiTestina/TavolaAldrovandiTestinaIdoli.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room4/semObjs/convex/54_convex.GLB"
+      }
+    }
+  ],
+  "5": [
+    {
+      "NR": "vetrina_3_alto_n_4",
+      "LINK": "",
+      "DIDASCALIA": "Apice Vegetativo Di Palma",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_n_4/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_n_4",
+      "type": "object",
+      "hoverLable": "Apice Vegetativo Di Palma",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_n_4_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_3",
+      "LINK": "",
+      "DIDASCALIA": "Lophius piscatorius (Linnaeus, 1758), apparato boccale rana pescatrice",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_3",
+      "type": "object",
+      "hoverLable": "Lophius piscatorius (Linnaeus, 1758), apparato boccale rana pescatrice",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "a_alto_sinistra_1",
+      "LINK": "�",
+      "DIDASCALIA": "Medaglia In Piombo, Lead Medal Timoteo Refati, Sec. Xvi - 16th Century Bologna, Museo Civico Archeologico",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/a_alto_sinistra_1/ob00/1>",
+      "ROOM": 5,
+      "id": "a_alto_sinistra_1",
+      "type": "object",
+      "hoverLable": "Medaglia In Piombo, Lead Medal Timoteo Refati, Sec. Xvi - 16th Century Bologna, Museo Civico Archeologico",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/a_alto_sinistra_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_n_1",
+      "LINK": "�",
+      "DIDASCALIA": "Collana Di Semi Mesoamericana",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_n_1",
+      "type": "object",
+      "hoverLable": "Collana Di Semi Mesoamericana",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_n_2_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Bambu",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_n_2_t",
+      "type": "object",
+      "hoverLable": "Con Bambu",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_n_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_n_3_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Fiore",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_3_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_n_3_t",
+      "type": "object",
+      "hoverLable": "Con Fiore",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_n_3_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_1",
+      "LINK": "�",
+      "DIDASCALIA": "Statuetta Ushabti In Faence",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_1",
+      "type": "object",
+      "hoverLable": "Statuetta Ushabti In Faence",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_2",
+      "LINK": "�",
+      "DIDASCALIA": "Lucerna Fittile A Volute Con Spalla Decorata",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_2",
+      "type": "object",
+      "hoverLable": "Lucerna Fittile A Volute Con Spalla Decorata",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_13",
+      "LINK": "�",
+      "DIDASCALIA": "Sferule Di Avorio E Calcarenon",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_13/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_13",
+      "type": "object",
+      "hoverLable": "Sferule Di Avorio E Calcarenon",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_13_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_14",
+      "LINK": "�",
+      "DIDASCALIA": "Punta Di Freccia Del Neoliticonon",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_14/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_14",
+      "type": "object",
+      "hoverLable": "Punta Di Freccia Del Neoliticonon",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_14_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_2",
+      "LINK": "�",
+      "DIDASCALIA": "Bezoar Di Gazzella",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_2",
+      "type": "object",
+      "hoverLable": "Bezoar Di Gazzella",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_s_3",
+      "LINK": "�",
+      "DIDASCALIA": "Ghiandole Di Castoro E Capra",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_s_3",
+      "type": "object",
+      "hoverLable": "Ghiandole Di Castoro E Capra",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_n_2",
+      "LINK": "�",
+      "DIDASCALIA": "Uova Mostruose Di Pollo E Fagiano",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_n_2",
+      "type": "object",
+      "hoverLable": "Uova Mostruose Di Pollo E Fagiano",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_1_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Bacelli",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_1_t",
+      "type": "object",
+      "hoverLable": "Con Bacelli",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_2",
+      "LINK": "�",
+      "DIDASCALIA": "Preparati Vegetali",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_2",
+      "type": "object",
+      "hoverLable": "Preparati Vegetali",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_3",
+      "LINK": "�",
+      "DIDASCALIA": "Preparati Vegetali",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_3",
+      "type": "object",
+      "hoverLable": "Preparati Vegetali",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_5",
+      "LINK": "�",
+      "DIDASCALIA": "Nido Indet. Dal Brasile",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_5/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_5",
+      "type": "object",
+      "hoverLable": "Nido Indet. Dal Brasile",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_5_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_n_1_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Bufo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_n_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_n_1_t",
+      "type": "object",
+      "hoverLable": "Con Bufo",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_n_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_n_2_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Lucertola",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_n_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_n_2_t",
+      "type": "object",
+      "hoverLable": "Con Lucertola",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_n_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_s_1",
+      "LINK": "�",
+      "DIDASCALIA": "Chamaeleo Chamaeleon (linnaeus, 1758), Camaleonte Europeo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_s_1",
+      "type": "object",
+      "hoverLable": "Chamaeleo Chamaeleon (linnaeus, 1758), Camaleonte Europeo",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_s_2",
+      "LINK": "�",
+      "DIDASCALIA": "Scincus Sp., Scinco, O Pesce Delle Sabbie",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_s_2",
+      "type": "object",
+      "hoverLable": "Scincus Sp., Scinco, O Pesce Delle Sabbie",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_s_3",
+      "LINK": "�",
+      "DIDASCALIA": "Draco Sp., Drago Volante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_s_3",
+      "type": "object",
+      "hoverLable": "Draco Sp., Drago Volante",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_basso_2",
+      "LINK": "�",
+      "DIDASCALIA": "Preparati Zoologici, Scheletro Di Delfino",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_basso_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_basso_2",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici, Scheletro Di Delfino",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_basso_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_basso_2_t",
+      "LINK": "�",
+      "DIDASCALIA": "Con Delfino",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_basso_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_basso_2_t",
+      "type": "object",
+      "hoverLable": "Con Delfino",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_basso_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "a_alto_centro",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240327-j4fuwg3vx",
+      "DIDASCALIA": "Testamento Di Ulisse Aldrovandi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/a_alto_centro/ob00/1>",
+      "ROOM": 5,
+      "id": "a_alto_centro",
+      "type": "object",
+      "hoverLable": "Testamento Di Ulisse Aldrovandi",
+      "path": "aldrovandi/models/S5-CNR-AAltoCentro_TestamentoUlisseAldrovandi/TestamentoAldrovandi.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/a_alto_centro_convex.GLB"
+      }
+    },
+    {
+      "NR": "a_alto_sinistra_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231121-cke7t15fj",
+      "DIDASCALIA": "Calchi In Gesso Di Medaglie Coniate Con Aldrovandi Vivente Plaster Casts Of 16th Century Medals",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/a_alto_sinistra_3/ob00/1>",
+      "ROOM": 5,
+      "id": "a_alto_sinistra_3",
+      "type": "object",
+      "hoverLable": "Calchi In Gesso Di Medaglie Coniate Con Aldrovandi Vivente Plaster Casts Of 16th Century Medals",
+      "path": "aldrovandi/models/S5-A alto sinistra 3- DBC_Calchi in gesso/CalchiGesso_Medaglie.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/a_alto_sinistra_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_destra_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231027-49vnlj9c4",
+      "DIDASCALIA": "Mammuthus Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_destra_2/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_destra_2",
+      "type": "object",
+      "hoverLable": "Mammuthus Sp.",
+      "path": "aldrovandi/models/S5-B alto destra 1-FICLIT_Mammuthus2/Mammuthus2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_destra_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_destra_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-cdoyfiqiz",
+      "DIDASCALIA": "Hippopotamus Amphibius (linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_destra_3/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_destra_3",
+      "type": "object",
+      "hoverLable": "Hippopotamus Amphibius (linnaeus, 1758)",
+      "path": "aldrovandi/models/S5-B alto destra 3-FICLIT_Hippopotamus/fossileHippopotamus_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_destra_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "a_alto_sinistra_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240520-v3xsotwxb",
+      "DIDASCALIA": "Medaglia Commemorativa Delle Onoranze Del 1907 Commemorative Medal From The 1907 Celebrations",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/a_alto_sinistra_2/ob00/1>",
+      "ROOM": 5,
+      "id": "a_alto_sinistra_2",
+      "type": "object",
+      "hoverLable": "Medaglia Commemorativa Delle Onoranze Del 1907 Commemorative Medal From The 1907 Celebrations",
+      "path": "aldrovandi/models/S5-A alto sinistra - 2-FICLIT_MedagliaCommemorativa/medaglia02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/a_alto_sinistra_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_destra_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231020-01kqtes34",
+      "DIDASCALIA": "Mammuthus Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_destra_1/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_destra_1",
+      "type": "object",
+      "hoverLable": "Mammuthus Sp.",
+      "path": "aldrovandi/models/S5-B alto destra 1-FICLIT_Mammuthus1/FossiliMammiferi_mammuthus1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_destra_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_centro_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240314-jpzwwn5ti",
+      "DIDASCALIA": "Harpactocarcinus Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_centro_2/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_centro_2",
+      "type": "object",
+      "hoverLable": "Harpactocarcinus Sp.",
+      "path": "aldrovandi/models/S5-B alto centro 2-DBC_Harpactocarcinus sp/granchio.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_centro_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_sinistra_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-i6kvqz7ro",
+      "DIDASCALIA": "Palaeoniscum Freieslebeni (de Blainville, 1818), Carbonifero, Sassonia, Carbonifereous, Saxony",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_sinistra_1/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_sinistra_1",
+      "type": "object",
+      "hoverLable": "Palaeoniscum Freieslebeni (de Blainville, 1818), Carbonifero, Sassonia, Carbonifereous, Saxony",
+      "path": "aldrovandi/models/S5-B alto sinistra - 1-FICLIT_Carbonifero/carbonifero_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_sinistra_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_centro_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-x1x7ghe3i",
+      "DIDASCALIA": "Harpactocarcinus Punctulatus (milne-edwards, 1862)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_centro_1/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_centro_1",
+      "type": "object",
+      "hoverLable": "Harpactocarcinus Punctulatus (milne-edwards, 1862)",
+      "path": "aldrovandi/models/S5-B alto centro 1-FICLIT_HarpactocarcinusPunctulatus/Harpactocarcinus_punctulatus_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_centro_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_basso",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250314-mc10fkihe",
+      "DIDASCALIA": "Fanoni Di Balena",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "b_basso",
+      "type": "object",
+      "hoverLable": "Fanoni Di Balena",
+      "path": "aldrovandi/models/S5-B basso-DICAM_FanoneBalenaAlto/fanonealto_02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_n_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231120-n1r4voaxi",
+      "DIDASCALIA": "Sonaglio Con Semi Di Thevetia Peruviana",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_n_3",
+      "type": "object",
+      "hoverLable": "Sonaglio Con Semi Di Thevetia Peruviana",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto N - 3-FICLIT_SonaglioThevetiaPeruviana/sonaglio_thevetia.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_n_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_centro_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-rai03z5hy",
+      "DIDASCALIA": "Lophoranina Aldrovandi (ranzani, 1818) Olotipo / Holotype",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_centro_3/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_centro_3",
+      "type": "object",
+      "hoverLable": "Lophoranina Aldrovandi (ranzani, 1818) Olotipo / Holotype",
+      "path": "aldrovandi/models/S5-B alto centro - 3-FICLIT_LophoraninaAldrovandi/LophoraninaAldrovandi_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_centro_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_sinistra_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240322-khagpzv9m",
+      "DIDASCALIA": "Coelodus Sp. E Lepidotes Gigas, Denti Di Pesci Fish Teeth",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_sinistra_3/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_sinistra_3",
+      "type": "object",
+      "hoverLable": "Coelodus Sp. E Lepidotes Gigas, Denti Di Pesci Fish Teeth",
+      "path": "aldrovandi/models/S5-B alto sinistra 3-FICLIT_DentiDiPesc/Modello2/denti_di_pesce_Modello2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_sinistra_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "b_alto_sinistra_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240320-b3iyngl5i",
+      "DIDASCALIA": "Charcharodon Megalodon (agassiz, 1843), Miocene",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/b_alto_sinistra_2/ob00/1>",
+      "ROOM": 5,
+      "id": "b_alto_sinistra_2",
+      "type": "object",
+      "hoverLable": "Charcharodon Megalodon (agassiz, 1843), Miocene",
+      "path": "aldrovandi/models/S5-B alto sinistra 2-CNR_Miocene/miocene_modello2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/b_alto_sinistra_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_n_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-fbksv6hem",
+      "DIDASCALIA": "Bamb Lavorato",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_n_2",
+      "type": "object",
+      "hoverLable": "Bamb Lavorato",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto N-2-DBC_Bambù_lavorato/bambùLavoratogltf.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_4",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-5v4bta8jh",
+      "DIDASCALIA": "Gemma In Agata Con Capra Presso Albero",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_4/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_4",
+      "type": "object",
+      "hoverLable": "Gemma In Agata Con Capra Presso Albero",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-4-DICAM_GemmaInAgataConCapraPressoAlbero/gemma_capra.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_4_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250320-hxjrrsvof",
+      "DIDASCALIA": "Scarabeo In Stile Egizio In Pietra Dura Bianca",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_3",
+      "type": "object",
+      "hoverLable": "Scarabeo In Stile Egizio In Pietra Dura Bianca",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-3-DICAM_ScarabeoInStileEgizio/scarabeo_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_7",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-owe3ic37r",
+      "DIDASCALIA": "Gemma In Agata Con Uccello",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_7/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_7",
+      "type": "object",
+      "hoverLable": "Gemma In Agata Con Uccello",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-7-DICAM_GemmaInAgataConUccello/gemma_uccello.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_7_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_6",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-u8az72sr3",
+      "DIDASCALIA": "Gemma In Agata Con Serapide In Trono",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_6/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_6",
+      "type": "object",
+      "hoverLable": "Gemma In Agata Con Serapide In Trono",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-6-DICAM_GemmaInAgataConSerapideInTrono/serapide.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_6_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_8",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-w7bvn9lga",
+      "DIDASCALIA": "Gemma In Agata Con Mercurio E Fortuna",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_8/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_8",
+      "type": "object",
+      "hoverLable": "Gemma In Agata Con Mercurio E Fortuna",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-8-DICAM_GemmaInAgataConMercurioeFontana/gemma_mercurio.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_8_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_10",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-o13bbwkhn",
+      "DIDASCALIA": "Gemma In Diaspro Giallo Con Cinocefalo E Iscrizione",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_10/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_10",
+      "type": "object",
+      "hoverLable": "Gemma In Diaspro Giallo Con Cinocefalo E Iscrizione",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-10-DICAM_GemmaInDiasproGialloConCinocefaloeIscrizione/gemma_cinocefalo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_10_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_9",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-0yyx7kfqt",
+      "DIDASCALIA": "Gemma In Pasta Vitrea Stratificata Con Figura Appoggiata A Un Bastone",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_9/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_9",
+      "type": "object",
+      "hoverLable": "Gemma In Pasta Vitrea Stratificata Con Figura Appoggiata A Un Bastone",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-9-DICAM_GemmainPastaVitreaStratificataconFiguraAppoggiataAunBastone/gemma_bastone.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_9_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_15",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250326-l5k02ztq1",
+      "DIDASCALIA": "Corno Lavorato",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_15/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_15",
+      "type": "object",
+      "hoverLable": "Corno Lavorato",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-15-DBC_Corno_lavorato/corno_lavorato_scaled.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_15_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_12",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-1eazw2c49",
+      "DIDASCALIA": "Gemma In Diaspro Nero Con Iscrizione Araba",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_12/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_12",
+      "type": "object",
+      "hoverLable": "Gemma In Diaspro Nero Con Iscrizione Araba",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-12-DICAM_GemmaInDiasproNeroConIscrizioneAraba/gemma_araba.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_12_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250318-bpmgexc6v",
+      "DIDASCALIA": "Calcoli (4 Oggetti)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_1",
+      "type": "object",
+      "hoverLable": "Calcoli (4 Oggetti)",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto N - 1-DICAM_Calcoli/calcoli1234.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_basso",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250318-muf10wlol",
+      "DIDASCALIA": "Carapaci Di Tartarughe",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_basso",
+      "type": "object",
+      "hoverLable": "Carapaci Di Tartarughe",
+      "path": "aldrovandi/models/S5-Vetrina 1 basso-DICAM_Carapaci/Carapaci_uniti.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_1_t2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231212-s184sabuh",
+      "DIDASCALIA": "Con Calcolo (3 E 4)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_1_t2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_1_t2",
+      "type": "object",
+      "hoverLable": "Con Calcolo (3 E 4)",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto N-1-t2-DBC_Tavoletta_con_calcolo_2/Tavoletta_Calcolo_2_.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_1_t2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240229-j2sxn6f5w",
+      "DIDASCALIA": "Sezioni Di Denti Di Elefante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_3",
+      "type": "object",
+      "hoverLable": "Sezioni Di Denti Di Elefante",
+      "path": "aldrovandi/models/S5-Vetrina 2 ALTO N 3-FICLIT_SezioneDenteDiElefante/sezioneDenteElefante.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_3_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-598kfyr4p",
+      "DIDASCALIA": "Con Elefante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_3_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_3_t",
+      "type": "object",
+      "hoverLable": "Con Elefante",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto N - 3 - t-DICAM_MatriceElefante/matriceelefante_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_3_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_n_1_t1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20231212-ruk43zvvq",
+      "DIDASCALIA": "Con Calcolo (1 E 2)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_n_1_t1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_n_1_t1",
+      "type": "object",
+      "hoverLable": "Con Calcolo (1 E 2)",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto N-1-t1-DBC_Tavoletta_con_calcolo_1/TavolettaCalcolo_1_.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_n_1_t1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_s_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-3cqyyc5lo",
+      "DIDASCALIA": "Corna Di Bovidi E Cervidi (un corno grande e un corno piccolo)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_s_2",
+      "type": "object",
+      "hoverLable": "Corna Di Bovidi E Cervidi (un corno grande e un corno piccolo)",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto S - 2-DICAM_CornaCervidieBovidi/CornaDiBovidiECervidi.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_s_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-b7a1dpn0r",
+      "DIDASCALIA": "Zanne Di Elefante (una grande e una piccola)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_s_1",
+      "type": "object",
+      "hoverLable": "Zanne Di Elefante (una grande e una piccola)",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto S - 1-DICAM_Zanne/ZanneDiElefante.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_s_2_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-l1yvocix1",
+      "DIDASCALIA": "Con Cervo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_s_2_t",
+      "type": "object",
+      "hoverLable": "Con Cervo",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto S-2-t-DBC_Tavoletta_con_cervo/matricecervo_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_s_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_16",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231122-7zf985ydw",
+      "DIDASCALIA": "Ascia Di Giadeite",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_16/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_16",
+      "type": "object",
+      "hoverLable": "Ascia Di Giadeite",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-16-DBC_Ascia_di_giadeite/ascia_giadeite.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_16_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_basso_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240704-xocjq5lcg",
+      "DIDASCALIA": "Con Rinoceronte",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_basso_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_basso_t",
+      "type": "object",
+      "hoverLable": "Con Rinoceronte",
+      "path": "aldrovandi/models/S5-77-DICAM_MatriceRinoceronte/matricerinoceronte.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_basso_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_basso",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240709-vvfqvotnl",
+      "DIDASCALIA": "Preparati Zoologici: Cervo, Rinoceronte E Antilope",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_basso",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici: Cervo, Rinoceronte E Antilope",
+      "path": "aldrovandi/models/S5-Vetrina 2 basso-DICAM_Alce/alce.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_2_alto_s_1_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240702-nbzdw9xp2",
+      "DIDASCALIA": "Con Zanna",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_2_alto_s_1_t",
+      "type": "object",
+      "hoverLable": "Con Zanna",
+      "path": "aldrovandi/models/S5-Vetrina 2 alto S - 1 - t-DICAM_MatriceZanna/matricezanna.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_2_alto_s_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_n_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-pprbzvomq",
+      "DIDASCALIA": "Graminacea Subfossile",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_n_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_n_3",
+      "type": "object",
+      "hoverLable": "Graminacea Subfossile",
+      "path": "aldrovandi/models/S5-Vetrina 3 alto N - 3-DA_Graminacea Subfossile/graminacea_0.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_n_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_n_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240702-kpzxao1hg",
+      "DIDASCALIA": "Uova Di Struzzo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_n_1",
+      "type": "object",
+      "hoverLable": "Uova Di Struzzo",
+      "path": "aldrovandi/models/S5-Vetrina 3 alto N - 1-DICAM_UovaDiStruzzo/uovadistruzzo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_2_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231213-kpo2ids0p",
+      "DIDASCALIA": "Tavoletta Con Nido",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_2_t",
+      "type": "object",
+      "hoverLable": "Tavoletta Con Nido",
+      "path": "aldrovandi/models/S5-Vetrina 3 alto S-2-t-DBC_Tavoletta_con_nido/Tavoletta_Nido.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_4",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231211-qengrl721",
+      "DIDASCALIA": "2 Nidi Di Pendolino",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_4/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_4",
+      "type": "object",
+      "hoverLable": "2 Nidi Di Pendolino",
+      "path": "aldrovandi/models/S5-Vetrina 3 alto S-4-FICLIT_NidoDiPendolino/NidoDiPendolino.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_4_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_alto_s_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250213-m1oh37tn6",
+      "DIDASCALIA": "Baccello Con Seme",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_alto_s_1",
+      "type": "object",
+      "hoverLable": "Baccello Con Seme",
+      "path": "aldrovandi/models/S5-Vetrina 3 alto sinistra-1-DA-BaccelloConSeme/baccello.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231219-bjp98v0ha",
+      "DIDASCALIA": "Conoclypeus Conoideus (leske, 1778)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_1",
+      "type": "object",
+      "hoverLable": "Conoclypeus Conoideus (leske, 1778)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-1-DBC_Conoclypeus_conoideus/conoclypeus_1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_5",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-ztvfxmnz7",
+      "DIDASCALIA": "Gemma In Agata Con Maschera Della Commedia Dellarte",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_5/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_5",
+      "type": "object",
+      "hoverLable": "Gemma In Agata Con Maschera Della Commedia Dellarte",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-5-DICAM_GemmaInAgataconMascheraDellaCommediaDell’Arte/gemma_maschera.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_5_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_3_basso",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-05trvm621",
+      "DIDASCALIA": "Preparati Di Terre E Terre Sigillate(3 Oggetti, 2 Terre Sigillate E 1 Preparati Di Terra)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_3_basso",
+      "type": "object",
+      "hoverLable": "Preparati Di Terre E Terre Sigillate(3 Oggetti, 2 Terre Sigillate E 1 Preparati Di Terra)",
+      "path": "aldrovandi/models/S5-Vetrina 3 basso-DICAM_Preparati di terre e terre sigillate 1-2_uniti/terresigillate_preparati_terre_3.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_3_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231219-dl837z993",
+      "DIDASCALIA": "Dollaro Di Mare",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_2",
+      "type": "object",
+      "hoverLable": "Dollaro Di Mare",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-2-DBC_Dollaro_di_mare/dollarodimare_1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_6",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231220-79cz6z2yg",
+      "DIDASCALIA": "Macropneustes Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_6/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_6",
+      "type": "object",
+      "hoverLable": "Macropneustes Sp.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-6-DBC_Macropneustes_sp/Macropneustes.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_6_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_5",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-dnpe6u2f4",
+      "DIDASCALIA": "Discoidea Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_5/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_5",
+      "type": "object",
+      "hoverLable": "Discoidea Sp.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-5-DBC_Discoidea sp/discoidea_unite.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_5_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_4",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231220-0xk4ondwd",
+      "DIDASCALIA": "Mazettia Pareti (manzoni, 1879)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_4/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_4",
+      "type": "object",
+      "hoverLable": "Mazettia Pareti (manzoni, 1879)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-4-DBC_Mazettia_pareti/mazettiaParetisOt.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_4_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231220-zbrob19i5",
+      "DIDASCALIA": "Clypeaster Marginatus (lamark, 1816)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_3",
+      "type": "object",
+      "hoverLable": "Clypeaster Marginatus (lamark, 1816)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N-3-DBC_Clypeaster_marginatus/clypeasterMarginatus.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_7",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240627-64tsk7a5c",
+      "DIDASCALIA": "Stirechinus Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_7/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_7",
+      "type": "object",
+      "hoverLable": "Stirechinus Sp.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N - 7-DICAM_EchinoidiFossilin.7/echinoidifossilin.7.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_7_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_8",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240701-286i358g3",
+      "DIDASCALIA": "Spine Di Echinoidi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_8/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_8",
+      "type": "object",
+      "hoverLable": "Spine Di Echinoidi",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N - 8-DICAM_EchinoidiFossilin.8/echinoidifossilin.8.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_8_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_11",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250320-v1u647s1s",
+      "DIDASCALIA": "Glypticus Hieroglyphicus (goldfuss, 1829)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_11/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_11",
+      "type": "object",
+      "hoverLable": "Glypticus Hieroglyphicus (goldfuss, 1829)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N - 11-DICAM_EchinoidiFossilin.11/echinoidifossilin.11.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_11_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_9",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-nxwnra5ml",
+      "DIDASCALIA": "Echinoide Indet.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_9/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_9",
+      "type": "object",
+      "hoverLable": "Echinoide Indet.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N - 9-FICLIT_EchinoidiFossilin.9/Echinoide_modello2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_9_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_n_10",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250320-cx92p3r3b",
+      "DIDASCALIA": "Scutellina Nummularia (agassiz, 1841)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_n_10/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_n_10",
+      "type": "object",
+      "hoverLable": "Scutellina Nummularia (agassiz, 1841)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto N - 10-DICAM_Echinoidifossilin.10/echinoidifossilin.10.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_n_10_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_4",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240212-yfkon1wpy",
+      "DIDASCALIA": "Calcare A Lumachella",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_4/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_4",
+      "type": "object",
+      "hoverLable": "Calcare A Lumachella",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-4-DBC_Calcare_a_lumachella/CalcareALumachella1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_4_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240212-wbucp5vsw",
+      "DIDASCALIA": "Lumachella A Helicidi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_3",
+      "type": "object",
+      "hoverLable": "Lumachella A Helicidi",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-3-DBC_Lumachella_a_Helicidi/Lumachella.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-i8m1w004u",
+      "DIDASCALIA": "Calcare A Coralli Lavorati",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_1",
+      "type": "object",
+      "hoverLable": "Calcare A Coralli Lavorati",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-1-DBC_Calcare a coralli lavorati/calcare_coralli_lavorati_uniti.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240110-pmqb6aiho",
+      "DIDASCALIA": "Coralli",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_2",
+      "type": "object",
+      "hoverLable": "Coralli",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-2-DBC_Coralli/coralli_.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_5",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240212-ro35hdm5g",
+      "DIDASCALIA": "Dentalium Elephantinum (linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_5/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_5",
+      "type": "object",
+      "hoverLable": "Dentalium Elephantinum (linnaeus, 1758)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-5-DBC_Dentalium_elephantinum/DentaliumElephantinum.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_5_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_7",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-e2nitwzil",
+      "DIDASCALIA": "Bivalvi Indet.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_7/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_7",
+      "type": "object",
+      "hoverLable": "Bivalvi Indet.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-7-DBC_Bivalvi_indet/Bivalvi_uniti.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_7_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_6",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-yf7swh6nl",
+      "DIDASCALIA": "Glycymeris Glycymeris (linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_6/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_6",
+      "type": "object",
+      "hoverLable": "Glycymeris Glycymeris (linnaeus, 1758)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-6-DBC_Glycymeris_glycymeris/Glycimeris.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_6_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_10",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240108-8fhqs3la4",
+      "DIDASCALIA": "Productus Geinitzianus (de Koninck, 1847)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_10/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_10",
+      "type": "object",
+      "hoverLable": "Productus Geinitzianus (de Koninck, 1847)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-10-DBC_Productus_geinitzianus/ProductusGeinitzianus.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_10_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_1_alto_s_11",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250116-vca0zrwb5",
+      "DIDASCALIA": "Gemma In Diaspro Con Scorpione",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_11/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_1_alto_s_11",
+      "type": "object",
+      "hoverLable": "Gemma In Diaspro Con Scorpione",
+      "path": "aldrovandi/models/S5-Vetrina 1 alto S-11-DICAM_GemmaInDiasproConScorpione/gemma_scorpione.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_1_alto_s_11_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_8",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240212-784whu9oj",
+      "DIDASCALIA": "Lytoceras Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_8/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_8",
+      "type": "object",
+      "hoverLable": "Lytoceras Sp.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-8-DBC_Lytoceras_sp/lytoceras.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_8_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_9",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240212-lgyxisbt8",
+      "DIDASCALIA": "Megalodon Sp.",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_9/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_9",
+      "type": "object",
+      "hoverLable": "Megalodon Sp.",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-9-DBC_Megalodon_sp/Megalodon.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_9_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_11",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240108-3rqyasqab",
+      "DIDASCALIA": "Stephanoceras Bayleanus (foresti, 1887)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_11/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_11",
+      "type": "object",
+      "hoverLable": "Stephanoceras Bayleanus (foresti, 1887)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-11-DBC_Stephanoceras_bayleanus/Stephanoceras.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_11_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_13",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240109-5gorq66sj",
+      "DIDASCALIA": "Glossus Humanus (linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_13/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_13",
+      "type": "object",
+      "hoverLable": "Glossus Humanus (linnaeus, 1758)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-13-DBC_Glossus_humanus/GlossusHumanus.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_13_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_alto_s_12",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240109-q01tkhs4n",
+      "DIDASCALIA": "Tellina Planata (linnaeus, 1758)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_alto_s_12/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_alto_s_12",
+      "type": "object",
+      "hoverLable": "Tellina Planata (linnaeus, 1758)",
+      "path": "aldrovandi/models/S5-Vetrina 4 alto S-12-DBC_Tellina_planata/TellinaPlanata.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_alto_s_12_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_alto_s_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240702-nfk35eqgk",
+      "DIDASCALIA": "Melopoponites",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_alto_s_1",
+      "type": "object",
+      "hoverLable": "Melopoponites",
+      "path": "aldrovandi/models/S5-Vetrina 5 alto S - 1-DICAM_Botroide2/botroide2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_4_basso",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240513-irww8q1yb",
+      "DIDASCALIA": "Campioni Di Rocce Levigate",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_4_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_4_basso",
+      "type": "object",
+      "hoverLable": "Campioni Di Rocce Levigate",
+      "path": "aldrovandi/models/S5-Vetrina 4 basso-FICLIT_Campioni di rocce levigate/roccia_final.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_4_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_alto_n",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240701-stw4oghi7",
+      "DIDASCALIA": "Botroidi, Concrezioni Arenacee La Cui Forma Richiama Oggetti, Animali, O Vegetali",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_alto_n/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_alto_n",
+      "type": "object",
+      "hoverLable": "Botroidi, Concrezioni Arenacee La Cui Forma Richiama Oggetti, Animali, O Vegetali",
+      "path": "aldrovandi/models/S5-Vetrina 5 alto N-DICAM_Botroide1/botroide1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_alto_n_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_alto_n_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240701-nh6woaa26",
+      "DIDASCALIA": "Con 4 Botroidi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_alto_n_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_alto_n_t",
+      "type": "object",
+      "hoverLable": "Con 4 Botroidi",
+      "path": "aldrovandi/models/S5-Vetrina 5 alto N  - t-DICAM_MatriceBotroide1/matricebotroide1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_alto_n_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_basso",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250320-ffwwejjtu",
+      "DIDASCALIA": "Botroidi, Concrezioni Arenacee La Cui Forma Richiama Oggetti, Animali, O Vegetali+ Matrice Botroide Basso (dicam) Voce Aggiunta In Fondo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_basso",
+      "type": "object",
+      "hoverLable": "Botroidi, Concrezioni Arenacee La Cui Forma Richiama Oggetti, Animali, O Vegetali+ Matrice Botroide Basso (dicam) Voce Aggiunta In Fondo",
+      "path": "aldrovandi/models/S5-Vetrina 5 basso-DICAM_Botroide3/botroide3.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_alto_s_2_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240702-pnn2eq0gr",
+      "DIDASCALIA": "Melopoponites",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_alto_s_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_alto_s_2_t",
+      "type": "object",
+      "hoverLable": "Melopoponites",
+      "path": "aldrovandi/models/S5-Vetrina 5 alto S - 2 - t-DICAM_MatriceBotroide2/matricebotroide2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_alto_s_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_n_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240314-8yzg3gksu",
+      "DIDASCALIA": "Bufo Sp., Rospo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_n_1",
+      "type": "object",
+      "hoverLable": "Bufo Sp., Rospo",
+      "path": "aldrovandi/models/S5-Vetrina 6 alto N-1-DBC_Bufo sp., Rospo/bufo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_n_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240314-ebr4fds4j",
+      "DIDASCALIA": "Cordylus Sp., Lucertola",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_n_2",
+      "type": "object",
+      "hoverLable": "Cordylus Sp., Lucertola",
+      "path": "aldrovandi/models/S5-Vetrina 6 alto N-2-DBC_Cordylus sp., lucertola/lucertola1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_alto_s_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250307-7q9di58nm",
+      "DIDASCALIA": "Triorchites",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_alto_s_2",
+      "type": "object",
+      "hoverLable": "Triorchites",
+      "path": "aldrovandi/models/S5-Vetrina 5 alto S-2-DICAM_Botroide_triorchites/Botroide.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_5_basso_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240702-tr94v0gfo",
+      "DIDASCALIA": "Con botroide",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_5_basso_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_5_basso_t",
+      "type": "object",
+      "hoverLable": "Con botroide",
+      "path": "aldrovandi/models/S5-Vetrina 5 basso t-DICAM_MatriceBotroide3/matricebotroide3.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_5_basso_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_n_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-7vo7yu7j3",
+      "DIDASCALIA": "Peristedion Cataphractum (linnaeus, 1758), Pesci Forca",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_n_1",
+      "type": "object",
+      "hoverLable": "Peristedion Cataphractum (linnaeus, 1758), Pesci Forca",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto N 1-FICLIT_PesceForca/pesceForca2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_basso_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231121-fly2eb817",
+      "DIDASCALIA": "Preparati Zoologici, Scapola Di Balena",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_basso_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_basso_1",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici, Scapola Di Balena",
+      "path": "aldrovandi/models/S5-Vetrina 6 basso-DBC_Scapola di balena/scapola_Balena.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_basso_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_6_alto_s_2_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240703-adyq1ronv",
+      "DIDASCALIA": "Con Pesce Quale?? Uso Questa Casella Per Mettere Quella Di Un Pesce Che Non Sono Riuscita Ad Identificare",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_6_alto_s_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_6_alto_s_2_t",
+      "type": "object",
+      "hoverLable": "Con Pesce Quale?? Uso Questa Casella Per Mettere Quella Di Un Pesce Che Non Sono Riuscita Ad Identificare",
+      "path": "aldrovandi/models/S5-Vetrina 6 alto S - 2 - t-DICAM_MatricePesce12_Pesce/matrice_pesce.12.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_6_alto_s_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_s_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-vhgrqorcy",
+      "DIDASCALIA": "Xiphias Sp., Pesce Spada Piccolo e Pesce Spada Grande",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_s_1",
+      "type": "object",
+      "hoverLable": "Xiphias Sp., Pesce Spada Piccolo e Pesce Spada Grande",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto S-1-DA-Xiphias sp., pesci spada/Pesci_spada.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_s_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240227-ibjebqxa2",
+      "DIDASCALIA": "Agonus Cataphractus (linnaeus, 1758), Sorcio Di Mare",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_s_2",
+      "type": "object",
+      "hoverLable": "Agonus Cataphractus (linnaeus, 1758), Sorcio Di Mare",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto S 2-FICLIT_SorcioMarino/sorciodimare.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_s_1_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240703-ozrlejhf6",
+      "DIDASCALIA": "Con Pesce Spada",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_s_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_s_1_t",
+      "type": "object",
+      "hoverLable": "Con Pesce Spada",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto S - 1 - t-DICAM_MatricePesce11_PesceSpada/matrice_pescespada.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_s_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_s_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20241021-1qeylvikc",
+      "DIDASCALIA": "Dactylopterus Volitans (linnaeus, 1758), Pesce Volante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_s_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_s_3",
+      "type": "object",
+      "hoverLable": "Dactylopterus Volitans (linnaeus, 1758), Pesce Volante",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto S - 3-FICLIT_PesceVolante/PesceVolante_StoricoEsposto.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_s_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_n_1_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240703-xxg3xv1ps",
+      "DIDASCALIA": "Con Pesce Forca Sono Indecisa Se Il Nostro Sia Un Pesce Forca O Sega, Perch Ha Due 'cornini' Ma Anche Il Naso Da Pesce Sega",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_n_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_n_1_t",
+      "type": "object",
+      "hoverLable": "Con Pesce Forca Sono Indecisa Se Il Nostro Sia Un Pesce Forca O Sega, Perch Ha Due 'cornini' Ma Anche Il Naso Da Pesce Sega",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto N - 1 - t-DICAM_MatricePesce6_PesceForca/matrice_pesceforca.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_n_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_n_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-5luy4eo3v",
+      "DIDASCALIA": "Lactoria Cornuta (linnaeus, 1758), Pesci Scatola",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_n_2",
+      "type": "object",
+      "hoverLable": "Lactoria Cornuta (linnaeus, 1758), Pesci Scatola",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto N 2-FICLIT_PesceScatola/pesce_scatola2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_alto_s_3_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-5zh0t5dwo",
+      "DIDASCALIA": "Con Pesce Volante",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_alto_s_3_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_alto_s_3_t",
+      "type": "object",
+      "hoverLable": "Con Pesce Volante",
+      "path": "aldrovandi/models/S5-Vetrina 7 alto S - 3 - t-DICAM_MatricePesce10_PesceVolante/tavoletta_pescevolante3.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_alto_s_3_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_n_1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240222-8b3ct4p01",
+      "DIDASCALIA": "Taurulus Bubalis (euphrasen, 1758), Scazzone Marino",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_n_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_n_1",
+      "type": "object",
+      "hoverLable": "Taurulus Bubalis (euphrasen, 1758), Scazzone Marino",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto N - 1-FICLIT_ScazzoneMarino/ScazzoneMarino1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_n_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_n_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250318-9xyqsw7mh",
+      "DIDASCALIA": "Lophius Piscatorius (linnaeus, 1758), Rana Pescatrice",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_n_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_n_2",
+      "type": "object",
+      "hoverLable": "Lophius Piscatorius (linnaeus, 1758), Rana Pescatrice",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto N-2-DA-Lophius piscatorius (Linnaeus, 1758), rana pescatrice/RanaPescatrice_DCHOo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_n_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_basso_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240708-4gvwqsmse",
+      "DIDASCALIA": "Con Pesce Palla irzuto",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_basso_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_basso_t",
+      "type": "object",
+      "hoverLable": "Con Pesce Palla irzuto",
+      "path": "aldrovandi/models/S5-Vetrina 7 basso - t-DICAM_MatricePesce9_PescePalla1/matrice_pescepalla1.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_basso_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_basso",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-6q77adbo1",
+      "DIDASCALIA": "Preparati Zoologici, 8 Pesci Palla(ne Abbiamo Rilevato Uno, Non 8)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_basso",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici, 8 Pesci Palla(ne Abbiamo Rilevato Uno, Non 8)",
+      "path": "aldrovandi/models/S5-Vetrina 7 basso-DICAM_PescePalla/pescepalla2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_7_basso_t2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-82q89muun",
+      "DIDASCALIA": "Con Pesce Palla liscio",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_7_basso_t2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_7_basso_t2",
+      "type": "object",
+      "hoverLable": "Con Pesce Palla liscio",
+      "path": "aldrovandi/models/S5-Vetrina 7 basso - t2-DICAM_MatricePesce13_PescePalla2/matrice_pescepalla2_liscio.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_7_basso_t2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_n_3_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-72qr4ssph",
+      "DIDASCALIA": "Con Bocca vista dall'alto",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_n_3_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_n_3_t",
+      "type": "object",
+      "hoverLable": "Con Bocca vista dall'alto",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto N - 3 - t-DICAM_MatricePesce4_Bocca1/tavoletta_boccalaterale.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_n_3_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250318-cfddxdjub",
+      "DIDASCALIA": "Lamna Nasus (bonnaterre, 1788), Smeriglio",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_2",
+      "type": "object",
+      "hoverLable": "Lamna Nasus (bonnaterre, 1788), Smeriglio",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto S - 2-DA-Lamna nasus (Bonnaterre, 1788), smeriglio/Smeriglio.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_n_3_t2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240709-egl6ifcnk",
+      "DIDASCALIA": "Con Bocca vista lateralmente",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_n_3_t2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_n_3_t2",
+      "type": "object",
+      "hoverLable": "Con Bocca vista lateralmente",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto N - 3 - t-DICAM_MatricePesce8_Bocca2/matricepesce_bocca2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_n_3_t2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_1_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240708-jf230nv7w",
+      "DIDASCALIA": "Tavoletta Pesce Chitarra",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_1_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_1_t",
+      "type": "object",
+      "hoverLable": "Tavoletta Pesce Chitarra",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto S - 1 - t-DICAM_MatricePesce1_PesceChitarra/matrice_pescechitarra.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_1_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_n_3",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-fjt9tp9mc",
+      "DIDASCALIA": "Apparato Dentale Di Pesce Cartilagineo (elasmobrnchii)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_n_3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_n_3",
+      "type": "object",
+      "hoverLable": "Apparato Dentale Di Pesce Cartilagineo (elasmobrnchii)",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto N - 3-DA-Apparato dentale di pesce cartilagineo (Elasmobrnchii)/apparato_dentale.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_n_3_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_1",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-dfikwuoe4",
+      "DIDASCALIA": "Rhinobatos Rhinobatos (linnaeus, 1758), Pesce Chitarra",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_1",
+      "type": "object",
+      "hoverLable": "Rhinobatos Rhinobatos (linnaeus, 1758), Pesce Chitarra",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto S - 1-DA-Rhinobatos rhinobatos/Pesce_chitarra.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_1_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_2_t",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240708-mr00aodgg",
+      "DIDASCALIA": "Tavoletta Con Smeriglio",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_2_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_2_t",
+      "type": "object",
+      "hoverLable": "Tavoletta Con Smeriglio",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto S - 2 - t-DICAM_MatricePesce2_Smeriglio/matrice_smeriglio.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_2_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_basso",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240614-o62wvyqdm",
+      "DIDASCALIA": "Preparati Zoologici, Pescecane",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_basso/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_basso",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici, Pescecane",
+      "path": "aldrovandi/models/S5-Vetrina 8 basso-DA-Preparati zoologici, Pescecane/pescecane02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_basso_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_basso_2_t2",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-pnk9whv0r",
+      "DIDASCALIA": "Con Pesce Sega",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_basso_2_t2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_basso_2_t2",
+      "type": "object",
+      "hoverLable": "Con Pesce Sega",
+      "path": "aldrovandi/models/S5-Vetrina 8 basso - t-DICAM_MatricePesce5_PesceSega/matricepescesega2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_basso_2_t2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_basso_2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240620-3jbobp5qw",
+      "DIDASCALIA": "Preparati Zoologici, Pesce Sega",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_basso_2/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_basso_2",
+      "type": "object",
+      "hoverLable": "Preparati Zoologici, Pesce Sega",
+      "path": "aldrovandi/models/S5-Vetrina 8 basso-DA-Preparati zoologici, pesce sega/pescesega02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_basso_2_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_alto_s_3_t",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-gz3490g9m",
+      "DIDASCALIA": "Tavoletta Rana Pescatrice",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_alto_s_3_t/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_alto_s_3_t",
+      "type": "object",
+      "hoverLable": "Tavoletta Rana Pescatrice",
+      "path": "aldrovandi/models/S5-Vetrina 8 alto S - 3 - t-DICAM_MatricePesce3_RanaPescatrice/tavoletta_ranapescatrice2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_alto_s_3_t_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_basso_2_t3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240614-ekwd0ddiz",
+      "DIDASCALIA": "Pesce Martello",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_basso_2_t3/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_basso_2_t3",
+      "type": "object",
+      "hoverLable": "Pesce Martello",
+      "path": "aldrovandi/models/S5-Vetrina 8 basso-DA-Pesce Martello/PesceMartello02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_basso_2_t3_convex.GLB"
+      }
+    },
+    {
+      "NR": "s_n",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240315-oskog8zoy",
+      "DIDASCALIA": "Busto Di Ulisse Aldrovandi",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/s_n/ob00/1>",
+      "ROOM": 5,
+      "id": "s_n",
+      "type": "object",
+      "hoverLable": "Busto Di Ulisse Aldrovandi",
+      "path": "aldrovandi/models/S5-s.n.-DBC_Busto di Ulisse Aldrovandi/bustoAldrovandi.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/s_n_convex.GLB"
+      }
+    },
+    {
+      "NR": "vetrina_8_basso_2_t1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240704-cnl0tiyeo",
+      "DIDASCALIA": "Con Denti Di Pesce Sega",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_8_basso_2_t1/ob00/1>",
+      "ROOM": 5,
+      "id": "vetrina_8_basso_2_t1",
+      "type": "object",
+      "hoverLable": "Con Denti Di Pesce Sega",
+      "path": "aldrovandi/models/S5-Vetrina 8 basso - t-DICAM_MatricePesce7_DentiPesceSega/matrice_dentipescesega.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/vetrina_8_basso_2_t1_convex.GLB"
+      }
+    },
+    {
+      "NR": "62",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-p4zuzc1qq",
+      "DIDASCALIA": "Isole Della Grecia",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/62/ob00/1>",
+      "ROOM": 5,
+      "id": "62",
+      "type": "object",
+      "hoverLable": "Isole Della Grecia",
+      "path": "aldrovandi/models/S5-62-FICLIT_VolumeIsoleGreche/volume_isole_greche.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/62_convex.GLB"
+      }
+    },
+    {
+      "NR": "63",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-c4iz7kvvz",
+      "DIDASCALIA": "Gufo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/63/ob00/1>",
+      "ROOM": 5,
+      "id": "63",
+      "type": "object",
+      "hoverLable": "Gufo",
+      "path": "aldrovandi/models/S5-63-FICLIT_VolumeGufo/volumegufo2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/63_convex.GLB"
+      }
+    },
+    {
+      "NR": "m1",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240405-55noeo5mx",
+      "DIDASCALIA": "Adnotationes Variae Praesertim De Animalibus",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m1/ob00/1>",
+      "ROOM": 5,
+      "id": "m1",
+      "type": "object",
+      "hoverLable": "Adnotationes Variae Praesertim De Animalibus",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_AdnotationesVariaePraesertimDeAnimalibus/DeAnimalibus.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m1_convex.GLB"
+      }
+    },
+    {
+      "NR": "57",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240215-yeghdqxfu",
+      "DIDASCALIA": "Polpo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/57/ob00/1>",
+      "ROOM": 5,
+      "id": "57",
+      "type": "object",
+      "hoverLable": "Polpo",
+      "path": "aldrovandi/models/S5-57-FICLIT_VolumePolpo/volumepolpo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/57_convex.GLB"
+      }
+    },
+    {
+      "NR": "67",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240404-lcdezy8pk",
+      "DIDASCALIA": "Ricostruzione Del Naso, Metodo Italiano",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/67/ob00/1>",
+      "ROOM": 5,
+      "id": "67",
+      "type": "object",
+      "hoverLable": "Ricostruzione Del Naso, Metodo Italiano",
+      "path": "aldrovandi/models/S5-67-FICLIT_RicostruzioneNaso/RicostruzioneNaso.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/67_convex.GLB"
+      }
+    },
+    {
+      "NR": "64",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-rr8n4etfz",
+      "DIDASCALIA": "Polifemo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/64/ob00/1>",
+      "ROOM": 5,
+      "id": "64",
+      "type": "object",
+      "hoverLable": "Polifemo",
+      "path": "aldrovandi/models/S5-64-FICLIT-volumePolifemo/volume_polifemo.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/64_convex.GLB"
+      }
+    },
+    {
+      "NR": "66",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-t8u464rv2",
+      "DIDASCALIA": "Vipera",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/66/ob00/1>",
+      "ROOM": 5,
+      "id": "66",
+      "type": "object",
+      "hoverLable": "Vipera",
+      "path": "aldrovandi/models/S5-66-FICLIT_Vipera/VolumeVipera2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/66_convex.GLB"
+      }
+    },
+    {
+      "NR": "m4",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240315-4gbcb0st8",
+      "DIDASCALIA": "Lexicon Rerum Inanimatarum",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m4/ob00/1>",
+      "ROOM": 5,
+      "id": "m4",
+      "type": "object",
+      "hoverLable": "Lexicon Rerum Inanimatarum",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_LexiconRerumInanimatarum/LexiconRerumInanimatarum_def2.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m4_convex.GLB"
+      }
+    },
+    {
+      "NR": "m3",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240410-2rkzxfplf",
+      "DIDASCALIA": "Pandechion Epistemonicon",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m3/ob00/1>",
+      "ROOM": 5,
+      "id": "m3",
+      "type": "object",
+      "hoverLable": "Pandechion Epistemonicon",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_PandechionEpistemonicon/PandechionEpistenomicon.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m3_convex.GLB"
+      }
+    },
+    {
+      "NR": "m2",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240319-x6txk302s",
+      "DIDASCALIA": "Vulgata Proverbia (libro Dei Proverbi)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m2/ob00/1>",
+      "ROOM": 5,
+      "id": "m2",
+      "type": "object",
+      "hoverLable": "Vulgata Proverbia (libro Dei Proverbi)",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_VulgataProverbia/VulgataProverbia_def.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m2_convex.GLB"
+      }
+    },
+    {
+      "NR": "m5",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240318-rq5cb8h36",
+      "DIDASCALIA": "Bibliotheca Secundum Nomina Authorum (catalogo Della Biblioteca)",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m5/ob00/1>",
+      "ROOM": 5,
+      "id": "m5",
+      "type": "object",
+      "hoverLable": "Bibliotheca Secundum Nomina Authorum (catalogo Della Biblioteca)",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_BibliothecaSecundumNominaAuthorum/BibliothecaSecundumNomina_def.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m5_convex.GLB"
+      }
+    },
+    {
+      "NR": "m6",
+      "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250321-8cs70mw2v",
+      "DIDASCALIA": "Theatrum Biblicum Naturale",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m6/ob00/1>",
+      "ROOM": 5,
+      "id": "m6",
+      "type": "object",
+      "hoverLable": "Theatrum Biblicum Naturale",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_TheatrumBiblicumNaturale/TheatrumBiblicum.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m6_convex.GLB"
+      }
+    },
+    {
+      "NR": "m7",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240516-pqgx3pahc",
+      "DIDASCALIA": "Libro Dei Visitatori",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m7/ob00/1>",
+      "ROOM": 5,
+      "id": "m7",
+      "type": "object",
+      "hoverLable": "Libro Dei Visitatori",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_LibroDeiVisitatori/LibroVisitatori.02.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m7_convex.GLB"
+      }
+    },
+    {
+      "NR": "m8",
+      "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20240315-lvga425gg",
+      "DIDASCALIA": "Discorso Naturale Di Ulisse Aldrovandi Philosopho Et Medico",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/m8/ob00/1>",
+      "ROOM": 5,
+      "id": "m8",
+      "type": "object",
+      "hoverLable": "Discorso Naturale Di Ulisse Aldrovandi Philosopho Et Medico",
+      "path": "aldrovandi/models/S5-Manoscritto-FICLIT_DiscorsoNaturaleAldrovandi/discorsonaturale_def.gltf",
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room5/semObjs/convex/m8_convex.GLB"
+      }
+    }
+  ],
+  "6": [
+    {
+      "NR": "80",
+      "LINK": "",
+      "DIDASCALIA": "NON C'ERA IN MOSTRA",
+      "ROOM": 6,
+      "id": "80",
+      "type": "object",
+      "hoverLable": "NON C'ERA IN MOSTRA",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/80_convex.GLB"
+      }
+    },
+    {
+      "NR": "84",
+      "LINK": "",
+      "DIDASCALIA": "Preparato a secco di testa, collo, torace e diaframma di cavallo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/84/ob00/1>",
+      "ROOM": 6,
+      "id": "84",
+      "type": "object",
+      "hoverLable": "Preparato a secco di testa, collo, torace e diaframma di cavallo",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/84_convex.GLB"
+      }
+    },
+    {
+      "NR": "85",
+      "LINK": "",
+      "DIDASCALIA": "Preparato in liquido di feto di tre mesi di cavallo",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/85/ob00/1>",
+      "ROOM": 6,
+      "id": "85",
+      "type": "object",
+      "hoverLable": "Preparato in liquido di feto di tre mesi di cavallo",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/85_convex.GLB"
+      }
+    },
+    {
+      "NR": "87",
+      "LINK": "",
+      "DIDASCALIA": "Feto bovino, intestino",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/87/ob00/1>",
+      "ROOM": 6,
+      "id": "87",
+      "type": "object",
+      "hoverLable": "Feto bovino, intestino",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/87_convex.GLB"
+      }
+    },
+    {
+      "NR": "88",
+      "LINK": "",
+      "DIDASCALIA": "Elefante, intestino crasso",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/88/ob00/1>",
+      "ROOM": 6,
+      "id": "88",
+      "type": "object",
+      "hoverLable": "Elefante, intestino crasso",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/88_convex.GLB"
+      }
+    },
+    {
+      "NR": "95",
+      "LINK": "",
+      "DIDASCALIA": "Braccio amputato",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/95/ob00/1>",
+      "ROOM": 6,
+      "id": "95",
+      "type": "object",
+      "hoverLable": "Braccio amputato",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/95_convex.GLB"
+      }
+    },
+    {
+      "NR": "107",
+      "LINK": "",
+      "DIDASCALIA": "Studio sullencefalo di un africano",
+      "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/107/ob00/1>",
+      "ROOM": 6,
+      "id": "107",
+      "type": "object",
+      "hoverLable": "Studio sullencefalo di un africano",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/107_convex.GLB"
+      }
+    }
+  ],
+  "missingIRI": [
+    {
+      "NR": "80",
+      "LINK": "",
+      "DIDASCALIA": "NON C'ERA IN MOSTRA",
+      "ROOM": 6,
+      "id": "80",
+      "type": "object",
+      "hoverLable": "NON C'ERA IN MOSTRA",
+      "path": null,
+      "pos": null,
+      "rot": null,
+      "sem": {
+        "path": "models/room6/semObjs/convex/80_convex.GLB"
+      }
+    }
+  ]
+}
