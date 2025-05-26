@@ -22,10 +22,72 @@ let APP = ATON.App.realize();
 APP.closePopup=()=> 
 { 
     APP.closeWelcomePopup();
-    APP._audio = document.getElementById("introAudio"); 
-    APP._audio.play();
+
+    APP.audioCanPlay=true;
+    APP.setFirstAudioAvailable();
+    APP.playCurrentAudio();
+
     ATON.Utils.requestFullscreen();
 }
+
+
+//AUDIO MANAGEMENT
+
+APP._audio = null;
+//Set First audio available
+APP.setFirstAudioAvailable=()=>{
+   
+   if(!APP.config) return;
+   if(!APP.config.rooms) return;
+   
+
+  let firstAudioPath =  Object.values(APP.config.rooms)[0].audiosource;
+  if(!firstAudioPath) return;
+
+  APP.setCurrentAudio(firstAudioPath);
+}
+
+// Create or reuse audio element and set a new source
+APP.setCurrentAudio = (src) => {
+
+    if (!APP._audio) {
+        APP._audio = new Audio(); // Create it only once
+    } else {
+        APP._audio.pause();       // Stop if something is playing
+        APP._audio.src = "";      // Unload old source
+    }
+
+    APP._audio = new Audio();
+    APP._audio.src = src;
+    APP._audio.load();           // Load the new source
+};
+
+// Play current audio
+APP.playCurrentAudio = () => {
+    if (APP._audio && APP.audioCanPlay) {
+        APP._audio.play();
+    }
+};
+
+// Pause current audio
+APP.pauseCurrentAudio = () => {
+    if (APP._audio) {
+        APP._audio.pause();
+    }
+};
+
+// Toggle play/pause
+APP.toggleCurrentAudio = () => {
+    if (!APP._audio) return;
+    if (APP._audio.paused) {
+        APP._audio.play();
+    } else {
+        APP._audio.pause();
+    }
+};
+
+//END AUDIO MANAGEMENT
+
 
 APP.closeWelcomePopup=()=>
 {
@@ -214,7 +276,7 @@ APP.setup = ()=>{
     //APP.setuplightsProbe();
 
     const configPath = "./config.json";
-    const combinedConfigPath = "./combined.json";
+   // const combinedConfigPath = "./combined.json";
 
     ATON.PATH_COLLECTION = "content/";
     APP.pathContent = window.location.href.split('?')[0];
@@ -226,8 +288,9 @@ APP.setup = ()=>{
     
 
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
-    APP.loadJSON(combinedConfigPath, ( data )=>{
-        APP.combinedConfig = data;
+    
+    APP.loadJSON(configPath, ( data )=>{
+       // APP.combinedConfig = data;
         APP.loadConfig(configPath);
     });
    
@@ -348,15 +411,14 @@ APP.setupCustomLocomotionValidation=()=>
 APP.SUInodes=[];
 
 APP.updateRoomSUI=()=>{
-    APP.cleanAllTemporarySUI();
-    if(!APP.cRoom.SUI)return;
+    console.log("updating sui")
+    if(!APP.cRoom.SUI) return;
     APP.createRoomSUINodes(APP.cRoom.SUI);
 }
 
 APP.createRoomSUINodes=(nodes)=>{
 
     APP.cleanAllTemporarySUI();
-
     nodes.forEach(n => {
         let _n = APP.createSUILabel(n);
         APP.SUInodes.push(_n);
@@ -365,7 +427,10 @@ APP.createRoomSUINodes=(nodes)=>{
 
 APP.cleanAllTemporarySUI=()=>{
     if(APP.SUInodes.length==0) return;
-    APP.SUInodes.forEach(n => { n.delete() });
+    APP.SUInodes.forEach(n => {
+        n.delete()
+    });
+    
     APP.SUInodes = [];
 }
 
@@ -384,6 +449,8 @@ APP.createSUILabel=(options)=>{
 
 
 
+
+
 APP.setupSUI=()=>
 {
     //Create CloseObject SUI
@@ -395,7 +462,7 @@ APP.setupSUI=()=>
     //Create Titole SUI
     APP.Title_SUI = suiBuilder.createLabel({ id:"sui-title", w:1, h:0.5, content:"", pos:{x:0,y:0,z:0}, rot:{x:0,y:0,z:0} });
    // APP.Title_SUI.setBaseColor( new THREE.Color(0.1,0.1,0.1));
-    APP.Title_SUI.uiText.set({fontSize: 0.1, textAlign:"left", justifyContent:"left", content:"..."});
+    APP.Title_SUI.uiText.set({fontSize: 0.1, textAlign:"left", justifyContent:"left", content:""});
     ThreeMeshUI.update();
     APP.Title_SUI.attachToRoot();
 
@@ -420,6 +487,7 @@ const deleteAndDispose=(node)=>{
     console.log(node)
     if(!node) return;
     let p = node.parent;
+    if(!p) return;
 
     if (p !== undefined && p.nid !== undefined) removeChildandDispose(node);
 }
@@ -448,10 +516,21 @@ const removeChildandDispose=(node)=>{
 }
 
 
-APP.composeAmbient = (_stage)=>{
+APP.OLD_composeAmbient = (_stage)=>{
     APP.s =  new Date().getTime();
     APP.STAGE = _stage;
     
+    APP.rootNode = ATON.getOrCreateSceneNode("digitalTwin_root");
+    APP.rootNode.remove();
+
+    if(APP.rootNode_isInitialized == undefined){
+        APP.rootNode.addEventListener('added', () => {
+            console.log('%c ROOTNODE ADDED TO SCENE ', 'background: #222; color: #bada55');
+            APP.fadeFromBlack(1000);
+        });
+        APP.rootNode_isInitialized = true;
+    }
+
     //Remove Actual room if exist
     if(APP.cRoom)
     {
@@ -502,7 +581,8 @@ APP.composeAmbient = (_stage)=>{
         APP.room.attachTo(APP.ambient);  
     }
 
-    APP.ambient.attachToRoot();
+    //APP.ambient.attachToRoot();
+    APP.ambient.attachTo(APP.rootNode);
 
     //Create low resolution collection of objects
     let collection_p;
@@ -524,14 +604,16 @@ APP.composeAmbient = (_stage)=>{
             APP.lowObjCollection.setRotation(r.x,r.y,r.z);
             collection_r = r;
         }
-        APP.lowObjCollection.attachToRoot();
+        //APP.lowObjCollection.attachToRoot();
+        APP.lowObjCollection.attachTo(APP.rootNode);
     }
 
     //Create generalNode for HQ objects (Set ROT + POS translation)
     APP.hqObjects = ATON.createSceneNode("hqCollection");
     if(collection_p){const p = collection_p; APP.hqObjects.setPosition(p.x,p.y,p.z);}
     if(collection_r){const r = collection_r; APP.hqObjects.setRotation(r.x,r.y,r.z);}
-    APP.hqObjects.attachToRoot();
+    //APP.hqObjects.attachToRoot();
+    APP.hqObjects.attachTo(APP.rootNode);
 
     //Create semanticObjects 
     if(!APP.cRoom.objects){console.log("no objects"); return;}
@@ -574,7 +656,10 @@ APP.composeAmbient = (_stage)=>{
         //semNode.restoreDefaultMaterial();
     });
 
-    APP.semObjects.attachToRoot();
+    //APP.semObjects.attachToRoot();
+    APP.semObjects.attachTo(APP.rootNode);
+
+
     if(collection_p)
     {
         const p = collection_p;
@@ -584,6 +669,13 @@ APP.composeAmbient = (_stage)=>{
     {
         const r = collection_r;
         APP.semObjects.setRotation(r.x,r.y,r.z);
+    }
+
+    //Set audio:
+    if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio();}
+    else{
+        APP.setCurrentAudio(APP.cRoom.audiosource);
+        APP.playCurrentAudio();
     }
     
     if(MIND.isExperiment)
@@ -599,11 +691,8 @@ APP.composeAmbient = (_stage)=>{
         }
     }
 
-    //LINK ROOMS WORKAROUND:
-    //var l1 = ATON.getSemanticNode("room1link_sem");
-    //var l2 = ATON.getSemanticNode("room2link_sem");
-    //if(l1){l1.show()}
-    //if(l2){l2.show()}
+    APP.rootNode.attachToRoot();
+    //APP.fadeFromBlack(1000);
 }
 
 APP.updateSiblings=()=>{
@@ -623,9 +712,192 @@ APP.updateSiblings=()=>{
     }
     APP.siblings.attachToRoot();
     console.log("Siblings updated!")
-    APP.hideBlurredFullscreen()
+    APP.hideBlurredFullscreen();
 }
 
+
+//NEW PROMISE-BASED COMPOSE AMBIENT:
+
+APP.loadAndAttachNode = (sceneNode, loadPath, attachTarget) => {
+    return new Promise((resolve, reject) => {
+        try {
+            sceneNode.load(loadPath, () => {
+                sceneNode.attachTo(attachTarget);
+                resolve(sceneNode);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
+
+// Refactored composeAmbient using Promise-based loading
+APP.composeAmbient = async (_stage) => {
+    APP.s = new Date().getTime();
+    APP.STAGE = _stage;
+
+    const setPositionAndRotation = (node, pos, rot) => {
+        if (pos) node.setPosition(pos.x, pos.y, pos.z);
+        if (rot) node.setRotation(rot.x, rot.y, rot.z);
+    };
+
+    // Clear previous nodes
+    if (APP.ambient) APP.deleteAndDispose(APP.ambient);
+    if (APP.lowObjCollection) APP.deleteAndDispose(APP.lowObjCollection);
+    if (APP.hqObjects) APP.deleteAndDispose(APP.hqObjects);
+    if (APP.semObjects) APP.deleteAndDispose(APP.semObjects);
+
+    APP.cRoom = APP.config.rooms[_stage];
+    if (!APP.cRoom) return;
+
+    const rootScene = ATON.getRootScene();
+    APP.objects = {};
+
+    const loadPromises = [];
+
+    // Ambient node (acts as container)
+    APP.ambient = ATON.createSceneNode("ambient");
+    APP.ambient.attachTo(rootScene);
+
+    // Ceiling
+    if (APP.cRoom.ceiling) {
+        const ceilingNode = ATON.createSceneNode(APP.cRoom.ceiling.id);
+        const p = APP.loadAndAttachNode(ceilingNode, APP.cRoom.ceiling.path, APP.ambient).then(() => {
+            setPositionAndRotation(ceilingNode, APP.cRoom.ceiling.pos, APP.cRoom.ceiling.rot);
+        });
+        loadPromises.push(p);
+    }
+
+    // Room
+    if (APP.cRoom.room) {
+
+
+        const roomPromise = new Promise((resolve, reject) => {
+        try {
+            const roomNode = ATON.createSceneNode(APP.cRoom.room.id);
+            roomNode.load(APP.cRoom.room.path, () => {
+                setPositionAndRotation(roomNode, APP.cRoom.room.pos, APP.cRoom.room.rot);
+                roomNode.attachTo(APP.ambient);
+
+                APP.room = roomNode;
+                // Perform the dependent updates here
+                APP.updateSiblings();
+                APP.updateRoomSUI();
+                APP.updateVideoAssets();
+
+                resolve(roomNode);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+    loadPromises.push(roomPromise);
+        /*
+        APP.room = ATON.createSceneNode(APP.cRoom.room.id);
+        const p = APP.loadAndAttachNode(APP.room, APP.cRoom.room.path, APP.ambient).then(() => {
+            setPositionAndRotation(APP.room, APP.cRoom.room.pos, APP.cRoom.room.rot);
+            APP.updateRoomSUI();
+            APP.updateVideoAssets();
+            APP.deleteAndDispose(APP.siblings);
+        });
+        loadPromises.push(p);
+        */
+    }
+
+    // Object collection
+    if (APP.cRoom.objectCollection) {
+        APP.lowObjCollection = ATON.createSceneNode("objCollection");
+        const p = APP.loadAndAttachNode(APP.lowObjCollection, APP.cRoom.objectCollection.path, rootScene).then(() => {
+            setPositionAndRotation(APP.lowObjCollection, APP.cRoom.objectCollection.pos, APP.cRoom.objectCollection.rot);
+        });
+        loadPromises.push(p);
+    }
+
+    // HQ Objects node (empty, set position if available)
+    APP.hqObjects = ATON.createSceneNode("hqCollection");
+    setPositionAndRotation(APP.hqObjects, APP.cRoom.objectCollection?.pos, APP.cRoom.objectCollection?.rot);
+    APP.hqObjects.attachTo(rootScene);
+
+    // Semantic objects
+    APP.semObjects = ATON.createSemanticNode("semObjects");
+    const semPromise = new Promise((resolve) => {
+        if (!APP.cRoom.objects) {
+            resolve();
+            return;
+        }
+        APP.cRoom.objects.forEach(obj => {
+            APP.objects[obj.id] = obj;
+            if (!obj.sem) return;
+
+            const semNode = ATON.createSemanticNode(obj.id + "_sem").load(obj.sem.path);
+            semNode.setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL);
+            semNode.restoreDefaultMaterial();
+
+            setPositionAndRotation(semNode, obj.sem.pos, obj.sem.rot);
+
+            semNode.attachTo(APP.semObjects);
+        });
+        resolve();
+    });
+    loadPromises.push(semPromise);
+
+    // Siblings
+    if (APP.cRoom.siblings) {
+        /*
+        APP.siblings = ATON.createSceneNode("siblings");
+        APP.cRoom.siblings.forEach(s => {
+            const sibNode = ATON.createSceneNode(s.id);
+            const p = APP.loadAndAttachNode(sibNode, s.path, APP.siblings).then(() => {
+                setPositionAndRotation(sibNode, s.pos, s.rot);
+            });
+            loadPromises.push(p);
+        });
+        APP.siblings.attachTo(rootScene);
+        */
+    }
+
+    // Attach semantic objects to root
+    setPositionAndRotation(APP.semObjects, APP.cRoom.objectCollection?.pos, APP.cRoom.objectCollection?.rot);
+    APP.semObjects.attachTo(rootScene);
+
+    // Wait for all
+    try {
+        await Promise.all(loadPromises);
+    
+        console.log('✅%c All ambient nodes loaded successfully', 'background: #222; color: #bada55');
+        
+         //Set audio:
+        if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio();}
+        else{
+            APP.setCurrentAudio(APP.cRoom.audiosource);
+            APP.playCurrentAudio();
+        }
+    
+        //Experiment Planner:
+        if(MIND.isExperiment)
+        {
+
+            if(state.role=="user")
+            {
+                MIND.minder.photon_userComposeAmbient(APP.STAGE);
+            }
+            if(state.role=="controller")
+            {
+                MIND.requestPOV(APP.config.mind.homePOVController[APP.STAGE]);
+            }
+        }
+
+        APP.hideBlurredFullscreen();
+        //FADEIFVR
+        if(APP.isVR_Running()){APP.fadeFromBlack(2000);}
+
+    } catch (err) {
+        console.error('Error loading ambient nodes:', err);
+    }
+};
+
+
+//END NEW COMPOSE AMBIENT
 
 
 
@@ -901,24 +1173,33 @@ APP.onTapSemNodes = (idSem, p=null)=>
     {
         if(!_object.path) return;
         
-        var SemNode = ATON.getSemanticNode(_id+"_sem");
-        SemNode.hide();
+       // var SemNode = ATON.getSemanticNode(_id+"_sem");
+       // SemNode.hide();
 
         ATON.getSceneNode("ambient").hide();
         if(APP.siblings) APP.siblings.hide();
         if(APP.videoAssets) APP.videoAssets.hide();
-
+        
         ATON.Nav.setOrbitControl();
         ATON.getSceneNode("blackSphere").show();
-
+        
         ATON._mainRoot.background = new THREE.Color("rgb(17,17,17)");
 
+        
+        APP.semObjects.hide();
 
-        APP.cRoom.objects.map((o)=>
+
+     APP.cRoom.objects.map((o)=>
         {
+            return;
+
             if(o.id == APP._currentObjectActive) {return;}
             if(ATON.getSceneNode(o.id)) ATON.getSceneNode(o.id).hide();
-            if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").hide();
+
+           
+            if(ATON.getSemanticNode(o.id+"_sem")){
+            //    ATON.getSemanticNode(o.id+"_sem").hide();
+            }
         })
         
 
@@ -991,10 +1272,6 @@ APP.onTapSemNodes = (idSem, p=null)=>
     }
 }
 
-APP.getInfo=(id)=>{
-    
-}
-
 ATON.on("POVTransitionCompleted", (x)=>{APP.onPOVTransitionCompleted(x);})
     
 APP.onPOVTransitionCompleted=(x)=>{
@@ -1016,9 +1293,16 @@ APP.onPOVTransitionCompleted=(x)=>{
     if(obj.type == "roomLink")
     {   
         console.log(obj.roomTo);
-        APP.composeAmbient(obj.roomTo);
         APP.currentObjIsFocused=false;
         APP._currentObjectActive=null;
+
+        if(APP.isVR_Running()){ //FADEIFVR - TO
+            APP.fadeToBlack(500, async () => {
+                console.log("Fading To Black");
+                await APP.composeAmbient(obj.roomTo);
+            });
+        }
+        else{ APP.composeAmbient(obj.roomTo); }
     }
 
     if(obj.type == "video")
@@ -1030,24 +1314,9 @@ APP.onPOVTransitionCompleted=(x)=>{
 
     if(obj.type=="object")
     {
-            console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
-            $('canvas').css({ cursor: 'wait'});
-            
-            var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
-                /*On Complete: */ ()=>{
-                    APP.lowObjCollection.hide();
-                    $('canvas').css({ cursor: 'grab'});
-                });
-
-            if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
-            if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
-            if(obj.scale){hqObj.setScale(obj.scale.x,obj.scale.y,obj.scale.z)}
-            //hqObj.attachToRoot();
-            hqObj.attachTo(APP.hqObjects);
-
             //SUI
         if(APP.isVR_Running())
-        {
+        { return;
             //Btn back
             if(obj.close)
             {
@@ -1071,6 +1340,23 @@ APP.onPOVTransitionCompleted=(x)=>{
             APP.Floor_SUI.show();
 
         }
+
+            console.log('%cTransition POV Ended ' + obj.hoverLable, 'background: #222; color: #bada55');
+            $('canvas').css({ cursor: 'wait'});
+            
+            var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
+                /*On Complete: */ ()=>{
+                    APP.lowObjCollection.hide();
+                    $('canvas').css({ cursor: 'grab'});
+                });
+
+            if(obj.pos){hqObj.setPosition(obj.pos.x,obj.pos.y,obj.pos.z)}
+            if(obj.rot){hqObj.setRotation(obj.rot.x,obj.rot.y,obj.rot.z)}
+            if(obj.scale){hqObj.setScale(obj.scale.x,obj.scale.y,obj.scale.z)}
+            //hqObj.attachToRoot();
+            hqObj.attachTo(APP.hqObjects);
+
+        
         APP.currentObjIsFocused=true;
     }
 
@@ -1109,12 +1395,15 @@ APP.CloseObject = ()=>
     APP.lowObjCollection.show();
 
     //Show Semantic and Scene Nodes of objects
+    APP.semObjects.show();
+/*
     APP.cRoom.objects.map((o)=>
     {
-    console.log(o.id);
-    if( ATON.getSceneNode(o.id)){console.log("REACTIVATING: " + o.id); ATON.getSceneNode(o.id).show();}
-    if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").show();
+        console.log(o.id);
+        if( ATON.getSceneNode(o.id)){console.log("REACTIVATING: " + o.id); ATON.getSceneNode(o.id).show();}
+        if(ATON.getSemanticNode(o.id+"_sem")) ATON.getSemanticNode(o.id+"_sem").show();
     });
+*/
 
 //  ATON.getSemanticNode(APP._currentObjectActive+"_sem").show();
     document.getElementById("SideBAR").style.display="none";
@@ -1141,6 +1430,8 @@ APP.CloseObject = ()=>
         APP.Floor_SUI.hide();
     }
     
+    //Gizmo Helper:
+    if (ATON._gizmo) ATON._gizmo.detach();     
 }
 
 APP.openIIIFview=(target)=>
@@ -1302,10 +1593,14 @@ APP.onAllNodeRequestsCompleted=()=>
     const now =  new Date().getTime();
     const deltaLoad = Math.abs( now -  APP.s); 
     APP.delta = deltaLoad / 1000; 
+
+    console.log('%c ALLNODEREQUESTCOMPLETED ', 'background: #444; color: #bada55');
+
     console.log("loaded in: " + APP.delta);
 
     //$("#idLoader").hide();
-    APP.hideBlurredFullscreen()
+    //APP.hideBlurredFullscreen();
+
    if(APP.sceneInitialized) return;
 
    //Initialize BlackSphere:
@@ -1653,6 +1948,360 @@ APP.getCurrActiveCenter=()=>{
 
 }
 
+
+
+
+//FADE: TO INTRODUCE AND TEST ON VR
+
+APP.setupForFade = () => {
+    if (APP.blackPlaneFade) return;
+
+    const fadeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: true,
+        opacity: 0,  // always start at 0!
+        depthTest: false,
+        depthWrite: false
+    });
+
+    const fadeGeometry = new THREE.PlaneGeometry(2, 2);
+    const fadeMesh = new THREE.Mesh(fadeGeometry, fadeMaterial);
+    fadeMesh.renderOrder = 999;
+
+    APP.blackPlaneFade = fadeMesh;
+    APP.blackPlaneMaterial = fadeMaterial;
+
+
+};
+
+APP.updateFadePlanePosition = () => {
+    const fadeMesh = APP.blackPlaneFade;
+    if (!fadeMesh) return;
+
+    const cameraPos = ATON.Nav._currPOV.pos;
+    const cameraQuat = ATON.Nav._qOri;
+
+    fadeMesh.position.copy(cameraPos);
+    fadeMesh.quaternion.copy(cameraQuat);
+    fadeMesh.translateZ(-0.5);
+};
+
+APP.OLDfadeToBlack = (duration = 1000, onComplete = () => {}) => {
+    APP.setupForFade();
+
+    const fadeMesh = APP.blackPlaneFade;
+    const fadeMaterial = APP.blackPlaneMaterial;
+
+    if (!ATON._mainRoot.children.includes(fadeMesh)) {
+        ATON._mainRoot.add(fadeMesh);
+    }
+
+    fadeMaterial.opacity = 0;  // ensure we start from black = 0
+
+    const startTime = performance.now();
+
+    function animate() {
+        APP.updateFadePlanePosition();
+        const elapsed = performance.now() - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        fadeMaterial.opacity = t;
+
+        if (t < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            onComplete();
+        }
+    }
+
+    animate();
+};
+
+APP.OLDfadeFromBlack = (duration = 1000, onComplete = () => {}) => {
+    const fadeMesh = APP.blackPlaneFade;
+    const fadeMaterial = APP.blackPlaneMaterial;
+
+    if (!fadeMesh || !fadeMaterial) {
+        console.warn('fadeFromBlack called without setup');
+        onComplete();
+        return;
+    }
+
+    if (!ATON._mainRoot.children.includes(fadeMesh)) {
+        ATON._mainRoot.add(fadeMesh);
+    }
+
+    fadeMaterial.opacity = 1;  // ensure we start fully black
+
+    const startTime = performance.now();
+
+    function animate() {
+        APP.updateFadePlanePosition();
+        const elapsed = performance.now() - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        fadeMaterial.opacity = 1 - t;
+
+        if (t < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            ATON._mainRoot.remove(fadeMesh);
+            onComplete();
+        }
+    }
+
+    animate();
+};
+
+
+
+APP.testFade = () => {
+    APP.fadeToBlack(1000, () => {
+        console.log("Scene graph updated");
+
+        // Perform updates here
+
+        APP.fadeFromBlack(1000);
+    });
+};
+
+
+
+function getRequestAnimationFrame() {
+    return (ATON.XR && ATON.XR.currSession)
+        ? ATON.XR.currSession.requestAnimationFrame.bind(ATON.XR.currSession)
+        : window.requestAnimationFrame;
+}
+
+APP.fadeToBlack = (duration = 1000, onComplete = () => {}) => {
+    try {
+        APP.setupForFade();
+
+        const fadeMesh = APP.blackPlaneFade;
+        const fadeMaterial = APP.blackPlaneMaterial;
+
+        if (!ATON._mainRoot.children.includes(fadeMesh)) {
+            ATON._mainRoot.add(fadeMesh);
+        }
+
+        fadeMaterial.opacity = 0; // start transparent
+
+        const startTime = performance.now();
+        const raf = getRequestAnimationFrame();
+
+        function animate() {
+            try {
+                APP.updateFadePlanePosition();
+                const elapsed = performance.now() - startTime;
+                const t = Math.min(elapsed / duration, 1);
+                ATON.Photon.fire("myRemoteLog","T is: " + t);
+
+                fadeMaterial.opacity = t;
+
+                if (t < 1) {
+                    raf(animate);
+                } else {
+                    onComplete();
+                }
+            } catch (err) {
+                console.error("Error during fadeToBlack animation:", err);
+                onComplete();
+            }
+        }
+
+        raf(animate);
+    } catch (err) {
+        console.error("Error starting fadeToBlack:", err);
+        onComplete();
+    }
+};
+
+APP.fadeFromBlack = (duration = 1000, onComplete = () => {}) => {
+    try {
+        const fadeMesh = APP.blackPlaneFade;
+        const fadeMaterial = APP.blackPlaneMaterial;
+
+        if (!fadeMesh || !fadeMaterial) {
+            console.warn('fadeFromBlack called without setup');
+            onComplete();
+            return;
+        }
+
+        if (!ATON._mainRoot.children.includes(fadeMesh)) {
+            ATON._mainRoot.add(fadeMesh);
+        }
+
+        fadeMaterial.opacity = 1; // start fully black
+
+        const startTime = performance.now();
+        const raf = getRequestAnimationFrame();
+
+        function animate() {
+            try {
+                APP.updateFadePlanePosition();
+                const elapsed = performance.now() - startTime;
+                const t = Math.min(elapsed / duration, 1);
+                fadeMaterial.opacity = 1 - t;
+
+                if (t < 1) {
+                    raf(animate);
+                } else {
+                    ATON._mainRoot.remove(fadeMesh);
+                    onComplete();
+                }
+            } catch (err) {
+                console.error("Error during fadeFromBlack animation:", err);
+                ATON._mainRoot.remove(fadeMesh);
+                onComplete();
+            }
+        }
+
+        raf(animate);
+    } catch (err) {
+        console.error("Error starting fadeFromBlack:", err);
+        onComplete();
+    }
+};
+
+
+//ATON.on("fadeToBlack", () => {APP.fadeToBlack(1000);});
+//ATON.on("fadeFromBlack", () => {APP.fadeFromBlack(1000);});
+
+
+
+
+
+
+const COLORS = {
+  red:        0xff0000,
+  green:      0x00ff00,
+  blue:       0x0000ff,
+  yellow:     0xffff00,
+  cyan:       0x00ffff,
+  magenta:    0xff00ff,
+  orange:     0xffa500,
+  purple:     0x800080,
+  white:      0xffffff,
+  gray:       0x808080
+};
+
+APP.createArrowHelper = (dir, origin, length, colorHex = "yellow") => {
+
+        const arrowHelper = new THREE.ArrowHelper( dir, origin, length, COLORS[colorHex] );
+        ATON.getRootScene().add( arrowHelper );
+}
+
+APP.testvDir=()=>{
+    APP.createArrowHelper(ATON.Nav._vDir, ATON.Nav._currPOV.pos, 1,"green");
+}
+
+APP.testvDirNegated=()=>{
+    APP.createArrowHelper(ATON.Nav._vDir.negate(), ATON.Nav._currPOV.pos, 1,"blue");
+}
+
+APP.testOrtogonalVDir=(axis)=>{
+    let c;
+    if(axis=="x") c = "red";
+    if(axis=="y") c = "yellow";
+    if(axis=="z") c = "blue";
+    
+    let orto = APP.getOrthogonalVectorAroundAxis(ATON.Nav._vDir, axis);
+    APP.createArrowHelper(orto, ATON.Nav._currPOV.pos, 1,c);
+}
+
+APP.testvqOri=()=>{
+    APP.createArrowHelper(ATON.Nav._qOri, ATON.Nav._currPOV.pos, 1,"red");
+}
+
+APP.getOrthogonalVectorAroundAxis=(vec, axis)=> {
+  const orthogonal = vec.clone();
+
+  switch (axis.toLowerCase()) {
+    case 'x':
+      // Rotate in YZ plane
+      orthogonal.set(
+        vec.x,
+        -vec.z,
+        vec.y
+      );
+      break;
+
+    case 'y':
+      // Rotate in XZ plane
+      orthogonal.set(
+        vec.z,
+        vec.y,
+        -vec.x
+      );
+      break;
+
+    case 'z':
+      // Rotate in XY plane
+      orthogonal.set(
+        -vec.y,
+        vec.x,
+        vec.z
+      );
+      break;
+
+    default:
+      console.warn('Invalid axis. Use "x", "y", or "z".');
+      return vec.clone();
+  }
+
+  return orthogonal.normalize();
+}
+
+
+//USER SUI
+APP.testUserSUI = () => {
+
+  const raf = getRequestAnimationFrame();
+
+  // Positioning factors
+  APP.forwardFactor = 0.3;
+  APP.leftFactor = 0.13;
+  APP.upFactor = 0;
+
+  // Create label
+  const label = suiBuilder.createLabel({
+    id: "sui-left",
+    w: 0.1,
+    h: 0.02,
+    content: "Hello from the left!",
+    pos: { x: 0, y: 0, z: 0 },
+    rot: { x: 0, y: 0, z: 0 },
+    fSize: 0.01
+  });
+
+  label.attachTo(ATON.getRootScene());
+  APP._suiLeftUserLabel = label;
+
+  const updateLoop = () => {
+    if (!APP._suiLeftUserLabel) return;
+
+    const userPos = ATON.Nav._currPOV.pos.clone();
+    const userDir = ATON.Nav._vDir.clone().normalize();
+
+    // Compute side and up vectors
+    const up = new THREE.Vector3(0, 1, 0); // world up
+    const left = new THREE.Vector3().crossVectors(up, userDir).normalize();
+
+    // Calculate label position relative to user
+    const labelPos = userPos.clone()
+      .add(userDir.clone().multiplyScalar(APP.forwardFactor))
+      .add(left.clone().multiplyScalar(APP.leftFactor))
+      .add(up.clone().multiplyScalar(APP.upFactor));
+
+    // Set position
+    label.setPosition(labelPos);
+
+    // Make the label face the user
+    label.lookAt(userPos);
+
+    raf(updateLoop);
+  };
+
+  updateLoop(); // Start the loop
+};
 
 
 

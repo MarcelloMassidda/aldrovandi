@@ -19,26 +19,46 @@ helper.init=()=>
         
         if (k === 'q' && helper.isActive) { helper.setGizmoMode("translate"); }
         if (k === 'w' && helper.isActive) { helper.setGizmoMode("rotate"); }
-        if (k === 'e' && helper.isActive) { helper.getPosandRotofCurrentGizmedNode(); }
+        if (k === 'e' && helper.isActive) { helper.setGizmoMode("scale"); }
+        if (k === 'd' && helper.isActive) { helper.getPosandRotofCurrentGizmedNode(); }
         if (k === 'r' && helper.isActive) { helper.toggleNAV(); }
         if (k === 't' && helper.isActive) { helper.getCurrentPov(); }
 
 
         if (k === "y" && helper.isActive) { helper.toogleLoader(); }
         if (k === "u" && helper.isActive) { helper.getQueryDataScene(); }
-        if (k==' ') {helper.toggleAudio();}
+        if (k==' ') {APP.toggleCurrentAudio();}
     });
     
+
+    //Connect remote control:
+    if(!ATON.Photon) return;
+//    ATON.Photon.connect("x");
+//     ATON.Photon.joinSession("a");
+
+
+    ATON.Photon.on("fadeFrom", ()=>{APP.fadeFromBlack(1000);});
+    ATON.Photon.on("fadeTo", ()=>{APP.fadeToBlack(1000);});
+
+ //   ATON.Photon.on("performanceSended", (p)=>{console.log("Performance sended:");  console.log(performance)});
+ //   ATON.Photon.on("performanceAsked", ()=>{ATON.Photon.fire("performanceSended",performance)});
+ 
+    ATON.Photon.on("myRemoteLog", (l)=>{console.log("LOG:"); console.log(l)});
+
+    ATON.Photon.on("testSUI", ()=>{APP.testUserSUI()});
+
+
+    ATON.Photon.on("testFade",()=>{
+        APP.setupForFade();
+        ATON._mainRoot.add(APP.blackPlaneFade);
+        APP.updateFadePlanePosition();
+
+    });
 }
 
 
 APP.isloading = false;
-helper.toggleAudio=()=>
-{
-    if(!APP._audio) return;
-    if(!APP._audio.paused){APP._audio.pause()}
-    else{APP._audio.play()}
-}
+
 
 helper.toggleHelper=()=>
 {

@@ -1,6 +1,7 @@
 {
   "rooms": {
     "1": {
+      "audiosource":"content/audios/Audio_Sala1.mp3",
       "HomePov": {
         "pos": {
           "x": -0.22108174086545052,
@@ -13,35 +14,17 @@
           "z": 3.226904500182059
         }
       },
-      "old_ceiling": {
-        "id": "ceiling",
-        "path": "models/room1/ceiling/retopologizeRoof.gltf",
+      "objectCollection": {
+        "path": "models/room1/lowObjects/assets_sala1_updated.gltf",
         "pos": {
-          "x": 0,
-          "y": 0.941,
+          "x": -0.76,
+          "y": 0,
           "z": 0
         }
       },
       "room": {
         "id": "room",
         "path": "models/room1/room/Stanza_v3_GLTF.gltf",
-        "ktx_path": "models/room1/room/v3_KTX/Stanza_v3_GLTF.gltf",
-        "pos": {
-          "x": -0.76,
-          "y": 0,
-          "z": 0
-        }
-      },
-      "old_objectCollection": {
-        "path": "models/room1/lowObjects/lowObjs.gltf",
-        "pos": {
-          "x": -0.76,
-          "y": 0,
-          "z": 0
-        }
-      },
-      "objectCollection": {
-        "path": "models/room1/lowObjects/assets_sala1_updated.gltf",
         "pos": {
           "x": -0.76,
           "y": 0,
@@ -622,7 +605,7 @@
           "type": "roomLink",
           "roomTo": 2,
           "sem": {
-            "path": "models/room1/semObjects/linkRoom2_sem.glb"
+            "path": "models/room1/semObjs/linkRoom2_sem.glb"
           },
           "povIn": {
             "pos": {
@@ -680,7 +663,7 @@
           },
           "content": "",
           "sem": {
-            "path": "models/room1/semObjects/sangim_sem.glb",
+            "path": "models/room1/semObjs/sangim_sem.glb",
             "pos": {
               "x": 0,
               "y": 0,
@@ -691,6 +674,7 @@
       ]
     },
     "2": {
+       "audiosource":"content/audios/Audio_Sala2.mp3",
       "HomePov": {
         "pos": {
           "x": -0.26060506218970936,
@@ -705,7 +689,6 @@
       },
       "room": {
         "id": "room",
-        "old_path": "models/room2/room/sala2.gltf",
         "path": "models/room2/room/Sala2_v2.gltf",
         "pos": {
           "x": 9.66823777807921,
@@ -770,7 +753,6 @@
       ],
       "objectCollection": {
         "path": "models/room2/lowObjects/v2_28-01-2025/sala2_assets.gltf",
-        "old_path": "models/room2/lowObjects/old/metodobake/metodobake.gltf",
         "pos": {
           "x": 9.66823777807921,
           "y": 0,
@@ -1488,6 +1470,7 @@
       ]
     },
     "3": {
+       "audiosource":"content/audios/Audio_Sala3.mp3",
       "HomePov": {
         "pos": {
           "x": 12.66,
@@ -1502,7 +1485,7 @@
       },
       "room": {
         "id": "room",
-        "path": "models/room3/room/sala3.gltf",
+        "path": "models/room3/room/Sala3.gltf",
         "pos": {
           "x": 21.923365995711453,
           "y": -0.013697615426610854,
@@ -1539,13 +1522,13 @@
       "videoAssets": [
         {
           "id": "video_a",
-          "videoPath": "content/videos/s3/Tavole_acquarellate.mp4",
-          "shapePath": "models/room3/video/plane_video_a.gltf"
+          "videoPath": "content/videos/r3_Tavole_acquarellate.mp4",
+          "shapePath": "models/room3/videoObjs/video_a/plane_video_a.gltf"
         },
         {
           "id": "video_b",
-          "videoPath": "content/videos/s3/Filiera_immagini.mp4",
-          "shapePath": "models/room3/video/plane_video_b.gltf"
+          "videoPath": "content/videos/r3_Filiera_immagini.mp4",
+          "shapePath": "models/room3/videoObjs/video_b/plane_video_b.gltf"
         }
       ],
       "objectCollection": {
@@ -1716,16 +1699,8 @@
           "type": "object",
           "hoverLable": "Parete con matrici xilografiche (111 matrici tot)",
           "path": "aldrovandi/models/S3-PT-DICAM_VetrinaMatriciXilografiche/parete_tavolette_final.gltf",
-          "pos": {
-            "x": -6.414519786834717,
-            "y": 1.1009299755096436,
-            "z": -3.5649499893188477
-          },
-          "rot": {
-            "x": 1.577488360379489,
-            "y": 0.3059135037807358,
-            "z": -1.522578725748029
-          },
+          "pos":{"x":-6.420320480623461,"y":1.1309694380217619,"z":-3.6072641927102786},
+          "rot":{"x":-1.4238822133450117,"y":1.2666988208931322,"z":1.4443300579960425},
           "sem": {
             "path": "models/room3/semObjs/convex/PT_convex.GLB"
           }
@@ -1764,6 +1739,7 @@
       ]
     },
     "4": {
+       "audiosource":"content/audios/Audio_Sala4.mp3",
       "HomePov": {
         "pos": {
           "x": 12.66,
@@ -1778,7 +1754,7 @@
       },
       "room": {
         "id": "room",
-        "path": "models/room4/sala/sala_4.gltf",
+        "path": "models/room4/room/sala_4.gltf",
         "pos": {
           "x": 11.984896508496993,
           "y": -0.14052870815233626,
@@ -1857,16 +1833,8 @@
           "type": "object",
           "hoverLable": "Manico di coltello sacrificale in forma di rettile fantastico cultura nahua, ca. 1350-1521 d.C.",
           "path": "aldrovandi/models/S4-ManicoColtelloZoomorfo/pugnale_modello2.gltf",
-          "pos": {
-            "x": 2.1834797859191895,
-            "y": 1.4603561162948608,
-            "z": -3.4877054691314697
-          },
-          "rot": {
-            "x": 1.5707965039390763,
-            "y": -8.684426333616113e-8,
-            "z": -1.7250853645516304
-          },
+          "pos":{"x":2.1834797859191895,"y":1.4603561162948608,"z":-3.4871231915151277},
+          "rot":{"x":-3.044087256247063,"y":1.3828104307708449,"z":3.0428563989475634},
           "sem": {
             "path": "models/room4/semObjs/convex/50_convex.GLB"
           }
@@ -1892,7 +1860,9 @@
             "y": -1.364940312596141,
             "z": 0
           },
-          "sem": null
+           "sem": {
+            "path": "models/room4/semObjs/convex/51_convex.GLB"
+          }
         },
         {
           "NR": "52",
@@ -1930,16 +1900,8 @@
           "type": "object",
           "hoverLable": "Pendente con testa di idolo in serpentino cultura nahua o mixteca, ca. 1350-1521 d.C.",
           "path": "aldrovandi/models/S4-53-DBC_Testina/pendente_testina.gltf",
-          "pos": {
-            "x": -1.6023249626159668,
-            "y": 1.3625284433364868,
-            "z": -4.805773735046387
-          },
-          "rot": {
-            "x": 1.5707963946213477,
-            "y": -1.5761260296898172e-8,
-            "z": -2.9926476504010955
-          },
+         "pos":{"x":-1.6023249626159668,"y":1.3625284433364868,"z":-4.805773735046387},
+         "rot":{"x":-3.1084253788539242,"y":-1.5761260293862406e-8,"z":-2.9926476504010955},
           "sem": {
             "path": "models/room4/semObjs/convex/53_convex.GLB"
           }
@@ -1977,22 +1939,13 @@
           "sem": {
             "path": "models/room4/semObjs/linkRoom2a.glb"
           },
-          "povIn": {
-            "pos": {
-              "x": 12.254772019678754,
-              "y": 1.5793164900361292,
-              "z": -4.616332352111351
-            },
-            "target": {
-              "x": 12.762906887686674,
-              "y": 1.5064634730854924,
-              "z": -3.7581415843704224
-            }
-          }
+          "povIn": {"pos":{"x":12.254772019678754,"y":1.5793164900361292,"z":-4.616332352111351},
+          "target":{"x":11.498031651224743,"y":1.5059430463416583,"z":-3.966747598201206}}
         }
       ]
     },
     "5": {
+       "audiosource":"content/audios/Audio_Sala5.mp3",
       "HomePov": {
         "pos": {
           "x": 7.164031702933637,
@@ -2007,7 +1960,7 @@
       },
       "room": {
         "id": "room",
-        "path": "models/room5/room/SALA5_Testcarico_v2/Sala5_v2.gltf",
+        "path": "models/room5/room/SALA5_Testcarico/Sala5_v2.gltf",
         "pos": {
           "x": -1.7101650989286954,
           "y": 0.05993992455022479,
@@ -5549,6 +5502,7 @@
       ]
     },
     "6": {
+       "audiosource":"content/audios/Audio_Sala6.mp3",
       "HomePov": {
         "pos": {
           "x": -9.481805527823957,
@@ -5574,9 +5528,20 @@
           "z": -0.813258453054357
         }
       },
+      "siblings":[
+        {
+          "id": "sibling_room5",
+          "path": "models/siblings/room5/room5.gltf",
+          "pos": {
+          "x": -1.7101650989286954,
+          "y": 0.05993992455022479,
+          "z": -5.31693999404992
+        }
+      }
+      ],
       "room": {
         "id": "room",
-        "path": "models/room6/Sala/sala6_vuota.gltf",
+        "path": "models/room6/room/sala6_vuota.gltf",
         "rot": {
           "x": -3.141592653589793,
           "y": -0.0021854542056534056,
@@ -6158,16 +6123,8 @@
           "type": "object",
           "hoverLable": "Busto di donna con la pellagra",
           "path": "aldrovandi/models/S6-93-DA_Busto Pellagra/Pellagra.gltf",
-          "pos": {
-            "x": 4.037321967228495,
-            "y": 2.350769519805908,
-            "z": -1.8534945546580006
-          },
-          "rot": {
-            "x": -0.7686698414055241,
-            "y": -1.4852517217636476,
-            "z": -0.7631207758364188
-          },
+          "pos":{"x":3.4948273137985297,"y":2.4825790373029353,"z":-1.8609486283852872},
+          "rot":{"x":0.2651010295843453,"y":-1.4913532125698103,"z":0.27472715863947145},
           "sem": {
             "path": "models/room6/semObjs/convex/93_convex.GLB"
           }
@@ -6798,7 +6755,7 @@
     "2a": {
       "room": {
         "id": "room",
-        "path": "models/room2a/anticamera.gltf",
+        "path": "models/room2a/room/anticamera.gltf",
         "pos": {
           "x": 12.448915897254281,
           "y": 0.5795184033548496,
@@ -6895,7 +6852,15 @@
             "z": -3.817010174909226
           },
           "path": "models/siblings/room4/Sala4.gltf"
-        }
+        },
+         {
+          "id": "sibling_room5",
+          "path": "models/siblings/room5/room5.gltf",
+          "pos": {
+          "x": -1.7101650989286954,
+          "y": 0.05993992455022479,
+          "z": -5.31693999404992
+        }}
       ],
       "objects": [
         {
