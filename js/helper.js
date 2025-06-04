@@ -539,6 +539,7 @@ const room2SemsForRotsPath  =     "models/room2/ALL_sems_Room2.glb";
 const room3SemsForRotsPath  =     "models/room3/ALL_sems_Room3.glb";
 const room4SemsForRotsPath  =     "models/room4/semObjs/convex/ALL_Sems.glb";
 const room5SemsForRotsPath  =     "models/room5/semObjs/ALL_Sems_5.glb";
+const room5NewSemsForRotsPath  =     "models/room5/7nuovi_sala5.gltf";
 const room6SemsForRotsPath  =     "models/room6/semObjs/ALL_Sems_room6.gltf";
 
 
@@ -549,6 +550,9 @@ APP.process_semsRoom3=()=>{ APP.process_sems("hull3",room3SemsForRotsPath) }
 APP.process_semsRoom4=()=>{ APP.process_sems("hull4",room4SemsForRotsPath) }
 APP.process_semsRoom5=()=>{ APP.process_sems("hull5",room5SemsForRotsPath) }
 APP.process_semsRoom6=()=>{ APP.process_sems("hull6",room6SemsForRotsPath) }
+
+APP.process_semsRoom5New=()=>{ APP.process_sems("hull5new",room5NewSemsForRotsPath) }
+
 
 APP.process_sems=(nodeId,path)=>{
     const onLoad = ()=>{

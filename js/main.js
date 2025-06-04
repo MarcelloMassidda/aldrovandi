@@ -484,7 +484,6 @@ APP.setupSUI=()=>
 
 
 const deleteAndDispose=(node)=>{
-    console.log(node)
     if(!node) return;
     let p = node.parent;
     if(!p) return;
@@ -646,9 +645,9 @@ APP.OLD_composeAmbient = (_stage)=>{
 
         //.setDefaultAndHighlightMaterials(semanticMat_idle,semanticMat_focus)
         
-        //.setOnHover(function(){console.log("HOVER"); ATON.SUI.fpTeleport.children[0].visible=false})
         //.setOnLeave(function(){console.log("LEAVE"); ATON.SUI.fpTeleport.children[0].visible=true})
-        semNode.setOnSelect(function(){console.log("SELECTED")});
+        //semNode.setOnSelect(function(){console.log("SELECTED")})
+        //semNode.setOnHover(()=>console.log("HOVER"))
         if(sem.pos){semNode.setPosition(sem.pos.x,sem.pos.y,sem.pos.z)}
         if(sem.rot){semNode.setRotation(sem.rot.x,sem.rot.y,sem.rot.z)}
         //semNode.attachToRoot();
@@ -956,10 +955,25 @@ APP.setupCustomSemanticHovers=()=>{
         // Semantic
         ATON.on("SemanticNodeHover", (semid)=>{
             var FE = ATON.FE;
-           // console.log(semid)
+            
             let S = ATON.getSemanticNode(semid);
             if (S === undefined) return;
     
+            if(APP.isVR_Running()){
+                APP.setMetadataSUI(semid);
+                
+                let _id = semid.substring(0, semid.length-(4));
+                let _obj = APP.objects[_id];
+                if(!_obj) return;
+                if(_obj.type=="object"){
+                    //no others label for objects
+                    ATON.FE._bShowSemLabel = false;
+                    ATON.FE.hideSemLabel();
+                    return;
+                } 
+            }
+           
+            ATON.FE._bShowSemLabel = true;
             FE.showSemLabel(semid);
             FE._bSem = true;
     
@@ -967,31 +981,52 @@ APP.setupCustomSemanticHovers=()=>{
             //$('canvas').css({ cursor: 'crosshair' });
             $('canvas').css({ cursor: 'zoom-in'});
             if (ATON.SUI.gSemIcons) ATON.SUI.gSemIcons.hide();
-            
+           
+           // APP.setMetadataSUI(semid); //For debugging
         });
 
-       // ATON.on("SemanticNodeLeave", (semid)=>{
-            /*
+        ATON.on("SemanticNodeLeave", (semid)=>{
+            
             let S = ATON.getSemanticNode(semid);
             if (S === undefined) return;
     
-            FE.hideSemLabel();
-            FE._bSem = false;
+            ATON.FE.hideSemLabel();
+            ATON.FE._bSem = false;
     
             S.restoreDefaultMaterial();
             $('canvas').css({ cursor: 'grab' });
     
             if (ATON.SUI.gSemIcons) ATON.SUI.gSemIcons.show();
-            */
-       // });
+
+            //In VR, hide the label
+            //if(APP.isVR_Running()){
+                APP.removeUserSUI();
+            //}
+            
+        });
 
         //OVVERIDED FROM ATON.FE 
         ATON.FE.showSemLabel = (idSem)=>{
+            console.log("showSemLabel: "+idSem);
+            console.log("ATON.FE._bShowSemLabel: "+ATON.FE._bShowSemLabel);
             if (!ATON.FE._bShowSemLabel) return;
-
+            
             let _id = idSem.substring(0, idSem.length-(4));
-            let _obj = APP.objects[_id];
+            let _obj = APP.objects[_id];            
             if(!_obj) return;
+            
+            if(APP.isVR_Running()) {
+                if(_obj.type=="object") {
+                    ATON.SUI.setInfoNodeText(null);
+                    ATON.SUI.infoNode.visible=false;
+                    ATON.SUI.infoContainer.visible =false;
+                    return;
+                }else{
+                    ATON.SUI.infoNode.visible = true;
+                    ATON.SUI.infoContainer.visible = true;
+                }
+            } //no label for objects in VR
+          
             let label = _obj.hoverLable;
             $("#idPopupLabel").html(label);
             $("#idPopupLabel").show();
@@ -1000,6 +1035,7 @@ APP.setupCustomSemanticHovers=()=>{
             
         };
 }
+
 
 
 APP.setupCustomSemanticMats=()=>{
@@ -1247,30 +1283,79 @@ APP.onTapSemNodes = (idSem, p=null)=>
     };
 
     if(_IRI){
-        console.log(_IRI);
-
-        //TO REMOVE TO USE REALLY MELODY:
-        let backupContent = getMelodyDataByIRI(_IRI);
-        composeContent(backupContent);
-        
-        /* TO USE THIS FOR MELODY:
-        let melodyOptions = {
-            uri:_IRI,
-            onComplete:composeContent,
-            onError: (err)=>{
-                console.log(err);
-                composeContent(undefined);
-            }
-        } 
-
-        melody.getData(melodyOptions);
-        */
+        console.log(_IRI);   
+        let useBackup = APP.config.useMelodyBackup;
+        APP.getMelodyData(_IRI, composeContent, useBackup);
     }
 
     else{ composeContent(undefined); }
 
     }
 }
+
+
+APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
+
+    var isVR = forcedVR!=null? forcedVR : APP.isVR_Running();
+    
+    if(frombackup) {
+        let staticContent = getMelodyDataByIRI(_IRI, isVR);
+        callback(staticContent);
+    } 
+    else{
+         let melodyOptions = {
+            uri:_IRI,
+            isVR,
+            onComplete: callback,
+            onError: (err)=>{
+                console.log(err);
+                callback(undefined);
+            }
+        } 
+
+        melody.getData(melodyOptions);
+    }
+
+}
+
+APP.cleanString=(input)=> {
+  return input
+    .replace(/[^\x20-\x7E]/g, '') // Removes non-ASCII characters
+    .replace(/\s+/g, ' ')         // Collapses multiple spaces
+    .trim();                      // Trims leading/trailing spaces
+}
+
+
+
+APP.setMetadataSUI=(semid)=>{
+
+    let _id = semid.substring(0, semid.length-(4));
+    let _obj = APP.objects[_id];
+    if(_obj.type!="object") return;
+    if(!_obj.IRI) return;
+
+//    var isVR = APP.isVR_Running();
+    
+    let _callback = (_info)=>{
+        let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
+        let _data = APP.cleanString(_contentData);
+
+        console.log(_data);
+        
+        try {
+            APP.setUserSUI({content: _data, w: APP.UserSUI_w, h: APP.UserSUI_h});
+        }
+        catch (e) {
+            console.error("Error parsing JSON data:", e); 
+            window.alert(_data);
+        }
+    }
+
+    let useBackup = APP.config.useMelodyBackup;
+    APP.getMelodyData(_obj.IRI, _callback, useBackup, true);
+}
+
+
 
 ATON.on("POVTransitionCompleted", (x)=>{APP.onPOVTransitionCompleted(x);})
     
@@ -2251,31 +2336,47 @@ APP.getOrthogonalVectorAroundAxis=(vec, axis)=> {
 }
 
 
+APP.removeUserSUI=()=>{
+    APP.deleteAndDispose(APP._suiLeftUserLabel);
+}
+
 //USER SUI
-APP.testUserSUI = () => {
 
-  const raf = getRequestAnimationFrame();
+// Positioning factors
+APP.forwardFactor = 0.5 // 0.3;
+APP.leftFactor = 0; // 0.13;
+APP.upFactor =  -0.1; //0;
 
-  // Positioning factors
-  APP.forwardFactor = 0.3;
-  APP.leftFactor = 0.13;
-  APP.upFactor = 0;
+APP.UserSUI_w = 0.5;
+APP.UserSUI_h = 0.1;
+APP_UserSUI_fontSize = 0.013;
 
+APP.setUserSUI=(options)=>{
+
+    let _content = options.content || "label";
+    let _w = options.w || 0.1;
+    let _h = options.h || 0.02;
+
+   const raf = getRequestAnimationFrame();
+
+
+  
   // Create label
   const label = suiBuilder.createLabel({
     id: "sui-left",
-    w: 0.1,
-    h: 0.02,
-    content: "Hello from the left!",
+    w: _w,
+    h: _h,
+    content: _content,
     pos: { x: 0, y: 0, z: 0 },
     rot: { x: 0, y: 0, z: 0 },
-    fSize: 0.01
+    fSize: APP_UserSUI_fontSize
   });
 
   label.attachTo(ATON.getRootScene());
   APP._suiLeftUserLabel = label;
 
   const updateLoop = () => {
+
     if (!APP._suiLeftUserLabel) return;
 
     const userPos = ATON.Nav._currPOV.pos.clone();
@@ -2301,9 +2402,8 @@ APP.testUserSUI = () => {
   };
 
   updateLoop(); // Start the loop
-};
 
-
+}
 
 
 // Run the App

@@ -1,4 +1,3 @@
-
 //Default configuration:
 const defStyleUrl= "https://raw.githack.com/polifonia-project/dashboard/api-url-to-html/test_style.css";
 
@@ -57,38 +56,25 @@ const melody = {
                 "content": "<button class='sidebar-button'><a href='<<<digital_repr>>>' target='_blank'>Versione digitale</a></button>"
             }
         }
-    }
-};
-
-const  old_configFile = {
-    "category": "painting",
-    //"style":  defStyleUrl,
+    },
+    configFileVR:{
     "content": {
         "01": {
             "type": "text",
             "sparql_endpoint": "http://localhost:3030/aldrovandi-object/sparql",
-            "query":
-                "PREFIX aat: <http://vocab.getty.edu/page/aat/>\n" +
-                "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\n" +
-                "PREFIX crmdig: <http://www.ics.forth.gr/isl/CRMdig/>\n" +
-                "PREFIX ex: <https://w3id.org/dharc/ontology/chad-ap/data/example/>\n" +
-                "PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/>\n" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\n" +
-                "SELECT DISTINCT ?title ?desc\n" +
-                "WHERE {\n" +
-                "  VALUES (?item_id) { (<<<uri1>>>) }\n" +
-                "  ?manifestation lrmoo:R7i_is_exemplified_by ?item_id .\n" +
-                "  ?expression lrmoo:R4i_is_embodied_in ?manifestation .\n" +
-                "  ?work lrmoo:R3_is_realised_in ?expression ;\n" +
-                "        crm:P102_has_title ?title_id.\n" +
-                "  ?title_id crm:P190_has_symbolic_content ?title .\n\n" +
-                "  FILTER (lang(?title) = \"en\")\n" +
-                "  ?item_id crm:P3_has_note ?desc .\n" +
-                "}",
-            "content": "<h1><<<title>>></h1><div class='Block'><p><<<desc>>></p></div>"
+            "query": "PREFIX aat: <http://vocab.getty.edu/page/aat/> PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?content WHERE { VALUES ?item {<<<uri1>>>} ?item a lrmoo:F5_Item . ?manifestation lrmoo:R7i_is_exemplified_by ?item . ?expression lrmoo:R4i_is_embodied_in ?manifestation . ?work lrmoo:R3_is_realised_in ?expression ; crm:P102_has_title ?title . ?title crm:P2_has_type aat:300417207 ; crm:P190_has_symbolic_content ?content . FILTER( lang(?content) = \"it\") }",
+            "content": "<<<content>>>"
+        },
+        "02": {
+            "type": "text",
+            "sparql_endpoint": "http://localhost:3030/aldrovandi-object/sparql",
+            "query": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/> PREFIX lrmoo: <http://iflastandards.info/ns/lrm/lrmoo/> SELECT ?item ?description WHERE { VALUES ?item {<<<uri1>>>} ?item a lrmoo:F5_Item ; crm:P3_has_note ?description . }",
+            "content": "<<<description>>>"
         }
     }
 }
+};
+
 
 //const uriTest = "https://w3id.org/dharc/ontology/chad-ap/data/example/20-item";
 const uriTest = "<https://w3id.org/changes/4/aldrovandi/itm/21/ob00/1>";
@@ -109,15 +95,22 @@ melody.getData=(options)=> {
     - onComplete
     - onError
     - format: "json" (optional)
+    - isVR: true/false (optional, default false)
 */
 
 let _uri = stripAngleBrackets(options.uri)
 
+//Settings for VR contents:
+let _config_file = options.isVR? melody.configFileVR : melody.configFile;
+
 //Compose request:
 const payload = {
     uri1: _uri,
-    config_file: melody.configFile
+    config_file: _config_file
 }
+
+//Hard format handling
+if(options.isVR) {payload.format = "json"}
 
 if(options.format){
     if(options.format=="json"){
@@ -162,7 +155,8 @@ melody.testAPI=(_uri=uriTest)=>{
        // format:"json",
         onComplete,
         onError,
-        uri:_uri
+        uri:_uri,
+        isVR:true
     });
 }
 
@@ -172,13 +166,14 @@ melody.testAPI=(_uri=uriTest)=>{
 //GET ALL DATA:
 
 
-function getMelodyDataAsync(uri) {
+function getMelodyDataAsync(uri,isVR=false) {
     return new Promise((resolve, reject) => {
         melody.getData({
             uri: uri,
            // format: "json",
             onComplete: resolve,
-            onError: reject
+            onError: reject,
+            isVR
         });
     });
 }
@@ -195,11 +190,13 @@ async function fetchMelodyDataForAllRooms() {
             if (obj.IRI) {
                 try {
                     const data = await getMelodyDataAsync(obj.IRI);
+                    const vrData = await getMelodyDataAsync(obj.IRI, true);
                     results.push({
                         room: roomId,
                         id: obj.id || obj.NR || null,
                         iri: obj.IRI,
-                        data: data
+                        data: data,
+                        vrData
                     });
                 } catch (err) {
                     console.error(`Error for IRI ${obj.IRI}:`, err);
@@ -226,15 +223,16 @@ async function runMelodyFetchALL() {
     
     //return allMelodyData; // Optional: return if needed elsewhere
 
-    downloadJSONOnTheFly("melodyBackup",allMelodyData);
+    downloadJSONOnTheFly("melodyBackup", allMelodyData);
 }
 
 
-function getMelodyDataByIRI(targetIRI) {
+function getMelodyDataByIRI(targetIRI, vr) {
     if(!APP.config.melodyBackup) return undefined;
 
     let res =  APP.config.melodyBackup.find(entry => entry.iri === targetIRI);
-    return res.data;
+    let _data = vr? res.vrData : res.data;
+    return _data;
 }
 
 
