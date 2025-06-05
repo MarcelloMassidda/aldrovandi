@@ -773,8 +773,13 @@ APP.composeAmbient = async (_stage) => {
 
         const roomPromise = new Promise((resolve, reject) => {
         try {
+
+            // For the ROOM Object: use the litePath if VR is running, otherwise use the regular path
+            let _roomPath = APP.cRoom.room.path;
+            if(APP.isVR_Running() && APP.cRoom.room.litePath) _roomPath = APP.cRoom.room.litePath;
+
             const roomNode = ATON.createSceneNode(APP.cRoom.room.id);
-            roomNode.load(APP.cRoom.room.path, () => {
+            roomNode.load(_roomPath, () => {
                 setPositionAndRotation(roomNode, APP.cRoom.room.pos, APP.cRoom.room.rot);
                 roomNode.attachTo(APP.ambient);
 
@@ -804,9 +809,14 @@ APP.composeAmbient = async (_stage) => {
     }
 
     // Object collection
+    
     if (APP.cRoom.objectCollection) {
+        // For the Placeholder(s) GLTF: use the litePath if VR is running, otherwise use the regular path
+        let _lowObjsPath = APP.cRoom.objectCollection.path;
+        if(APP.isVR_Running() && APP.cRoom.objectCollection.litePath) _lowObjsPath = APP.cRoom.objectCollection.litePath;
+        
         APP.lowObjCollection = ATON.createSceneNode("objCollection");
-        const p = APP.loadAndAttachNode(APP.lowObjCollection, APP.cRoom.objectCollection.path, rootScene).then(() => {
+        const p = APP.loadAndAttachNode(APP.lowObjCollection, _lowObjsPath, rootScene).then(() => {
             setPositionAndRotation(APP.lowObjCollection, APP.cRoom.objectCollection.pos, APP.cRoom.objectCollection.rot);
         });
         loadPromises.push(p);
