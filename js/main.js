@@ -699,11 +699,14 @@ APP.updateSiblings=()=>{
     //Reset
     if(APP.siblings) deleteAndDispose(APP.siblings);
     APP.siblings = ATON.createSceneNode("siblings");
+    APP.siblings.setCloneOnLoadHit(false);
   
     //Add new siblings
     if(APP.cRoom.siblings){
         APP.cRoom.siblings.forEach(s => {
            let sibNode = ATON.createSceneNode(s.id).load(s.path);
+            sibNode.setCloneOnLoadHit(false);
+
             const p = s.pos; if(p) {sibNode.setPosition(p.x,p.y,p.z)}
             const r = s.rot; if(r) {sibNode.setRotation(r.x,r.y,r.z)}
             sibNode.attachTo(APP.siblings)
@@ -711,13 +714,35 @@ APP.updateSiblings=()=>{
     }
     APP.siblings.attachToRoot();
     console.log("Siblings updated!")
-    APP.hideBlurredFullscreen();
+   // APP.hideBlurredFullscreen();
 }
 
 
 //NEW PROMISE-BASED COMPOSE AMBIENT:
 
-APP.loadAndAttachNode = (sceneNode, loadPath, attachTarget) => {
+APP.loadAndAttachNode = ( sceneNode, loadPath, attachTarget ) => {
+
+    sceneNode.setCloneOnLoadHit(false);
+    //TODO: BLUR ACTIVE
+    sceneNode.load(loadPath, () => {
+            sceneNode.attachTo(attachTarget);   
+    });
+
+    /*
+    
+        sceneNode.setCloneOnLoadHit(false);
+        //Permette di attivare l'evento ALLNODEREQUESTS COMPLETED anche se la promises è già stata chiamata
+
+        ONBLUR // Blur attivo
+
+        sceneNode.load(loadPath, () => {
+            sceneNode.attachTo(attachTarget);   
+        });
+    
+    */
+
+   
+    /*
     return new Promise((resolve, reject) => {
         try {
             sceneNode.load(loadPath, () => {
@@ -728,7 +753,11 @@ APP.loadAndAttachNode = (sceneNode, loadPath, attachTarget) => {
             reject(err);
         }
     });
+    */
+
 };
+
+
 
 // Refactored composeAmbient using Promise-based loading
 APP.composeAmbient = async (_stage) => {
@@ -752,26 +781,30 @@ APP.composeAmbient = async (_stage) => {
     const rootScene = ATON.getRootScene();
     APP.objects = {};
 
-    const loadPromises = [];
+    //const loadPromises = [];
 
     // Ambient node (acts as container)
     APP.ambient = ATON.createSceneNode("ambient");
+    APP.ambient.setCloneOnLoadHit(false);
     APP.ambient.attachTo(rootScene);
 
     // Ceiling
     if (APP.cRoom.ceiling) {
         const ceilingNode = ATON.createSceneNode(APP.cRoom.ceiling.id);
-        const p = APP.loadAndAttachNode(ceilingNode, APP.cRoom.ceiling.path, APP.ambient).then(() => {
+        ceilingNode.setCloneOnLoadHit(false);
+
+        const p = APP.loadAndAttachNode(ceilingNode, APP.cRoom.ceiling.path, APP.ambient).then( () => {
             setPositionAndRotation(ceilingNode, APP.cRoom.ceiling.pos, APP.cRoom.ceiling.rot);
         });
-        loadPromises.push(p);
+        p(); //loadPromises.push(p);
+        
     }
 
     // Room
     if (APP.cRoom.room) {
 
-
-        const roomPromise = new Promise((resolve, reject) => {
+        //const roomPromise = new Promise((resolve, reject) => {
+        const roomLoad = ()=>{
         try {
 
             // For the ROOM Object: use the litePath if VR is running, otherwise use the regular path
@@ -779,6 +812,8 @@ APP.composeAmbient = async (_stage) => {
             if(APP.isVR_Running() && APP.cRoom.room.litePath) _roomPath = APP.cRoom.room.litePath;
 
             const roomNode = ATON.createSceneNode(APP.cRoom.room.id);
+            roomNode.setCloneOnLoadHit(false); // Prevent cloning on load hit
+
             roomNode.load(_roomPath, () => {
                 setPositionAndRotation(roomNode, APP.cRoom.room.pos, APP.cRoom.room.rot);
                 roomNode.attachTo(APP.ambient);
@@ -789,14 +824,17 @@ APP.composeAmbient = async (_stage) => {
                 APP.updateRoomSUI();
                 APP.updateVideoAssets();
 
-                resolve(roomNode);
+                //resolve(roomNode);
             });
         } catch (err) {
-            reject(err);
+            console.error('Error loading room:', err);
+           // reject(err);
         }
-    });
-    loadPromises.push(roomPromise);
-        /*
+    };
+
+    roomLoad(); //loadPromises.push(roomPromise);
+        
+    /*
         APP.room = ATON.createSceneNode(APP.cRoom.room.id);
         const p = APP.loadAndAttachNode(APP.room, APP.cRoom.room.path, APP.ambient).then(() => {
             setPositionAndRotation(APP.room, APP.cRoom.room.pos, APP.cRoom.room.rot);
@@ -816,10 +854,13 @@ APP.composeAmbient = async (_stage) => {
         if(APP.isVR_Running() && APP.cRoom.objectCollection.litePath) _lowObjsPath = APP.cRoom.objectCollection.litePath;
         
         APP.lowObjCollection = ATON.createSceneNode("objCollection");
-        const p = APP.loadAndAttachNode(APP.lowObjCollection, _lowObjsPath, rootScene).then(() => {
-            setPositionAndRotation(APP.lowObjCollection, APP.cRoom.objectCollection.pos, APP.cRoom.objectCollection.rot);
-        });
-        loadPromises.push(p);
+        APP.lowObjCollection.setCloneOnLoadHit(false);
+
+        const p = APP.loadAndAttachNode(APP.lowObjCollection, _lowObjsPath, rootScene);
+        //.then(() => {
+        setPositionAndRotation(APP.lowObjCollection, APP.cRoom.objectCollection.pos, APP.cRoom.objectCollection.rot);
+        //});
+       //loadPromises.push(p);
     }
 
     // HQ Objects node (empty, set position if available)
@@ -829,7 +870,9 @@ APP.composeAmbient = async (_stage) => {
 
     // Semantic objects
     APP.semObjects = ATON.createSemanticNode("semObjects");
-    const semPromise = new Promise((resolve) => {
+    APP.semObjects.setCloneOnLoadHit(false);
+
+    const semLoad = ()=> { //const semPromsemLoadise = new Promise((resolve) => {
         if (!APP.cRoom.objects) {
             resolve();
             return;
@@ -839,6 +882,7 @@ APP.composeAmbient = async (_stage) => {
             if (!obj.sem) return;
 
             const semNode = ATON.createSemanticNode(obj.id + "_sem").load(obj.sem.path);
+            semNode.setCloneOnLoadHit(false);
             semNode.setDefaultAndHighlightMaterials(APP.matSemDef, APP.matSemHL);
             semNode.restoreDefaultMaterial();
 
@@ -846,9 +890,9 @@ APP.composeAmbient = async (_stage) => {
 
             semNode.attachTo(APP.semObjects);
         });
-        resolve();
-    });
-    loadPromises.push(semPromise);
+       // resolve();
+    }//);
+    semLoad(); //loadPromises.push(semPromise);
 
     // Siblings
     if (APP.cRoom.siblings) {
@@ -869,11 +913,14 @@ APP.composeAmbient = async (_stage) => {
     setPositionAndRotation(APP.semObjects, APP.cRoom.objectCollection?.pos, APP.cRoom.objectCollection?.rot);
     APP.semObjects.attachTo(rootScene);
 
+    return;
+    //Other functions are called from ALlNodeRequestsCompleted to complete room loading
+
     // Wait for all
     try {
-        await Promise.all(loadPromises);
+       // await Promise.all(loadPromises);
     
-        console.log('✅%c All ambient nodes loaded successfully', 'background: #222; color: #bada55');
+        //console.log('✅%c All ambient nodes loaded successfully', 'background: #222; color: #bada55');
         
          //Set audio:
         if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio();}
@@ -896,14 +943,41 @@ APP.composeAmbient = async (_stage) => {
             }
         }
 
-        APP.hideBlurredFullscreen();
-        //FADEIFVR
-        if(APP.isVR_Running()){APP.fadeFromBlack(2000);}
+        //APP.hideBlurredFullscreen();
+        //if(APP.isVR_Running()){APP.fadeFromBlack(2000);}
 
     } catch (err) {
         console.error('Error loading ambient nodes:', err);
     }
 };
+
+APP.onAllRoomNodesAttached=()=>{
+
+     if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio();}
+        else{
+            APP.setCurrentAudio(APP.cRoom.audiosource);
+            APP.playCurrentAudio();
+        }
+    
+        //Experiment Planner:
+        if(MIND.isExperiment)
+        {
+            if(state.role=="user")
+            {
+                MIND.minder.photon_userComposeAmbient(APP.STAGE);
+            }
+            if(state.role=="controller")
+            {
+                MIND.requestPOV(APP.config.mind.homePOVController[APP.STAGE]);
+            }
+        }
+
+}
+
+APP.removeLoadingMode = () =>{
+        APP.hideBlurredFullscreen();
+        if(APP.isVR_Running()){APP.fadeFromBlack(2000);}
+}
 
 
 //END NEW COMPOSE AMBIENT
@@ -1683,6 +1757,11 @@ APP.update()
 APP.sceneInitialized = false;
 APP.onAllNodeRequestsCompleted=()=>
 {
+
+    //OFFBLUR // Tutti i load in parallelo sono completati
+    APP.removeLoadingMode();
+    APP.onAllRoomNodesAttached();
+
     //Calculate times
     console.log("composed");
     const now =  new Date().getTime();
