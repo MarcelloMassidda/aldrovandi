@@ -6009,7 +6009,7 @@
           "path": "aldrovandi/models/S6-83-DA-Modello in legno balena/balena.gltf",
           "pos": {
             "x": -1.8669618572293598,
-            "y": 1.5826820008758393,
+            "y": 1.521778111264551,
             "z": -4.236497216524843
           },
           "rot": {
@@ -6150,9 +6150,9 @@
           "hoverLable": "Luigi Galvani compie esperimenti con la macchina elettrostatica alla presenza dei familiari",
           "path": "aldrovandi/models/S6-89-ISPC-quadro galvani/quadro.gltf",
           "pos": {
-            "x": -4.195026874542236,
-            "y": 0.22337651508519585,
-            "z": -1.2073435887094073
+            "x": -4.173848745420802,
+            "y": 0.18253612671777875,
+            "z": -1.121571460212551
           },
           "rot": {
             "x": -3.141592653589793,
