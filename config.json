@@ -488,16 +488,6 @@
           "type": "object",
           "hoverLable": "Ramphastos toco (Statius Mller, 1776)",
           "path": "aldrovandi/models/S1-17-Sketchfab_Tucano tassidermizzato/Tucano_Tassidermizzato.gltf",
-          "pos": {
-            "x": 4.302914953105973,
-            "y": 1.8396800591350773,
-            "z": 5.83933063364998
-          },
-          "rot": {
-            "x": -2.7386762909720175,
-            "y": -1.3423611555649941,
-            "z": -2.6482079007707586
-          },
           "sem": {
             "path": "models/room1/semObjs/convex/17_convex.GLB"
           }
