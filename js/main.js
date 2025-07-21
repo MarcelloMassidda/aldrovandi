@@ -955,8 +955,10 @@ APP.onAllRoomNodesAttached=()=>{
 
      if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio();}
         else{
-            APP.setCurrentAudio(APP.cRoom.audiosource);
-            APP.playCurrentAudio();
+            if(!APP.currentObjIsFocused){
+                APP.setCurrentAudio(APP.cRoom.audiosource);
+                APP.playCurrentAudio();
+            }
         }
     
         //Experiment Planner:
