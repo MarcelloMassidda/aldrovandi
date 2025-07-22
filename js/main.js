@@ -1685,6 +1685,7 @@ APP.showBlurredFullscreen = (needLoader=true) => {
 
 APP.hideBlurredFullscreen = () => {
     let element = document.getElementById("blurredFullscreen");
+    if(!element) return;
     element.classList.remove("show-blur");
     $("#idLoader").hide();
 };
