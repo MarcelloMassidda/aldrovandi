@@ -1,5 +1,7 @@
+
 var helper = {};
 
+helper.usePhoton = false;
 
 helper.init=()=>
 {
@@ -33,8 +35,10 @@ helper.init=()=>
 
     //Connect remote control:
     if(!ATON.Photon) return;
-//    ATON.Photon.connect("x");
-//     ATON.Photon.joinSession("a");
+    if(helper.usePhoton){
+       ATON.Photon.connect("x");
+       ATON.Photon.joinSession("a");
+    }
 
 
     ATON.Photon.on("fadeFrom", ()=>{APP.fadeFromBlack(1000);});
@@ -48,13 +52,15 @@ helper.init=()=>
     ATON.Photon.on("testSUI", ()=>{APP.testUserSUI()});
 
 
-    ATON.Photon.on("testFade",()=>{
+    ATON.Photon.on("testFade",()=>{APP.testFade()});
+}
+
+APP.testFade = ()=>{
         APP.setupForFade();
         ATON._mainRoot.add(APP.blackPlaneFade);
         APP.updateFadePlanePosition();
 
-    });
-}
+    }
 
 
 APP.isloading = false;

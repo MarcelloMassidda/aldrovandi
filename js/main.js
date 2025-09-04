@@ -19,6 +19,7 @@ window.addEventListener( 'load', ()=>
 
 let APP = ATON.App.realize();
 
+APP.audioCanPlay=false;
 APP.closePopup=()=> 
 { 
     APP.closeWelcomePopup();
@@ -114,6 +115,7 @@ APP.isVR_Device=()=>
 
 //    return true;
 }
+
 
 APP.isVR_Running=()=>{return ATON.XR._bPresenting}
 
@@ -293,24 +295,10 @@ APP.setup = ()=>{
        // APP.combinedConfig = data;
         APP.loadConfig(configPath);
     });
-   
 
-
-    ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");	
-
-
-
-    //Forced hide loader
-    /*
-    if (!APP.isVR_Device())
-    {
-        ATON.on("NodeRequestFired", ()=>{
-            //   $("#idLoader").show();
-            $("#idLoader").hide();
-           });
-    }
-  */
-
+    
+    //old white: ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");	
+    ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
 
     // config is loaded
 ATON.on("APP_ConfigLoaded", ()=>{
@@ -320,7 +308,7 @@ ATON.on("APP_ConfigLoaded", ()=>{
     //INITIALIZE ROOM 1
     APP.STAGE = 1;
     //Set Panorama
-    ATON.setMainPanorama( 'image/hemi-grey.jpg');
+   // ATON.setMainPanorama( 'image/hemi-grey.jpg');
   
     //Lights probes to remove
     /*
@@ -761,6 +749,7 @@ APP.loadAndAttachNode = ( sceneNode, loadPath, attachTarget ) => {
 
 // Refactored composeAmbient using Promise-based loading
 APP.composeAmbient = async (_stage) => {
+
     APP.s = new Date().getTime();
     APP.STAGE = _stage;
 
@@ -987,7 +976,7 @@ APP.removeLoadingMode = () =>{
 
 
 //TO CREATE BOUNDING BOX SEM NODE ---- TO IMPLEMENT
-APP.createBoxFromBoundings=(objTarget)=>
+APP.createBoxFromBoundings=(objTarget, mat = null)=>
 {
     // Get the object's bounding box
     var objectBox = new THREE.Box3().setFromObject(objTarget);
@@ -1000,7 +989,7 @@ APP.createBoxFromBoundings=(objTarget)=>
     var geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
 
     // Create a material
-    var material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Adjust color as needed
+    var material = mat || new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Adjust color as needed
 
     // Create a cube mesh using the geometry and material
     var cube = new THREE.Mesh(geometry, material);
@@ -1011,6 +1000,8 @@ APP.createBoxFromBoundings=(objTarget)=>
     cube.position.copy(center);
     return cube;
 }
+
+
 
 APP.createSemFromMesh=(semId,mesh)=>
 {
@@ -1227,6 +1218,15 @@ APP.onTapSemNodes = (idSem, p=null)=>
         console.log("IS A ROOM LINK");
         POVTimeTransition= 0.2;
         APP.showBlurredFullscreen();
+
+         //FOR VR DESTROY SIBLINGS
+        //ATON.Photon.fire("myRemoteLog","isVRDevice: " + APP.isVR_Device());
+        //ATON.Photon.fire("myRemoteLog","isVR_Running: " + APP.isVR_Running());
+        if(APP.isVR_Device()){if(APP.isVR_Running()) {
+            APP.deleteAndDispose(APP.siblings);
+            APP.cRoom.siblings = null;
+        }}
+
     }
     
     
@@ -1309,6 +1309,14 @@ APP.onTapSemNodes = (idSem, p=null)=>
 
         
         APP.semObjects.hide();
+        APP.setBlackCubes(true, _object.id.concat("_sem"));
+        
+        /*
+        if(ATON.getSemanticNode(_object.id+"_sem")){
+            ATON.getSemanticNode(_object.id+"_sem").hide();
+        }
+        APP.setBlackMaterialToSemantiNodes();
+        */
 
 
      APP.cRoom.objects.map((o)=>
@@ -1378,6 +1386,83 @@ APP.onTapSemNodes = (idSem, p=null)=>
 
     }
 }
+
+
+APP.setBlackMaterialToSemantiNodes=()=>{
+
+    if(APP.blackSemMat == undefined){
+        APP.blackSemMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(0.1,0.1,0.1),
+            transparent: true,
+            opacity: 1,
+            depthTest: false,
+            depthWrite: false
+        });
+    }
+    let nodes = APP.semObjects.children;
+    nodes.forEach(N => {
+        console.log(N.nid)
+        N.setDefaultAndHighlightMaterials(null,null );
+        N.setDefaultAndHighlightMaterials(APP.blackSemMat,APP.blackSemMat);
+        N.restoreDefaultMaterial();
+        N.disablePicking();
+    });
+
+}
+
+APP.ResetStandardMaterialToSemanticNodes=()=>{
+     let nodes = APP.semObjects.children;
+    nodes.forEach(N => {
+
+        N.setDefaultAndHighlightMaterials(APP.matSemDef,APP.matSemHL );
+        N.restoreDefaultMaterial();
+        N.enablePicking();
+    });
+}
+
+
+APP.setBlackCubes=(b,exeptionId)=>{
+
+
+    //Create Mat
+     if(APP.blackMat == undefined){
+        APP.blackMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(0.1,0.1,0.1),
+            transparent: true,
+            opacity: 1,
+            depthTest: true,
+            depthWrite: true
+        });
+    }
+
+    if(b){
+    
+        if(APP.blackCubes == undefined) APP.blackCubes= ATON.createSceneNode("blackCubes");
+
+        //loop in APP.semObjects:
+        let nodes = APP.semObjects.children;
+        nodes.forEach(N => {
+
+            if(N.nid!=exeptionId){
+            let c = APP.createBoxFromBoundings(N, APP.blackMat);
+            APP.blackCubes.add(c);
+            }
+
+        });
+
+    APP.blackCubes.attachToRoot();
+    }
+
+    else{
+        if(APP.blackCubes){
+            APP.deleteAndDispose(APP.blackCubes);
+            APP.blackCubes=undefined;
+        }
+    }
+}
+
+
+
 
 
 APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
@@ -1467,7 +1552,9 @@ APP.onPOVTransitionCompleted=(x)=>{
         APP.currentObjIsFocused=false;
         APP._currentObjectActive=null;
 
+        APP.isChangingRoom = true;
         if(APP.isVR_Running()){ //FADEIFVR - TO
+            
             APP.fadeToBlack(500, async () => {
                 console.log("Fading To Black");
                 await APP.composeAmbient(obj.roomTo);
@@ -1518,6 +1605,7 @@ APP.onPOVTransitionCompleted=(x)=>{
             var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
                 /*On Complete: */ ()=>{
                     APP.lowObjCollection.hide();
+                    APP.setBlackCubes(false);
                     $('canvas').css({ cursor: 'grab'});
                 });
 
@@ -1567,6 +1655,8 @@ APP.CloseObject = ()=>
 
     //Show Semantic and Scene Nodes of objects
     APP.semObjects.show();
+    //APP.ResetStandardMaterialToSemanticNodes();
+
 /*
     APP.cRoom.objects.map((o)=>
     {
@@ -1580,7 +1670,10 @@ APP.CloseObject = ()=>
     document.getElementById("SideBAR").style.display="none";
     document.getElementById("InfoScrollContainer").style.display="block";
     
-    ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");
+    //oldwhite: ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");
+     ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
+
+
     APP._currentObjectActive = null;
     ATON.Nav.setFirstPersonControl();
 // ATON.setMainPanorama( 'image/hemi-grey.jpg');
@@ -1760,7 +1853,17 @@ APP.update()
 APP.sceneInitialized = false;
 APP.onAllNodeRequestsCompleted=()=>
 {
-
+    //initialize scene setup
+    if(!APP.sceneInitialized) {APP.initializeScene();}
+    //setup animation at welcomepopup:
+    if(!APP.audioCanPlay) 
+    {
+        let container = document.getElementById("welcomePopupContainer");
+        if(container) container.classList.add("isSemiTransparent");
+    }
+    
+    if(!APP.isChangingRoom) return;
+    
     //OFFBLUR // Tutti i load in parallelo sono completati
     APP.removeLoadingMode();
     APP.onAllRoomNodesAttached();
@@ -1772,13 +1875,17 @@ APP.onAllNodeRequestsCompleted=()=>
     APP.delta = deltaLoad / 1000; 
 
     console.log('%c ALLNODEREQUESTCOMPLETED ', 'background: #444; color: #bada55');
-
     console.log("loaded in: " + APP.delta);
 
-    //$("#idLoader").hide();
-    //APP.hideBlurredFullscreen();
+    ATON.Photon.fire("myRemoteLog","from remote: ALLNODEREQUESTCOMPLETED '")
+    ATON.Photon.fire("myRemoteLog","from remote: loaded in: " + APP.delta)
 
-   if(APP.sceneInitialized) return;
+    APP.isChangingRoom=false;  
+}
+
+APP.initializeScene = ()=>
+{
+   ATON.Photon.fire("myRemoteLog","Initializing")
 
    //Initialize BlackSphere:
     ATON.SUI.setSelectorRadius(0);
@@ -2130,7 +2237,8 @@ APP.getCurrActiveCenter=()=>{
 
 //FADE: TO INTRODUCE AND TEST ON VR
 
-APP.setupForFade = () => {
+//OLD setupForFade:
+APP.old_setupForFade = () => {
     if (APP.blackPlaneFade) return;
 
     const fadeMaterial = new THREE.MeshBasicMaterial({
@@ -2142,14 +2250,45 @@ APP.setupForFade = () => {
     });
 
     const fadeGeometry = new THREE.PlaneGeometry(2, 2);
+
     const fadeMesh = new THREE.Mesh(fadeGeometry, fadeMaterial);
     fadeMesh.renderOrder = 999;
 
     APP.blackPlaneFade = fadeMesh;
     APP.blackPlaneMaterial = fadeMaterial;
-
-
 };
+
+
+APP.setupForFade = () => {
+  if (APP.blackFadeMesh) return;
+
+
+      if (APP.blackPlaneFade) return;
+
+    const fadeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: true,
+        opacity: 0,             // sempre da 0
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.BackSide,   // importante: guardiamo l'interno della sfera
+        fog: false,
+        toneMapped: false
+    });
+
+    // raggio > near plane della camera (es. near=0.1 → 1.5 è ok)
+    const fadeGeometry = new THREE.SphereGeometry(1.5, 32, 16);
+
+    const fadeMesh = new THREE.Mesh(fadeGeometry, fadeMaterial);
+    fadeMesh.renderOrder = 999;
+
+    APP.blackPlaneFade = fadeMesh;
+    APP.blackPlaneMaterial = fadeMaterial;
+};
+
+
+
+
 
 APP.updateFadePlanePosition = () => {
     const fadeMesh = APP.blackPlaneFade;
