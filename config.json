@@ -1537,7 +1537,7 @@
         },
         {
           "id": "video_b",
-          "videoPath": "content/videos/r3_Filiera_immagini.mp4",
+          "videoPath": "content/videos/r3_Filiera_Immagini.mp4",
           "shapePath": "models/room3/videoObjs/video_b/plane_video_b.gltf"
         }
       ],
@@ -6894,7 +6894,7 @@
     "2a": {
       "room": {
         "id": "room",
-        "path": "models/room2a/room/Anticamera_v2.gltf",
+        "path": "models/room2a/room/anticamera_v2.gltf",
         "pos": {
           "x": 12.448915897254281,
           "y": 0.5795184033548496,
