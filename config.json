@@ -2094,7 +2094,7 @@
         },
         {
           "NR": "a_alto_sinistra_1",
-          "LINK": "�",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250716-5i9cf0dyf",
           "DIDASCALIA": "Medaglia In Piombo, Lead Medal Timoteo Refati, Sec. Xvi - 16th Century Bologna, Museo Civico Archeologico",
           "OGGETTO": "Medaglia",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/a_alto_sinistra_1/ob00/1>",
@@ -2102,10 +2102,12 @@
           "id": "a_alto_sinistra_1",
           "type": "object",
           "hoverLable": "Medaglia In Piombo, Lead Medal Timoteo Refati, Sec. Xvi - 16th Century Bologna, Museo Civico Archeologico",
-          "path": null,
+          "path": "aldrovandi/models/S5-a_alto_sinistra_1-ficlit_medaglia_archeologico/a_alto_sinistra_1.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/a_alto_sinistra_1_convex.GLB"
+          }
         },
         {
           "NR": "a_alto_sinistra_2",
@@ -2409,7 +2411,7 @@
         },
         {
           "NR": "vetrina_1_alto_n_1",
-          "LINK": "�",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250801-htrrgpigl",
           "DIDASCALIA": "Collana Di Semi Mesoamericana",
           "OGGETTO": "Manufatti/materiali Archeologico",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_n_1/ob00/1>",
@@ -2417,10 +2419,12 @@
           "id": "vetrina_1_alto_n_1",
           "type": "object",
           "hoverLable": "Collana Di Semi Mesoamericana",
-          "path": null,
+          "path": "aldrovandi/models/S5-vetrina 1 alto n 1-ficlit_collanamesoamericana/vetrina_1_alto_n_1_collana_DCHOo.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/vetrina_1_alto_n_1_convex.GLB"
+          }
         },
         {
           "NR": "vetrina_1_alto_n_2",
@@ -2514,7 +2518,7 @@
         },
         {
           "NR": "vetrina_1_alto_s_1",
-          "LINK": "�",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250716-raizladbg",
           "DIDASCALIA": "Statuetta Ushabti In Faence",
           "OGGETTO": "Manufatti/materiali Archeologico",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_1/ob00/1>",
@@ -2522,14 +2526,16 @@
           "id": "vetrina_1_alto_s_1",
           "type": "object",
           "hoverLable": "Statuetta Ushabti In Faence",
-          "path": null,
+          "path": "aldrovandi/models/S5-vetrina 1 alto s-1-ficlit-statuetta ushabti in faence/vetrina_1_alto_s_1_statu_ushabi.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/vetrina_1_alto_s_1_convex.GLB"
+          }
         },
         {
           "NR": "vetrina_1_alto_s_2",
-          "LINK": "�",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250721-c038n6jvf",
           "DIDASCALIA": "Lucerna Fittile A Volute Con Spalla Decorata",
           "OGGETTO": "Manufatti/materiali Archeologico",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_2/ob00/1>",
@@ -2537,10 +2543,12 @@
           "id": "vetrina_1_alto_s_2",
           "type": "object",
           "hoverLable": "Lucerna Fittile A Volute Con Spalla Decorata",
-          "path": null,
+          "path": "aldrovandi/models/S5-vetrina_1_alto_s_2-ficlit_lucerna fittile a volute con spalla decorata/vetrina_1_alto_s_2_lucerna_DCHOo.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/vetrina_1_alto_s_2_convex.GLB"
+          }
         },
         {
           "NR": "vetrina_1_alto_s_3",
@@ -2794,33 +2802,37 @@
         },
         {
           "NR": "vetrina_1_alto_s_13",
-          "LINK": "�",
-          "DIDASCALIA": "Sferule Di Avorio E Calcarenon",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250721-u96ff20fk",
+          "DIDASCALIA": "Sferule Di Avorio E Calcare",
           "OGGETTO": "Manufatti/materiali Archeologico",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_13/ob00/1>",
           "ROOM": 5,
           "id": "vetrina_1_alto_s_13",
           "type": "object",
-          "hoverLable": "Sferule Di Avorio E Calcarenon",
-          "path": null,
+          "hoverLable": "Sferule Di Avorio E Calcare",
+          "path": "aldrovandi/models/S5-vetrina_1_alto_s_13-ficlit_sferule di avorio e calcare/vetrina_1_alto_s_13_sferule_dchoo.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/vetrina_1_alto_s_13_convex.GLB"
+          }
         },
         {
           "NR": "vetrina_1_alto_s_14",
-          "LINK": "�",
-          "DIDASCALIA": "Punta Di Freccia Del Neoliticonon",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250709-g22791rk3",
+          "DIDASCALIA": "Punta Di Freccia Del Neolitico",
           "OGGETTO": "Manufatti/materiali Archeologico",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_1_alto_s_14/ob00/1>",
           "ROOM": 5,
           "id": "vetrina_1_alto_s_14",
           "type": "object",
-          "hoverLable": "Punta Di Freccia Del Neoliticonon",
-          "path": null,
+          "hoverLable": "Punta Di Freccia Del Neolitico",
+          "path": "aldrovandi/models/S5-vetrina 1 alto s-14-ficlit_puntafreccianeolitico/vetrina_1_alto_s_14_puntafreccia.gltf",
           "pos": null,
           "rot": null,
-          "sem": null
+          "sem": {
+            "path": "models/room5/semObjs/convex/vetrina_1_alto_s_14_convex.GLB"
+          }
         },
         {
           "NR": "vetrina_1_alto_s_15",
