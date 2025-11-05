@@ -2120,16 +2120,8 @@
           "type": "object",
           "hoverLable": "Medaglia Commemorativa Delle Onoranze Del 1907 Commemorative Medal From The 1907 Celebrations",
           "path": "aldrovandi/models/S5-A alto sinistra - 2-FICLIT_MedagliaCommemorativa/medaglia02.gltf",
-          "pos": {
-            "x": -4.7732930183410645,
-            "y": 1.087217092514038,
-            "z": -2.232832908630371
-          },
-          "rot": {
-            "x": 1.3083050698858156,
-            "y": 1.2108107907500238,
-            "z": -1.2911516665249998
-          },
+          "pos": null,
+          "rot": null,
           "sem": {
             "path": "models/room5/semObjs/convex/a_alto_sinistra_2_convex.GLB"
           }
