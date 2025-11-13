@@ -2046,8 +2046,8 @@
       },
       "room": {
         "id": "room",
-        "path": "models/room5/room/SALA5_Testcarico/Sala5_v2.gltf",
-        "litePath": "models/room5/room/SALA5_Testcarico/lite/Sala5_v2.gltf",
+        "path": "models/room5/room/sala5_v_novembre2025.gltf",
+        "litePath": "models/room5/room/lite/sala5_v_novembre2025.gltf",
         "pos": {
           "x": -1.7101650989286954,
           "y": 0.05993992455022479,
@@ -2142,16 +2142,8 @@
           "type": "object",
           "hoverLable": "Medaglia Commemorativa Delle Onoranze Del 1907 Commemorative Medal From The 1907 Celebrations",
           "path": "aldrovandi/models/S5-A alto sinistra - 2-FICLIT_MedagliaCommemorativa/medaglia02.gltf",
-          "pos": {
-            "x": -4.7732930183410645,
-            "y": 1.087217092514038,
-            "z": -2.232832908630371
-          },
-          "rot": {
-            "x": 1.3083050698858156,
-            "y": 1.2108107907500238,
-            "z": -1.2911516665249998
-          },
+          "pos": null,
+          "rot": null,
           "sem": {
             "path": "models/room5/semObjs/convex/a_alto_sinistra_2_convex.GLB"
           }
@@ -3123,7 +3115,7 @@
         },
         {
           "NR": "vetrina_2_alto_s_2",
-          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250319-3cqyyc5lo",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20251111-gie8ny20l",
           "DIDASCALIA": "Corna Di Bovidi E Cervidi (un corno grande e un corno piccolo)",
           "OGGETTO": "Corna",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_2_alto_s_2/ob00/1>",
@@ -3238,7 +3230,7 @@
         },
         {
           "NR": "vetrina_3_alto_n_1",
-          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240702-kpzxao1hg",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20251111-p5y3x6t1b",
           "DIDASCALIA": "Uova Di Struzzo",
           "OGGETTO": "Uova E Piante",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_n_1/ob00/1>",
