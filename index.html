@@ -112,7 +112,13 @@
         <div id="welcomePopup">
             <h2><span class="b">L'ALTRO RINASCIMENTO</span> <br> <span class="i">Ulisse Aldrovandi e le meraviglie del mondo</span></h2>
             <p>Premi "Inizia" e rivivi la mostra di Palazzo Poggi</p>
-          <div id="closePopupBtn" class="atonBTN" title="closePopupBtn" onclick="APP.closePopup()"><span class="b">Inizia</span>  </div>
+            <div class="startBtnsContainer">
+            <div id="closePopupBtn" class="atonBTN" title="closePopupBtn" onclick="APP.startAPP('ita')">
+              <img src="./js/lan/ita.png">  <span class="b">Inizia</span>  </div>
+            <div id="closePopupBtn" class="atonBTN" title="closePopupBtn" onclick="APP.startAPP('eng')">
+             <img src="./js/lan/eng.png"> <span class="b">Start</span>    </div>
+          </div>
+
         </div>
     </div>
 
@@ -123,14 +129,31 @@
       <div id="miradorViewer"></div> 
     </div>
   
-    <div id="SideBAR">
-        <div id="backBtnHeader">            
-           <p> TORNA ALLA MOSTRA</p>
-           <div onclick="APP.CloseObject()" id="backBtn"></div>
+    <!--SIDEBAR-->
+  <div id="SideBAR">
+
+    <!--HEADERS-->
+        <div onclick="APP.CloseObject()" class="btnHeader" id="backBtnHeader">            
+           <p id="backToExhibition_Text">TORNA ALLA MOSTRA</p>
+           <div  id="backBtn"></div>
         </div>
+
+        <div class="btnHeader"  onclick="APP.setRoom(1)" id="HomeBtnHeader">            
+          <div id="homeBtn"></div>
+          <p id="backToStart_Text">ESPLORA DALL'INIZIO</p>
+        </div>
+    <!--END HEADERS-->
         <div id="InfoScrollContainer">
-            <div id="InfoContainer">
+            <div id="InfoContainer"></div>
         </div>
+  </div>
+    
+    <!--BOTTOM BAR-->
+    <div class="bottomToolBar" id="BottomBar">
+      <div id="audioControlsTitle"></div>
+        <audio id="mainAudioControls" controls controlsList="nodownload noplaybackrate">
+        Your browser does not support the audio element.
+        </audio>
     </div>
 
     <!-- Top Toolbar -->

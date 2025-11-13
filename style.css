@@ -59,7 +59,8 @@
     z-index: 111;
 
    }
-   #backBtnHeader
+
+   .btnHeader
    {
     padding: 10px;
     height: 50px;
@@ -83,6 +84,79 @@
     height: 30px;
     width: 30px;
    }
+
+  #homeBtn
+  {
+    background-image: url("content/icons/homeBtn.svg");
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+  }
+
+  .bottomToolBar{
+    padding: 20px;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    background-color: var(--color-dark-gray-semitrasp);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 10px;
+    width: fit-content;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 111;
+  }
+    
+/*Audio Control Style*/
+
+/* Il titolo sopra o accanto */
+#audioControlsTitle {
+  color: #fff;
+  white-space: nowrap;     /* impedisce l'andata a capo */
+  overflow: hidden;        /* evita overflow se troppo lungo */
+  text-overflow: ellipsis; /* aggiunge "…" se sfora */
+  display: inline-block;   /* consente width automatico */
+  max-width: 300px;        /* limite massimo di sicurezza */
+}
+
+
+/* Rimuove lo sfondo del pannello audio */
+#mainAudioControls::-webkit-media-controls-panel {
+  background: transparent !important;
+}
+
+/* Rimuove la cornice / bordo */
+#mainAudioControls::-webkit-media-controls-enclosure {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Rende bianchi tutti i controlli visibili */
+#mainAudioControls::-webkit-media-controls-play-button,
+#mainAudioControls::-webkit-media-controls-mute-button,
+#mainAudioControls::-webkit-media-controls-volume-slider,
+#mainAudioControls::-webkit-media-controls-timeline,
+#mainAudioControls::-webkit-media-controls-current-time-display,
+#mainAudioControls::-webkit-media-controls-time-remaining-display {
+  filter: invert(1) brightness(2); /* bianco brillante */
+}
+
+/* Facoltativo: sistema dimensione e margini */
+#mainAudioControls {
+  width: 260px;
+  height: 32px;
+  background: transparent;
+  border: none;
+}
+
+
 
    .moreBtn
    {
@@ -292,7 +366,7 @@
 }
 
 :root{
-  --duration: 0.1s;
+  --duration: 0.15s;
   }
 
 #blurredFullscreen {
@@ -336,7 +410,12 @@
   background-color: transparent;
 }
 
-
+.startBtnsContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
 
 #welcomePopup
 {
@@ -359,6 +438,7 @@
   background-color: white !important;
   color: #ba6a7b !important;
 }
+
 
 #VideoPlayer
 {

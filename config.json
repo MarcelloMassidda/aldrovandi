@@ -1,5 +1,15 @@
 {
   "useMelodyBackup":true,
+  "systemTexts":{
+    "backToStart_Text":{
+      "ita":"Torna all'inizio",
+      "eng":"Back to Start"
+    },
+    "backToExhibition_Text":{
+      "ita":"TORNA ALLA MOSTRA",
+      "eng":"BACK TO EXHIBITION"
+    }
+  },
   "rooms": {
     "1": {
           "videoAssets": [
@@ -14,7 +24,8 @@
           "shapePath": "models/room1/videoObjs/video_b/video_b.gltf"
         }
       ],
-      "audiosource": "content/audios/Audio_Sala1.mp3",
+      "audiosource": {"ita":"content/audios/Audio_Sala1.mp3","eng":"content/audios/eng/Sala1_eng.mp3"},
+      "audioTitle": {"ita":"Sala 1","eng":"Room 1"}, 
       "HomePov": {
         "pos": {
           "x": -0.22108174086545052,
@@ -63,7 +74,7 @@
       "SUI": [
         {
           "id": "2",
-          "content": "Sala 2",
+          "content": {"ita":"Sala 2", "eng":"Room 2"},
           "pos": {
             "x": 9.7733659,
             "y": 1.3508535477153758,
@@ -684,18 +695,23 @@
           "shapePath": "models/room2/videoObjs/video_a/video_a.gltf"
         }
       ],
-      "audiosource": "content/audios/Audio_Sala2.mp3",
+      "audiosource": {
+        "ita":"content/audios/Audio_Sala2.mp3",
+        "eng":"content/audios/eng/Sala2_eng.mp3"
+      },
+      "audioTitle": {"ita":"Sala 2",
+      "eng":"Room 2"},
       "HomePov": {
         "pos": {
-          "x": -0.26060506218970936,
-          "y": 1.6999999999999997,
-          "z": -5.860489934634157
-        },
-        "target": {
-          "x": -0.9471852493455948,
-          "y": 2.1289049689260295,
-          "z": -5.273422498784108
-        }
+              "x": 10.34224987553938,
+              "y": 1.6999999999999993,
+              "z": 4.627753464883254
+            },
+            "target": {
+              "x": 11.246129609373934,
+              "y": 1.593232172601125,
+              "z": 4.2135046775637255
+            }
       },
       "room": {
         "id": "room",
@@ -714,7 +730,7 @@
       "SUI": [
         {
           "id": "1",
-          "content": "Stanza 1",
+          "content": {"ita":"Sala 1", "eng":"Room 1"},
           "pos": {
             "x": 0.09972418320157951,
             "y": 0.9889487238285537,
@@ -727,8 +743,8 @@
           }
         },
         {
-          "id": "3",
-          "content": "Anticamera",
+          "id": "2a",
+          "content": {"ita":"Anticamera", "eng":"Antechamber"},
           "pos": {
             "x": -2.6476334859920567,
             "y": 0.9889487238285535,
@@ -1480,18 +1496,20 @@
       ]
     },
     "3": {
-      "audiosource": "content/audios/Audio_Sala3.mp3",
+      "audiosource": {"ita":"content/audios/Audio_Sala3.mp3","eng":"content/audios/eng/Sala3_eng.mp3"},
+       "audioTitle": {"ita":"Sala 3 ",
+      "eng":"Room 3"},
       "HomePov": {
-        "pos": {
-          "x": 12.66,
-          "y": 1.68,
-          "z": -2.11
-        },
-        "target": {
-          "x": 12.62,
-          "y": 1.71765,
-          "z": -3.106
-        }
+       "pos": {
+              "x": 15.885856612276987,
+              "y": 1.685468299074086,
+              "z": -3.194268267879456
+            },
+            "target": {
+              "x": 16.874810887661077,
+              "y": 1.5696470862562992,
+              "z": -3.1017756310863414
+            }
       },
       "room": {
         "id": "room",
@@ -1504,8 +1522,8 @@
       },
       "SUI": [
         {
-          "id": "1",
-          "content": "Anticamera",
+          "id": "2a",
+          "content": {"ita":"Anticamera","eng":"Antechamber"},
           "pos": {
             "x": -6.94673303349841,
             "y": 1.356001778952332,
@@ -1770,18 +1788,20 @@
         }
       ],
 
-      "audiosource": "content/audios/Audio_Sala4.mp3",
+      "audiosource": {"ita":"content/audios/Audio_Sala4.mp3","eng":"content/audios/eng/Sala4_eng.mp3"},
+      "audioTitle": {"ita":"Sala 4",
+      "eng":"Room 4"},
       "HomePov": {
-        "pos": {
-          "x": 12.66,
-          "y": 1.68,
-          "z": -2.11
-        },
-        "target": {
-          "x": 12.62,
-          "y": 1.71765,
-          "z": -3.106
-        }
+          "pos": {
+              "x": 12.313677909480248,
+              "y": 1.5362023513406755,
+              "z": -6.748628650091582
+            },
+            "target": {
+              "x": 12.43948501716215,
+              "y": 1.4460260337646604,
+              "z": -7.736576423713824
+            }
       },
       "room": {
         "id": "room",
@@ -1794,8 +1814,8 @@
       },
       "SUI": [
         {
-          "id": "1",
-          "content": "Anticamera",
+          "id": "2a",
+          "content": {"ita":"Anticamera","eng":"Antechamber"},
           "pos": {
             "x": 0.27703868966791945,
             "y": 1.356001778952332,
@@ -2009,18 +2029,20 @@
           "shapePath": "models/room5/videoObjs/video_a/video_a.gltf"
         }
       ],
-      "audiosource": "content/audios/Audio_Sala5.mp3",
+      "audiosource": {"ita":"content/audios/Audio_Sala5.mp3","eng":"content/audios/eng/Sala5_eng.mp3"},
+      "audioTitle": {"ita":"Sala 5",
+      "eng":"Room 5"},
       "HomePov": {
-        "pos": {
-          "x": 7.164031702933637,
-          "y": 1.7599399793132635,
-          "z": -3.1896586568030445
-        },
-        "target": {
-          "x": 6.23788945606356,
-          "y": 1.7683640282411324,
-          "z": -3.56673898506495
-        }
+         "pos": {
+              "x": 7.164031702933637,
+              "y": 1.7599399793132635,
+              "z": -3.1896586568030445
+            },
+            "target": {
+              "x": 6.23788945606356,
+              "y": 1.7683640282411324,
+              "z": -3.56673898506495
+            }
       },
       "room": {
         "id": "room",
@@ -5609,7 +5631,7 @@
       "SUI": [
         {
           "id": "6",
-          "content": "Sala 6",
+          "content": {"ita":"Sala 6","eng":"Room 6"},
           "pos": {
             "x": -5.5936896421275675,
             "y": 1.5713824653392596,
@@ -5623,7 +5645,7 @@
         },
         {
           "id": "2a",
-          "content": "Anticamera",
+          "content": {"ita":"Anticamera","eng":"Antechamber"},
           "pos": {
             "x": 9.563352241226278,
             "y": 1.4218054373127764,
@@ -5638,18 +5660,20 @@
       ]
     },
     "6": {
-      "audiosource": "content/audios/Audio_Sala6.mp3",
+      "audiosource": { "ita":"content/audios/Audio_Sala6.mp3","eng":"content/audios/eng/Sala6_eng.mp3" },
+      "audioTitle": {"ita":"Sala 6",
+      "eng":"Room 6"},
       "HomePov": {
-        "pos": {
-          "x": -9.481805527823957,
-          "y": 1.7555074845266414,
-          "z": -3.0407360773121415
-        },
-        "target": {
-          "x": -10.268021838376942,
-          "y": 1.6754832389956267,
-          "z": -2.427988141250629
-        }
+            "pos": {
+              "x": -9.481805527823957,
+              "y": 1.7555074845266414,
+              "z": -3.0407360773121415
+            },
+            "target": {
+              "x": -10.268021838376942,
+              "y": 1.6754832389956267,
+              "z": -2.427988141250629
+            }
       },
       "objectCollection": {
         "path": "models/room6/lowObjects/combinedLowObjects_room6.gltf",
@@ -5694,7 +5718,7 @@
       "SUI": [
         {
           "id": "5",
-          "content": "Sala 5",
+          "content":{"ita": "Sala 5", "eng": "Room 5"},
           "pos": {
             "x": -4.491363416668599,
             "y": 1.7821308868892767,
@@ -6913,10 +6937,20 @@
           "z": -3.3866837251783934
         }
       },
+      "HomePov":{"pos": {
+              "x": -2.6476334859920567,
+              "y": 0.9889487238285535,
+              "z": 0.0673457712090954
+            },
+            "rot": {
+              "x": -7,
+              "y": -1.5,
+              "z": -7
+            }},
       "SUI": [
         {
           "id": "2",
-          "content": "Sala 2",
+          "content": {"ita":"Sala 2", "eng":"Room 2"},
           "pos": {
             "x": -0.17799533292885605,
             "y": 0.82,
@@ -6930,7 +6964,7 @@
         },
         {
           "id": "3",
-          "content": "Sala 3",
+          "content": {"ita":"Sala 3", "eng":"Room 3"},
           "pos": {
             "x": 2.313250737139563,
             "y": 0.82,
@@ -6944,7 +6978,7 @@
         },
         {
           "id": "4",
-          "content": "Sala 4",
+           "content": {"ita":"Sala 4", "eng":"Room 4"},
           "pos": {
             "x": -0.1498429256380054,
             "y": 0.82,
@@ -6958,7 +6992,7 @@
         },
         {
           "id": "5",
-          "content": "Sala 5",
+          "content": {"ita":"Sala 5", "eng":"Room 5"},
           "pos": {
             "x": -2.641871513433558,
             "y": 0.82,
