@@ -7,7 +7,7 @@
     font-family: 'Gotham-BoldItalic';
     src: url('content/UI/fonts/GothamBoldItalic.ttf') format('truetype');
   }
-
+@
   @font-face {
     font-family: 'Gotham-Book';
     src: url('content/UI/fonts/GothamBook.ttf') format('truetype');
@@ -515,6 +515,9 @@
   padding: 25px;
 }
 
+
+/*-------REDUNDANT-------TO DELETE FROM HERE*/
+
 /* Style for API-generated content (identified by id ‘melody_api_response’) */
 #melody_api_response {
   font-family: var(--font-primary);
@@ -594,3 +597,5 @@
   outline: 2px solid var(--color-creme);
   outline-offset: 2px;
 }
+
+/*-------REDUNDANT-------TO DELETE UNTIL HERE*/

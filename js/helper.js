@@ -271,21 +271,6 @@ helper.toggleNAV=()=>
 }
 
 
-//Load del config
-APP.loadConfig = (path)=>{
-    console.log("configuring ")
-    return $.getJSON( path, ( config )=>{
-        
-        console.log("Loaded config: "+path);
-        console.log(config);
-    
-        APP.config = config;
-        ATON.fireEvent("APP_ConfigLoaded");
-    });
-    };
-    
-
-
 APP.getBoundingBox = (nodeId = APP._currentObjectActive )=>{
    console.log("NODE ID IS:"  + nodeId)
     var object = ATON.getSceneNode(nodeId);

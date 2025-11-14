@@ -1,0 +1,8 @@
+    {
+        "api_url":"http://127.0.0.1:5000/melody/api",
+        "sparql_endpoint_url": "http://localhost:3030/chad-kg/sparql",
+        "itemsConfig_ITA_path":"./melody/ITA.json",
+        "itemsConfig_ITA_VR_path":"./melody/ITA_VR.json",
+        "itemsConfig_ENG_path":"./melody/ENG.json",
+        "itemsConfig_ENG_VR_path":"./melody/ENG_VR.json"
+    }

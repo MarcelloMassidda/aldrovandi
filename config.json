@@ -1,5 +1,5 @@
 {
-  "useMelodyBackup":true,
+  "useMelodyBackup":false,
   "systemTexts":{
     "backToStart_Text":{
       "ita":"Torna all'inizio",
@@ -7252,7 +7252,7 @@
       }
     }
   },
-  "melodyBackup": [
+  "old_melodyBackup": [
     {
       "room": "1",
       "id": "1",

@@ -327,6 +327,17 @@ APP.loadJSON = (path,callback)=>{
 }
 
 
+//LOAD CONFIG
+APP.loadConfig = (path)=>{
+    return $.getJSON( path, ( config )=>{
+        APP.config = config;
+        ATON.fireEvent("APP_ConfigLoaded");
+    });
+};
+
+
+
+
 APP.setup = ()=>{
 
     //---->LIGHTS PROBE TEST TO DO HERE
@@ -342,21 +353,15 @@ APP.setup = ()=>{
     ATON.Nav.setFOV(65);
  
     //---->AND LIGHTS PROBE TEST TO DO HERE
-    
-
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
-    
-    APP.loadJSON(configPath, ( data )=>{
-       // APP.combinedConfig = data;
-        APP.loadConfig(configPath);
-    });
-
-    
-    //old white: ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");	
+    APP.loadConfig(configPath);
     ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
 
-    // config is loaded
+
 ATON.on("APP_ConfigLoaded", ()=>{
+
+    //Melody setup:
+    melody.init();
 
     console.log("config loaded");
 
@@ -958,7 +963,7 @@ APP.setupCustomSemanticHovers=()=>{
             if (S === undefined) return;
     
             if(APP.isVR_Running()){
-                APP.setMetadataSUI(semid);
+                APP.setMetadataSUI(semid); //ONLY FOR DEBUG IN VR
                 
                 let _id = semid.substring(0, semid.length-(4));
                 let _obj = APP.objects[_id];
@@ -1279,8 +1284,11 @@ APP.onTapSemNodes = (idSem, p=null)=>
             }
         }
     }
-    //Callback to compose data in sidebar, anyway
-    let composeContent=(_info)=>{
+
+    let useBackup = APP.config.useMelodyBackup;
+
+    //Callback to compose data in sidebar
+    let composeContent= async(_info)=>{
 
         console.log(_info);
 
@@ -1289,12 +1297,21 @@ APP.onTapSemNodes = (idSem, p=null)=>
         var scrollVisibility = _info==undefined ? "none" : "block";
         infoScrollContainer.style.display= scrollVisibility;
         
-        document.getElementById("InfoContainer").innerHTML =  _info;
-
+        //Inject HTML:
+        const InfoContainer = document.getElementById("InfoContainer");
+        if(!useBackup){
+            /* With referred SCRIPTS:*/
+            injectHTMLWithScripts(InfoContainer, _info);
+        }
+        else{
+            /*With Embedded SCRIPTS*/
+            injectEmbeddedHTML(InfoContainer, _info);
+        }
+        
+        //Hide other UI:
         document.getElementById("HomeBtnHeader").style.display="none";
         //Hide CloseBtn until load:
         document.getElementById("backBtnHeader").style.display="none";
-        
         document.getElementById("SideBAR").style.display="block";
         
         var copy = document.getElementById(_id); //??
@@ -1305,8 +1322,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
     };
 
     if(_IRI){
-        console.log(_IRI);   
-        let useBackup = APP.config.useMelodyBackup;
+        console.log("ASKING FOR:", _IRI);   
         APP.getMelodyData(_IRI, composeContent, useBackup);
     }
 
@@ -1398,7 +1414,7 @@ APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
     var isVR = forcedVR!=null? forcedVR : APP.isVR_Running();
     
     if(frombackup) {
-        let staticContent = getMelodyDataByIRI(_IRI, isVR);
+        let staticContent = getMelodyDataByIRI(_IRI, isVR, APP.STAGE);
         callback(staticContent);
     } 
     else{
