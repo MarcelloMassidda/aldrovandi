@@ -7,7 +7,6 @@ window.addEventListener( 'load', ()=>
 {
   // Realize the base front-end
   ATON.FE.realize();
-
   
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
@@ -20,6 +19,83 @@ window.addEventListener( 'load', ()=>
 let APP = ATON.App.realize();
 
 APP.audioCanPlay=false;
+
+// Simple modal API attached to APP
+// Usage: APP.showModal({ header: 'Title', body: '<p>Content</p>', footer: 'Footer HTML', width: '720px', closeOnOverlayClick: true, onShow: callback })
+// - header: string or HTMLElement (optional, null to omit); displayed in modal header
+// - body: string or HTMLElement (required); main modal content
+// - footer: string or HTMLElement (optional); displayed in footer area
+// - width: CSS width string (default: '80vw')
+// - closeOnOverlayClick: boolean (default: true); clicking overlay/backdrop closes modal
+// - onShow: function callback fired after modal is shown
+// Close with: APP.closeModal()
+APP.showModal = function(options){
+    options = options || {};
+    const modal = document.getElementById('appModal');
+    if (!modal) { console.warn('APP.showModal: #appModal not found'); return; }
+
+    const dialog = modal.querySelector('.app-modal-dialog');
+    const titleEl = modal.querySelector('.app-modal-title');
+    const bodyEl = modal.querySelector('.app-modal-body');
+    const footerEl = modal.querySelector('.app-modal-footer');
+    const overlay = modal.querySelector('[data-role="overlay"]') || modal.querySelector('.app-modal-overlay');
+
+    if (options.width) dialog.style.width = options.width;
+    else dialog.style.width = '';
+
+    // Header
+    if (options.header === undefined || options.header === null) {
+        titleEl.innerHTML = '';
+    } else if (typeof options.header === 'string') {
+        titleEl.innerHTML = options.header;
+    } else if (options.header instanceof HTMLElement) {
+        titleEl.innerHTML = '';
+        titleEl.appendChild(options.header);
+    }
+
+    // Body
+    bodyEl.innerHTML = '';
+    if (options.body instanceof HTMLElement) bodyEl.appendChild(options.body);
+    else bodyEl.innerHTML = options.body || '';
+
+    // Footer
+    footerEl.innerHTML = '';
+    if (options.footer instanceof HTMLElement) footerEl.appendChild(options.footer);
+    else if (options.footer !== undefined) footerEl.innerHTML = options.footer || '';
+
+    // show modal
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+
+    // overlay click
+    const overlayHandler = (e) => {
+        if (e.target === overlay && options.closeOnOverlayClick !== false) {
+            APP.closeModal();
+        }
+    };
+    overlay.addEventListener('click', overlayHandler);
+    modal._overlayHandler = overlayHandler;
+
+    if (typeof options.onShow === 'function') options.onShow(modal);
+
+    return modal;
+};
+
+APP.closeModal = function(){
+    const modal = document.getElementById('appModal');
+    if (!modal) return;
+    const overlay = modal.querySelector('[data-role="overlay"]') || modal.querySelector('.app-modal-overlay');
+    if (modal._overlayHandler && overlay) overlay.removeEventListener('click', modal._overlayHandler);
+    modal._overlayHandler = null;
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    const titleEl = modal.querySelector('.app-modal-title');
+    const bodyEl = modal.querySelector('.app-modal-body');
+    const footerEl = modal.querySelector('.app-modal-footer');
+    if (titleEl) titleEl.innerHTML = '';
+    if (bodyEl) bodyEl.innerHTML = '';
+    if (footerEl) footerEl.innerHTML = '';
+};
 
 APP.startAPP=(language)=> 
 { 
@@ -35,7 +111,11 @@ APP.startAPP=(language)=>
         let _text = copy[APP.currentLanguage];
         let _el = document.getElementById(_id);
         if(_el) _el.innerText = _text;
-    }   
+    }
+
+    //Init iframeSystem for Melody-links
+    //APP.initIframeForSidebarLinks(); //Close for now
+
 
     //Set audio available
     APP.audioCanPlay=true;
@@ -131,6 +211,14 @@ APP.hideBottomBar=()=>{
 
 //END AUDIO MANAGEMENT
 
+APP.showWelcomePopup=()=>{
+    let container = document.getElementById("welcomePopupContainer");
+    if(container) {
+        container.classList.add("isSemiTransparent");
+        container.style.display="block";
+    }
+}
+
 APP.closeWelcomePopup=()=>
 {
     document.getElementById("welcomePopupContainer").style.display="none"; 
@@ -170,6 +258,83 @@ APP.setSideBar_Navigation=()=>{
     //Show SideBar
     document.getElementById("SideBAR").style.display="block";
 }
+
+
+
+APP.initIframeForSidebarLinks=()=>{
+
+    //Apre un iframe in una modale ATON
+    function showLinkInAtonModal(url) {
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.width = '100%';
+        iframe.style.height = '80vh';
+        iframe.setAttribute('frameborder', '0');
+
+        APP.showModal({
+            header: url,
+            body: iframe
+        });
+    }
+
+    // Agganci i link dentro #InfoContainer
+    const unhookInfoLinks = hookLinksToModal('#InfoContainer', (url, link, event) => {
+        showLinkInAtonModal(url);
+    });
+    
+    // Quando non ti serve più intercettare i click:
+    // unhookInfoLinks();
+}
+
+
+/**
+ * Aggancia un listener ai link dentro un container e
+ * invece di navigare apre qualcosa (es: modale con iframe).
+ */
+function hookLinksToModal(container, onLinkClick) {
+    // Permetti sia DOM element che selettore stringa
+    if (typeof container === 'string') {
+        container = document.querySelector(container);
+    }
+    if (!container) {
+        console.warn('hookLinksToModal: container not found');
+        return () => {};
+    }
+
+    const handler = (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link || !container.contains(link)) return;
+
+        // Rispetta Ctrl/Cmd-click e click col tasto centrale (nuova tab)
+        if (event.ctrlKey || event.metaKey || event.button !== 0) {
+            return;
+        }
+
+        const url = link.href;
+        if (!url) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Lasciamo a chi usa l'helper la responsabilità di cosa fare
+        try {
+            onLinkClick(url, link, event);
+        } catch (err) {
+            console.error('hookLinksToModal onLinkClick error:', err);
+        }
+    };
+
+    container.addEventListener('click', handler);
+
+    // Ritorniamo una funzione per staccare il listener
+    return () => {
+        container.removeEventListener('click', handler);
+    };
+}
+
+
+
+
 
 
 APP.isVR_Running=()=>{return ATON.XR._bPresenting}
@@ -963,7 +1128,7 @@ APP.setupCustomSemanticHovers=()=>{
             if (S === undefined) return;
     
             if(APP.isVR_Running()){
-                APP.setMetadataSUI(semid); //ONLY FOR DEBUG IN VR
+                APP.setMetadataSUI(semid);
                 
                 let _id = semid.substring(0, semid.length-(4));
                 let _obj = APP.objects[_id];
@@ -984,8 +1149,6 @@ APP.setupCustomSemanticHovers=()=>{
             //$('canvas').css({ cursor: 'crosshair' });
             $('canvas').css({ cursor: 'zoom-in'});
             if (ATON.SUI.gSemIcons) ATON.SUI.gSemIcons.hide();
-           
-           // APP.setMetadataSUI(semid); //For debugging
         });
 
         ATON.on("SemanticNodeLeave", (semid)=>{
@@ -1452,8 +1615,16 @@ APP.setMetadataSUI=(semid)=>{
 //    var isVR = APP.isVR_Running();
     
     let _callback = (_info)=>{
-        let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
-        let _data = APP.cleanString(_contentData);
+
+        console.log(_info);
+        window.info = _info;
+        
+        window.alert("Metadata: " + _info);
+        return;
+
+        //let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
+        //let _data = APP.cleanString(_contentData);
+        
 
         console.log(_data);
         
@@ -1809,6 +1980,12 @@ APP.update = ()=>{
 
 APP.update()
 
+APP.BackToStart=()=>{
+    APP.setRoom(1);
+    //APP.showWelcomePopup();
+    APP.pauseCurrentAudio();
+    APP.audioCanPlay=false;
+}
 
 APP.setRoom=(stage)=>{
 
@@ -1829,6 +2006,9 @@ APP.setRoom=(stage)=>{
 }
     
 APP.sceneInitialized = false;
+
+
+
 APP.onAllNodeRequestsCompleted=()=>
 {
     //initialize scene setup
@@ -1836,8 +2016,7 @@ APP.onAllNodeRequestsCompleted=()=>
     //setup animation at welcomepopup:
     if(!APP.audioCanPlay) 
     {
-        let container = document.getElementById("welcomePopupContainer");
-        if(container) container.classList.add("isSemiTransparent");
+       APP.showWelcomePopup();
     }
     
     if(!APP.isChangingRoom) return;

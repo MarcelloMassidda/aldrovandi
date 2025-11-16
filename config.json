@@ -1,5 +1,5 @@
 {
-  "useMelodyBackup":false,
+  "useMelodyBackup":true,
   "systemTexts":{
     "backToStart_Text":{
       "ita":"Torna all'inizio",
@@ -1418,7 +1418,7 @@
         },
         {
           "id": "room1link",
-          "hoverLable": "Stanza 1",
+          "hoverLable": "Sala 1",
           "pos": {
             "x": 0,
             "y": 0,

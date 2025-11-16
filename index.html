@@ -138,7 +138,7 @@
            <div  id="backBtn"></div>
         </div>
 
-        <div class="btnHeader"  onclick="APP.setRoom(1)" id="HomeBtnHeader">            
+        <div class="btnHeader"  onclick="APP.BackToStart()" id="HomeBtnHeader">            
           <div id="homeBtn"></div>
           <p id="backToStart_Text">ESPLORA DALL'INIZIO</p>
         </div>
@@ -165,7 +165,18 @@
     <!-- Main Popup -->
     <div id="idPopup" class="atonPopupContainer" style="display:none;"></div>
 
-
+    <!-- App Modal (injected/controlled by APP.showModal / APP.closeModal) -->
+    <div id="appModal" class="app-modal" aria-hidden="true">
+        <div class="app-modal-overlay" data-role="overlay"></div>
+        <div class="app-modal-dialog" role="document">
+            <header class="app-modal-header">
+                <div class="app-modal-title"></div>
+                <button class="app-modal-close" aria-label="Close" onclick="APP.closeModal()">&times;</button>
+            </header>
+            <div class="app-modal-body"></div>
+            <footer class="app-modal-footer"></footer>
+        </div>
+    </div>
 
     <!-- Powered by -->
     <div id='idPoweredBy' class="atonToolbar atonToolbar-bottom poweredBy" >

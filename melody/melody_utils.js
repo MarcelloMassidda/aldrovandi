@@ -84,14 +84,16 @@ let _uri = stripAngleBrackets(options.uri) //IRI without angle brackets
 
 //OLD://let _config_file = options.isVR? melody.configFileVR : melody.configFile;
 
-//Get config by language
+//Get config for Melody Query:
+//by language
 let lan = options.language || APP.currentLanguage;
 let configKey = "config_" + lan.toLowerCase();
-if(options.isVR) {configKey+="_vr";}
 
+//and VR-version if needed
+if(options.isVR) {configKey+="_vr";}
 console.log("Melody getData for IRI:", _uri, " Language:", lan, " VR:", options.isVR);
 let _config_file = melody.config[configKey];
-//Get VR version if needed
+
 console.log(_config_file);
 //Compose request:
 const payload = {
@@ -129,7 +131,7 @@ fetch( melody.config.api_url,
 }
 
 //Debug URI
-const uriTest = "<https://w3id.org/changes/4/aldrovandi/itm/21/ob00/1>";
+const uriTest = "<https://w3id.org/changes/4/aldrovandi/itm/1/ob00/1>";
 
 const stripAngleBrackets=(str)=> {
     if (str.startsWith('<') && str.endsWith('>')) {
@@ -157,7 +159,7 @@ melody.testAPI=(_uri=uriTest)=>{
         onComplete,
         onError,
         uri:_uri,
-        isVR:false
+        isVR:true
     });
 }
 

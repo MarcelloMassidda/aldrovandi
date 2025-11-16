@@ -599,3 +599,19 @@
 }
 
 /*-------REDUNDANT-------TO DELETE UNTIL HERE*/
+
+/* App modal styles (default hidden) */
+.app-modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:99999}
+.app-modal.show{display:flex}
+.app-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+.app-modal-dialog{position:relative;background:#0f0f10;color:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.6);max-height:90vh;overflow:auto;width: 80vw}
+.app-modal-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);font-weight:600}
+.app-modal-title{font-size:18px}
+.app-modal-close{background:transparent;border:0;color:inherit;font-size:22px;cursor:pointer}
+.app-modal-body{padding:16px;color:#ddd}
+.app-modal-footer{padding:10px 16px;border-top:1px solid rgba(255,255,255,0.04);text-align:right}
+
+/* small responsive tweak */
+@media (max-width:640px){
+  .app-modal-dialog{width:94%;max-height:86vh}
+}
