@@ -1619,12 +1619,14 @@ APP.setMetadataSUI=(semid)=>{
         console.log(_info);
         window.info = _info;
         
-        window.alert("Metadata: " + _info);
-        return;
-
-        //let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
-        //let _data = APP.cleanString(_contentData);
         
+        //get contents and add /new lines
+        let _titleData = JSON.parse(_info).dynamic_elements["01"].content;
+        let _title = APP.cleanString(_titleData);
+        console.log("TITLE: "+_title);
+        let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
+        let _content = APP.cleanString(_contentData);
+        let _data = "<b>" + _title + "</b>" + "\n" + _content;
 
         console.log(_data);
         
