@@ -1,8 +1,3 @@
-/*
-	Main js entry for template ATON web-app
-
-===============================================*/
-
 window.addEventListener( 'load', ()=>
 {
   // Realize the base front-end
@@ -11,7 +6,16 @@ window.addEventListener( 'load', ()=>
   // Add basic events handling
   ATON.FE.addBasicLoaderEvents(); 
   document.APP = APP;
-  
+
+  //Check params:
+  APP.mode = "standard";
+  if(ATON.FE.urlParams){
+    let modeParam = ATON.FE.urlParams.get('mode');
+    if(modeParam && modeParam==="kiosk") APP.mode = "kiosk";
+
+    APP.initKioskMode();
+}
+
   //For experiment setup
   APP.MIND = MIND.init(AldrovandiMind);
 })
@@ -80,6 +84,30 @@ APP.showModal = function(options){
 
     return modal;
 };
+
+APP.initKioskMode=()=>{
+    if(APP.mode !== "kiosk") return;
+
+        // Kiosk mode: reset after inactivity
+        APP.kioskDelayTime = 3 * 60 * 1000; // 3 minutes in milliseconds
+
+        APP.kioskTimer = null;
+
+        const resetKioskTimer = () => {
+            if(APP.kioskTimer) clearTimeout(APP.kioskTimer);
+            APP.kioskTimer = setTimeout(() => {
+                APP.BackToStart();
+            }, APP.kioskDelayTime);
+        };
+
+        // Start timer initially
+        resetKioskTimer();
+
+        // Reset timer on user interaction
+        ATON.on("Tap", () => {
+            resetKioskTimer();
+        });
+}
 
 APP.closeModal = function(){
     const modal = document.getElementById('appModal');
@@ -178,8 +206,9 @@ APP.playCurrentAudio = () => {
 
     //SUI UPDATE:
     let iconPath = APP._audio.paused ? APP.pathContent+"SUI/play.png" : APP.pathContent+"SUI/pause.png";
+    
     //Reset icon
-    APP.suiButton_PPaudio.setIcon(iconPath);
+    if(APP.suiButton_PPaudio) APP.suiButton_PPaudio.setIcon(iconPath);
 
 };
 
@@ -208,6 +237,9 @@ APP.showBottomBar=()=>{
 APP.hideBottomBar=()=>{
     document.getElementById("BottomBar").style.display="none";
 }
+
+APP.showBackToHomeBtn=()=>{document.getElementById("HomeBtnHeader").style.display="flex";};
+APP.hideBackToHomeBtn=()=>{document.getElementById("HomeBtnHeader").style.display="none";};
 
 //END AUDIO MANAGEMENT
 
@@ -251,7 +283,7 @@ APP.setSideBar_Navigation=()=>{
     infoScrollContainer.style.display="none";
     
     //Show Home Button
-    document.getElementById("HomeBtnHeader").style.display="flex";
+    APP.showBackToHomeBtn();
     //Hide Back Button
     document.getElementById("backBtnHeader").style.display="none";
     
@@ -1193,16 +1225,47 @@ APP.setupCustomSemanticHovers=()=>{
                 }
             } //no label for objects in VR
           
+            APP.manageHoverLabel(_obj);
+            /*      
             let label = _obj.hoverLable;
             $("#idPopupLabel").html(label);
             $("#idPopupLabel").show();
-        
             ATON.SUI.setInfoNodeText(label);
-            
+           */ 
         };
 }
 
+APP.manageHoverLabel=(obj)=>{
+    
+    let _title = "";
+    const show=(t)=>{
+        console.log("TITLE: "+_title);
+        $("#idPopupLabel").html(t);
+        $("#idPopupLabel").show();
+        ATON.SUI.setInfoNodeText(t);
+    }
 
+    show("...");
+
+    //first check for roomLink type
+    if(obj.type=="roomLink"){
+        _title = obj.hoverLable[APP.currentLanguage];
+        show(_title);
+        return;
+    }
+            
+    //Else get from melody:
+    const callback = (data) => {
+        
+        if(!data) console.warn("No data from melody for hover label", obj.IRI);
+        let _titleData = JSON.parse(data).dynamic_elements["01"].content;
+        let _title = APP.cleanString(_titleData);
+        
+        show(_title);
+            
+    }
+    APP.getMelodyData(obj.IRI, callback, APP.config.useMelodyBackup, true);
+}
 
 APP.setupCustomSemanticMats=()=>{
 
@@ -1472,16 +1535,20 @@ APP.onTapSemNodes = (idSem, p=null)=>
         }
         
         //Hide other UI:
-        document.getElementById("HomeBtnHeader").style.display="none";
+        APP.hideBackToHomeBtn();
         //Hide CloseBtn until load:
         document.getElementById("backBtnHeader").style.display="none";
         document.getElementById("SideBAR").style.display="block";
         
-        var copy = document.getElementById(_id); //??
+        if(APP.mode=="kiosk"){
+            APP.removeLinksFromContent(InfoContainer);
+        }
+        /*
+        var copy = document.getElementById(_id);
         if(copy)
         {
             copy.style.dislay="block";
-        }
+        }*/
     };
 
     if(_IRI){
@@ -1494,8 +1561,18 @@ APP.onTapSemNodes = (idSem, p=null)=>
     }
 }
 
+APP.removeLinksFromContent=(container)=>{
 
-APP.setBlackMaterialToSemantiNodes=()=>{
+    const links = container.querySelectorAll('a');
+        links.forEach(link => {
+            const parentP = link.closest('p');
+            if (parentP) {
+                parentP.remove();
+            }
+        });
+}
+
+APP.setBlackMaterialToSemantiNodes=()=>{ //NOT USED NOW
 
     if(APP.blackSemMat == undefined){
         APP.blackSemMat = new THREE.MeshBasicMaterial({
@@ -1797,8 +1874,8 @@ APP.CloseObject = ()=>
     document.getElementById("InfoScrollContainer").style.display="none"; //"block";
    
     document.getElementById("backBtnHeader").style.display="none";
-    document.getElementById("HomeBtnHeader").style.display="flex";
-   
+
+    APP.showBackToHomeBtn();   
     
     //oldwhite: ATON._mainRoot.background = new THREE.Color("rgb(231, 231, 231)");
      ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
@@ -1984,9 +2061,11 @@ APP.update()
 
 APP.BackToStart=()=>{
     APP.setRoom(1);
-    //APP.showWelcomePopup();
     APP.pauseCurrentAudio();
     APP.audioCanPlay=false;
+    APP.hideBottomBar();
+    APP.hideBackToHomeBtn();
+
 }
 
 APP.setRoom=(stage)=>{
