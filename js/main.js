@@ -1239,7 +1239,6 @@ APP.manageHoverLabel=(obj)=>{
     
     let _title = "";
     const show=(t)=>{
-        console.log("TITLE: "+_title);
         $("#idPopupLabel").html(t);
         $("#idPopupLabel").show();
         ATON.SUI.setInfoNodeText(t);
@@ -1256,13 +1255,26 @@ APP.manageHoverLabel=(obj)=>{
             
     //Else get from melody:
     const callback = (data) => {
+
+        const cleanIRI = (iri) => {
+            if (!iri) return "";
+            return iri.replace(/[<>]/g, '');
+        };
         
-        if(!data) console.warn("No data from melody for hover label", obj.IRI);
-        let _titleData = JSON.parse(data).dynamic_elements["01"].content;
-        let _title = APP.cleanString(_titleData);
+        let cleanedIRI = obj.IRI? cleanIRI(obj.IRI) : "undefined";
         
-        show(_title);
-            
+        if(!data) {
+            console.warn("No data from melody for hover label", cleanedIRI);
+            show("No data for IRI: "+cleanedIRI + " .... NR:" + obj.id);
+        }
+        else{
+            let _titleData = JSON.parse(data).dynamic_elements["01"].content;
+            let _title = APP.cleanString(_titleData);
+
+            if(_title=="") _title = "title empty for IRI: "+cleanedIRI + " .... NR:" + obj.id;
+            console.log("Hover label from melody: "+_title);
+            show(_title);
+        }            
     }
     APP.getMelodyData(obj.IRI, callback, APP.config.useMelodyBackup, true);
 }

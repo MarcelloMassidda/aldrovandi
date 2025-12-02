@@ -1,7 +1,7 @@
 {
     "data": {
         "scripts": {
-            "/melody/static//vendors/chart.js/chart.umd.js": "script_001",
+            "/melody/static/vendors/chart.js/chart.umd.js": "script_001",
             "/melody/static/js/api_default.js": "script_002"
         },
         "css": {
