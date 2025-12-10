@@ -545,6 +545,36 @@ APP.process_semsRoom6=()=>{ APP.process_sems("hull6",room6SemsForRotsPath) }
 APP.process_semsRoom5New=()=>{ APP.process_sems("hull5new",room5NewSemsForRotsPath) }
 
 
+APP.reportMissingIRIs = () => {
+    let missingIRIs = [];
+    
+    if (!APP.config || !APP.config.rooms) {
+        console.log("No rooms configuration found");
+        return missingIRIs;
+    }
+    
+    Object.entries(APP.config.rooms).forEach(([roomKey, room]) => {
+        if (!room.objects) return;
+        
+        room.objects.forEach(obj => {
+            if (obj.type === "object" && !obj.IRI) {
+                missingIRIs.push({
+                    roomKey: roomKey,
+                    roomId: room.id || roomKey,
+                    objectId: obj.id,
+                    objectName: obj.name || obj.id,
+                    NR: obj.NR
+                });
+            }
+        });
+    });
+    
+    console.log("Objects missing IRI property:", missingIRIs);
+    console.log(`Total objects without IRI: ${missingIRIs.length}`);
+    
+    return missingIRIs;
+}
+
 APP.process_sems=(nodeId,path)=>{
     const onLoad = ()=>{
        

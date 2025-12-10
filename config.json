@@ -1683,6 +1683,7 @@
           "DIDASCALIA": "Ruote idrauliche",
           "OGGETTO": "Volume aperto, ruote idrauliche�",
           "ROOM": 3,
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/46/ob00/1>",
           "id": "46",
           "type": "object",
           "hoverLable": "Ruote idrauliche",
@@ -1756,6 +1757,7 @@
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250314-c1ozttyfx",
           "DIDASCALIA": "Parete con matrici xilografiche (111 matrici tot)",
           "OGGETTO": "Vetrina con matrici xilografiche",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/PT/ob00/1>",
           "ROOM": 3,
           "id": "PT",
           "type": "object",
@@ -6471,6 +6473,7 @@
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250411-f2exhjcd3",
           "DIDASCALIA": "Ricostruzioni plastiche sul vivente",
           "OGGETTO": "Calchi facciali colorati, boscimani",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/98/ob00/1>",
           "ROOM": 6,
           "id": "98",
           "type": "object",
@@ -6645,6 +6648,7 @@
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240628-w30wyq3bk",
           "DIDASCALIA": "Crani dalla collezione di Luigi Calori",
           "OGGETTO": "Crani umani�",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/105/ob00/1>",
           "ROOM": 6,
           "id": "105",
           "type": "object",
@@ -6759,7 +6763,7 @@
             "z": 1.0833761722036772
           },
           "sem": {
-            "path":"models/room6/semObjs/convex/109_convex.GLB"
+            "path": "models/room6/semObjs/convex/109_convex.GLB"
           }
         },
         {
@@ -6792,6 +6796,7 @@
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250407-7bwdk3e9m",
           "DIDASCALIA": "Dalmanites sp. (recto e verso)",
           "OGGETTO": "Fossile, trilobite�",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/111/ob00/1>",
           "ROOM": 6,
           "id": "111",
           "type": "object",
@@ -6941,6 +6946,7 @@
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20241031-f5pxsia7u",
           "DIDASCALIA": "Attrezzatura fotografica cavalletto",
           "OGGETTO": "Attrezzatura fotografica del Prof. Fabio Frassetto",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/117/ob00/1>",
           "ROOM": 6,
           "id": "117",
           "type": "object",

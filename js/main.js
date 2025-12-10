@@ -204,9 +204,10 @@ APP.playCurrentAudio = () => {
         APP._audio.play();
     }
 
+    if (!APP._audio) return; //Ensure audio exists before proceeding
+
     //SUI UPDATE:
     let iconPath = APP._audio.paused ? APP.pathContent+"SUI/play.png" : APP.pathContent+"SUI/pause.png";
-    
     //Reset icon
     if(APP.suiButton_PPaudio) APP.suiButton_PPaudio.setIcon(iconPath);
 
@@ -713,7 +714,7 @@ APP.setupSUI=()=>
         APP.toggleCurrentAudio();
         let iconPath = APP._audio.paused ? APP.pathContent+"SUI/play.png" : APP.pathContent+"SUI/pause.png";
         //Reset icon
-        APP.suiButton_PPaudio.setIcon(iconPath);
+        if(APP.suiButton_PPaudio) APP.suiButton_PPaudio.setIcon(iconPath);
     };
 
     APP.suiButton_home
@@ -1904,7 +1905,7 @@ APP.CloseObject = ()=>
     //SUI
     if(APP.isVR_Running())
     {
-        APP.CloseObject_SUIBtn.visible = false;
+        if(APP.CloseObject_SUIBtn) APP.CloseObject_SUIBtn.visible = false;
 
         APP.Title_SUI.uiText.set({ content: "" });
         APP.Title_SUI.visible = false;
