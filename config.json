@@ -6747,7 +6747,7 @@
         },
         {
           "NR": "109",
-          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20240506-bayg2nsf0",
+          "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250324-d6xtwbhkc",
           "DIDASCALIA": "Aepyornis maximus",
           "OGGETTO": "Fossile, uovo�",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/109/ob00/1>",
@@ -6755,7 +6755,7 @@
           "id": "109",
           "type": "object",
           "hoverLable": "Aepyornis maximus",
-          "path": null,
+          "path": "aldrovandi/models/S6-109-DA-Fossile_uovo/FossileUovo_2.gltf",
           "pos": {
             "x": -1.7729740142822266,
             "y": 2.248737096786499,
@@ -6766,7 +6766,9 @@
             "y": -0.2356973883261051,
             "z": 1.0833761722036772
           },
-          "sem": null
+          "sem": {
+            "path":"models/room6/semObjs/convex/109_convex.GLB"
+          }
         },
         {
           "NR": "110",
