@@ -3427,7 +3427,7 @@
         },
         {
           "NR": "vetrina_3_alto_s_2_t",
-          "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20231213-kpo2ids0p",
+          "LINK": "Https://aton.ispc.cnr.it/s/aldrovandi/20251210-pahk98qa9",
           "DIDASCALIA": "Tavoletta Con Nido",
           "OGGETTO": "Tavoletta",
           "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/vetrina_3_alto_s_2_t/ob00/1>",
@@ -3436,16 +3436,8 @@
           "type": "object",
           "hoverLable": "Tavoletta Con Nido",
           "path": "aldrovandi/models/S5-Vetrina 3 alto S-2-t-DBC_Tavoletta_con_nido/Tavoletta_Nido.gltf",
-          "pos": {
-            "x": 2.9316861629486084,
-            "y": 1.29920494556427,
-            "z": -2.1005263328552246
-          },
-          "rot": {
-            "x": 1.6976713039189568,
-            "y": 0.10703253778314106,
-            "z": 0.8137803006300878
-          },
+          "pos": null,
+          "rot": null,
           "sem": {
             "path": "models/room5/semObjs/convex/vetrina_3_alto_s_2_t_convex.GLB"
           }
@@ -3744,12 +3736,12 @@
           "pos": {
             "x": 6.1921067237854,
             "y": 1.2888208627700806,
-            "z": -2.418185234069824
+            "z": -2.4177561383830133
           },
           "rot": {
-            "x": 2.8094870793030378,
-            "y": 1.058193870686352,
-            "z": 0.21115311634726214
+            "x": 1.4153191856376783,
+            "y": -0.12338898359760227,
+            "z": 0.8801609306365666
           },
           "sem": {
             "path": "models/room5/semObjs/convex/vetrina_4_alto_n_9_convex.GLB"
