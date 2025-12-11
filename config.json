@@ -6382,9 +6382,9 @@
           "hoverLable": "Preparazione in cera dellarto inferiore",
           "path": "aldrovandi/models/S6-94-ISPC-Preparazioneincera_arto inferiore/gamba_def.gltf",
           "pos": {
-            "x": 3.612139940261841,
+            "x": 3.6120744972705174,
             "y": 0.6416929960250854,
-            "z": -2.271630048751831
+            "z": -2.241685295407527
           },
           "rot": {
             "x": -1.570796232840672,
@@ -6605,9 +6605,9 @@
           "hoverLable": "Tavola dei colori degli occhi di R. Martin",
           "path": "aldrovandi/models/S6-103-ISPC-tavola_colore_occhi/tavola_occhi.gltf",
           "pos": {
-            "x": 3.142824603575666,
-            "y": 1.1851906619435804,
-            "z": 0.5808081233880275
+            "x": 3.1376272916944883,
+            "y": 1.1820175920653542,
+            "z": 0.580796764882835
           },
           "rot": {
             "x": -3.141592653589793,
@@ -6686,7 +6686,7 @@
           },
           "rot": {
             "x": -3.141592653589793,
-            "y": 0.610865248541477,
+            "y": 0.5827966438739924,
             "z": -3.141592653589793
           },
           "sem": {
@@ -6853,9 +6853,9 @@
           "hoverLable": "Cambropallas telesto",
           "path": "aldrovandi/models/S6-111-DA-Fossile_trilobite Cambropallas telesto/FossileTrilobite02.gltf",
           "pos": {
-            "x": -1.777502417564392,
-            "y": 0.9023069143295288,
-            "z": 0.06366473436355591
+            "x": -1.783341921226333,
+            "y": 0.8681839740999058,
+            "z": 0.01622255952907562
           },
           "rot": {
             "x": -2.1991148493735877,
