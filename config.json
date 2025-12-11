@@ -5935,9 +5935,9 @@
           "hoverLable": "Anatome plantarum",
           "path": "aldrovandi/models/S6-75-DA-Anatome Plantarum/AnatomePlantarum02.gltf",
           "pos": {
-            "x": -3.8890444098826844,
+            "x": -3.893890437437001,
             "y": 0.8899294638639244,
-            "z": 0.3872654555213549
+            "z": 0.3872548647331943
           },
           "rot": {
             "x": 3.141592653589793,
@@ -5958,11 +5958,11 @@
           "id": "76",
           "type": "object",
           "hoverLable": "Assitra, overo arbore di S. Tomaso",
-          "path": "aldrovandi/models/S6-76-UNIBO DA-Assitra/assitra01.gltf",
+          "path": "aldrovandi/models/S6-76-UNIBO DA-Assitra/assitra.gltf",
           "pos": {
-            "x": -3.272092356242586,
-            "y": 0.861533948925252,
-            "z": 0.4693855643773066
+            "x": -3.26131245955075,
+            "y": 0.9652137887840309,
+            "z": 0.5710157015393256
           },
           "rot": {
             "x": -3.141592653589793,
