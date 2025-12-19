@@ -6361,11 +6361,6 @@
             "y": -1.4913532125698103,
             "z": 0.27472715863947145
           },
-          "scale": {
-            "x": 0.2,
-            "y": 0.2,
-            "z": 0.2
-          },
           "sem": {
             "path": "models/room6/semObjs/convex/93_convex.GLB"
           }
@@ -6530,14 +6525,14 @@
           "hoverLable": "Ricostruzioni plastiche sul vivente, sardo maschio",
           "path": "aldrovandi/models/S6-100-DA-Calchi facciali colorati,sardo/Sardo.gltf",
           "pos": {
-            "x": 3.50900775974552,
-            "y": 2.0387285343020696,
-            "z": 0.11736831935303853
+            "x": 3.42457184944337,
+            "y": 1.9482082939497198,
+            "z": 0.11882430012908513
           },
           "rot": {
-            "x": 1.5707963267948966,
-            "y": 0,
-            "z": 1.5707963267948966
+            "x": 1.640486863618687,
+            "y": -1.5394217656328941,
+            "z": 1.6383356128042232
           },
           "sem": {
             "path": "models/room6/semObjs/convex/100_convex.GLB"
