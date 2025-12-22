@@ -6108,17 +6108,9 @@
           "id": "83",
           "type": "object",
           "hoverLable": "Modello in legno policromo di Balena della Groenlandia",
-          "path": "aldrovandi/models/S6-83-DA-Modello in legno balena/balena.gltf",
-          "pos": {
-            "x": -1.8669618572293598,
-            "y": 1.521778111264551,
-            "z": -4.236497216524843
-          },
-          "rot": {
-            "x": -1.5884850619417037e-14,
-            "y": -1.5550699920948525,
-            "z": 0.042060017877365075
-          },
+          "path": "aldrovandi/models/S6-83-DA-Modello in legno balena/balena_v2.gltf",
+          "pos": null,
+          "rot": null,
           "sem": {
             "path": "models/room6/semObjs/convex/83_convex.GLB"
           }
