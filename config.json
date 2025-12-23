@@ -1753,13 +1753,13 @@
           }
         },
         {
-          "NR": "PT",
+          "NR": "ptb",
           "LINK": "https://aton.ispc.cnr.it/s/aldrovandi/20250314-c1ozttyfx",
           "DIDASCALIA": "Parete con matrici xilografiche (111 matrici tot)",
           "OGGETTO": "Vetrina con matrici xilografiche",
-          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/PT/ob00/1>",
+          "IRI": "<https://w3id.org/changes/4/aldrovandi/itm/ptb/ob00/1>",
           "ROOM": 3,
-          "id": "PT",
+          "id": "ptb",
           "type": "object",
           "hoverLable": "Parete con matrici xilografiche (111 matrici tot)",
           "path": "aldrovandi/models/S3-PT-DICAM_VetrinaMatriciXilografiche/parete_tavolette_final.gltf",
