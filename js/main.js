@@ -553,7 +553,8 @@ APP.setup = ()=>{
     //---->AND LIGHTS PROBE TEST TO DO HERE
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
     APP.loadConfig(configPath);
-    ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
+   // ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
+    ATON.setMainPanorama( 'image/hemi-grey.jpg');
 
 
 ATON.on("APP_ConfigLoaded", ()=>{
@@ -566,7 +567,6 @@ ATON.on("APP_ConfigLoaded", ()=>{
     //INITIALIZE ROOM 1
     APP.STAGE = 1;
     //Set Panorama
-   // ATON.setMainPanorama( 'image/hemi-grey.jpg');
   
     //Lights probes to remove
     /*
@@ -1687,9 +1687,11 @@ APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
 }
 
 APP.cleanString=(input)=> {
+    APP.currentLabel = input;
+  
   return input
-    .replace(/[^\x20-\x7E]/g, '') // Removes non-ASCII characters
-    .replace(/\s+/g, ' ')         // Collapses multiple spaces
+    .replace(/[\x00-\x09\x0B-\x1F\x7F-\x9F]/g, '') // Removes control chars except newline (\x0A)
+    .replace(/[^\S\n]+/g, ' ')    // Collapses multiple spaces but preserves newlines
     .trim();                      // Trims leading/trailing spaces
 }
 
@@ -1716,8 +1718,9 @@ APP.setMetadataSUI=(semid)=>{
         console.log("TITLE: "+_title);
         let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
         let _content = APP.cleanString(_contentData);
-        let _data = "<b>" + _title + "</b>" + "\n" + _content;
-
+        //let _data = "<b>" + _title + "</b>" + "\n" + _content;
+        //let _data = _title + "\n\n" + _content;
+        let _data =  _content;
         console.log(_data);
         
         try {
@@ -2829,9 +2832,9 @@ APP.forwardFactor = 0.5 // 0.3;
 APP.leftFactor = 0; // 0.13;
 APP.upFactor =  -0.1; //0;
 
-APP.UserSUI_w = 0.5;
-APP.UserSUI_h = 0.1;
-APP_UserSUI_fontSize = 0.013;
+APP.UserSUI_w = 0.85;
+APP.UserSUI_h = 0.14;
+APP.UserSUI_fontSize = 0.013;
 
 APP.setUserSUI=(options)=>{
 
@@ -2851,7 +2854,7 @@ APP.setUserSUI=(options)=>{
     content: _content,
     pos: { x: 0, y: 0, z: 0 },
     rot: { x: 0, y: 0, z: 0 },
-    fSize: APP_UserSUI_fontSize
+    fSize: APP.UserSUI_fontSize
   });
 
   label.attachTo(ATON.getRootScene());

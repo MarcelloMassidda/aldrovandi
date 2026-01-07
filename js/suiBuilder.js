@@ -1,4 +1,25 @@
-let suiBuilder = {};
+let suiBuilder = {
+    interLine: 0.001,
+    bestFit: "auto",
+    fontSize: 0.3,
+    height: 0.06
+};
+
+suiBuilder.set_interLine=(value)=>
+{
+    suiBuilder.interLine = value;
+    ThreeMeshUI.update();
+}
+suiBuilder.set_bestFit=(value)=>
+{
+    suiBuilder.bestFit = value;
+    ThreeMeshUI.update();
+}
+suiBuilder.set_fontSize=(value)=>
+{
+    suiBuilder.fontSize = value;
+    ThreeMeshUI.update();
+}   
 
 suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
 {
@@ -9,7 +30,7 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
 
      var container = new ThreeMeshUI.Block({
         width: (w)? w : 0.2,
-        height: (h)? h: 0.05,
+        height: (h)? h: suiBuilder.height,
         padding: 0.001,
         borderRadius: 0.01,
         backgroundColor: baseColor,
@@ -19,7 +40,9 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
         fontTexture: ATON.SUI.PATH_FONT_TEX,
 
         justifyContent: 'center', // could be 'center' or 'left'
-        textAlign: 'center' //left,
+        textAlign: 'center', //left,
+        interLine: suiBuilder.interLine,
+        bestFit: suiBuilder.bestFit,
     });
     
     container.position.z = 0.03;
@@ -27,8 +50,8 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
 
     var uiText = new ThreeMeshUI.Text({ 
         content: content,
-        fontSize: (fSize)? fSize : 0.2, // 0.03,
-        fontColor: ATON.MatHub.colors.white
+        fontSize: (fSize)? fSize : suiBuilder.fontSize, // 0.03,
+        fontColor: ATON.MatHub.colors.white,
     });
     n.uiText = uiText;
     container.add(uiText);
