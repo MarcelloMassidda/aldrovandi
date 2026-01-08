@@ -95,24 +95,47 @@ APP.initKioskMode=()=>{
     if(APP.mode !== "kiosk") return;
 
         // Kiosk mode: reset after inactivity
-        APP.kioskDelayTime = 3 * 60 * 1000; // 3 minutes in milliseconds
+        let delay = 3 * 60 * 1000; // 3 minuti
+        //let delay = 1 * 5 * 1000; //5 secondi
+
+        APP.kioskDelayTime = delay;
 
         APP.kioskTimer = null;
 
         const resetKioskTimer = () => {
+            console.log("resetting timer")
             if(APP.kioskTimer) clearTimeout(APP.kioskTimer);
             APP.kioskTimer = setTimeout(() => {
-                APP.BackToStart();
+                if(!isAnyPointerDown()) APP.BackToStart();
             }, APP.kioskDelayTime);
         };
+
+        APP.resetKioskTimer = resetKioskTimer;
 
         // Start timer initially
         resetKioskTimer();
 
-        // Reset timer on user interaction
-        ATON.on("Tap", () => {
-            resetKioskTimer();
+        //Manage dragging and touching:
+        let pointerDownCount = 0;
+
+        window.addEventListener("pointerdown", (e) => {
+        pointerDownCount++;
+         resetKioskTimer();
         });
+
+        window.addEventListener("pointerup", (e) => {
+        pointerDownCount = Math.max(0, pointerDownCount - 1);
+         resetKioskTimer();
+        });
+
+        window.addEventListener("pointercancel", () => {
+        pointerDownCount = 0;
+        });
+
+        function isAnyPointerDown() {
+        return pointerDownCount > 0;
+        }
+
 }
 
 APP.closeModal = function(){
@@ -163,6 +186,9 @@ APP.startAPP=(language)=>
     APP.setSideBar_Navigation();
     APP.showBottomBar();
     APP.updateRoomSUI();
+
+    //Reset Kiosk Timer
+    if(APP.mode === "kiosk") APP.resetKioskTimer();
 }
 
 
@@ -255,12 +281,14 @@ APP.showWelcomePopup=()=>{
     if(container) {
         container.classList.add("isSemiTransparent");
         container.style.display="block";
+        APP.popupShown = true;
     }
 }
 
 APP.closeWelcomePopup=()=>
 {
     document.getElementById("welcomePopupContainer").style.display="none"; 
+    APP.popupShown = false;
 }
 
 
@@ -2085,12 +2113,14 @@ APP.update = ()=>{
 APP.update()
 
 APP.BackToStart=()=>{
+
+    if(APP.popupShown) return;
+    console.log("Restarting")
+    if(APP._currentObjectActive) APP.CloseObject();
     APP.setRoom(1);
     APP.pauseCurrentAudio();
     APP.audioCanPlay=false;
-    APP.hideBottomBar();
     APP.hideBackToHomeBtn();
-
 }
 
 APP.setRoom=(stage)=>{
@@ -2144,6 +2174,8 @@ APP.onAllNodeRequestsCompleted=()=>
     ATON.Photon.fire("myRemoteLog","from remote: loaded in: " + APP.delta)
 
     APP.isChangingRoom=false;  
+
+    if(APP.popupShown) APP.hideBottomBar();
 }
 
 APP.initializeScene = ()=>
