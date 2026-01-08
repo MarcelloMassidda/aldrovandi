@@ -2195,7 +2195,7 @@
           "id": "a_alto_sinistra_2",
           "type": "object",
           "hoverLable": "Medaglia Commemorativa Delle Onoranze Del 1907 Commemorative Medal From The 1907 Celebrations",
-          "path": "aldrovandi/models/S5-A alto sinistra - 2-FICLIT_MedagliaCommemorativa/medaglia02.gltf",
+          "path": "aldrovandi/models/S5-A_alto_sinistra-2-FICLIT_medagliacommemorativa/medaglia02.gltf",
           "pos": null,
           "rot": null,
           "sem": {
@@ -2678,7 +2678,7 @@
           "id": "vetrina_1_alto_s_5",
           "type": "object",
           "hoverLable": "Gemma In Agata Con Maschera Della Commedia Dellarte",
-          "path": "aldrovandi/models/S5-Vetrina 1 alto S-5-DICAM_GemmaInAgataconMascheraDellaCommediaDell’Arte/gemma_maschera.gltf",
+          "path": "aldrovandi/models/S5-Vetrina_1_alto_S-5-DICAM_GemmaInAgataconMascheraDellaCommediaDellArte/gemma_maschera.gltf",
           "pos": {
             "x": -1.3495049476623535,
             "y": 1.2799245119094849,
