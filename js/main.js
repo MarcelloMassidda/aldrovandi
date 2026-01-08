@@ -9,11 +9,17 @@ window.addEventListener( 'load', ()=>
 
   //Check params:
   APP.mode = "standard";
+  APP.useMelodyBackup = false;
+
   if(ATON.FE.urlParams){
     let modeParam = ATON.FE.urlParams.get('mode');
-    if(modeParam && modeParam==="kiosk") APP.mode = "kiosk";
+    if(modeParam && modeParam==="kiosk") {APP.mode = "kiosk"; APP.initKioskMode();}
+    let melodyBackupParam = ATON.FE.urlParams.get('usebackup');
 
-    APP.initKioskMode();
+    if(melodyBackupParam!==null) {
+        //parse to boolean value true or false
+        APP.useMelodyBackup = (melodyBackupParam === 'true');
+    }
 }
 
   //For experiment setup
@@ -1277,7 +1283,7 @@ APP.manageHoverLabel=(obj)=>{
             show(_title);
         }            
     }
-    APP.getMelodyData(obj.IRI, callback, APP.config.useMelodyBackup, true);
+    APP.getMelodyData(obj.IRI, callback, APP.useMelodyBackup, true);
 }
 
 APP.setupCustomSemanticMats=()=>{
@@ -1524,7 +1530,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
         }
     }
 
-    let useBackup = APP.config.useMelodyBackup;
+    let useBackup = APP.useMelodyBackup;
 
     //Callback to compose data in sidebar
     let composeContent= async(_info)=>{
@@ -1732,7 +1738,7 @@ APP.setMetadataSUI=(semid)=>{
         }
     }
 
-    let useBackup = APP.config.useMelodyBackup;
+    let useBackup = APP.useMelodyBackup;
     APP.getMelodyData(_obj.IRI, _callback, useBackup, true);
 }
 

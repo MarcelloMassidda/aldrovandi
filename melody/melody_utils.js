@@ -65,7 +65,7 @@ melody.init=()=>{
             }
         };
         // If enabled, load backups
-        if (APP.config.useMelodyBackup) loadRoomBackups();
+        /*if (APP.useMelodyBackup)*/ loadRoomBackups();
 
         console.log("Melody config loaded:", melody.config);
 })};
@@ -162,6 +162,36 @@ melody.testAPI=(_uri=uriTest)=>{
         isVR:true
     });
 }
+
+
+
+//Resolve URL:
+function resolveBackupUrl(rawUrl) {
+    if (!rawUrl) return rawUrl;
+    try {
+        const isAbsolute = /^(?:[a-z]+:)?\/\//i.test(rawUrl) || rawUrl.startsWith('data:') || rawUrl.startsWith('blob:');
+        if (isAbsolute) return rawUrl;
+
+        let baseOrigin = '';
+        let basePath = '/';
+        try {
+            const u = new URL(melody.config.api_url);
+            baseOrigin = u.origin;
+            basePath = u.pathname.replace(/\/[^/]*$/, '/');
+        } catch (_) { /* no-op */ }
+
+        if (rawUrl.startsWith('/')) return baseOrigin ? (baseOrigin + rawUrl) : rawUrl;
+        if (/^(?:\.?\/)?static\//.test(rawUrl)) {
+            return baseOrigin ? (baseOrigin + basePath + rawUrl.replace(/^\.+\//, '')) : rawUrl;
+        }
+        if (/^melody\//.test(rawUrl)) return baseOrigin ? (baseOrigin + '/' + rawUrl) : rawUrl;
+        if (baseOrigin) return new URL(rawUrl, baseOrigin + basePath).toString();
+        return rawUrl;
+    } catch (_) {
+        return rawUrl;
+    }
+}
+
 
 // Inject HTML into a container and ensure any <script> tags execute
 function injectHTMLWithScripts(container, html) {
@@ -264,35 +294,35 @@ async function injectEmbeddedHTML(container, html) {
         }
     }
 
-    // 2) Resolve all references
-    let resolvedHTML = html;
+    // 2) Inject HTML first, then resolve references using DOM APIs
+    container.innerHTML = html || '';
     if (melody.backups['scripts']) {
         const backupScripts = melody.backups['scripts'];
-        const { scripts, css, data } = backupScripts;
-
-        // Replace script references: <script data-script-ref="script_001"></script> -> <script>code</script>
-        for (const [url, refId] of Object.entries(scripts)) {
-            const scriptCode = data[refId];
-            if (scriptCode) {
-                const refMarkup = `<script data-script-ref="${refId}"></script>`;
-                const replacement = `<script>${scriptCode}</script>`;
-                resolvedHTML = resolvedHTML.replace(refMarkup, replacement);
-            }
-        }
+        const { data } = backupScripts;
 
         // Replace CSS references: <link data-css-ref="css_001"> -> <style>css</style>
-        for (const [url, refId] of Object.entries(css)) {
-            const cssCode = data[refId];
+        const cssLinks = Array.from(container.querySelectorAll('link[data-css-ref]'));
+        cssLinks.forEach(link => {
+            const refId = link.getAttribute('data-css-ref');
+            const cssCode = refId ? data[refId] : null;
             if (cssCode) {
-                const refMarkup = `<link data-css-ref="${refId}">`;
-                const replacement = `<style>${cssCode}</style>`;
-                resolvedHTML = resolvedHTML.replace(refMarkup, replacement);
+                const styleEl = document.createElement('style');
+                styleEl.textContent = cssCode;
+                link.replaceWith(styleEl);
             }
-        }
-    }
+        });
 
-    // 3) Inject resolved HTML
-    container.innerHTML = resolvedHTML || '';
+        // Replace script references: <script data-script-ref="script_001"></script> -> inline script
+        const scriptRefs = Array.from(container.querySelectorAll('script[data-script-ref]'));
+        scriptRefs.forEach(script => {
+            const refId = script.getAttribute('data-script-ref');
+            const scriptCode = refId ? data[refId] : null;
+            if (scriptCode) {
+                script.textContent = scriptCode;
+                script.removeAttribute('data-script-ref');
+            }
+        });
+    }
 
     // 4) Force script execution in order
     const scripts = Array.from(container.querySelectorAll('script'));
@@ -431,8 +461,9 @@ async function collectScriptsAndCSS() {
                             const scripts = temp.querySelectorAll('script[src]');
                             scripts.forEach(s => {
                                 const src = s.getAttribute('src');
-                                if (src && !scriptUrls.has(src)) {
-                                    scriptUrls.set(src, `script_${String(scriptCounter).padStart(3, '0')}`);
+                                const resolvedSrc = resolveBackupUrl(src);
+                                if (resolvedSrc && !scriptUrls.has(resolvedSrc)) {
+                                    scriptUrls.set(resolvedSrc, `script_${String(scriptCounter).padStart(3, '0')}`);
                                     scriptCounter++;
                                 }
                             });
@@ -441,8 +472,9 @@ async function collectScriptsAndCSS() {
                             const links = temp.querySelectorAll('link[rel="stylesheet"][href]');
                             links.forEach(l => {
                                 const href = l.getAttribute('href');
-                                if (href && !cssUrls.has(href)) {
-                                    cssUrls.set(href, `css_${String(cssCounter).padStart(3, '0')}`);
+                                const resolvedHref = resolveBackupUrl(href);
+                                if (resolvedHref && !cssUrls.has(resolvedHref)) {
+                                    cssUrls.set(resolvedHref, `css_${String(cssCounter).padStart(3, '0')}`);
                                     cssCounter++;
                                 }
                             });
@@ -472,11 +504,12 @@ async function buildBackupScripts(scriptUrls = new Map(), cssUrls = new Map()) {
     // Fetch all scripts
     for (const [url, id] of scriptUrls) {
         try {
-            const resp = await fetch(url);
+            const resolvedUrl = resolveBackupUrl(url);
+            const resp = await fetch(resolvedUrl);
             if (!resp.ok) continue;
             const code = await resp.text();
             backupScripts.data[id] = code;
-            console.log(`Fetched script ${id}: ${url}`);
+            console.log(`Fetched script ${id}: ${resolvedUrl}`);
         } catch (err) {
             console.warn(`Failed to fetch script from ${url}:`, err);
         }
@@ -485,11 +518,12 @@ async function buildBackupScripts(scriptUrls = new Map(), cssUrls = new Map()) {
     // Fetch all CSS
     for (const [url, id] of cssUrls) {
         try {
-            const resp = await fetch(url);
+            const resolvedUrl = resolveBackupUrl(url);
+            const resp = await fetch(resolvedUrl);
             if (!resp.ok) continue;
             const css = await resp.text();
             backupScripts.data[id] = css;
-            console.log(`Fetched CSS ${id}: ${url}`);
+            console.log(`Fetched CSS ${id}: ${resolvedUrl}`);
         } catch (err) {
             console.warn(`Failed to fetch CSS from ${url}:`, err);
         }
