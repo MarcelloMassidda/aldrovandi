@@ -1556,7 +1556,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
         //Hide other UI:
         APP.hideBackToHomeBtn();
         //Hide CloseBtn until load:
-        document.getElementById("backBtnHeader").style.display="none";
+        //document.getElementById("backBtnHeader").style.display="none";
         document.getElementById("SideBAR").style.display="block";
         
         if(APP.mode=="kiosk"){
@@ -1819,6 +1819,9 @@ APP.onPOVTransitionCompleted=(x)=>{
             $('canvas').css({ cursor: 'wait'});
             
 
+            //Hide CloseBtn until load:
+            document.getElementById("backBtnHeader").style.display="none";
+            
             var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
                 /*On Complete: */ ()=>{
                     APP.lowObjCollection.hide();
