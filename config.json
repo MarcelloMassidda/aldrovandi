@@ -1,4 +1,5 @@
 {
+  "useMelodyBackup": true,
   "systemTexts": {
     "backToStart_Text": {
       "ita": "Torna all'inizio",
@@ -2346,6 +2347,11 @@
             "x": 0,
             "y": -1.5707963267948966,
             "z": 0
+          },
+          "scale": {
+            "x": 2,
+            "y": 2,
+            "z": 2
           },
           "sem": {
             "path": "models/room5/semObjs/convex/b_alto_centro_2_convex.GLB"
