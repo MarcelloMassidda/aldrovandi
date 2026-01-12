@@ -1713,7 +1713,6 @@ APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
             onComplete: callback,
             onError: (err)=>{
                 console.log(err);
-                window.alert(err)
                 callback(undefined);
             }
         } 
@@ -1749,7 +1748,7 @@ APP.cleanString=(input)=> {
 
 APP.setMetadataSUI=(semid)=>{
 
-    let waitingText = "Loading...";
+    let waitingText = "...";
     APP.setUserSUI({content: waitingText, w: APP.UserSUI_w, h: APP.UserSUI_h});
 
     let _id = semid.substring(0, semid.length-(4));
