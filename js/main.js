@@ -1195,13 +1195,15 @@ APP.setupCustomSemanticHovers=()=>{
             if (S === undefined) return;
     
             if(APP.isVR_Running()){
+                
+                
                 APP.setMetadataSUI(semid);
                 
+                //don't show others semLabel for type=objects
                 let _id = semid.substring(0, semid.length-(4));
                 let _obj = APP.objects[_id];
                 if(!_obj) return;
                 if(_obj.type=="object"){
-                    //no others label for objects
                     ATON.FE._bShowSemLabel = false;
                     ATON.FE.hideSemLabel();
                     return;
@@ -1711,6 +1713,7 @@ APP.getMelodyData=(_IRI, callback, frombackup, forcedVR=null)=>{
             onComplete: callback,
             onError: (err)=>{
                 console.log(err);
+                window.alert(err)
                 callback(undefined);
             }
         } 
@@ -1726,6 +1729,19 @@ APP.cleanString=(input)=> {
   return input
     .replace(/[\x00-\x09\x0B-\x1F\x7F-\x9F]/g, '') // Removes control chars except newline (\x0A)
     .replace(/[^\S\n]+/g, ' ')    // Collapses multiple spaces but preserves newlines
+    .replace(/[\u201C\u201D]/g, '')    // Removes curly double quotes
+
+    .replace(/[\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5]/g, "a'")
+        .replace(/[\u00E8\u00E9\u00EA\u00EB]/g, "e'")
+        .replace(/[\u00EC\u00ED\u00EE\u00EF]/g, "i'")
+        .replace(/[\u00F2\u00F3\u00F4\u00F5\u00F6]/g, "o'")
+        .replace(/[\u00F9\u00FA\u00FB\u00FC]/g, "u'")
+        .replace(/[\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5]/g, "A'")
+        .replace(/[\u00C8\u00C9\u00CA\u00CB]/g, "E'")
+        .replace(/[\u00CC\u00CD\u00CE\u00CF]/g, "I'")
+        .replace(/[\u00D2\u00D3\u00D4\u00D5\u00D6]/g, "O'")
+        .replace(/[\u00D9\u00DA\u00DB\u00DC]/g, "U'")
+
     .trim();                      // Trims leading/trailing spaces
 }
 
@@ -1733,27 +1749,28 @@ APP.cleanString=(input)=> {
 
 APP.setMetadataSUI=(semid)=>{
 
+    let waitingText = "Loading...";
+    APP.setUserSUI({content: waitingText, w: APP.UserSUI_w, h: APP.UserSUI_h});
+
     let _id = semid.substring(0, semid.length-(4));
     let _obj = APP.objects[_id];
     if(_obj.type!="object") return;
     if(!_obj.IRI) return;
-
-//    var isVR = APP.isVR_Running();
     
     let _callback = (_info)=>{
+        if(_info==undefined) return;
 
         console.log(_info);
         window.info = _info;
         
-        
-        //get contents and add /new lines
+        //title not used
         let _titleData = JSON.parse(_info).dynamic_elements["01"].content;
         let _title = APP.cleanString(_titleData);
         console.log("TITLE: "+_title);
+   
         let _contentData = JSON.parse(_info).dynamic_elements["02"].content;
         let _content = APP.cleanString(_contentData);
-        //let _data = "<b>" + _title + "</b>" + "\n" + _content;
-        //let _data = _title + "\n\n" + _content;
+    
         let _data =  _content;
         console.log(_data);
         
@@ -1761,8 +1778,11 @@ APP.setMetadataSUI=(semid)=>{
             APP.setUserSUI({content: _data, w: APP.UserSUI_w, h: APP.UserSUI_h});
         }
         catch (e) {
+
             console.error("Error parsing JSON data:", e); 
-            window.alert(_data);
+            let errorText = "Object";
+
+            APP.setUserSUI({content: errorText, w: APP.UserSUI_w, h: APP.UserSUI_h});
         }
     }
 
@@ -2863,7 +2883,7 @@ APP.getOrthogonalVectorAroundAxis=(vec, axis)=> {
 
 
 APP.removeUserSUI=()=>{
-    APP.deleteAndDispose(APP._suiLeftUserLabel);
+    APP.deleteAndDispose(APP._suiCentralUserLabel);
 }
 
 //USER SUI
@@ -2888,22 +2908,25 @@ APP.setUserSUI=(options)=>{
 
   
   // Create label
-  const label = suiBuilder.createLabel({
-    id: "sui-left",
+  let labelOptions = {
+    id: "sui-centralPanel",
     w: _w,
     h: _h,
     content: _content,
     pos: { x: 0, y: 0, z: 0 },
     rot: { x: 0, y: 0, z: 0 },
     fSize: APP.UserSUI_fontSize
-  });
+  }
 
+  if(APP._suiCentralUserLabel) APP.removeUserSUI();
+  const label = suiBuilder.createLabel(labelOptions);
   label.attachTo(ATON.getRootScene());
-  APP._suiLeftUserLabel = label;
+  APP._suiCentralUserLabel = label;
 
   const updateLoop = () => {
 
-    if (!APP._suiLeftUserLabel) return;
+    if (!APP._suiCentralUserLabel) return;
+    if(!ATON._hoveredSemNode) {APP.removeUserSUI(); return;}
 
     const userPos = ATON.Nav._currPOV.pos.clone();
     const userDir = ATON.Nav._vDir.clone().normalize();
