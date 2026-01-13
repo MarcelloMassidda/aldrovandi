@@ -1197,13 +1197,13 @@ APP.setupCustomSemanticHovers=()=>{
             if(APP.isVR_Running()){
                 
                 
-                APP.setMetadataSUI(semid);
-                
-                //don't show others semLabel for type=objects
+                //get type of object
                 let _id = semid.substring(0, semid.length-(4));
                 let _obj = APP.objects[_id];
                 if(!_obj) return;
+                //if type=="object" no semLabel in VR, only central panel metadata SUI
                 if(_obj.type=="object"){
+                    APP.setMetadataSUI(semid);
                     ATON.FE._bShowSemLabel = false;
                     ATON.FE.hideSemLabel();
                     return;
@@ -1251,7 +1251,7 @@ APP.setupCustomSemanticHovers=()=>{
             if(!_obj) return;
             
             if(APP.isVR_Running()) {
-                if(_obj.type=="object") {
+                if(_obj.type=="object" || _obj.type=="roomLink") {
                     ATON.SUI.setInfoNodeText(null);
                     ATON.SUI.infoNode.visible=false;
                     ATON.SUI.infoContainer.visible =false;
