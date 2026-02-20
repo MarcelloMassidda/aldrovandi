@@ -11,6 +11,9 @@ window.addEventListener( 'load', ()=>
   APP.mode = "standard";
   APP.useMelodyBackup = false;
 
+  // Hide default ATON selector 
+  ATON.SUI.showSelector(false)
+
   if(ATON.FE.urlParams){
     let modeParam = ATON.FE.urlParams.get('mode');
     if(modeParam && modeParam==="kiosk") {APP.mode = "kiosk"; APP.initKioskMode();}
@@ -94,9 +97,47 @@ APP.showModal = function(options){
 APP.initKioskMode=()=>{
     if(APP.mode !== "kiosk") return;
 
-        // Kiosk mode: reset after inactivity
+    // Kiosk mode: reset after inactivity
+    APP.setupInactivityTimer();
+    // Move sidebar buttons to a more reachable position for museum kiosks:
+    APP.setKioskUISideBar();
+    //Remove ATON LINK:
+    document.getElementById("idPoweredBy").querySelector("a").style.pointerEvents = "none";
+
+    // Hide the cursor for touch devices in kiosk mode
+    //document.body.style.cursor = 'none';
+    //document.querySelector('canvas').style.cursor = 'none';
+    
+
+}
+
+APP.setKioskUISideBar = () => {
+    const backBtn = document.getElementById("backBtnHeader");
+    const homeBtn = document.getElementById("HomeBtnHeader");
+
+    backBtn.style.display="none";
+    homeBtn.style.display="none";
+
+    const kioskBtnsContainer = document.getElementById("KioskBtnsContainer");
+    if (kioskBtnsContainer) {
+        kioskBtnsContainer.appendChild(backBtn);
+        kioskBtnsContainer.appendChild(homeBtn);
+        kioskBtnsContainer.style.display = "block";
+    }
+};
+
+
+APP.setupInactivityTimer=()=>{
+
         let delay = 3 * 60 * 1000; // 3 minuti
         //let delay = 1 * 5 * 1000; //5 secondi
+
+        //Manage dragging and touching:
+        let pointerDownCount = 0;
+        
+        function isAnyPointerDown() {
+        return pointerDownCount > 0;
+        }
 
         APP.kioskDelayTime = delay;
 
@@ -115,8 +156,7 @@ APP.initKioskMode=()=>{
         // Start timer initially
         resetKioskTimer();
 
-        //Manage dragging and touching:
-        let pointerDownCount = 0;
+      
 
         window.addEventListener("pointerdown", (e) => {
         pointerDownCount++;
@@ -125,18 +165,21 @@ APP.initKioskMode=()=>{
 
         window.addEventListener("pointerup", (e) => {
         pointerDownCount = Math.max(0, pointerDownCount - 1);
-         resetKioskTimer();
+        resetKioskTimer();
+
+        //Clean up cursor hiding on touch devices when user interacts:
+        document.body.style.cursor = 'none';
+        document.querySelector('canvas').style.cursor = 'none';
+
         });
 
         window.addEventListener("pointercancel", () => {
         pointerDownCount = 0;
         });
 
-        function isAnyPointerDown() {
-        return pointerDownCount > 0;
-        }
-
+      
 }
+
 
 APP.closeModal = function(){
     const modal = document.getElementById('appModal');
@@ -263,12 +306,22 @@ APP.toggleCurrentAudio = () => {
     }
 };
 
+APP.showSideBar=()=>{
+document.getElementById("SideBAR").style.display="block";
+}
+
+APP.hideSideBar=()=>{
+document.getElementById("SideBAR").style.display="none";
+}
+
 APP.showBottomBar=()=>{
-    document.getElementById("BottomBar").style.display="flex";
+    const bottomBar = document.getElementById("BottomBar");
+    if(bottomBar) bottomBar.style.display="flex";
 }
 
 APP.hideBottomBar=()=>{
-    document.getElementById("BottomBar").style.display="none";
+    const bottomBar = document.getElementById("BottomBar");
+    if(bottomBar) bottomBar.style.display="none";
 }
 
 APP.showBackToHomeBtn=()=>{document.getElementById("HomeBtnHeader").style.display="flex";};
@@ -323,7 +376,7 @@ APP.setSideBar_Navigation=()=>{
     document.getElementById("backBtnHeader").style.display="none";
     
     //Show SideBar
-    document.getElementById("SideBAR").style.display="block";
+    APP.showSideBar(); 
 }
 
 
@@ -1477,7 +1530,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
     {
         // APP.showVideo();
         document.getElementById("InfoScrollContainer").style.display="none";
-        document.getElementById("SideBAR").style.display="block";
+        APP.showSideBar();
         ATON.getSemanticNode( APP._currentSemActive).hide();
     }
 
@@ -1585,9 +1638,12 @@ APP.onTapSemNodes = (idSem, p=null)=>
         
         //Hide other UI:
         APP.hideBackToHomeBtn();
-        //Hide CloseBtn until load:
-        //document.getElementById("backBtnHeader").style.display="none";
-        document.getElementById("SideBAR").style.display="block";
+        
+        
+        //Show backBtn but hide clickability (to avoid click in VR before content is loaded)
+       APP.showBackBtnClickable(false);
+
+       APP.showSideBar();
         
         if(APP.mode=="kiosk"){
             APP.removeLinksFromContent(InfoContainer);
@@ -1608,6 +1664,14 @@ APP.onTapSemNodes = (idSem, p=null)=>
     else{ composeContent(undefined); }
 
     }
+}
+
+
+
+APP.showBackBtnClickable=(clickable)=>{
+    document.getElementById("backBtnHeader").style.display="flex";
+    document.getElementById("backBtnHeader").style.pointerEvents=clickable ? "auto" : "none";
+    document.getElementById("backBtnHeader").style.opacity=clickable ? "1" : "0.5";
 }
 
 APP.removeLinksFromContent=(container)=>{
@@ -1828,9 +1892,10 @@ APP.onPOVTransitionCompleted=(x)=>{
 
     if(obj.type == "video")
     {
-        APP.showVideo(obj.path);
-        APP.showBlurredFullscreen(false);
-        APP.currentObjIsFocused=true;
+        return;
+        //APP.showVideo(obj.path);
+        //APP.showBlurredFullscreen(false);
+        //APP.currentObjIsFocused=true;
     }
 
     if(obj.type=="object")
@@ -1867,7 +1932,7 @@ APP.onPOVTransitionCompleted=(x)=>{
             
 
             //Hide CloseBtn until load:
-            document.getElementById("backBtnHeader").style.display="none";
+            //document.getElementById("backBtnHeader").style.display="none";
             
             var hqObj = ATON.createSceneNode(obj.id).load(obj.path,
                 /*On Complete: */ ()=>{
@@ -1889,13 +1954,12 @@ APP.onPOVTransitionCompleted=(x)=>{
                     APP.hideBlurredFullscreen();           
                     APP.currentObjIsFocused=true;
 
-                    //Show CloseBtn only after load:
-                    document.getElementById("backBtnHeader").style.display="flex";
+                    //Let user interact with backBtn once content is loaded:
+                    APP.showBackBtnClickable(true);
             });
     }
 
 }
-
 
 APP.CloseObject = ()=>
 {
@@ -2037,7 +2101,8 @@ const onMouseUp = ()=>
 
 
 APP.showVideo=(src)=>{
-    var videoPlayer = document.getElementById("VideoPlayer");
+    return;
+    var videoPlayer = document.getElementById("VideoPlayer"); //removed
     videoPlayer.src = src;
     videoPlayer.currentTime = 1;
     videoPlayer.style.display="block";
@@ -2046,7 +2111,8 @@ APP.showVideo=(src)=>{
 
 APP.closeVideo=()=>
 {
-    var videoPlayer  = document.getElementById("VideoPlayer");
+    return;
+    var videoPlayer  = document.getElementById("VideoPlayer"); //removed
     videoPlayer.pause();
     videoPlayer.style.display="none";
     videoPlayer.currentTime = 1;
@@ -2350,165 +2416,6 @@ APP.returnFormattedInfo=(objectInfo)=>
     console.log(_info)
     return _info;
 }
-
-/* OLD LAYOUT:
-
-APP.quadroInfo =    `
-<h1>Ritratto di Ulisse Aldrovandi</h1>
-<!--BLOCK SCHEDA INFORMATIVA-->
-<div class="Block">
-    <div class="flexContainer">
-        <div class="leftSide">
-            <div class="myCircle"></div>
-        </div>
-        <div class="RightSide">
-        <b>test BBBB</b><br>altro testo
-            <span class="b">OGGETTO</span>: dipinto<br><br>
-            <span class="b">MATERIA E TECNICA</span>:  tela/ pittura a olio<br><br>
-            <span class="b">DIMENSIONI</span>: 79 cm x 62 cm<br><br>
-            <span class="b">DATA</span>: 1584/1586<br><br>
-            <span class="b">ATTRIBUZIONI</span>: Agostino Carracci<br/><br>
-            <span class="b">ALTRE ATTRIBUZIONI</span>: Ludovico Carracci, Carracci Agostino, Attribuito: Bartolomeo Passarotti<br><br>
-            <span class="b">LUOGO DI CONSERVAZIONE</span>: Accademia Carrara - Museo, Bergamo<br>
-        </div>
-    </div>
-</div>
-<!--BLOCK CATALOGO-->
-<div class="Block">
-    <div class="flexContainer">
-        <div class="thumb"></div>
-        <div>
-            <span class="b">Dal Catalogo</span><br>
-            (pp. 23-27)
-        </div>
-    </div>
-        <br><span class="b">"Chi era Ulisse Aldrovandi?"</span><br>
-        <span class="i">di Giuseppe Olmi</span>
-        <div class="line"></div>
-        <p>L. Fuchs, K. Gesner, P. Belon, P.A. Mattioli, etc., uno dei grandi rinnovatori dello studio della natura nel Rinascimento. Manifestando precocemente una forte sete di conoscenza («Essendo io spinto dal dessiderio insin dalla mia prima età di sapere», scriverà più tardi) ebbe una infanzia e una giovinezza piuttosto irrequiete: all'età di soli dodici (...)</p>
-      
-    <div class="rightAlign" style="text-align: 'right'">
-        <div class="moreBtn" onclick=""></div>
-    </div>
-</div>
- <!--BLOCK CAROSELLO-->
- <div class="Block">
-    <span class="b">Galleria</span><br><br>
-    <div class="flexContainer CarouselContainer">
-       
-        <div class="carouselItem quadro1"></div>
-        <div class="carouselItem quadro2"></div>
-        <div class="carouselItem quadro3"></div>
-    </div>
- </div>
- 
-</div>
-`
-APP.cospiInfo = 
-`
-<!--COSPI INFOCONTAINER-->
-<div id="cospi" class="InfoContainer">
-
-    <h1>Codice Cospi</h1>
-    <!--BLOCK SCHEDA INFORMATIVA-->
-    <div class="Block">
-        <div class="flexContainer">
-            <div class="leftSide">
-                <div class="myCircle"></div>
-            </div>
-            <div class="RightSide">
-                <span class="b">OGGETTO</span>: manoscritto mesoamericano<br><br>
-                <span class="b">MATERIA E TECNICA</span>: striscia di pelle di cervo, interamente coperta da uno strato di gesso, presenta coperte di pergamena europee<br><br>
-                <span class="b">DIMENSIONI</span>: 3640 mm x ca. 174-182 mm<br><br>
-                <span class="b">DATA</span>: XV-inizi XVI secolo<br><br>
-                <span class="b">LUOGO DI CONSERVAZIONE</span>: Biblioteca Universitaria di Bologna, Bologna
-            </div>
-        </div>
-    </div>
-      <!--BLOCK IIIF-->
-    <div class="Block">
-        <div class="flexContainer IIIFContainer">
-            <div>
-                <span class="b">AD ALTA RISOLUZIONE</span><br>
-                © M. Caroli e S. Tebaldi <br>
-                Alma Mater Studiorum <br>
-                Biblioteca Universitaria di Bologna (BUB)<br>
-            </div>
-        <img src="content/icons/IIIFBtn.svg" class="IIFBtn" onclick="APP.openIIIFview()">
-        </div>
-        <br><br>
-        Manoscritto mantico. Sul recto i tonalpohualli (ciclo divinatorio di 260 giorni) (1-8), un Almanacco di Venere (9-11) e la sezione dei Quattro Templi (12-13). Sul verso un’unica sezione con disposizione e numero di offerte rituali (21-31).
-    </div>
-    
-    <!--BLOCK CATALOGO-->
-    <div class="Block">
-        <div class="flexContainer">
-            <div class="thumb"></div>
-            <div>
-                <span class="b">Dal Catalogo</span><br>
-                (pp. 29-31)
-            </div>
-        </div>
-            <br><span class="b">“Ulisse Aldrovandi e le cose dell’altro mondo”</span><br>
-            <span class="i">di Davide Domenici</span>
-            <div class="line"></div>
-            <p>La scoperta europea delle Americhe costituì un vero e proprio shock culturale per l'Europa del Rinascimento. Non solo un intero universo di animali, piante e minerali sino ad allora sconosciuti si dischiuse davanti agli occhi di naturalisti e studiosi (...)</p>
-          
-        <div class="rightAlign">
-            <div class="moreBtn" onclick=""></div>
-        </div>
-    </div>
-     <!--BLOCK CAROSELLO-->
-     <div class="Block">
-        <span class="b">Galleria</span><br><br>
-        <div class="flexContainer CarouselContainer">
-           
-            <div class="carouselItem cospi1"></div>
-            <div class="carouselItem cospi2"></div>
-            <div class="carouselItem cospi3"></div>
-        </div>
-     </div>
-</div>
-`;
-
-APP.videoInfo = `
-<div class="Block">
-<h2>Video Stanza #1</h2><br>
-<span class="b">Le opere del video:</span>
-<br><div class="line"></div><br>
-<div class="flexContainer">
-    <div class="leftSide">
-        <div class="VideoOperaItem"></div>
-    </div>
-    <div class="RightSide">
-        <span class="b">San Girolamo nel suo studio</span><br>
-        Colantonio,<br>
-        1445-1446. <br>
-        Napoli, Museo e Real Bosco di Capodimonte
-    </div>
-    <div class="rightAlign underline">vai a 02:26</div>
-</div>
-</div>
-<!--BLOCK CATALOGO-->
-<div class="Block">
-<div class="flexContainer">
-<div class="thumb"></div>
-<div>
-    <span class="b">Dal Catalogo</span><br>
-    (p. 37)
-</div>
-</div>
-<br><span class="b">“La natura dei libri”</span><br>
-
-<p>
-    Secondo la leggenda, nel deserto fuori Betlemme Girolamo incontrò un leone con una spina nella zampa e gliela tolse. Da quel momento l’animale, riconoscente e ammansito, lo seguirà ovunque. Per questo la presenza di un leone aiuta a riconoscere con sicurezza San Girolamo nei quadri del passato. Se però prendiamo questo quadro e gli togliamo il leone, poi il cappello cardinalizio poggiato sul ripiano a sinistra e infine l’aureola del santo, ecco che ci troviamo di fronte al ritratto di un umanista nella tranquillità del suo studiolo, circondato dai libri degli autori classici sopravvissuti al Medioevo, che sono stati da poco riscoperti, tradotti e pubblicati. Per lo studioso del tempo, il leone e gli altri animali o piante di cui legge nei libri sono poco più che parole, e li studia solo attraverso le parole di questi libri.
-</p>
-<div class="rightAlign">
-<div class="moreBtn" onclick=""></div>
-</div>
-</div>`
-*/
-
 
 
 

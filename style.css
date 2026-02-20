@@ -114,6 +114,22 @@
     z-index: 111;
   }
     
+
+.bottomBtnsForKioskContainer
+{
+    padding: 20px;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 10px;
+    width: fit-content;
+    bottom: 0px;
+    left: 10px;
+    z-index: 111;
+  }
+
 /*Audio Control Style*/
 
 /* Il titolo sopra o accanto */
@@ -511,7 +527,7 @@
 /* Scrollable container */
 #InfoScrollContainer {
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 200px);
   padding: 25px;
 }
 
