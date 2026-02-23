@@ -636,7 +636,8 @@ APP.setup = ()=>{
     //---->AND LIGHTS PROBE TEST TO DO HERE
     ATON.on("AllNodeRequestsCompleted",()=>{APP.onAllNodeRequestsCompleted()});
     APP.loadConfig(configPath);
-   // ATON._mainRoot.background =  new THREE.Color(0.1,0.1,0.1);
+
+    ATON._mainRoot.background = new THREE.Color(0, 0, 0);
     ATON.setMainPanorama( 'image/hemi-grey.jpg');
 
 
@@ -2218,15 +2219,24 @@ APP.setRoom=(stage)=>{
             .setPosition(_pov.pos.x,_pov.pos.y,_pov.pos.z)
             .setTarget( _pov.target.x,_pov.target.y,_pov.target.z);
 
-        let POVTimeTransition = 0;
+        let POVTimeTransition = 0.6;
         ATON.Nav.requestPOV(_p, POVTimeTransition);
         APP.composeAmbient(stage);
     }
 
     if(APP.isVR_Running()){
-            APP.fadeToBlack(500, async () => {
-                console.log("Fading To Black");
-                await _setRoom(stage);
+            APP.fadeToBlack({
+                duration: 500,
+                updatePositionAfterFaded: true,
+                onComplete: async () => {
+
+                    //Set everything invisible before load to avoid confusion in VR
+                    ATON._mMainPano.visible=false
+                    ATON.getRootScene().visible = false;
+
+                    console.log("Fading To Black");
+                    await _setRoom(stage);
+                }
             });
     }
     else{ _setRoom(stage); }
@@ -2248,6 +2258,8 @@ APP.onAllNodeRequestsCompleted=()=>
     
     if(!APP.isChangingRoom) return;
     
+    ATON.getRootScene().visible = true;
+    ATON._mMainPano.visible=true;
     //OFFBLUR // Tutti i load in parallelo sono completati
     APP.removeLoadingMode();
     APP.onAllRoomNodesAttached();
@@ -2507,6 +2519,41 @@ APP.updateFadePlanePosition = () => {
 };
 
 
+// Holds the RAF id of the keep-alive position loop started by fadeToBlack
+// when updatePositionAfterFaded:true. fadeFromBlack always cancels it.
+APP._fadePosLoopId = null;
+
+/**
+ * Quick test: fade to black, hold, fade back.
+ * @param {number} holdMs   how long to stay fully black (default 2000)
+ * @param {boolean} keepPos if true, the sphere position keeps updating while black
+ */
+APP.testFade = (holdMs = 2000, keepPos = false) => {
+    if (APP.blackPlaneFade) {
+        ATON._mainRoot.remove(APP.blackPlaneFade);
+        APP.blackPlaneFade = null;
+        APP.blackPlaneMaterial = null;
+    }
+
+    console.log("[testFade] ▶ fadeToBlack START (keepPos:", keepPos, ")");
+
+    APP.fadeToBlack({
+        duration: 1000,
+        updatePositionAfterFaded: keepPos,
+        onComplete: () => {
+            console.log("[testFade] ■ fully black — holding for", holdMs, "ms");
+            setTimeout(() => {
+                console.log("[testFade] ▶ fadeFromBlack START");
+                APP.fadeFromBlack({
+                    duration: 1000,
+                    onComplete: () => {
+                        console.log("[testFade] ✓ done — screen fully visible again");
+                    }
+                });
+            }, holdMs);
+        }
+    });
+};
 
 function getRequestAnimationFrame() {
     return (ATON.XR && ATON.XR.currSession)
@@ -2514,7 +2561,34 @@ function getRequestAnimationFrame() {
         : window.requestAnimationFrame;
 }
 
-APP.fadeToBlack = (duration = 1000, onComplete = () => {}) => {
+function cancelAnimationFrameCompat(id) {
+    if (ATON.XR && ATON.XR.currSession) {
+        ATON.XR.currSession.cancelAnimationFrame(id);
+    } else {
+        cancelAnimationFrame(id);
+    }
+}
+
+/**
+ * Fade the screen to black.
+ * @param {Object|number} options  Options object OR legacy numeric duration.
+ *   options.duration               {number}   ms for the fade animation   (default 1000)
+ *   options.onComplete             {Function} called when fully black      (default noop)
+ *   options.updatePositionAfterFaded {boolean} keep updating the fade sphere
+ *                                            position even after fully black (default false)
+ */
+APP.fadeToBlack = (options = {}, _legacyOnComplete) => {
+    // Legacy signature: fadeToBlack(duration, onComplete)
+    if (typeof options === 'number') {
+        options = { duration: options, onComplete: _legacyOnComplete };
+    }
+
+    const {
+        duration = 1000,
+        onComplete = () => {},
+        updatePositionAfterFaded = false
+    } = options;
+
     try {
         APP.setupForFade();
 
@@ -2525,23 +2599,30 @@ APP.fadeToBlack = (duration = 1000, onComplete = () => {}) => {
             ATON._mainRoot.add(fadeMesh);
         }
 
-        fadeMaterial.opacity = 0; // start transparent
+        fadeMaterial.opacity = 0;
 
         const startTime = performance.now();
         const raf = getRequestAnimationFrame();
 
         function animate() {
             try {
-                APP.updateFadePlanePosition();
                 const elapsed = performance.now() - startTime;
                 const t = Math.min(elapsed / duration, 1);
-                //ATON.Photon.fire("myRemoteLog","T is: " + t);
 
+                APP.updateFadePlanePosition();
                 fadeMaterial.opacity = t;
 
                 if (t < 1) {
                     raf(animate);
                 } else {
+                    // Fade complete — optionally keep position updated
+                    if (updatePositionAfterFaded) {
+                        function posLoop() {
+                            APP.updateFadePlanePosition();
+                            APP._fadePosLoopId = raf(posLoop);
+                        }
+                        APP._fadePosLoopId = raf(posLoop);
+                    }
                     onComplete();
                 }
             } catch (err) {
@@ -2557,7 +2638,29 @@ APP.fadeToBlack = (duration = 1000, onComplete = () => {}) => {
     }
 };
 
-APP.fadeFromBlack = (duration = 1000, onComplete = () => {}) => {
+/**
+ * Fade from black back to the scene.
+ * @param {Object|number} options  Options object OR legacy numeric duration.
+ *   options.duration    {number}   ms for the fade animation  (default 1000)
+ *   options.onComplete  {Function} called when fully transparent (default noop)
+ */
+APP.fadeFromBlack = (options = {}, _legacyOnComplete) => {
+    // Legacy signature: fadeFromBlack(duration, onComplete)
+    if (typeof options === 'number') {
+        options = { duration: options, onComplete: _legacyOnComplete };
+    }
+
+    const {
+        duration = 1000,
+        onComplete = () => {}
+    } = options;
+
+    // Always stop any keep-alive position loop from fadeToBlack
+    if (APP._fadePosLoopId !== null) {
+        cancelAnimationFrameCompat(APP._fadePosLoopId);
+        APP._fadePosLoopId = null;
+    }
+
     try {
         const fadeMesh = APP.blackPlaneFade;
         const fadeMaterial = APP.blackPlaneMaterial;
@@ -2572,16 +2675,17 @@ APP.fadeFromBlack = (duration = 1000, onComplete = () => {}) => {
             ATON._mainRoot.add(fadeMesh);
         }
 
-        fadeMaterial.opacity = 1; // start fully black
+        fadeMaterial.opacity = 1;
 
         const startTime = performance.now();
         const raf = getRequestAnimationFrame();
 
         function animate() {
             try {
-                APP.updateFadePlanePosition();
                 const elapsed = performance.now() - startTime;
                 const t = Math.min(elapsed / duration, 1);
+
+                APP.updateFadePlanePosition();
                 fadeMaterial.opacity = 1 - t;
 
                 if (t < 1) {
