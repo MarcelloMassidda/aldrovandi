@@ -195,6 +195,7 @@ APP.closeModal = function(){
 
 APP.startAPP=(language)=> 
 { 
+    APP.getVRBtn();
     //Close Welcome Popup
     APP.closeWelcomePopup();
 
@@ -1468,7 +1469,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
     if(_type=="roomLink")
     {
         console.log("IS A ROOM LINK");
-        POVTimeTransition= 0.2;
+        POVTimeTransition= 0.35;
         APP.showBlurredFullscreen();
 
         //FOR VR DESTROY SIBLINGS
