@@ -768,11 +768,12 @@ APP.cleanAllTemporarySUI=()=>{
 APP.createSUILabel=(options)=>{
     let w = 1.2;
     let h = 0.5;
+    let renderPrioritize = false || options.renderPrioritize;
     let pos = options.pos || {x:0,y:0,z:0}
     let rot = options.rot || {x:0,y:0,z:0}
     let id =  ATON.Utils.generateID(options.id+"_suiLabel_");
     let content = options.content[APP.currentLanguage];
-    let SUIlabel = suiBuilder.createLabel({ id, w, h, content, pos, rot });
+    let SUIlabel = suiBuilder.createLabel({ id, w, h, content, pos, rot, renderPrioritize, bestFit:"auto" });
     SUIlabel.attachTo(APP.room);
     return SUIlabel;
 }
@@ -2805,13 +2806,13 @@ APP.removeUserSUI=()=>{
 //USER SUI
 
 // Positioning factors
-APP.forwardFactor = 0.5 // 0.3;
+APP.forwardFactor = 0.8 // 0.5 // 0.3;
 APP.leftFactor = 0; // 0.13;
 APP.upFactor =  -0.1; //0;
 
 APP.UserSUI_w = 0.85;
-APP.UserSUI_h = 0.14;
-APP.UserSUI_fontSize = 0.013;
+APP.UserSUI_h = 0.22;
+APP.UserSUI_fontSize = 0.016; //0.013;
 
 APP.setUserSUI=(options)=>{
 
@@ -2831,7 +2832,8 @@ APP.setUserSUI=(options)=>{
     content: _content,
     pos: { x: 0, y: 0, z: 0 },
     rot: { x: 0, y: 0, z: 0 },
-    fSize: APP.UserSUI_fontSize
+    fSize: APP.UserSUI_fontSize,
+    renderPrioritize: true
   }
 
   if(APP._suiCentralUserLabel) APP.removeUserSUI();

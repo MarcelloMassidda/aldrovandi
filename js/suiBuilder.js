@@ -1,6 +1,6 @@
 let suiBuilder = {
     interLine: 0.001,
-    bestFit: "auto",
+    bestFit: "none", //"auto",
     fontSize: 0.3,
     height: 0.06
 };
@@ -21,7 +21,7 @@ suiBuilder.set_fontSize=(value)=>
     ThreeMeshUI.update();
 }   
 
-suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
+suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize, renderPrioritize, bestFit})=>
 {
 
     var n = new ATON.Node(id, ATON.NTYPES.UI);
@@ -34,7 +34,7 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
         padding: 0.001,
         borderRadius: 0.01,
         backgroundColor: baseColor,
-        backgroundOpacity: 0.5,
+        backgroundOpacity: 0.8,
 
         fontFamily: ATON.SUI.PATH_FONT_JSON,
         fontTexture: ATON.SUI.PATH_FONT_TEX,
@@ -42,7 +42,7 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
         justifyContent: 'center', // could be 'center' or 'left'
         textAlign: 'center', //left,
         interLine: suiBuilder.interLine,
-        bestFit: suiBuilder.bestFit,
+        bestFit: (bestFit !== undefined) ? bestFit : suiBuilder.bestFit,
     });
     
     container.position.z = 0.03;
@@ -56,8 +56,21 @@ suiBuilder.createLabel = ({ id, w, h, content, pos, rot, fSize})=>
     n.uiText = uiText;
     container.add(uiText);
     n.add(container);
+    if (renderPrioritize) n.renderOrder = 999;
 
     ThreeMeshUI.update();
+
+    if(renderPrioritize){
+        // disabilitiamo depthTest/depthWrite per tutti i mesh figli
+        n.traverse(obj => {
+            if (obj.isMesh && obj.material) {
+                obj.renderOrder = 999;
+                obj.material.depthTest = false;
+                obj.material.depthWrite = false;
+            }
+        });
+    }
+
 
     n.position.x = pos.x;
     n.position.y = pos.y;
