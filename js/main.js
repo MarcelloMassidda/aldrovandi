@@ -103,10 +103,6 @@ APP.initKioskMode=()=>{
     APP.setKioskUISideBar();
     //Remove ATON LINK:
     document.getElementById("idPoweredBy").querySelector("a").style.pointerEvents = "none";
-
-    // Hide the cursor for touch devices in kiosk mode
-    //document.body.style.cursor = 'none';
-    //document.querySelector('canvas').style.cursor = 'none';
     
 
 }
@@ -1023,7 +1019,7 @@ APP.composeAmbient = async (_stage) => {
                 APP.updateSiblings();
                 APP.updateRoomSUI();
                 APP.updateVideoAssets();
-
+                APP.ambient.show();
                 //resolve(roomNode);
             });
         } catch (err) {
@@ -1473,7 +1469,7 @@ APP.onTapSemNodes = (idSem, p=null)=>
         POVTimeTransition= 0.2;
         APP.showBlurredFullscreen();
 
-         //FOR VR DESTROY SIBLINGS
+        //FOR VR DESTROY SIBLINGS
         //ATON.Photon.fire("myRemoteLog","isVRDevice: " + APP.isVR_Device());
         //ATON.Photon.fire("myRemoteLog","isVR_Running: " + APP.isVR_Running());
         if(APP.isVR_Device()){if(APP.isVR_Running()) {
@@ -2210,20 +2206,30 @@ APP.BackToStart=()=>{
 
 APP.setRoom=(stage)=>{
 
-    APP.closeWelcomePopup();
-    APP.showBlurredFullscreen();
-    
-    APP.STAGE = stage;
-    APP.isChangingRoom=true;
-    
-    let _pov = APP.config.rooms[stage].HomePov;
-    var _p = new ATON.POV("povHome_"+stage)
-        .setPosition(_pov.pos.x,_pov.pos.y,_pov.pos.z)
-        .setTarget( _pov.target.x,_pov.target.y,_pov.target.z);
+      let _setRoom=async(stage)=>{
+        APP.closeWelcomePopup();
+        APP.showBlurredFullscreen();
+        
+        APP.STAGE = stage;
+        APP.isChangingRoom=true;
+        
+        let _pov = APP.config.rooms[stage].HomePov;
+        var _p = new ATON.POV("povHome_"+stage)
+            .setPosition(_pov.pos.x,_pov.pos.y,_pov.pos.z)
+            .setTarget( _pov.target.x,_pov.target.y,_pov.target.z);
 
-    let POVTimeTransition = 0.6;
-    ATON.Nav.requestPOV(_p, POVTimeTransition);
-    APP.composeAmbient(stage);
+        let POVTimeTransition = 0;
+        ATON.Nav.requestPOV(_p, POVTimeTransition);
+        APP.composeAmbient(stage);
+    }
+
+    if(APP.isVR_Running()){
+            APP.fadeToBlack(500, async () => {
+                console.log("Fading To Black");
+                await _setRoom(stage);
+            });
+    }
+    else{ _setRoom(stage); }
 }
     
 APP.sceneInitialized = false;
@@ -2252,7 +2258,7 @@ APP.onAllNodeRequestsCompleted=()=>
     const deltaLoad = Math.abs( now -  APP.s); 
     APP.delta = deltaLoad / 1000; 
 
-    console.log('%c ALLNODEREQUESTCOMPLETED ', 'background: #444; color: #bada55');
+    console.log('%c ALLNODEREQUESTCOMPLETED ', 'background: #444; color: #ff0077');
     console.log("loaded in: " + APP.delta);
 
     ATON.Photon.fire("myRemoteLog","from remote: ALLNODEREQUESTCOMPLETED '")
@@ -2456,29 +2462,7 @@ APP.getCurrActiveCenter=()=>{
 
 
 
-//FADE: TO INTRODUCE AND TEST ON VR
-
-//OLD setupForFade:
-APP.old_setupForFade = () => {
-    if (APP.blackPlaneFade) return;
-
-    const fadeMaterial = new THREE.MeshBasicMaterial({
-        color: 0x000000,
-        transparent: true,
-        opacity: 0,  // always start at 0!
-        depthTest: false,
-        depthWrite: false
-    });
-
-    const fadeGeometry = new THREE.PlaneGeometry(2, 2);
-
-    const fadeMesh = new THREE.Mesh(fadeGeometry, fadeMaterial);
-    fadeMesh.renderOrder = 999;
-
-    APP.blackPlaneFade = fadeMesh;
-    APP.blackPlaneMaterial = fadeMaterial;
-};
-
+//FADE FOR VR TRANSITIONS
 
 APP.setupForFade = () => {
   if (APP.blackFadeMesh) return;
@@ -2497,7 +2481,6 @@ APP.setupForFade = () => {
         toneMapped: false
     });
 
-    // raggio > near plane della camera (es. near=0.1 → 1.5 è ok)
     const fadeGeometry = new THREE.SphereGeometry(1.5, 32, 16);
 
     const fadeMesh = new THREE.Mesh(fadeGeometry, fadeMaterial);
@@ -2521,83 +2504,6 @@ APP.updateFadePlanePosition = () => {
     fadeMesh.position.copy(cameraPos);
     fadeMesh.quaternion.copy(cameraQuat);
     fadeMesh.translateZ(-0.5);
-};
-
-APP.OLDfadeToBlack = (duration = 1000, onComplete = () => {}) => {
-    APP.setupForFade();
-
-    const fadeMesh = APP.blackPlaneFade;
-    const fadeMaterial = APP.blackPlaneMaterial;
-
-    if (!ATON._mainRoot.children.includes(fadeMesh)) {
-        ATON._mainRoot.add(fadeMesh);
-    }
-
-    fadeMaterial.opacity = 0;  // ensure we start from black = 0
-
-    const startTime = performance.now();
-
-    function animate() {
-        APP.updateFadePlanePosition();
-        const elapsed = performance.now() - startTime;
-        const t = Math.min(elapsed / duration, 1);
-        fadeMaterial.opacity = t;
-
-        if (t < 1) {
-            requestAnimationFrame(animate);
-        } else {
-            onComplete();
-        }
-    }
-
-    animate();
-};
-
-APP.OLDfadeFromBlack = (duration = 1000, onComplete = () => {}) => {
-    const fadeMesh = APP.blackPlaneFade;
-    const fadeMaterial = APP.blackPlaneMaterial;
-
-    if (!fadeMesh || !fadeMaterial) {
-        console.warn('fadeFromBlack called without setup');
-        onComplete();
-        return;
-    }
-
-    if (!ATON._mainRoot.children.includes(fadeMesh)) {
-        ATON._mainRoot.add(fadeMesh);
-    }
-
-    fadeMaterial.opacity = 1;  // ensure we start fully black
-
-    const startTime = performance.now();
-
-    function animate() {
-        APP.updateFadePlanePosition();
-        const elapsed = performance.now() - startTime;
-        const t = Math.min(elapsed / duration, 1);
-        fadeMaterial.opacity = 1 - t;
-
-        if (t < 1) {
-            requestAnimationFrame(animate);
-        } else {
-            ATON._mainRoot.remove(fadeMesh);
-            onComplete();
-        }
-    }
-
-    animate();
-};
-
-
-
-APP.testFade = () => {
-    APP.fadeToBlack(1000, () => {
-        console.log("Scene graph updated");
-
-        // Perform updates here
-
-        APP.fadeFromBlack(1000);
-    });
 };
 
 
@@ -2629,7 +2535,7 @@ APP.fadeToBlack = (duration = 1000, onComplete = () => {}) => {
                 APP.updateFadePlanePosition();
                 const elapsed = performance.now() - startTime;
                 const t = Math.min(elapsed / duration, 1);
-                ATON.Photon.fire("myRemoteLog","T is: " + t);
+                //ATON.Photon.fire("myRemoteLog","T is: " + t);
 
                 fadeMaterial.opacity = t;
 
