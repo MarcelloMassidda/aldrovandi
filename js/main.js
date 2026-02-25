@@ -2160,6 +2160,8 @@ APP.updateVideoAssets = () =>{
         //1 Create video element
         const video = document.createElement('video');
         video.src = o.videoPath;
+        //litePath
+        if(APP.isVR_Running() && o.videoLitePath) video.src = o.videoLitePath;
         video.loop = true;
         video.muted = true;
         video.play();
