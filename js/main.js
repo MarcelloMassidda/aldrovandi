@@ -2320,8 +2320,9 @@ APP.initializeScene = ()=>
 
 APP.getVRBtn=()=>
 {
-    ATON.FE.uiAddButtonVR("idTopToolbar");
-    console.log('%cbody Loaded and VR Btn added', 'background: #222; color: #bada55');
+    if (!document.getElementById("btn-vr")) {
+        ATON.FE.uiAddButtonVR("idTopToolbar");
+    }
 }
 
 //UI:
