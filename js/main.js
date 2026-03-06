@@ -296,6 +296,8 @@ APP.pauseCurrentAudio = () => {
 // Toggle play/pause
 APP.toggleCurrentAudio = () => {
     if (!APP._audio) return;
+    if(APP.cRoom.audiosource==undefined) return; //No audio for this room
+
     if (APP._audio.paused) {
         APP._audio.play();
     } else {
@@ -1152,7 +1154,7 @@ APP.composeAmbient = async (_stage) => {
 
 APP.onAllRoomNodesAttached=()=>{
 
-     if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio(); APP.hideBottomBar();}
+     if(APP.cRoom.audiosource==undefined) { APP.pauseCurrentAudio(); APP.hideBottomBar(); }
         else{
             if(!APP.currentObjIsFocused){
                 console.log("PLAY AUDIO")
