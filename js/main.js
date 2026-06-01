@@ -2146,13 +2146,16 @@ APP.updateVideoAssets = () =>{
     if(APP.videoAssets) {
 
         console.log(APP.videoAssets);
-        if(APP.videoAssets.parent)  APP.deleteAndDispose(APP.videoAssets);
-        
+
+        // Clean up <video> elements before disposing the scene node
         APP.videoAssets.children.map((videoNode)=>{
             console.log(videoNode);
             let videoEl = document.getElementById(videoNode.nid);
             if(videoEl) videoEl.delete();
-        })
+        });
+
+        if(APP.videoAssets.parent) APP.deleteAndDispose(APP.videoAssets);
+        APP.videoAssets = null;
     }
     
     const videoAssets = APP.cRoom.videoAssets;
@@ -2163,6 +2166,9 @@ APP.updateVideoAssets = () =>{
     
     //Create video utility:
     const setup3DVideo = (o) =>{
+
+        // Skip assets marked avoidVR when running in VR
+        if(o.avoidVR && APP.isVR_Running()) return;
 
         //1 Create video element
         const video = document.createElement('video');
