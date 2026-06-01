@@ -551,3 +551,85 @@
 @media (max-width:640px){
   .app-modal-dialog{width:94%;max-height:86vh}
 }
+
+/* ---- Tutorial Modal ---- */
+.tutorial-header-content {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tutorial-header-title {
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 17px;
+}
+
+.tutorial-header-progress {
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.tutorial-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.tutorial-gif-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tutorial-gif {
+  max-width: 100%;
+  max-height: 340px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.tutorial-desc {
+  font-family: "Montserrat-Regular", sans-serif;
+  font-size: 15px;
+  color: #ddd;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tutorial-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.tutorial-btn {
+  cursor: pointer;
+  padding: 10px 28px;
+  border-radius: 30px;
+  border: none;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.tutorial-btn:hover {
+  opacity: 0.85;
+}
+
+.tutorial-btn-skip {
+  background-color: transparent;
+  color: #aaa;
+  border: 1px solid #555;
+}
+
+.tutorial-btn-action {
+  background-color: #a42473;
+  color: #fff;
+}
+

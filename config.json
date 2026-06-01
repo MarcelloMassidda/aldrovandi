@@ -1,5 +1,74 @@
 {
   "useMelodyBackup": true,
+  "tutorial": {
+    "kiosk": {
+      "steps": [
+        {
+          "ita": {
+            "title": "Navigazione dello spazio",
+            "description": "Trascina sul pavimento per muoverti nello spazio espositivo."
+          },
+          "eng": {
+            "title": "Space Navigation",
+            "description": "Drag on the floor to move through the exhibition space."
+          },
+          "source": "content/tutorial/videos/navigazione_spazio_opt.gif"
+        },
+        {
+          "ita": {
+            "title": "Ispezione dell'oggetto",
+            "description": "Tocca due volte un oggetto per esaminarlo da vicino."
+          },
+          "eng": {
+            "title": "Object Inspection",
+            "description": "Double-tap an object to examine it closely."
+          },
+          "source": "content/tutorial/videos/esplorazione_oggetto_touch_opt.gif"
+        }
+      ]
+    },
+    "web": {
+      "steps": [
+        {
+          "ita": {
+            "title": "Navigazione dello spazio",
+            "description": "Trascina sul pavimento per muoverti nello spazio espositivo."
+          },
+          "eng": {
+            "title": "Space Navigation",
+            "description": "Drag on the floor to move through the exhibition space."
+          },
+          "source": "content/tutorial/videos/navigazione_spazio_opt.gif"
+        },
+        {
+          "ita": {
+            "title": "Ispezione dell'oggetto",
+            "description": "Fai doppio clic su un oggetto per esaminarlo da vicino."
+          },
+          "eng": {
+            "title": "Object Inspection",
+            "description": "Double-click an object to examine it closely."
+          },
+          "source": "content/tutorial/videos/esplorazione_oggetto_completo_mouse_opt.gif"
+        }
+      ]
+    },
+    "vr": {
+      "steps": [
+        {
+          "ita": {
+            "title": "Navigazione dello spazio",
+            "description": "Usa il controller per spostarti nello spazio espositivo."
+          },
+          "eng": {
+            "title": "Space Navigation",
+            "description": "Use the controller to move through the exhibition space."
+          },
+          "source": "content/tutorial/videos/navigazione_spazio_opt.gif"
+        }
+      ]
+    }
+  },
   "systemTexts": {
     "backToStart_Text": {
       "ita": "Torna all'inizio",

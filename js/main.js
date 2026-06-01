@@ -213,7 +213,12 @@ APP.startAPP=(language)=>
     //Init iframeSystem for Melody-links
     //APP.initIframeForSidebarLinks(); //Close for now
 
+    //Show tutorial (skips to exploration if no assets or no tutorial config)
+    APP.showTutorial();
+}
 
+APP.beginExploration=()=>
+{
     //Set audio available
     APP.audioCanPlay=true;
     APP.setFirstAudioAvailable();
