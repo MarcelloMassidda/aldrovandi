@@ -2145,7 +2145,16 @@
           "id": "video_a",
           "videoPath": "content/videos/s5_Network_Aldrovandi.mp4",
           "shapePath": "models/room5/videoObjs/video_a/video_a.gltf"
+        }, 
+
+        {
+          "id": "video_b",
+           "videoPath": "content/videos/VideoProiettato_loop.mp4", 
+           "shapePath": "models/room5/videoObjs/video_b/Voltafilm_v3.gltf", 
+           "avoidVR": true
+
         }
+
       ],
       "audiosource": {
         "ita": "content/audios/Audio_Sala5.mp3",
