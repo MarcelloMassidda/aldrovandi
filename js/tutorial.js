@@ -42,6 +42,7 @@ APP.showTutorial = () => {
     ).then(results => {
         if (results.every(Boolean)) {
             APP._showTutorialStep(steps, 0);
+            APP.popupShown = true;
         } else {
             console.warn("Tutorial: one or more GIF sources not found, skipping tutorial.");
             APP.beginExploration();
@@ -107,6 +108,7 @@ APP._showTutorialStep = (steps, index) => {
         skipBtn.onclick = () => {
             APP.closeModal();
             APP.beginExploration();
+            APP.popupShown = false;
         };
         footerEl.appendChild(skipBtn);
     }
@@ -119,6 +121,7 @@ APP._showTutorialStep = (steps, index) => {
         actionBtn.onclick = () => {
             APP.closeModal();
             APP.beginExploration();
+            APP.popupShown = false;
         };
     } else {
         actionBtn.textContent = lang === "ita" ? "Avanti" : "Next";
@@ -143,6 +146,7 @@ APP._showTutorialStep = (steps, index) => {
                 closeBtn.onclick = () => {
                     APP.closeModal();
                     APP.beginExploration();
+                    APP.popupShown = false;
                 };
             }
         }
