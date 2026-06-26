@@ -1,15 +1,49 @@
 /**
  * Aldrovandi Tutorial System
  * Shows a sequence of tutorial modals after language selection.
- * Determines tutorial type based on APP.mode (kiosk) or APP.isVR_Device() (vr), else web.
- * Checks for at least one object asset before showing; if missing, skips to exploration.
+ * Determines tutorial type based on APP.mode (kiosk), async VR detection, or web fallback.
+ * Checks that all GIF sources exist before showing; if any is missing, skips to exploration.
  */
 
+/**
+ * Async VR headset browser detection.
+ * Uses navigator.xr.isSessionSupported("immersive-vr") for accuracy,
+ * plus Quest/Android UA checks to avoid false positives on desktop.
+ * Returns true only when the browser is likely running inside a VR headset.
+ */
+APP._isVRHeadsetBrowser = async () => {
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+
+    let supportsImmersiveVR = false;
+    if ("xr" in navigator && navigator.xr?.isSessionSupported) {
+        try {
+            supportsImmersiveVR = await navigator.xr.isSessionSupported("immersive-vr");
+        } catch (e) {
+            supportsImmersiveVR = false;
+        }
+    }
+
+    const isQuestUA =
+        /OculusBrowser/i.test(ua) ||
+        /Meta Quest/i.test(ua)    ||
+        /Quest/i.test(ua)         ||
+        /Oculus/i.test(ua);
+
+    const isAndroidLike = /Android/i.test(ua) || /Linux arm/i.test(platform);
+
+    // Require both immersive-vr support AND a headset UA/platform signal
+    // to avoid triggering on desktop Chrome which also exposes WebXR.
+    return supportsImmersiveVR && (isQuestUA || isAndroidLike);
+};
+
 APP.showTutorial = () => {
+    APP._isVRHeadsetBrowser().then(isVRHeadset => {
+
     // Determine tutorial type
     let tutorialType = "web";
     if (APP.mode === "kiosk") tutorialType = "kiosk";
-    else if (APP.isVR_Device()) tutorialType = "vr";
+    else if (isVRHeadset) tutorialType = "vr";
 
     // Get tutorial config
     const tutorialConfig = APP.config && APP.config.tutorial;
@@ -48,6 +82,8 @@ APP.showTutorial = () => {
             APP.beginExploration();
         }
     });
+
+    }); // end _isVRHeadsetBrowser
 };
 
 APP._showTutorialStep = (steps, index) => {
